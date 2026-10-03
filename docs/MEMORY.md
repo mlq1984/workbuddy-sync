@@ -15,3 +15,4 @@
 - 发图片：先 `wecom-cli media upload --file-path <file> --type image` 拿 media_id，再 `wecom-cli message aibot send --chat-id <id> --msg-type image --image '{"media_id":"..."}'`
 - CLI 需 `export PATH="/c/Users/king/.workbuddy/binaries/node/versions/22.22.2-3:$PATH"`；wecom-unified 技能的旧命令名已过时（以实测为准）
 - 未授权时重新扫码：`wecom-cli auth init`（后台运行读取二维码链接给用户）
+# sync smoke test 13:25:02
