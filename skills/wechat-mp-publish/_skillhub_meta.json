@@ -1,0 +1,11 @@
+{
+  "name": "公众号后台自动排版发布",
+  "installedAt": 1790995319319,
+  "source": "marketplace",
+  "version": "1.0.0",
+  "skillId": "skill_2105945413845815296",
+  "iconSource": "letter:auto",
+  "installedContentHash": "sha256:4155ca9f9febaac109e90c4d22e3b6250dbf9e70bb6591bf6f2e31fd53375192",
+  "description_zh": "用浏览器自动化完成微信公众号图文排版并存入草稿箱，把人工排版压成一条可复用脚本。能力覆盖：① 扫码登录与登录态持久化（二维码提取裁切、Cookie 备份与灌回，避免反复扫码）；② 进入编辑器的正确路径，避开直接打开编辑 URL 导致的空白页；③ 正文写入——绕过 ProseMirror 不吃键盘输入的限制，用光标重设加 execCommand 分段写入，并处理「文字接文字丢段首」等边界；④ 小标题批量加粗（选区必须落到文本节点级配合真实 Cmd+B，附成功判据与跳过已加粗段的保护）；⑤ 按序插图，直接写入隐藏 file input，不碰任何上传对话框；⑥ 设置 2.35:1 封面，从正文首图或素材库选取，按 fmt=jpeg 识别横版图，含弹窗坐标点击的全部坑；⑦ 保存并校验到草稿箱（type=77 才是草稿），发表环节绝不代点。",
+  "description_en": "Automate WeChat Official Account article drafting via browser automation — title, body, in-order image insertion, cover selection and saving as draft, with verified paths for the ProseMirror editor and cover picker."
+}

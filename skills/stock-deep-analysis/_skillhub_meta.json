@@ -1,0 +1,13 @@
+{
+  "name": "【价值投资】-公司深度分析",
+  "installedAt": 1790995336060,
+  "source": "marketplace",
+  "version": "1.0.1",
+  "skillId": "skill_2095316101258145792",
+  "iconSource": "https://openplatform-cdn.codebuddy.cn/public/common/capability_cover/1cf6504d-8051-42a7-9ac7-991e3b196386/2becf61b-6b1e-45d0-bbe1-c07dbed88878.png",
+  "installedContentHash": "sha256:ea31a763e55cf6d7abcd528e28169c3a5c0be3d6d5a87046562977e1dce53970",
+  "iconLocalPath": "C:\\Users\\king\\.workbuddy\\skills\\stock-deep-analysis\\_icon.png",
+  "iconDownloadedFrom": "https://openplatform-cdn.codebuddy.cn/public/common/capability_cover/1cf6504d-8051-42a7-9ac7-991e3b196386/2becf61b-6b1e-45d0-bbe1-c07dbed88878.png",
+  "description_zh": "二级市场买方视角深度分析 Skill。当用户要求对某只股票进行深度分析、价值分析、基本面分析时使用此 skill。核心能力：(1) 先执行财务筛查，不满足条件直接终止；(2) 通过筛查后，依次分析生意是什么、增长潜力、商业模式、竞争壁垒、企业文化、组织力、管理层再投资（再投资回报与资本配置纪律）；(3) 最后以反向劝退视角系统梳理所有投资风险。强调证据原则：只有被直接证据支持的内容才写成确定性陈述，每段分析后必须罗列证据与出处。适用于 A 股、港股、美股的任意上市公司。",
+  "description_en": "Secondary-market buy-side deep equity analysis skill. Use when the user asks for a deep, value, or fundamental analysis of a listed company. Core capabilities: (1) run a financial screen first and stop immediately if it fails; (2) if passed, analyze in order the business, growth potential, business model, competitive moat, corporate culture, organizational capability, and management capital allocation (reinvestment return versus capital allocation discipline); (3) finally systematically challenge the investment case from a contrarian risk standpoint. Evidence principle: only state as fact what is directly supported by evidence, and cite sources after each section. Covers A-share, HK, and US listed companies."
+}

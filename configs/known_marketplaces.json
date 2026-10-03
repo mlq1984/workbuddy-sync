@@ -1,0 +1,129 @@
+{
+  "cb_teams_marketplace": {
+    "manifestName": "cb_teams_marketplace",
+    "type": "zip",
+    "source": {
+      "source": "zip",
+      "path": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip",
+      "url": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip"
+    },
+    "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\cb_teams_marketplace",
+    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip",
+    "lastUpdated": "2026-10-03T05:19:54.258Z",
+    "autoUpdate": true,
+    "isBuiltIn": true
+  },
+  "codebuddy-plugins-official": {
+    "manifestName": "codebuddy-plugins-official",
+    "type": "zip",
+    "source": {
+      "source": "zip",
+      "path": "https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official-4b9366ac-f7e5-4cef-b60a-99a5229ce2b2.zip",
+      "url": "https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official-4b9366ac-f7e5-4cef-b60a-99a5229ce2b2.zip"
+    },
+    "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\codebuddy-plugins-official",
+    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official-4b9366ac-f7e5-4cef-b60a-99a5229ce2b2.zip",
+    "lastUpdated": "2026-10-03T05:20:12.899Z",
+    "autoUpdate": true,
+    "isBuiltIn": true
+  },
+  "experts": {
+    "type": "directory",
+    "source": {
+      "source": "directory",
+      "path": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\experts"
+    },
+    "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\experts",
+    "isBuiltIn": false,
+    "autoUpdate": true,
+    "description": "experts marketplace (auto-generated)",
+    "lastUpdated": "2026-09-04T07:31:17.367Z",
+    "manifest": {
+      "name": "experts",
+      "description": "experts marketplace (auto-generated)",
+      "plugins": [
+        {
+          "name": "equity-research",
+          "source": "./plugins/equity-research",
+          "description": "Comprehensive equity research toolkit: earnings analysis, initiating coverage, DCF/comps valuation, long-short pitches, investment memos, event-driven analysis, portfolio risk management, and full research workflows"
+        },
+        {
+          "name": "ui-designer",
+          "source": "./plugins/ui-designer",
+          "description": "Expert UI designer specializing in visual design systems, component libraries, and pixel-perfect interface creation"
+        },
+        {
+          "name": "ad-creative-strategist",
+          "source": "./plugins/ad-creative-strategist",
+          "description": "Expert in ad creative design and performance prediction, creating high-converting ad assets"
+        },
+        {
+          "name": "senior-developer",
+          "source": "./plugins/senior-developer",
+          "description": "Senior full-stack developer with 10+ years experience, proficient in multiple languages and frameworks, delivers production-ready code with rigorous quality control"
+        },
+        {
+          "name": "ppt-implement",
+          "source": "./plugins/ppt-implement",
+          "description": "智能 PPT 生成助手，一键将您的想法转化为精美演示文稿"
+        },
+        {
+          "name": "trading-agent",
+          "source": "./plugins/trading-agent",
+          "description": "Trading analysis team — 13 specialized roles collaborate across 5 phases to deliver BUY/SELL/HOLD recommendations for A-share, HK and US stocks with actionable plans"
+        },
+        {
+          "name": "a-share-analysis",
+          "source": "./plugins/a-share-analysis",
+          "description": "A-share research team — 8 specialists with workflow orchestration covering macro, market reading, stock research, valuation, industry chain, money flow, and risk diagnosis"
+        },
+        {
+          "name": "software-company",
+          "source": "./plugins/software-company",
+          "description": "Software Development Team - Optimized multi-agent SOP workflow for fast software delivery"
+        },
+        {
+          "name": "stock-partner-team",
+          "source": "./plugins/stock-partner-team",
+          "description": "6 stock market experts + 1 lead editor collaborate as an agent team for stock market information analysis and discussion"
+        },
+        {
+          "name": "fundamental-stock-analysis",
+          "source": "./plugins/fundamental-stock-analysis",
+          "description": "Fundamental equity analysis and peer ranking expert using a structured 100-point scoring system across business quality, balance-sheet safety, cash flow, and valuation."
+        },
+        {
+          "name": "yahoo-finance-cli",
+          "source": "./plugins/yahoo-finance-cli",
+          "description": "Query global stock quotes, fundamentals, earnings, ratings, historical trends and valuation insights, plus trending symbols discovery and multi-asset comparison."
+        }
+      ]
+    },
+    "manifestName": "experts"
+  },
+  "workbuddy-connector-plugins-official": {
+    "manifestName": "workbuddy-connector-plugins-official",
+    "type": "directory",
+    "source": {
+      "source": "directory",
+      "path": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-connector-plugins-official"
+    },
+    "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-connector-plugins-official",
+    "description": "CodeBuddy 官方连接器配置索引",
+    "lastUpdated": "2026-10-01T10:36:34.655Z",
+    "autoUpdate": false
+  },
+  "workbuddy-builtin": {
+    "manifestName": "workbuddy-builtin",
+    "type": "directory",
+    "source": {
+      "source": "directory",
+      "path": "C:\\Users\\king\\AppData\\Local\\Programs\\WorkBuddy\\resources\\app.asar.unpacked\\resources\\plugins\\workbuddy-builtin"
+    },
+    "installLocation": "C:\\Users\\king\\AppData\\Local\\Programs\\WorkBuddy\\resources\\app.asar.unpacked\\resources\\plugins\\workbuddy-builtin",
+    "description": "Marketplace from C:\\Users\\king\\AppData\\Local\\Programs\\WorkBuddy\\resources\\app.asar.unpacked\\resources\\plugins\\workbuddy-builtin",
+    "lastUpdated": "2026-10-03T04:00:19.875Z",
+    "autoUpdate": false,
+    "isBuiltIn": true
+  }
+}

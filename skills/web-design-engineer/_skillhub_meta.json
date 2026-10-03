@@ -1,0 +1,13 @@
+{
+  "name": "网页设计工程师",
+  "installedAt": 1790995319889,
+  "source": "marketplace",
+  "version": "2.0.0",
+  "skillId": "skill_2095057993326362624",
+  "iconSource": "https://openplatform-cdn.codebuddy.cn/public/common/capability_cover/4e2b6524-e279-4761-9804-fb9b69b2ff76/80d45e6b-a9a6-466c-8a3b-52ba7bf660ef.png",
+  "installedContentHash": "sha256:e3d0d616df0b709e48d79a64c0efc756b4bc45b71f61a0368f698db5f7de715b",
+  "iconLocalPath": "C:\\Users\\king\\.workbuddy\\skills\\web-design-engineer\\_icon.png",
+  "iconDownloadedFrom": "https://openplatform-cdn.codebuddy.cn/public/common/capability_cover/4e2b6524-e279-4761-9804-fb9b69b2ff76/80d45e6b-a9a6-466c-8a3b-52ba7bf660ef.png",
+  "description_zh": "构建或重新设计精致的浏览器端视觉作品，包括网页、仪表盘、交互原型、幻灯片、动画、UI 模型与数据可视化；适用于视觉前端创作、设计系统探索、设计评审及明确要求的浏览器验收。",
+  "description_en": "Build or redesign polished browser-rendered visual artifacts, including pages, dashboards, interactive prototypes, slide decks, animations, UI mockups, and data visualizations; use for visual front-end creation, design-system exploration, design critique, and explicitly requested browser acceptance."
+}

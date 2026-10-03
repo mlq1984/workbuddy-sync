@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财报解读：{{公司全称}}（{{代码}}）</title>
+<style>
+/* ============================================================
+   财报解读报告模板 —— 浅色主题，自包含，无外部依赖
+   使用方式：复制本文件，替换所有 {{占位符}} 与示例数据行。
+   配色约定（重要）：
+     · 数值涨跌 → 红涨绿跌（A 股习惯）：.up / .down
+         只用于同比、环比、斜率等「变化量」；
+         水平值（销量、毛利率、ASP、占比）不着色——它是水平，不是涨跌。
+     · 健康度档位 → 风险语义：健康=绿、关注=琥珀、预警=红
+   两套语义不同，不要混用。
+   ============================================================ */
+:root{
+  --bg:#f7f7f5; --surface:#ffffff; --text:#1a1a1a; --text-2:#5f5e5a; --text-3:#8a8983;
+  --border:#e5e3dc; --border-2:#d3d1c7; --head:#f1efe8; --accent:#185fa5;
+  --up:#A32D2D; --down:#3B6D11;
+  --h-bg:#E1F5EE; --h-fg:#085041; --h-bd:#9FE1CB;
+  --w-bg:#FAEEDA; --w-fg:#633806; --w-bd:#FAC775;
+  --d-bg:#FCEBEB; --d-fg:#791F1F; --d-bd:#F7C1C1;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; padding:32px 20px 64px; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  font-size:14px; line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px; margin:0 auto;}
+header{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:28px 32px; margin-bottom:24px;}
+h1{font-size:24px; font-weight:600; margin:0 0 12px; letter-spacing:-0.01em;}
+.meta{font-size:13px; color:var(--text-2); line-height:1.9;}
+.meta b{font-weight:500; color:var(--text);}
+.disclaim{font-size:12px; color:var(--text-3); margin-top:12px; padding-top:12px; border-top:1px dashed var(--border-2);}
+
+section{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 32px; margin-bottom:20px;}
+h2{font-size:18px; font-weight:600; margin:0 0 4px; padding-bottom:12px; border-bottom:2px solid var(--head);}
+h3{font-size:15px; font-weight:600; margin:26px 0 10px; color:var(--text);}
+h3:first-of-type{margin-top:18px;}
+h4{font-size:14px; font-weight:600; margin:18px 0 8px; color:var(--text-2);}
+p{margin:10px 0;}
+.lead{font-size:13px; color:var(--text-2); background:#faf9f6; border-left:3px solid var(--border-2); padding:10px 14px; border-radius:0 6px 6px 0; margin:14px 0;}
+
+.tbl-scroll{overflow-x:auto; margin:14px 0;}
+table{border-collapse:collapse; width:100%; font-size:13px; background:var(--surface);}
+caption{caption-side:top; text-align:left; font-size:12px; color:var(--text-3); padding-bottom:6px;}
+th,td{border:1px solid var(--border); padding:8px 12px; text-align:left; vertical-align:middle;}
+thead th{background:var(--head); font-weight:600; color:var(--text); white-space:nowrap;}
+tbody tr:nth-child(even){background:#fcfcfb;}
+tbody tr:hover{background:#fafaf7;}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums; font-feature-settings:"tnum";}
+td.mid{text-align:center;}
+tfoot td{background:var(--head); font-weight:500;}
+
+.up{color:var(--up);} .down{color:var(--down);} .flat{color:var(--text-3);}
+.badge{display:inline-block; padding:1px 9px; border-radius:10px; font-size:12px; font-weight:500; white-space:nowrap; border:1px solid transparent;}
+.badge.h{background:var(--h-bg); color:var(--h-fg); border-color:var(--h-bd);}
+.badge.w{background:var(--w-bg); color:var(--w-fg); border-color:var(--w-bd);}
+.badge.d{background:var(--d-bg); color:var(--d-fg); border-color:var(--d-bd);}
+.na{color:var(--text-3);}
+
+ul,ol{margin:10px 0; padding-left:22px;} li{margin:5px 0;}
+.note{font-size:12px; color:var(--text-3); margin:6px 0 0; line-height:1.6;}
+.warn-box{background:var(--d-bg); border:1px solid var(--d-bd); border-radius:8px; padding:12px 16px; margin:14px 0; font-size:13px; color:var(--d-fg);}
+.warn-box b{font-weight:600;}
+.toc{background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 28px; margin-bottom:20px;}
+.toc ol{margin:6px 0 0; padding-left:20px; columns:2; column-gap:32px;}
+.toc ul{list-style:none; margin:2px 0 8px; padding-left:16px; font-size:12px;}
+.toc ul li{margin:2px 0;}
+.toc ul a{color:var(--text-2);}
+.toc a{color:var(--accent); text-decoration:none;} .toc a:hover{text-decoration:underline;}
+.toc .t{font-size:13px; font-weight:600; color:var(--text-2);}
+footer{text-align:center; font-size:12px; color:var(--text-3); margin-top:28px; line-height:1.8;}
+@media print{body{background:#fff; padding:0;} section,header{break-inside:avoid; border-color:#ccc;} .toc{display:none;}}
+@media (max-width:640px){body{padding:16px 10px 40px;} header,section,.toc{padding:18px 16px;} h1{font-size:20px;} .toc ol{columns:1;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>财报解读：{{公司全称}}（{{代码}}）</h1>
+  <div class="meta">
+    <div><b>数据时点</b>：{{YYYY-MM-DD}}　｜　<b>财报期</b>：{{YYYY}}年第{{n}}季度 / 半年度 / 年报（财年口径：{{如微软 6 月年结，须注明}}）</div>
+    <div><b>数据来源</b>：{{westock-mcp / 公开检索来源}}　｜　<b>币种</b>：{{人民币 / 港币 / 美元}}　｜　<b>季度序列</b>：{{近 8 季 / 实际期数，如不足须注明}}</div>
+    <div><b>方法声明</b>：本解读针对已披露财报数据、行业与公司关键经营指标（KPI）、生意本质与管理层公开指引做结构化分析，不构成投资建议；估值与买卖点请另参考估值类技能。</div>
+  </div>
+  <div class="disclaim">判定原则：水平（当期值 vs 阈值）+ 趋势（季度序列方向）。两者冲突时以趋势为准——当期漂亮但连续 3 季恶化的指标，定「关注」而非「健康」。</div>
+</header>
+
+<nav class="toc">
+  <div class="t">目录</div>
+  <ol>
+    <li><a href="#s1">财务健康度快照</a>
+      <ul>
+        <li><a href="#s1-5">1.5 行业与公司关键经营指标（KPI）</a></li>
+      </ul>
+    </li>
+    <li><a href="#s2">分项诊断</a>
+      <ul>
+        <li><a href="#s2-7">2.7 经营指标诊断（"为什么"）</a></li>
+      </ul>
+    </li>
+    <li><a href="#s3">读生意：生意质量与资本配置</a></li>
+    <li><a href="#s4">业绩指引</a></li>
+    <li><a href="#s5">综合结论</a></li>
+  </ol>
+</nav>
+
+<!-- ======================= 一、财务健康度快照 ======================= -->
+<section id="s1">
+  <h2>一、财务健康度快照</h2>
+
+  <h3>1.1 当期快照（水平判定）</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr>
+      <th>指标</th><th class="num">本期</th><th class="num">同比/环比</th><th class="mid">近4季趋势</th><th>行业参考</th><th class="mid">健康度</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>营收（亿元）</td><td class="num">{{—}}</td><td class="num">YoY <span class="up">{{+—%}}</span></td><td class="mid">{{↑/→/↓}}</td><td>{{—}}</td><td class="mid"><span class="badge h">健康</span></td></tr>
+      <tr><td>归母净利润（亿元）</td><td class="num">{{—}}</td><td class="num">YoY <span class="down">{{−—%}}</span></td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid"><span class="badge w">关注</span></td></tr>
+      <tr><td>毛利率</td><td class="num">{{—%}}</td><td class="num">{{±—pct}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>净利率</td><td class="num">{{—%}}</td><td class="num">{{±—pct}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>ROE（TTM）</td><td class="num">{{—%}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>≥15% 佳</td><td class="mid">{{—}}</td></tr>
+      <tr><td>ROIC</td><td class="num">{{—%}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>&gt;WACC</td><td class="mid">{{—}}</td></tr>
+      <tr><td>收现比</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>≥1 佳</td><td class="mid">{{—}}</td></tr>
+      <tr><td>经营现金流净额（亿元）</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>自由现金流 FCF（亿元）</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>正为佳</td><td class="mid">{{—}}</td></tr>
+      <tr><td>OCF / 净利润</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>≥1 佳</td><td class="mid">{{—}}</td></tr>
+      <tr><td>资产负债率</td><td class="num">{{—%}}</td><td class="num">{{±—pct}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>有息负债率</td><td class="num">{{—%}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">标注「—」表示该项未在本次来源中获取，未臆造。银行/保险/券商不适用收现比、FCF 行，改看不良率/拨备/资本充足率/净息差。ROE / ROIC 跨期比较用 TTM 或年化值，不用累计期值直接比。</p>
+
+  <h3>1.2 季度明细数据（单季口径，近 8 季）</h3>
+  <p class="lead">单季 = 本期累计 − 上期累计（同一财年内）。由 <code>scripts/quarterly_trend.py</code> 生成（<code>--out html</code> 可直接产出下表片段）。金额单位：亿元。</p>
+
+  <h4>单季金额</h4>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>指标</th><th class="num">{{2024Q3}}</th><th class="num">{{2024Q4}}</th><th class="num">{{2025Q1}}</th><th class="num">{{2025Q2}}</th><th class="num">{{2025Q3}}</th><th class="num">{{2025Q4}}</th><th class="num">{{2026Q1}}</th><th class="num">{{2026Q2}}</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>归母净利</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>扣非归母</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>经营现金流</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>单季比率</h4>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>指标</th><th class="num">{{Q1}}</th><th class="num">{{Q2}}</th><th class="num">{{Q3}}</th><th class="num">{{Q4}}</th><th class="num">{{Q5}}</th><th class="num">{{Q6}}</th><th class="num">{{Q7}}</th><th class="num">{{Q8}}</th></tr></thead>
+    <tbody>
+      <tr><td>毛利率</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>净利率</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>扣非/归母</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>收现比</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>TTM（滚动 12 个月）</h4>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>指标</th><th class="num">{{Q1}}</th><th class="num">{{Q2}}</th><th class="num">{{Q3}}</th><th class="num">{{Q4}}</th><th class="num">{{Q5}}</th><th class="num">{{Q6}}</th><th class="num">{{Q7}}</th><th class="num">{{Q8}}</th></tr></thead>
+    <tbody>
+      <tr><td>营收 TTM</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>归母 TTM</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>OCF TTM</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>同比 / 环比</h4>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>指标</th><th class="num">{{Q1}}</th><th class="num">{{Q2}}</th><th class="num">{{Q3}}</th><th class="num">{{Q4}}</th><th class="num">{{Q5}}</th><th class="num">{{Q6}}</th><th class="num">{{Q7}}</th><th class="num">{{Q8}}</th></tr></thead>
+    <tbody>
+      <tr><td>营收 YoY</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>归母 YoY</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>营收 QoQ</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">YoY = 同季对去年同季（天然剔除季节性，趋势判断主口径）；QoQ = 环比，强季节性行业须与去年同期 QoQ 对照后解读。数值着色遵循<b>红涨绿跌</b>（A 股习惯）。</p>
+
+  <h4>时点指标（期末值，不拆单季）</h4>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>指标</th><th class="num">{{Q1}}</th><th class="num">{{Q2}}</th><th class="num">{{Q3}}</th><th class="num">{{Q4}}</th><th class="num">{{Q5}}</th><th class="num">{{Q6}}</th><th class="num">{{Q7}}</th><th class="num">{{Q8}}</th></tr></thead>
+    <tbody>
+      <tr><td>资产负债率</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>存货</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>应收周转率（同比口径）</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">数据缺口须原地标注「未获取」（如港股无扣非、无销售收现）。周转率为累计期口径，只能同比同期比，不可跨季度横比。</p>
+
+  <h3>1.3 趋势诊断（水平 + 趋势双判定）</h3>
+  <h4>趋势特征</h4>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>指标</th><th class="mid">方向<br>（按斜率）</th><th class="mid">最近一步</th><th class="num">近4季斜率<br>（年化）</th><th class="num">连续同向</th><th class="num">变异系数 CV</th><th class="mid">拐点</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="mid">{{↑}}</td><td class="mid">{{↓}}</td><td class="num">{{—}}</td><td class="num">{{— 期}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>归母净利</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>毛利率</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>净利率</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>经营现金流</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>收现比</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>趋势解读与档位修正</h4>
+  <p class="lead">本节须人工撰写，不得只贴表格。每个指标都要回答三件事：<b>趋势起点在哪一季</b>、<b>驱动因素是什么</b>（量/价/成本/结构/一次性）、<b>是一次性还是趋势性</b>。</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>指标</th><th class="mid">水平判定</th><th>趋势判定</th><th class="mid">修正后档位</th><th>依据（含起点与原因）</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="mid">{{达标/未达标}}</td><td>{{改善/平稳/恶化（连续 — 季）}}</td><td class="mid"><span class="badge h">健康</span></td><td>{{—}}</td></tr>
+      <tr><td>毛利率</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td></tr>
+      <tr><td>净利率</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td></tr>
+      <tr><td>现金流真实性</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td></tr>
+      <tr><td>偿债与资产结构</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><b>季节性提示</b>：{{季节性强度 —；若 &gt;0.15 则注明旺季分布（如 Q1+Q4 旺季），并声明 QoQ 不可直接读，以 YoY 为准。}}</p>
+
+  <h3>1.4 异常数据扫描结论（首要关注项）</h3>
+  <p class="lead">来自 Workflow 步骤 2 的四张财务预警卡（应收 / 存货 / 现金流 / 非经常性损益）+ 序列背离卡 + <b>经营指标卡</b>。无异常须明确写「未发现显著异常背离」，有异常须逐条列出并定档。</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>预警卡</th><th>信号</th><th class="mid">判定<br>（一次性跳变 / 趋势性恶化）</th><th class="mid">健康度</th><th>对结论的影响</th></tr></thead>
+    <tbody>
+      <tr><td>应收</td><td>{{—}}</td><td class="mid">{{—}}</td><td class="mid"><span class="badge h">健康</span></td><td>收入质量</td></tr>
+      <tr><td>存货</td><td>{{—}}</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td>跌价/滞销风险</td></tr>
+      <tr><td>现金流</td><td>{{—}}</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td>利润含金量</td></tr>
+      <tr><td>非经常性损益</td><td>{{—}}</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td>主业成色</td></tr>
+      <tr><td>序列背离</td><td>{{—}}</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td>指标间是否分道扬镳</td></tr>
+      <tr><td>经营指标</td><td>{{—}}</td><td class="mid">{{—}}</td><td class="mid">{{—}}</td><td>销量成色 / 单位经济真伪</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="warn-box"><b>口径告警</b>：{{脚本输出的首期不可拆、TTM 校验差异、并表/重述跳变等，须逐条列出；无则删除本块。}}</div>
+
+  <h3 id="s1-5">1.5 行业与公司关键经营指标（KPI）</h3>
+  <p class="lead">财务指标是结果，经营指标是原因。本节回答「<b>为什么会变、下一季盯什么</b>」——没有本节，报告只回答了变好还是变坏。指标清单取自 <code>references/industry_kpi_library.md</code>，序列由 <code>scripts/operating_kpi.py</code> 生成。</p>
+
+  <h4>KPI 当期快照</h4>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr>
+      <th>指标</th><th>口径 / 公式</th><th class="num">本期</th><th class="num">同比</th><th class="mid">近4季趋势</th><th>同业/行业参考</th><th class="mid">健康度</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>{{销量 / 用户数 / 出货量（量）}}</td><td>{{批发 or 终端，含不含 XX}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{↑/→/↓}}</td><td>{{—}}</td><td class="mid"><span class="badge h">健康</span></td></tr>
+      <tr><td>{{ASP / 客单价 / 吨价（价）}}</td><td>{{收入 ÷ 销量，含不含非主业}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>{{高端占比 / 品类结构（结构）}}</td><td>{{品牌口径 / 价格带口径}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>{{市占率（份额）}}</td><td>{{公司 ÷ 行业，来源}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+      <tr><td>{{单位毛利 / 单位净利（单位经济）}}</td><td>{{毛利 或 扣非归母 ÷ 销量}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td><td>{{—}}</td><td class="mid">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4>KPI 季度序列</h4>
+  <p class="lead">由 <code>scripts/operating_kpi.py --out html</code> 产出，整段粘贴到此处：原始经营指标序列 → 派生指标（<b>公式计算，非手填</b>）→ 同比 / 环比 → 趋势特征表。</p>
+
+  <h4>量—价—利三角判定</h4>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>维度</th><th class="mid">方向</th><th class="num">幅度</th><th>判定</th></tr></thead>
+    <tbody>
+      <tr><td>量（{{销量 / 用户数}}）</td><td class="mid">{{↑/→/↓}}</td><td class="num">{{—%}}</td><td>{{—}}</td></tr>
+      <tr><td>价（{{ASP / 客单价}}）</td><td class="mid">{{—}}</td><td class="num">{{—%}}</td><td>{{—}}</td></tr>
+      <tr><td>单位经济（{{单位净利 / 单客价值}}）</td><td class="mid">{{—}}</td><td class="num">{{—%}}</td><td>{{—}}</td></tr>
+      <tr><td><b>合成结论</b></td><td class="mid">{{—}}</td><td class="num">{{—}}</td><td><b>{{健康 / 以价换量 / 价格战失血 / 量价齐升…}}</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note"><b>口径声明必写</b>：ASP 的分子分母来源、销量是批发还是终端、占比是品牌口径还是价格带口径。数据缺口标注「未获取」；研报估算值须标「估算」，不得与实际披露值混用。判定矩阵见 <code>industry_kpi_library.md</code> 第 1.3 节。</p>
+</section>
+
+<!-- ======================= 二、分项诊断 ======================= -->
+<section id="s2">
+  <h2>二、分项诊断</h2>
+  <p class="lead">每节都要<b>先说趋势（近 8 季序列怎么走、拐点在哪一季），再说当期</b>；只用当期数字做解释的分析视为未完成。</p>
+
+  <h3>2.1 增长</h3>
+  <p>{{营收/利润增速的季度序列走势：单季 YoY 连续几季为正/负、拐点在哪季；是否含一次性因素（并表/处置）；累计 vs 单季口径是否一致；趋势判断：单季 vs 累计、YoY vs QoQ}}</p>
+
+  <h3>2.2 盈利能力（毛利 / 净利）</h3>
+  <p>{{毛利率、净利率的逐季轨迹与变动原因：价格、成本、费用结构、产品结构；非经常性损益对净利的扭曲程度，扣非 vs 归母的逐季缺口}}</p>
+
+  <h3>2.3 现金流真实性</h3>
+  <p>{{收现比、净现比 OCF/净利、自由现金流 FCF 的逐季序列；是否出现"净利序列向上、现金序列向下"的背离；FCF 是否为正、是否被战略 Capex 吞噬}}</p>
+
+  <h3>2.4 偿债与资产结构</h3>
+  <p>{{负债率、有息负债、货币资金覆盖、有息负债/EBITDA 的时点序列变化；是否存在治理红旗：存贷双高/高质押/大额商誉}}</p>
+
+  <h3>2.5 会计质量红旗</h3>
+  <p>{{非经常性损益占比、折旧/研发资本化政策、商誉减值风险、关联交易、收入确认激进度}}</p>
+
+  <h3>2.6 营运资本与周转</h3>
+  <p>{{应收/存货/应付周转的同比同期变化——⚠️ 累计期口径不可跨季度横比；现金循环周期 CCC；应收或存货增速是否连续多季远超营收——压货/滞销信号}}</p>
+
+  <h3 id="s2-7">2.7 经营指标诊断（解释 2.1~2.6 的"为什么"）</h3>
+  <div class="disclaim">本节是全篇的<b>因果链</b>，须人工撰写，不得只贴表格。财务数字说「毛利率降了 2pct」，本节要回答「因为 ASP 降了 5% 而单位成本只降了 2%」。</div>
+  <p><b>（1）量价拆分</b>：{{本期营收变化 = 量贡献 × 价贡献，二者各贡献多少 pct}}</p>
+  <p><b>（2）结构变化</b>：{{高端/新品/高毛利品类占比是升还是降；结构升级是否伴随单位经济改善——若高端占比↑但单位净利↓，判「关注」，升级是降价冲出来的}}</p>
+  <p><b>（3）单位经济轨迹</b>：{{单位毛利、单位净利的逐季序列；规模效应（单位成本↓）与降价（ASP↓）谁跑得快——剪刀差方向就是未来毛利率的方向}}</p>
+  <p><b>（4）份额与竞争格局</b>：{{公司增速 − 行业增速 = 增速差；与主要对手的经营指标方向差}}</p>
+  <p><b>（5）背离检查</b>：{{逐条核对七条背离形态（量↑+单位净利↓ / 量↑+营收↓ / 量↑+存货↑ / 量↑+OCF↓ / 结构升级+毛利率↓ / 份额↑+单位净利↓ / 成本↓慢于单价↓），逐条给命中 or 未命中}}</p>
+  <p><b>（6）先行指标判断</b>：{{基于经营指标判断下一季度财务指标大概率往哪走，并给出验证口径，如「若下季单车净利继续 &lt;8000 元且销量增速 &lt;5%，则确认以价换量失效」}}</p>
+</section>
+
+<!-- ======================= 三、读生意 ======================= -->
+<section id="s3">
+  <h2>三、读生意：生意质量与资本配置</h2>
+
+  <h3>3.1 回报率 ROE / ROIC（长期视角）</h3>
+  <p>{{连续 3~5 年水平与稳定性；拆解 ROE 来源：高净利率 / 高周转 / 高杠杆；结合季度序列趋势复核含金量——ROE 连续下滑 3 季，即便仍在 15% 以上也要点名}}</p>
+
+  <h3>3.2 护城河与竞争地位</h3>
+  <p>{{壁垒类型：网络效应 / 转换成本 / 规模经济 / 品牌 / 牌照；市场份额与定价权；与同业的相对位置}}</p>
+
+  <h3>3.3 分部业务结构（增长引擎 / 利润池）</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>业务分部</th><th class="num">营收</th><th class="num">同比</th><th class="num">利润率</th><th class="mid">角色定位</th></tr></thead>
+    <tbody>
+      <tr><td>{{分部 A}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{利润池 / 增长引擎 / 减速}}</td></tr>
+      <tr><td>{{分部 B}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="mid">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>{{谁是利润池、谁在减速、谁在接力；内部抵消是否掩盖问题。每个分部都要做量价拆分：量贡献多少、价贡献多少，避免只报分部营收}}</p>
+
+  <h3>3.4 资本配置与股东回报</h3>
+  <p>{{分红率/股息率；回购是否发生在低估时；并购记录与回报；Capex 用 ROI 视角——是否产生增量回报，而非只看投入额度。用经营指标检验 Capex 效率：单车 Capex / 单位产能投资 / 单店回收期}}</p>
+
+  <h3>3.5 同业对比（相对位置）</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>公司</th><th class="num">营收增速</th><th class="num">毛利率</th><th class="num">净利率</th><th class="num">ROE</th><th class="num">Capex/营收</th></tr></thead>
+    <tbody>
+      <tr><td><b>{{本公司}}</b></td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>{{对手 1}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+      <tr><td>{{对手 2}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td><td class="num">{{—}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>{{与主要对手在增速、利润率、Capex、估值位置上的对照；相对位置比绝对值更能读出竞争态势。优先比经营指标的方向差——对手 ASP↑ 我↓ 说明定价权在流失；绝对值差受产品结构影响太大}}</p>
+</section>
+
+<!-- ======================= 四、业绩指引 ======================= -->
+<section id="s4">
+  <h2>四、业绩指引（来自财报发布会 / 业绩说明会 / 电话会议）</h2>
+  <p class="lead">每条指引须注明「管理层原话 / 纪要转述 / 分析师解读」及出处（如 IR 官网、雪球纪要、财联社报道）。</p>
+
+  <h3>4.1 增长战略</h3>
+  <p>{{管理层对整体增长的定调、目标、路径}}</p>
+
+  <h3>4.2 产业发展</h3>
+  <p>{{行业景气判断、政策/技术趋势、竞争格局展望}}</p>
+
+  <h3>4.3 资本开支</h3>
+  <p>{{Capex 计划、产能扩张、研发投入、并购意向；补充 ROI/回报视角}}</p>
+
+  <h3>4.4 关键业务模块发言</h3>
+  <p>{{分业务板块的经营数据与展望，如分产品/地区/客户；管理层重点强调的方向}}</p>
+
+  <h3>4.5 指引兑现率对照</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>上期指引</th><th class="mid">兑现情况</th><th>季度序列验证</th></tr></thead>
+    <tbody>
+      <tr><td>{{如：全年营收增长 15%}}</td><td class="mid">{{已兑现 / 部分兑现 / 未兑现}}</td><td>{{后续各季实际轨迹}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ======================= 五、综合结论 ======================= -->
+<section id="s5">
+  <h2>五、综合结论</h2>
+  <div class="tbl-scroll">
+  <table>
+    <tbody>
+      <tr><th style="width:150px;">财务健康度总评</th><td><span class="badge h">{{健康}}</span> {{一句话 + 主要依据}}</td></tr>
+      <tr><th>经营指标（KPI）总评</th><td>{{量 / 价 / 结构 / 份额 / 单位经济 各给方向，合成一句「单位经济在改善还是在恶化」——这是财务结论的先行判断。KPI 与财务结论冲突时，以 KPI 为准并解释差异}}</td></tr>
+      <tr><th>趋势总判</th><td><b>{{在变好 / 走平 / 在变坏}}</b>　{{须点名哪几个指标、从哪一季开始转向；经营指标与财务指标各点名至少一个}}</td></tr>
+      <tr><th>生意质量总评</th><td>{{好生意？真钱？护城河？资本配置？一句话定性}}</td></tr>
+      <tr><th>业绩指引要点</th><td>{{管理层下一步重心是什么，与当期财务、季度趋势及经营指标轨迹是否自洽（如喊高端化 → 高端占比有没有逐季提升）}}</td></tr>
+      <tr><th>主要风险与待跟踪项</th><td>每条风险须落到<b>下一季可观测的具体经营指标 + 观测口径 + 触发阈值</b>，禁止「关注行业需求变化」这类无法验证的表述。
+        <ul>
+          <li>{{如：价格战侵蚀单车盈利 → 跟踪「单车净利 = 扣非归母 ÷ 总销量」，下季 &lt;8000 元且销量增速 &lt;5% 则确认失血}}</li>
+          <li>{{如：高端化不及预期 → 跟踪「高端车销量占比」，连续 2 季不升则判定战略未兑现}}</li>
+          <li>{{如：渠道压库 → 跟踪「批发销量 − 上险量缺口」与「渠道库存深度（月）」，&gt;1.5 个月警戒}}</li>
+        </ul></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><b>一句话结论</b>：{{用一句口语化、信息密度高的话概括公司当前状态、趋势方向、生意本质与管理层意图}}</p>
+</section>
+
+<footer>
+  本解读基于公开披露与网络检索，存在时效与口径偏差可能；仅为分析框架演示，非投资建议。<br>
+  买卖决策需独立判断，风险自负。
+</footer>
+
+</div>
+</body>
+</html>

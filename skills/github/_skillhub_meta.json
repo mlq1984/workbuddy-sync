@@ -1,0 +1,14 @@
+{
+  "name": "github",
+  "installedAt": 1774696411668,
+  "source": "marketplace",
+  "iconSource": "https://openplatform-cdn.codebuddy.cn/public/skills/icons/github.svg",
+  "version": "1.0.0",
+  "skillId": "skill_2053082027691548672",
+  "skillName": "github",
+  "description_zh": "管理 GitHub Issues、PR 和 CI",
+  "description_en": "Manage GitHub issues, PRs, and CI runs",
+  "iconLocalPath": "C:\\Users\\king\\.workbuddy\\skills\\github\\_icon.svg",
+  "iconDownloadedFrom": "https://openplatform-cdn.codebuddy.cn/public/skills/icons/github.svg",
+  "installedContentHash": "sha256:eed2435a4bc1a79dcdabc1e09893371fc567e7e8c669cc2a0c02cefc7942ede7"
+}

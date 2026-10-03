@@ -1,0 +1,10 @@
+{
+  "name": "天气查询",
+  "installedAt": 1774753641908,
+  "source": "marketplace",
+  "iconSource": "weather",
+  "version": "1.0.0",
+  "skillId": "skill_2060644081526755328",
+  "skillName": "weather-open-meteo",
+  "installedContentHash": "sha256:ae765d27fc7a85621b2b2b8e82e6433421e1ae4fe487ad111df13fb90e13b0bf"
+}
