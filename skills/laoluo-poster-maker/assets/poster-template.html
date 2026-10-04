@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorkBuddy 企业版 · 销售海报</title>
+<style>
+  :root{
+    --tc:#0052D9;
+    --tc-l:#2B6FF2;
+    --tc-d:#03183F;
+    --ink:#0B1F3A;
+    --soft:#5A6B85;
+    --glass:rgba(255,255,255,0.66);
+    --glass-b:rgba(255,255,255,0.65);
+    --shadow:0 18px 50px rgba(3,24,63,0.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:#c9d6ee;
+    font-family:"PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{width:1080px;margin:0 auto;background:#fff;overflow:hidden;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 80px 88px;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(43,111,242,.55), transparent 60%),
+      radial-gradient(900px 600px at 10% 20%, rgba(0,82,217,.45), transparent 55%),
+      linear-gradient(165deg,#04163C 0%,#062a6e 45%,#0052D9 100%);
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.5), transparent),
+               radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.35), transparent),
+               radial-gradient(1.5px 1.5px at 45% 80%, rgba(255,255,255,.4), transparent);
+    opacity:.6;
+  }
+  .brand{
+    display:inline-flex;align-items:center;gap:14px;
+    font-size:24px;font-weight:600;letter-spacing:1px;
+    padding:10px 20px;border:1px solid rgba(255,255,255,.25);
+    border-radius:999px;background:rgba(255,255,255,.08);
+    backdrop-filter:blur(8px);position:relative;z-index:2;
+  }
+  .brand .dot{width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#7db0ff,#0052D9);}
+  h1{font-size:84px;font-weight:800;line-height:1.05;margin-top:54px;letter-spacing:1px;position:relative;z-index:2;}
+  h1 .em{background:linear-gradient(90deg,#9ec5ff,#cfe0ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  h2{font-size:50px;font-weight:700;margin-top:18px;letter-spacing:2px;position:relative;z-index:2;}
+  .hero-sub{font-size:32px;margin-top:30px;opacity:.92;font-weight:400;position:relative;z-index:2;}
+
+  /* 3D 工作台示意 */
+  .stage{position:relative;z-index:2;height:430px;margin-top:60px;perspective:1400px;}
+  .win{
+    position:absolute;left:50%;top:30px;width:640px;transform:translateX(-50%) rotateX(14deg) rotateY(-12deg);
+    background:linear-gradient(160deg,rgba(255,255,255,.95),rgba(235,243,255,.85));
+    border:1px solid rgba(255,255,255,.9);border-radius:26px;padding:26px 28px;
+    box-shadow:0 40px 90px rgba(0,0,0,.45);backdrop-filter:blur(14px);
+    animation:float 6s ease-in-out infinite;
+  }
+  .win .bar{display:flex;gap:10px;margin-bottom:20px;}
+  .win .bar i{width:14px;height:14px;border-radius:50%;background:#cdd9ee;}
+  .win .bar i:nth-child(1){background:#ff6b6b;}
+  .win .bar i:nth-child(2){background:#ffd166;}
+  .win .bar i:nth-child(3){background:#51d88a;}
+  .row{display:flex;align-items:center;gap:16px;margin:16px 0;}
+  .row .ic{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--tc-l),var(--tc));display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;flex:0 0 auto;}
+  .row .lines{flex:1;}
+  .row .lines b{display:block;height:12px;border-radius:6px;background:#cfdcf3;margin:7px 0;}
+  .row .lines b.s{width:62%;}
+  .orb{
+    position:absolute;right:-26px;top:-34px;width:96px;height:96px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#bfe0ff,#0052D9 70%);
+    box-shadow:0 18px 40px rgba(0,82,217,.6);display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:40px;animation:float 5s ease-in-out infinite reverse;
+  }
+  @keyframes float{0%,100%{transform:translateX(-50%) rotateX(14deg) rotateY(-12deg) translateY(0);}50%{transform:translateX(-50%) rotateX(14deg) rotateY(-12deg) translateY(-18px);}}
+
+  /* ---------- 通用 section ---------- */
+  .sec{padding:96px 80px;}
+  .sec-title{font-size:52px;font-weight:800;text-align:center;color:var(--ink);}
+  .sec-title span{color:var(--tc);}
+  .sec-desc{text-align:center;color:var(--soft);font-size:26px;margin-top:14px;}
+
+  /* 六大能力 */
+  .caps{background:linear-gradient(180deg,#f3f7ff 0%,#ffffff 100%);}
+  .grid6{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:56px;}
+  .cap{
+    background:var(--glass);border:1px solid var(--glass-b);border-radius:24px;
+    padding:34px 32px;box-shadow:var(--shadow);backdrop-filter:blur(14px);
+    transition:transform .25s;
+  }
+  .cap:hover{transform:translateY(-4px);}
+  .cap .ic{
+    width:84px;height:84px;border-radius:22px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#eaf1ff,#d6e4ff);margin-bottom:20px;
+  }
+  .cap .ic svg{width:46px;height:46px;stroke:var(--tc);}
+  .cap h3{font-size:34px;font-weight:700;margin-bottom:10px;}
+  .cap p{font-size:25px;color:var(--soft);line-height:1.5;}
+
+  /* 为什么企业版 */
+  .why{background:#fff;}
+  .compare{display:flex;gap:28px;margin-top:54px;}
+  .col{flex:1;border-radius:24px;padding:40px 34px;box-shadow:var(--shadow);}
+  .col.bad{background:#f4f6fa;border:1px solid #e7ebf2;}
+  .col.good{background:linear-gradient(165deg,#062a6e,#0052D9);color:#fff;}
+  .col .ct{font-size:34px;font-weight:800;margin-bottom:26px;display:flex;align-items:center;gap:14px;}
+  .col .ct .tag{font-size:22px;font-weight:600;padding:5px 14px;border-radius:999px;}
+  .col.bad .ct .tag{background:#e3e8f1;color:#7a8aa5;}
+  .col.good .ct .tag{background:rgba(255,255,255,.18);}
+  .item{display:flex;align-items:flex-start;gap:14px;font-size:26px;line-height:1.5;margin:18px 0;}
+  .item .mk{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;margin-top:2px;}
+  .col.bad .item .mk{background:#ffd9d9;color:#d83a3a;}
+  .col.good .item .mk{background:rgba(255,255,255,.2);color:#fff;}
+
+  /* 价值 */
+  .value{background:linear-gradient(180deg,#ffffff 0%,#eef3ff 100%);}
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:54px;}
+  .vcard{
+    background:var(--glass);border:1px solid var(--glass-b);border-radius:24px;
+    padding:42px 34px;box-shadow:var(--shadow);text-align:center;backdrop-filter:blur(14px);
+  }
+  .vcard .vic{width:84px;height:84px;margin:0 auto 20px;border-radius:50%;
+    background:linear-gradient(135deg,#eaf1ff,#d6e4ff);display:flex;align-items:center;justify-content:center;}
+  .vcard .vic svg{width:44px;height:44px;stroke:var(--tc);}
+  .vcard h3{font-size:32px;font-weight:700;margin-bottom:8px;}
+  .vcard p{font-size:23px;color:var(--soft);}
+
+  /* CTA */
+  .cta{
+    position:relative;text-align:center;color:#fff;padding:90px 80px 100px;
+    background:radial-gradient(900px 500px at 50% 0%, rgba(43,111,242,.5), transparent 60%),
+               linear-gradient(165deg,#0052D9 0%,#062a6e 100%);
+  }
+  .logo-ph{
+    display:inline-flex;align-items:center;gap:12px;padding:12px 24px;border-radius:14px;
+    border:1px dashed rgba(255,255,255,.5);font-size:24px;font-weight:600;letter-spacing:1px;
+    margin-bottom:34px;opacity:.95;
+  }
+  .cta-title{font-size:50px;font-weight:800;line-height:1.25;margin-bottom:38px;}
+  .cta-title .hl{color:#9ec5ff;}
+  .qr{
+    width:260px;height:260px;margin:0 auto 26px;border-radius:20px;background:#fff;padding:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+  }
+  .qr svg{width:100%;height:100%;}
+  .scan-tip{font-size:26px;opacity:.92;margin-bottom:30px;}
+  .services{font-size:23px;opacity:.82;letter-spacing:.5px;}
+  .foot{margin-top:40px;font-size:20px;opacity:.7;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="brand"><span class="dot"></span>品牌名 · 副标题</div>
+    <h1>腾讯 <span class="em">WorkBuddy</span> 企业版</h1>
+    <h2>企业 AI 工作台</h2>
+    <p class="hero-sub">让 AI 从个人工具，升级为企业数字生产力</p>
+    <div class="stage">
+      <div class="win">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="orb">AI</div>
+        <div class="row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 12 10 16 18 8"/></svg></div>
+          <div class="lines"><b></b><b class="s"></b></div>
+        </div>
+        <div class="row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 12 10 16 18 8"/></svg></div>
+          <div class="lines"><b></b><b class="s"></b></div>
+        </div>
+        <div class="row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 12 10 16 18 8"/></svg></div>
+          <div class="lines"><b></b><b class="s"></b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六大能力 -->
+  <section class="sec caps">
+    <div class="sec-title">六大核心<span>能力</span></div>
+    <div class="sec-desc">一套工作台，把团队经验沉淀成可复用的 AI 资产</div>
+    <div class="grid6">
+      <div class="cap">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v14H6a2 2 0 0 1-2-2z"/><path d="M15 3a2 2 0 0 1 2 2v14h-2"/><path d="M8 7h6M8 11h6"/></svg></div>
+        <h3>企业知识库</h3>
+        <p>沉淀组织知识与经验，老员工离职方法论留下。</p>
+      </div>
+      <div class="cap">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4v4h4v4h-4v4h-4v-4H6V7h4z"/><path d="M3 10h3M3 14h3M18 10h3M18 14h3M10 18v3M14 18v3"/></svg></div>
+        <h3>Skills 技能中心</h3>
+        <p>沉淀 Prompt 与工作流，一键调用 7 万+ 技能。</p>
+      </div>
+      <div class="cap">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/><path d="M12 12v3M9.5 14.5h5"/></svg></div>
+        <h3>AI 专家</h3>
+        <p>打造销售、HR、运营、客服等专属领域专家。</p>
+      </div>
+      <div class="cap">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V5M9 3h6"/><circle cx="9" cy="13" r="1.4"/><circle cx="15" cy="13" r="1.4"/><path d="M9 16h6"/></svg></div>
+        <h3>数字员工</h3>
+        <p>7×24 小时自动办公，关机也能接着干。</p>
+      </div>
+      <div class="cap">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a3 3 0 0 1 0-4.2M15 12a3 3 0 0 0 0-4.2"/><path d="M7 9H4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h3M17 9h3a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-3"/></svg></div>
+        <h3>企业连接器</h3>
+        <p>企业微信、腾讯文档、CRM 等系统互联。</p>
+      </div>
+      <div class="cap">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a4 4 0 0 0-4 4 3.5 3.5 0 0 0-1 6.8A4 4 0 0 0 12 20a4 4 0 0 0 5-5.2A3.5 3.5 0 0 0 16 8a4 4 0 0 0-4-4z"/><path d="M12 8v8M9 11h6"/></svg></div>
+        <h3>多模型能力</h3>
+        <p>统一调用腾讯混元、DeepSeek 等主流模型。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 为什么企业版 -->
+  <section class="sec why">
+    <div class="sec-title">为什么选<span>企业版</span></div>
+    <div class="compare">
+      <div class="col bad">
+        <div class="ct">个人 AI <span class="tag">单人</span></div>
+        <div class="item"><span class="mk">✕</span><span>数据分散在个人电脑，难以沉淀</span></div>
+        <div class="item"><span class="mk">✕</span><span>优质 Prompt 随手丢，反复造轮子</span></div>
+        <div class="item"><span class="mk">✕</span><span>员工离职，能力随之流失</span></div>
+      </div>
+      <div class="col good">
+        <div class="ct">WorkBuddy 企业版 <span class="tag">组织</span></div>
+        <div class="item"><span class="mk">✓</span><span>企业知识沉淀，组织记忆可继承</span></div>
+        <div class="item"><span class="mk">✓</span><span>AI 能力共享，团队即取即用</span></div>
+        <div class="item"><span class="mk">✓</span><span>数字员工持续成长，越用越聪明</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 价值 -->
+  <section class="sec value">
+    <div class="sec-title">企业级<span>价值</span></div>
+    <div class="grid4">
+      <div class="vcard">
+        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div>
+        <h3>企业知识资产</h3><p>经验不再随人走</p>
+      </div>
+      <div class="vcard">
+        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V5M9 3h6"/><circle cx="9" cy="13" r="1.4"/><circle cx="15" cy="13" r="1.4"/></svg></div>
+        <h3>AI 数字员工</h3><p>7×24 在岗不疲倦</p>
+      </div>
+      <div class="vcard">
+        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+        <h3>自动办公</h3><p>重复活交给 AI</p>
+      </div>
+      <div class="vcard">
+        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></div>
+        <h3>全员效率提升</h3><p>人均产能再放大</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="logo-ph">⚡ LOGO 占位</div>
+    <div class="cta-title">免费领取 <span class="hl">WorkBuddy 企业版</span><br>试用资格</div>
+    <div class="qr">
+      <svg viewBox="0 0 100 100" fill="#03183F">
+        <rect x="6" y="6" width="22" height="22" rx="3" fill="none" stroke="#03183F" stroke-width="5"/>
+        <rect x="12" y="12" width="10" height="10" rx="1"/>
+        <rect x="72" y="6" width="22" height="22" rx="3" fill="none" stroke="#03183F" stroke-width="5"/>
+        <rect x="78" y="12" width="10" height="10" rx="1"/>
+        <rect x="6" y="72" width="22" height="22" rx="3" fill="none" stroke="#03183F" stroke-width="5"/>
+        <rect x="12" y="78" width="10" height="10" rx="1"/>
+        <rect x="36" y="10" width="6" height="6"/><rect x="48" y="10" width="6" height="6"/><rect x="60" y="16" width="6" height="6"/>
+        <rect x="36" y="24" width="6" height="6"/><rect x="54" y="28" width="6" height="6"/><rect x="66" y="34" width="6" height="6"/>
+        <rect x="10" y="36" width="6" height="6"/><rect x="22" y="42" width="6" height="6"/><rect x="34" y="40" width="6" height="6"/>
+        <rect x="46" y="46" width="6" height="6"/><rect x="58" y="50" width="6" height="6"/><rect x="70" y="44" width="6" height="6"/>
+        <rect x="82" y="40" width="6" height="6"/><rect x="88" y="52" width="6" height="6"/><rect x="36" y="58" width="6" height="6"/>
+        <rect x="48" y="62" width="6" height="6"/><rect x="60" y="66" width="6" height="6"/><rect x="72" y="60" width="6" height="6"/>
+        <rect x="84" y="66" width="6" height="6"/><rect x="40" y="74" width="6" height="6"/><rect x="52" y="80" width="6" height="6"/>
+        <rect x="64" y="84" width="6" height="6"/><rect x="76" y="78" width="6" height="6"/><rect x="88" y="84" width="6" height="6"/>
+        <rect x="36" y="88" width="6" height="6"/><rect x="60" y="90" width="6" height="6"/>
+      </svg>
+    </div>
+    <div class="scan-tip">微信扫码 · 即刻开通</div>
+    <div class="services">企业部署 ｜ 知识库搭建 ｜ Skills 配置 ｜ 数字员工落地 ｜ 培训辅导</div>
+    <div class="foot">品牌名 · 一句话副标题</div>
+  </section>
+
+</div>
+</body>
+</html>

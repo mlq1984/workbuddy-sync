@@ -26,10 +26,15 @@ ICONS_DIR = SKILL_DIR / "assets" / "icons"
 WECHAT_SPLIT_DEFAULT_ICON = "/Users/aatrox/.openclaw/agents/zoe/workspace/skills/z-card-image/assets/icons/zzclub-logo-black.jpg"
 
 CHROME_PATHS = [
+    r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+    r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+    r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+    r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     "/Applications/Chromium.app/Contents/MacOS/Chromium",
     "google-chrome",
     "chromium",
+    "msedge",
 ]
 
 WECHAT_SPLIT_WINDOW_EXTRA_HEIGHT = 87

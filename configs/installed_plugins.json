@@ -7,7 +7,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\find-skills\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:15.321Z",
-        "lastUpdated": "2026-09-27T02:47:58.616Z"
+        "lastUpdated": "2026-10-03T16:09:01.046Z"
       }
     ],
     "playwright-cli@codebuddy-plugins-official": [
@@ -16,7 +16,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\playwright-cli\\0.1.0",
         "version": "0.1.0",
         "installedAt": "2026-08-10T08:09:15.738Z",
-        "lastUpdated": "2026-09-27T02:47:58.556Z"
+        "lastUpdated": "2026-10-03T16:09:00.987Z"
       }
     ],
     "agent-browser@codebuddy-plugins-official": [
@@ -25,7 +25,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\agent-browser\\1.3.0",
         "version": "1.3.0",
         "installedAt": "2026-08-10T08:09:16.358Z",
-        "lastUpdated": "2026-09-27T02:47:58.482Z"
+        "lastUpdated": "2026-10-03T16:09:00.888Z"
       }
     ],
     "pdf@codebuddy-plugins-official": [
@@ -34,7 +34,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\pdf\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:17.129Z",
-        "lastUpdated": "2026-09-27T02:47:58.741Z"
+        "lastUpdated": "2026-10-03T16:09:01.172Z"
       }
     ],
     "pptx@codebuddy-plugins-official": [
@@ -43,7 +43,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\pptx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:17.804Z",
-        "lastUpdated": "2026-10-03T05:20:19.106Z"
+        "lastUpdated": "2026-10-03T16:09:01.114Z"
       }
     ],
     "docx@codebuddy-plugins-official": [
@@ -52,7 +52,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\docx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:19.089Z",
-        "lastUpdated": "2026-10-03T05:20:21.898Z"
+        "lastUpdated": "2026-10-03T16:09:01.234Z"
       }
     ],
     "xlsx@codebuddy-plugins-official": [
@@ -61,7 +61,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\xlsx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:19.176Z",
-        "lastUpdated": "2026-10-03T05:20:24.582Z"
+        "lastUpdated": "2026-10-03T16:09:01.297Z"
       }
     ],
     "document-skills@cb_teams_marketplace": [
@@ -70,7 +70,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\cb_teams_marketplace\\document-skills\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:20.174Z",
-        "lastUpdated": "2026-09-27T02:47:58.460Z"
+        "lastUpdated": "2026-10-03T16:09:00.861Z"
       }
     ],
     "welcomemode-code@workbuddy-builtin": [
@@ -325,7 +325,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\weixinpay\\1.6.110",
         "version": "1.6.110",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-09-27T02:47:58.634Z"
+        "lastUpdated": "2026-10-03T16:09:01.065Z"
       }
     ],
     "tencent-docs-plugin@workbuddy-builtin": [
@@ -334,7 +334,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docs-plugin\\5.6.2-wb.39298511.g37a65c0b.he233403f909a",
         "version": "5.6.2-wb.39298511.g37a65c0b.he233403f909a",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-09-27T02:47:58.890Z"
+        "lastUpdated": "2026-10-03T16:09:01.314Z"
       }
     ],
     "sheetagent@workbuddy-builtin": [
@@ -343,7 +343,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\sheetagent\\5.6.2-wb.39298511.g37a65c0b.he233403f909a",
         "version": "5.6.2-wb.39298511.g37a65c0b.he233403f909a",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-09-27T02:47:58.902Z"
+        "lastUpdated": "2026-10-03T16:09:01.342Z"
       }
     ],
     "tencent-pptx@workbuddy-builtin": [
@@ -352,7 +352,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-pptx\\5.6.2-wb.39298511.g37a65c0b.he233403f909a",
         "version": "5.6.2-wb.39298511.g37a65c0b.he233403f909a",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-09-27T02:47:58.916Z"
+        "lastUpdated": "2026-10-03T16:09:01.329Z"
       }
     ],
     "tencent-docx@workbuddy-builtin": [
@@ -361,7 +361,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docx\\5.6.2-wb.39298511.g37a65c0b.he233403f909a",
         "version": "5.6.2-wb.39298511.g37a65c0b.he233403f909a",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-09-27T02:47:58.929Z"
+        "lastUpdated": "2026-10-03T16:09:01.356Z"
       }
     ],
     "data@cb_teams_marketplace": [
@@ -487,7 +487,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\cb_teams_marketplace\\finance-data\\1.6.0",
         "version": "1.6.0",
         "installedAt": "2026-09-09T03:13:32.679Z",
-        "lastUpdated": "2026-09-27T02:47:58.511Z"
+        "lastUpdated": "2026-10-03T16:09:00.915Z"
       }
     ],
     "skill-buddy-image-processing@workbuddy-builtin": [
@@ -596,6 +596,15 @@
         "version": "0.0.0+wb.1d9c4e9c0e41f535",
         "installedAt": "2026-10-03T01:21:30.961Z",
         "lastUpdated": "2026-10-03T01:21:30.961Z"
+      }
+    ],
+    "wecom@workbuddy-connector-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\0.0.0-wb.8bc9c0561ce41ab3",
+        "version": "0.0.0+wb.8bc9c0561ce41ab3",
+        "installedAt": "2026-10-03T07:20:44.921Z",
+        "lastUpdated": "2026-10-03T07:20:44.921Z"
       }
     ]
   }
