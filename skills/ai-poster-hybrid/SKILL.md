@@ -37,7 +37,12 @@ agent_created: true
 - `<img class="bg" src="__BG_IMAGE__">` 引用底图（compose 脚本会自动转 base64 内联），`object-fit:cover`
 - **顶/底渐变遮罩**（`.shade`）保证文字压在任何画面上都可读——深色底图用深红/深黑半透明渐变
 - 中文字体：`"Microsoft YaHei"`（Windows）；标题 `font-weight:900` + `letter-spacing` + `text-shadow` 深红投影
-- **艺术字体（书法/楷/行书）走 Pillow 透明 PNG 方案**：渲染器 (takumi) 同样不支持 `@font-face file:///` 字体（和底图同一个坑），需要艺术字时用 Pillow `ImageFont.truetype` 把文字画成 RGBA 透明 PNG（多层偏移描边做描金/阴影效果），再作为 `<img>` 内联进 HTML。本地可用艺术字体：`C:/Windows/Fonts/kaiu.ttf`（楷体）、`Dengl/Dengb.ttf`（等线艺术体）
+- **标题首选方案：AI 烫金毛笔书法字（用户确认偏好，已存库）**：
+  1. ImageGen 生成烫金字（prompt 模板见 `scripts/extract_gold_title.py` 文档头；关键：纯色深红底 #8B0D0D + molten gold metallic brush calligraphy，才能色键抠图）
+  2. `python scripts/extract_gold_title.py 原图.png 透明.png` 抠出透明素材
+  3. **人工验字**（AI 中文字形可能错）后作为 `<img class="title-img">` 内联
+  - 已验证存库素材：`assets/titles/title_庆祝国庆_烫金毛笔.png`（1024×735 透明底，国庆主题可直接复用）
+- **艺术字体备选（Pillow 方案）**：渲染器不支持 `@font-face file:///` 字体（和底图同一个坑），用 Pillow `ImageFont.truetype` 画文字 → L mask → 逐行金属金渐变（浅金→白金高光带→深金铜）→ `img.paste(grad, mask)` + MaxFilter 铜色描边。技能字体库 `assets/fonts/`：马善政楷书（毛笔楷）、LongCang 龙藏体（行楷）、LiuJianMaoCao 柳建毛草（狂草）、ZhiMangXing 智猛行书（行草），全部免费商用 OFL；`assets/fonts/candidates/` 另有站酷黄油体/小薇/快乐等。金属渐变正确做法是 mask+paste，逐行 d.text 会被覆盖成单色（错误做法）
 - 元素结构：`.title`（主标）/ `.sub`（副标）/ `.rule`（金线装饰）/ `.stamp`（角标印章）/ `.year`（底部落款）
 - 文字颜色规则：红金喜庆用 `#ffe9a8`/`#ffd76e`；深色科技风用白色+品牌色描边
 
