@@ -43,7 +43,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\pptx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:17.804Z",
-        "lastUpdated": "2026-10-05T10:48:49.224Z"
+        "lastUpdated": "2026-10-07T01:05:00.692Z"
       }
     ],
     "docx@codebuddy-plugins-official": [
@@ -52,7 +52,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\docx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:19.089Z",
-        "lastUpdated": "2026-10-05T10:48:53.416Z"
+        "lastUpdated": "2026-10-07T01:05:03.142Z"
       }
     ],
     "xlsx@codebuddy-plugins-official": [
@@ -61,7 +61,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\xlsx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:19.176Z",
-        "lastUpdated": "2026-10-05T10:48:57.400Z"
+        "lastUpdated": "2026-10-07T01:05:05.545Z"
       }
     ],
     "document-skills@cb_teams_marketplace": [
@@ -484,10 +484,10 @@
     "finance-data@cb_teams_marketplace": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\cb_teams_marketplace\\finance-data\\1.6.0",
-        "version": "1.6.0",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\cb_teams_marketplace\\finance-data\\1.5.0",
+        "version": "1.5.0",
         "installedAt": "2026-09-09T03:13:32.679Z",
-        "lastUpdated": "2026-10-03T16:09:00.915Z"
+        "lastUpdated": "2026-10-06T07:30:52.323Z"
       }
     ],
     "skill-buddy-image-processing@workbuddy-builtin": [

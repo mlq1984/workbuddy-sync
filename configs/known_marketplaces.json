@@ -4,12 +4,12 @@
     "type": "zip",
     "source": {
       "source": "zip",
-      "path": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace.zip",
-      "url": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace.zip"
+      "path": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip",
+      "url": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip"
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\cb_teams_marketplace",
-    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace.zip",
-    "lastUpdated": "2026-10-06T01:02:57.338Z",
+    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip",
+    "lastUpdated": "2026-10-07T01:06:50.931Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -23,7 +23,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\codebuddy-plugins-official",
     "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official.zip",
-    "lastUpdated": "2026-10-06T01:03:11.049Z",
+    "lastUpdated": "2026-10-07T01:06:42.623Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -37,7 +37,7 @@
     "isBuiltIn": false,
     "autoUpdate": true,
     "description": "experts marketplace (auto-generated)",
-    "lastUpdated": "2026-09-04T07:31:17.367Z",
+    "lastUpdated": "2026-10-06T07:31:25.677Z",
     "manifest": {
       "name": "experts",
       "description": "experts marketplace (auto-generated)",
@@ -122,7 +122,7 @@
     },
     "installLocation": "C:\\Users\\king\\AppData\\Local\\Programs\\WorkBuddy\\resources\\app.asar.unpacked\\resources\\plugins\\workbuddy-builtin",
     "description": "Marketplace from C:\\Users\\king\\AppData\\Local\\Programs\\WorkBuddy\\resources\\app.asar.unpacked\\resources\\plugins\\workbuddy-builtin",
-    "lastUpdated": "2026-10-05T12:31:10.762Z",
+    "lastUpdated": "2026-10-06T14:10:35.150Z",
     "autoUpdate": false,
     "isBuiltIn": true
   }
