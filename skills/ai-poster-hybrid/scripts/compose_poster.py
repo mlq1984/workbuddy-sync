@@ -16,12 +16,12 @@ RENDER_MJS = Path.home() / ".workbuddy/skills/poster-maker/scripts/render.mjs"
 NODE = r"C:\Users\king\.workbuddy\binaries\node\versions\22.22.2-3\node.exe"
 
 def inline_bg(html_text: str, bg_path: Path) -> str:
-    mime = mimetypes.guess_type(str(bg_path))[0] or "image/png"
-    data = base64.b64encode(bg_path.read_bytes()).decode()
-    uri = f"data:{mime};base64,{data}"
+    # 先把 __BG_IMAGE__ 占位符换成真实底图路径，再对页面内_所有_本地 img（含标题 PNG 等
+    # 素材图）统一内联为 base64。渲染器 (takumi) 不支持 file:/// 与相对路径，
+    # 未内联的 <img> 会被静默忽略——曾因只处理 __BG_IMAGE__ 导致烫金标题丢失。
     if "__BG_IMAGE__" in html_text:
-        return html_text.replace("__BG_IMAGE__", str(bg_path.resolve().as_uri())).replace(str(bg_path.resolve().as_uri()), uri)
-    # 替换 img.bg 或任意本地 file/相对路径 src
+        html_text = html_text.replace("__BG_IMAGE__", str(bg_path.resolve()))
+
     def repl(m):
         src = m.group(2)
         if src.startswith("data:"):

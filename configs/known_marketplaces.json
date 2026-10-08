@@ -9,7 +9,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\cb_teams_marketplace",
     "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip",
-    "lastUpdated": "2026-10-07T01:06:50.931Z",
+    "lastUpdated": "2026-10-08T01:03:54.704Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -23,7 +23,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\codebuddy-plugins-official",
     "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official.zip",
-    "lastUpdated": "2026-10-07T01:06:42.623Z",
+    "lastUpdated": "2026-10-08T01:03:44.381Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -122,7 +122,7 @@
     },
     "installLocation": "C:\\Users\\king\\AppData\\Local\\Programs\\WorkBuddy\\resources\\app.asar.unpacked\\resources\\plugins\\workbuddy-builtin",
     "description": "Marketplace from C:\\Users\\king\\AppData\\Local\\Programs\\WorkBuddy\\resources\\app.asar.unpacked\\resources\\plugins\\workbuddy-builtin",
-    "lastUpdated": "2026-10-06T14:10:35.150Z",
+    "lastUpdated": "2026-10-08T00:43:53.763Z",
     "autoUpdate": false,
     "isBuiltIn": true
   }

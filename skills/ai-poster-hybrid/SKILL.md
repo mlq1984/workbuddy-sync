@@ -48,7 +48,7 @@ agent_created: true
 
 ### 第 3 步：本地渲染（必须用 compose_poster.py，禁止直接调 render.mjs 压底图）
 
-**关键坑**：poster-maker 的渲染器 (takumi) **不支持 `file:///` 本地图片**——`<img src="file:///...">` 会被静默忽略，产出一张只有文字、无底图的图（文件小是明显信号：<300KB 基本就是缺底图）。必须用本技能的封装脚本，它会把底图转 base64 data URI 内联再渲染，并自动做像素校验：
+**关键坑**：poster-maker 的渲染器 (takumi) **不支持 `file:///` 本地图片和相对路径**——`<img src="file:///...">`、`<img src="素材.png">` 都会被静默忽略（2026-10-07 实例：烫金标题 PNG 用相对路径被丢，海报没主标题且无任何报错）。必须用本技能的封装脚本，它会把**页面内所有本地 `<img>`（底图+标题 PNG 等素材）统一转 base64 data URI 内联**再渲染，并自动做像素校验。注意：现成校验只查中部底图色差，标题是否渲染成功需另查（如标题区域金色像素占比 >5% 判定通过）。
 
 ```bash
 "<PY venv路径>/python.exe" ~/.workbuddy/skills/ai-poster-hybrid/scripts/compose_poster.py \
