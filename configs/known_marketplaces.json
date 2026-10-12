@@ -4,12 +4,12 @@
     "type": "zip",
     "source": {
       "source": "zip",
-      "path": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip",
-      "url": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip"
+      "path": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace.zip",
+      "url": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace.zip"
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\cb_teams_marketplace",
-    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-ab2eb0bb-7465-4062-92d1-1df8288f86d1.zip",
-    "lastUpdated": "2026-10-11T01:05:55.941Z",
+    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace.zip",
+    "lastUpdated": "2026-10-12T01:02:38.562Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -23,7 +23,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\codebuddy-plugins-official",
     "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official.zip",
-    "lastUpdated": "2026-10-11T01:05:46.865Z",
+    "lastUpdated": "2026-10-12T01:02:48.557Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
