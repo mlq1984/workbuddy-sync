@@ -7,7 +7,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\find-skills\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:15.321Z",
-        "lastUpdated": "2026-10-10T07:12:37.084Z"
+        "lastUpdated": "2026-10-12T14:12:14.579Z"
       }
     ],
     "playwright-cli@codebuddy-plugins-official": [
@@ -16,7 +16,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\playwright-cli\\0.1.0",
         "version": "0.1.0",
         "installedAt": "2026-08-10T08:09:15.738Z",
-        "lastUpdated": "2026-10-10T07:12:36.991Z"
+        "lastUpdated": "2026-10-12T14:12:14.524Z"
       }
     ],
     "agent-browser@codebuddy-plugins-official": [
@@ -25,7 +25,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\agent-browser\\1.3.0",
         "version": "1.3.0",
         "installedAt": "2026-08-10T08:09:16.358Z",
-        "lastUpdated": "2026-10-10T07:12:36.852Z"
+        "lastUpdated": "2026-10-12T14:12:14.465Z"
       }
     ],
     "pdf@codebuddy-plugins-official": [
@@ -34,7 +34,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\pdf\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:17.129Z",
-        "lastUpdated": "2026-10-10T07:12:37.299Z"
+        "lastUpdated": "2026-10-12T14:12:14.721Z"
       }
     ],
     "pptx@codebuddy-plugins-official": [
@@ -43,7 +43,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\pptx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:17.804Z",
-        "lastUpdated": "2026-10-11T17:01:08.329Z"
+        "lastUpdated": "2026-10-13T00:27:12.636Z"
       }
     ],
     "docx@codebuddy-plugins-official": [
@@ -52,7 +52,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\docx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:19.089Z",
-        "lastUpdated": "2026-10-11T17:01:08.811Z"
+        "lastUpdated": "2026-10-13T00:27:13.489Z"
       }
     ],
     "xlsx@codebuddy-plugins-official": [
@@ -61,7 +61,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\xlsx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:19.176Z",
-        "lastUpdated": "2026-10-11T17:01:09.263Z"
+        "lastUpdated": "2026-10-13T00:27:13.869Z"
       }
     ],
     "document-skills@cb_teams_marketplace": [
@@ -70,7 +70,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\cb_teams_marketplace\\document-skills\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:20.174Z",
-        "lastUpdated": "2026-10-10T07:12:36.808Z"
+        "lastUpdated": "2026-10-12T14:12:14.442Z"
       }
     ],
     "welcomemode-code@workbuddy-builtin": [
@@ -326,7 +326,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\weixinpay\\1.6.110",
         "version": "1.6.110",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:37.114Z"
+        "lastUpdated": "2026-10-12T14:12:14.668Z"
       }
     ],
     "tencent-docs-plugin@workbuddy-builtin": [
@@ -335,7 +335,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docs-plugin\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:37.681Z"
+        "lastUpdated": "2026-10-12T14:12:14.679Z"
       }
     ],
     "sheetagent@workbuddy-builtin": [
@@ -344,7 +344,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\sheetagent\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:37.730Z"
+        "lastUpdated": "2026-10-12T14:12:14.875Z"
       }
     ],
     "tencent-pptx@workbuddy-builtin": [
@@ -353,7 +353,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-pptx\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:37.706Z"
+        "lastUpdated": "2026-10-12T14:12:14.865Z"
       }
     ],
     "tencent-docx@workbuddy-builtin": [
@@ -362,7 +362,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docx\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:37.756Z"
+        "lastUpdated": "2026-10-12T14:12:14.884Z"
       }
     ],
     "data@cb_teams_marketplace": [
@@ -480,15 +480,6 @@
         "version": "1.1.0",
         "installedAt": "2026-09-05T09:06:39.890Z",
         "lastUpdated": "2026-09-05T09:06:39.890Z"
-      }
-    ],
-    "finance-data@cb_teams_marketplace": [
-      {
-        "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\cb_teams_marketplace\\finance-data\\1.6.0",
-        "version": "1.6.0",
-        "installedAt": "2026-09-09T03:13:32.679Z",
-        "lastUpdated": "2026-10-10T07:12:36.917Z"
       }
     ],
     "skill-buddy-image-processing@workbuddy-builtin": [
@@ -614,7 +605,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\ardot\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "installedAt": "2026-10-10T07:12:15.155Z",
-        "lastUpdated": "2026-10-10T07:12:37.782Z"
+        "lastUpdated": "2026-10-12T14:12:14.894Z"
       }
     ],
     "skill-workbuddy-finance-skill@workbuddy-builtin": [
@@ -632,7 +623,16 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\subscription-gate\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
         "installedAt": "2026-10-10T07:12:28.315Z",
-        "lastUpdated": "2026-10-10T07:12:37.809Z"
+        "lastUpdated": "2026-10-12T14:12:14.903Z"
+      }
+    ],
+    "finance-data@cb_teams_marketplace": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\cb_teams_marketplace\\finance-data\\1.6.0",
+        "version": "1.6.0",
+        "installedAt": "2026-10-12T14:12:18.341Z",
+        "lastUpdated": "2026-10-12T14:12:18.341Z"
       }
     ]
   }

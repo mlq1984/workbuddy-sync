@@ -1,0 +1,19 @@
+name: "employee-communication-template"
+version: 2.0.0
+description: "基于框架效应与沟通四要素，生成各类员工沟通模板（通知/公告/邮件/FAQ），兼顾信息传递与关系维护。触发词：员工沟通通知模板沟通话术全员邮件。天箭星科技出品。"
+category: hr
+author: "enterprise-smart-hr"
+disambiguation:
+- 与 internal-communication 共用触发词「内部沟通」：本技能侧重 基于框架效应与沟通四要素，生成各类员工沟通模板（通知/公告/邮件/FAQ），兼顾信息传递与关系维护；internal-communication 侧重 基于组织沟通理论与变革沟通模型，设计内部沟通策略、撰写管理层简报与FAQ解答
+tags:
+- 人力资源
+- 通用复用
+- hr-general-reuse
+triggers:
+- 员工沟通
+- 通知模板
+- 沟通话术
+- 全员邮件
+- 员工公告
+- 通知公告
+- 内部沟通
