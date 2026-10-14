@@ -1,0 +1,32 @@
+# runtime-checksums.txt — SHA-256 pins for the assets local-ocr-npu downloads.
+#
+# Format (identical to `sha256sum` output):
+#     <64-hex-digest>␣␣<asset-name>
+#
+# Assets are matched by file name only, so the entries below cover both the
+# runtime archives and the model files.
+#
+# How to pin:
+#   1. Run the skill once on a machine you trust, so every asset lands in
+#      %USERPROFILE%\.openvino\ (bin\ for executables, models\ for models).
+#   2. Run scripts\pin-runtime-checksums.ps1 — it hashes the cached assets and
+#      rewrites this file.
+#   3. Ship the updated file inside the skill package.
+#
+# Behaviour when an asset has no entry here: the download still proceeds, but a
+# "no SHA-256 recorded" warning is printed to stderr, so the gap is never
+# silent. When an entry exists and the digest does not match, the download is
+# deleted and the run aborts.
+#
+# Assets that are downloaded (kept as a checklist, not as live entries):
+#   ppocr-windows-x64.zip     OCR runtime (ppocr.exe + openvino.dll, ...)
+#   pdfium.zip                PDF renderer (pdf2png.exe + pdfium.dll)
+#   inference.xml             det/rec model topology
+#   inference.bin             det/rec model weights
+#   inference.yml             model metadata
+#   inference_960.xml         det model with alternative input size
+#   inference_320.xml         rec model with alternative input size
+#   inference_480.xml         rec model with alternative input size
+#   inference_640.xml         rec model with alternative input size
+#   inference_800.xml         rec model with alternative input size
+#   inference_1280.xml        rec model with alternative input size

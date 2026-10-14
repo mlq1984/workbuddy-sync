@@ -9,22 +9,22 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\cb_teams_marketplace",
     "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-41dc19ef-08b3-4d2f-bb77-7d4078920e4a.zip",
-    "lastUpdated": "2026-10-13T01:01:03.190Z",
-    "autoUpdate": true
+    "lastUpdated": "2026-10-14T01:07:27.185Z",
+    "autoUpdate": true,
+    "isBuiltIn": true
   },
   "codebuddy-plugins-official": {
     "manifestName": "codebuddy-plugins-official",
     "type": "zip",
     "source": {
       "source": "zip",
-      "path": "https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official.zip",
-      "url": "https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official.zip"
+      "path": "https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official-4b9366ac-f7e5-4cef-b60a-99a5229ce2b2.zip",
+      "url": "https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official-4b9366ac-f7e5-4cef-b60a-99a5229ce2b2.zip"
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\codebuddy-plugins-official",
-    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official.zip",
-    "lastUpdated": "2026-10-13T01:00:53.107Z",
-    "autoUpdate": true,
-    "isBuiltIn": true
+    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official-4b9366ac-f7e5-4cef-b60a-99a5229ce2b2.zip",
+    "lastUpdated": "2026-10-14T01:07:39.165Z",
+    "autoUpdate": true
   },
   "experts": {
     "type": "directory",
@@ -109,7 +109,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-connector-plugins-official",
     "description": "CodeBuddy 官方连接器配置索引",
-    "lastUpdated": "2026-10-12T10:52:33.120Z",
+    "lastUpdated": "2026-10-13T10:02:38.262Z",
     "autoUpdate": false
   },
   "workbuddy-builtin": {
