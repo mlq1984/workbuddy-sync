@@ -7,7 +7,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\find-skills\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:15.321Z",
-        "lastUpdated": "2026-10-13T07:12:19.221Z"
+        "lastUpdated": "2026-10-14T03:46:12.190Z"
       }
     ],
     "playwright-cli@codebuddy-plugins-official": [
@@ -16,7 +16,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\playwright-cli\\0.1.0",
         "version": "0.1.0",
         "installedAt": "2026-08-10T08:09:15.738Z",
-        "lastUpdated": "2026-10-13T07:12:19.154Z"
+        "lastUpdated": "2026-10-14T03:46:10.534Z"
       }
     ],
     "agent-browser@codebuddy-plugins-official": [
@@ -25,7 +25,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\agent-browser\\1.3.0",
         "version": "1.3.0",
         "installedAt": "2026-08-10T08:09:16.358Z",
-        "lastUpdated": "2026-10-13T07:12:18.995Z"
+        "lastUpdated": "2026-10-14T03:46:08.783Z"
       }
     ],
     "pdf@codebuddy-plugins-official": [
@@ -34,7 +34,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\pdf\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:17.129Z",
-        "lastUpdated": "2026-10-13T07:12:19.363Z"
+        "lastUpdated": "2026-10-14T03:46:20.835Z"
       }
     ],
     "pptx@codebuddy-plugins-official": [
@@ -43,7 +43,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\pptx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:17.804Z",
-        "lastUpdated": "2026-10-14T01:05:46.422Z"
+        "lastUpdated": "2026-10-14T03:49:05.693Z"
       }
     ],
     "docx@codebuddy-plugins-official": [
@@ -52,7 +52,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\docx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:19.089Z",
-        "lastUpdated": "2026-10-14T01:05:49.333Z"
+        "lastUpdated": "2026-10-14T03:49:12.137Z"
       }
     ],
     "xlsx@codebuddy-plugins-official": [
@@ -61,7 +61,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\codebuddy-plugins-official\\xlsx\\unknown",
         "version": "unknown",
         "installedAt": "2026-08-10T08:09:19.176Z",
-        "lastUpdated": "2026-10-14T01:05:52.077Z"
+        "lastUpdated": "2026-10-14T03:49:16.574Z"
       }
     ],
     "document-skills@cb_teams_marketplace": [
@@ -70,83 +70,83 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\cb_teams_marketplace\\document-skills\\1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-08-10T08:09:20.174Z",
-        "lastUpdated": "2026-10-13T07:12:18.920Z"
+        "lastUpdated": "2026-10-14T03:46:08.523Z"
       }
     ],
     "welcomemode-code@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\welcomemode-code\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\welcomemode-code\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:16.172Z"
+        "lastUpdated": "2026-10-14T03:45:11.334Z"
       }
     ],
     "welcomemode-work@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\welcomemode-work\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\welcomemode-work\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:16.260Z"
+        "lastUpdated": "2026-10-14T03:46:24.680Z"
       }
     ],
     "welcomemode-design@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\welcomemode-design\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\welcomemode-design\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "dependencies": [
           "mcp-miora",
           "ardot"
         ],
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:16.512Z"
+        "lastUpdated": "2026-10-14T03:45:12.373Z"
       }
     ],
     "interactionmode-craft@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-craft\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-craft\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:16.856Z"
+        "lastUpdated": "2026-10-14T03:46:24.819Z"
       }
     ],
     "interactionmode-ask@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-ask\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-ask\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:17.227Z"
+        "lastUpdated": "2026-10-14T03:45:14.283Z"
       }
     ],
     "interactionmode-plan@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-plan\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-plan\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:18.224Z"
+        "lastUpdated": "2026-10-14T03:45:14.515Z"
       }
     ],
     "interactionmode-expert@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-expert\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-expert\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:18.405Z"
+        "lastUpdated": "2026-10-14T03:45:15.423Z"
       }
     ],
     "prompt-common@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\prompt-common\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\prompt-common\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:18.842Z"
+        "lastUpdated": "2026-10-14T03:46:24.955Z"
       }
     ],
     "skill-ardot-design-core@workbuddy-builtin": [
@@ -161,10 +161,10 @@
     "skill-expert-manager@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-expert-manager\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-expert-manager\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:19.082Z"
+        "lastUpdated": "2026-10-14T03:45:16.287Z"
       }
     ],
     "skill-wb-finance-skill@workbuddy-builtin": [
@@ -188,28 +188,28 @@
     "skill-marketplace-skill-installer@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-marketplace-skill-installer\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-marketplace-skill-installer\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:19.836Z"
+        "lastUpdated": "2026-10-14T03:45:16.941Z"
       }
     ],
     "skill-recommend-connectors@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-recommend-connectors\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-recommend-connectors\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:19.990Z"
+        "lastUpdated": "2026-10-14T03:45:17.053Z"
       }
     ],
     "skill-recommend-experts@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-recommend-experts\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-recommend-experts\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:20.152Z"
+        "lastUpdated": "2026-10-14T03:45:17.201Z"
       }
     ],
     "skill-ardot-design-router@workbuddy-builtin": [
@@ -233,10 +233,10 @@
     "skill-buddy-multimodal-generation@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-buddy-multimodal-generation\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-buddy-multimodal-generation\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:20.478Z"
+        "lastUpdated": "2026-10-14T03:45:17.354Z"
       }
     ],
     "skill-ardot-ui-design@workbuddy-builtin": [
@@ -251,10 +251,10 @@
     "skill-skill-creator@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-skill-creator\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-skill-creator\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:20.977Z"
+        "lastUpdated": "2026-10-14T03:45:17.587Z"
       }
     ],
     "skill-cloudstudio-deploy@workbuddy-builtin": [
@@ -278,37 +278,19 @@
     "skill-geo-map-compliance-guard@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-geo-map-compliance-guard\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-geo-map-compliance-guard\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:21.224Z"
+        "lastUpdated": "2026-10-14T03:45:17.823Z"
       }
     ],
     "skill-library@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-library\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-library\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:22.423Z"
-      }
-    ],
-    "skill-tencent-docs-routing@workbuddy-builtin": [
-      {
-        "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-tencent-docs-routing\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:22.573Z"
-      }
-    ],
-    "skill-tencent-local-office-edit@workbuddy-builtin": [
-      {
-        "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-tencent-local-office-edit\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-10T07:12:22.754Z"
+        "lastUpdated": "2026-10-14T03:45:20.455Z"
       }
     ],
     "mcp-ardot-mcp-app@workbuddy-builtin": [
@@ -326,43 +308,16 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\weixinpay\\1.6.110",
         "version": "1.6.110",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-13T07:12:19.311Z"
+        "lastUpdated": "2026-10-14T03:46:17.804Z"
       }
     ],
     "tencent-docs-plugin@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docs-plugin\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docs-plugin\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-13T07:12:19.320Z"
-      }
-    ],
-    "sheetagent@workbuddy-builtin": [
-      {
-        "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\sheetagent\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-13T07:12:19.497Z"
-      }
-    ],
-    "tencent-pptx@workbuddy-builtin": [
-      {
-        "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-pptx\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-13T07:12:19.506Z"
-      }
-    ],
-    "tencent-docx@workbuddy-builtin": [
-      {
-        "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docx\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-10-13T07:12:19.516Z"
+        "lastUpdated": "2026-10-14T03:46:18.945Z"
       }
     ],
     "data@cb_teams_marketplace": [
@@ -395,46 +350,46 @@
     "skill-sites@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-sites\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-sites\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-05T09:06:33.324Z",
-        "lastUpdated": "2026-10-10T07:12:21.105Z"
+        "lastUpdated": "2026-10-14T03:45:17.708Z"
       }
     ],
     "skill-miora-creative-core@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-miora-creative-core\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-miora-creative-core\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-05T09:06:34.536Z",
-        "lastUpdated": "2026-10-10T07:12:22.925Z"
+        "lastUpdated": "2026-10-14T03:45:21.170Z"
       }
     ],
     "skill-miora-brand-design@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-miora-brand-design\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-miora-brand-design\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-05T09:06:34.666Z",
-        "lastUpdated": "2026-10-10T07:12:23.466Z"
+        "lastUpdated": "2026-10-14T03:45:21.438Z"
       }
     ],
     "skill-miora-image-generation@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-miora-image-generation\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-miora-image-generation\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-05T09:06:34.791Z",
-        "lastUpdated": "2026-10-10T07:12:23.547Z"
+        "lastUpdated": "2026-10-14T03:45:21.660Z"
       }
     ],
     "skill-miora-video-generation@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-miora-video-generation\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-miora-video-generation\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-05T09:06:34.924Z",
-        "lastUpdated": "2026-10-10T07:12:23.626Z"
+        "lastUpdated": "2026-10-14T03:45:21.893Z"
       }
     ],
     "yahoo-finance-cli@experts": [
@@ -485,28 +440,28 @@
     "skill-buddy-image-processing@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-buddy-image-processing\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-buddy-image-processing\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-09T09:14:23.252Z",
-        "lastUpdated": "2026-10-10T07:12:20.766Z"
+        "lastUpdated": "2026-10-14T03:45:17.479Z"
       }
     ],
     "skill-cloud-service@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-cloud-service\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-cloud-service\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-13T13:12:36.076Z",
-        "lastUpdated": "2026-10-10T07:12:23.791Z"
+        "lastUpdated": "2026-10-14T03:45:22.309Z"
       }
     ],
     "skill-wecom-forwarded-chat-resources@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-wecom-forwarded-chat-resources\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-wecom-forwarded-chat-resources\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-13T13:12:36.150Z",
-        "lastUpdated": "2026-10-10T07:12:23.863Z"
+        "lastUpdated": "2026-10-14T03:45:22.457Z"
       }
     ],
     "code-review-expert@experts": [
@@ -530,19 +485,19 @@
     "interactionmode-quick@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-quick\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\interactionmode-quick\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-27T02:47:04.929Z",
-        "lastUpdated": "2026-10-10T07:12:18.603Z"
+        "lastUpdated": "2026-10-14T03:45:15.638Z"
       }
     ],
     "mcp-miora@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\mcp-miora\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\mcp-miora\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-09-27T02:47:52.872Z",
-        "lastUpdated": "2026-10-10T07:12:24.083Z"
+        "lastUpdated": "2026-10-14T03:45:22.757Z"
       }
     ],
     "westock-mcp@workbuddy-connector-plugins-official": [
@@ -551,7 +506,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\westock-mcp\\0.0.0-wb.04131d2c24318de7",
         "version": "0.0.0+wb.04131d2c24318de7",
         "installedAt": "2026-09-27T02:47:53.455Z",
-        "lastUpdated": "2026-09-27T02:47:53.455Z"
+        "lastUpdated": "2026-10-14T03:46:22.573Z"
       }
     ],
     "lingyi-mcp@workbuddy-connector-plugins-official": [
@@ -560,7 +515,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\lingyi-mcp\\1.4.0-wb.db5957246455c555",
         "version": "1.4.0+wb.db5957246455c555",
         "installedAt": "2026-09-27T02:58:36.477Z",
-        "lastUpdated": "2026-09-27T02:58:36.477Z"
+        "lastUpdated": "2026-10-14T03:46:23.842Z"
       }
     ],
     "a-stock-review@experts": [
@@ -578,52 +533,52 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\ima-mcp\\0.0.0-wb.fac085d46643602c",
         "version": "0.0.0+wb.fac085d46643602c",
         "installedAt": "2026-10-03T01:20:19.298Z",
-        "lastUpdated": "2026-10-03T01:20:19.298Z"
+        "lastUpdated": "2026-10-14T03:46:22.635Z"
       }
     ],
     "lexiang@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\lexiang\\0.0.0-wb.1d9c4e9c0e41f535",
-        "version": "0.0.0+wb.1d9c4e9c0e41f535",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\lexiang\\0.0.0-wb.6a1fd225186beb95",
+        "version": "0.0.0+wb.6a1fd225186beb95",
         "installedAt": "2026-10-03T01:21:30.961Z",
-        "lastUpdated": "2026-10-03T01:21:30.961Z"
+        "lastUpdated": "2026-10-14T07:14:58.421Z"
       }
     ],
     "wecom@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\0.0.0-wb.8bc9c0561ce41ab3",
-        "version": "0.0.0+wb.8bc9c0561ce41ab3",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\0.0.0-wb.0c980a268b1c6406",
+        "version": "0.0.0+wb.0c980a268b1c6406",
         "installedAt": "2026-10-03T07:20:44.921Z",
-        "lastUpdated": "2026-10-03T07:20:44.921Z"
+        "lastUpdated": "2026-10-14T03:46:22.812Z"
       }
     ],
     "ardot@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\ardot\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\ardot\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-10-10T07:12:15.155Z",
-        "lastUpdated": "2026-10-13T07:12:19.528Z"
+        "lastUpdated": "2026-10-14T03:46:24.219Z"
       }
     ],
     "skill-workbuddy-finance-skill@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-workbuddy-finance-skill\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-workbuddy-finance-skill\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-10-10T07:12:19.659Z",
-        "lastUpdated": "2026-10-10T07:12:19.708Z"
+        "lastUpdated": "2026-10-14T03:45:16.828Z"
       }
     ],
     "subscription-gate@workbuddy-builtin": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\subscription-gate\\5.7.7-wb.40774747.g2e8619da.had9031c93ded",
-        "version": "5.7.7-wb.40774747.g2e8619da.had9031c93ded",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\subscription-gate\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
         "installedAt": "2026-10-10T07:12:28.315Z",
-        "lastUpdated": "2026-10-13T07:12:19.538Z"
+        "lastUpdated": "2026-10-14T03:46:24.279Z"
       }
     ],
     "finance-data@cb_teams_marketplace": [
@@ -633,6 +588,87 @@
         "version": "1.6.0",
         "installedAt": "2026-10-12T14:12:18.341Z",
         "lastUpdated": "2026-10-12T14:12:18.341Z"
+      }
+    ],
+    "skill-wecom-media-upload@workbuddy-builtin": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-wecom-media-upload\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "installedAt": "2026-10-14T03:45:18.021Z",
+        "lastUpdated": "2026-10-14T03:45:18.021Z"
+      }
+    ],
+    "skill-workbuddy-office-routing@workbuddy-builtin": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-workbuddy-office-routing\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "installedAt": "2026-10-14T03:45:20.593Z",
+        "lastUpdated": "2026-10-14T03:45:20.593Z"
+      }
+    ],
+    "skill-workbuddy-local-office-edit@workbuddy-builtin": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\skill-workbuddy-local-office-edit\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "installedAt": "2026-10-14T03:45:20.905Z",
+        "lastUpdated": "2026-10-14T03:45:20.905Z"
+      }
+    ],
+    "workbuddy-sheetagent@workbuddy-builtin": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-sheetagent\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "installedAt": "2026-10-14T03:45:28.815Z",
+        "lastUpdated": "2026-10-14T03:46:24.344Z"
+      }
+    ],
+    "workbuddy-pptx@workbuddy-builtin": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-pptx\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "installedAt": "2026-10-14T03:45:31.317Z",
+        "lastUpdated": "2026-10-14T03:46:24.397Z"
+      }
+    ],
+    "workbuddy-docx@workbuddy-builtin": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-docx\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "installedAt": "2026-10-14T03:45:51.654Z",
+        "lastUpdated": "2026-10-14T03:46:24.500Z"
+      }
+    ],
+    "wecom-a2a-auth@workbuddy-builtin": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\wecom-a2a-auth\\5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "version": "5.8.2-wb.41111488.gb8f6c953.haebd5991e0e2",
+        "installedAt": "2026-10-14T03:45:55.449Z",
+        "lastUpdated": "2026-10-14T03:46:24.609Z"
+      }
+    ],
+    "wecom-unified@workbuddy-wecom-unified": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-wecom-unified\\wecom-unified\\1.1.5",
+        "version": "1.1.5",
+        "installedAt": "2026-10-14T03:47:00.323Z",
+        "lastUpdated": "2026-10-14T03:47:00.323Z"
+      }
+    ],
+    "ai-content-creator-team@experts": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\experts\\ai-content-creator-team\\1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-10-14T05:32:06.133Z",
+        "lastUpdated": "2026-10-14T05:32:06.133Z"
       }
     ]
   }
