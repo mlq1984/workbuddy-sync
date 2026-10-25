@@ -1,0 +1,9 @@
+{
+  "subject": "创建验证机制配置文件",
+  "description": "编写 tools/future7_verify_config.json，包含可配置参数：验证窗口(7交易日)、命中阈值、自动调参开关与学习率/最小样本/权重边界/目标命中率、regime闸门阈值、趋势滚动窗口、报告输出路径等。",
+  "activeForm": "创建验证机制配置文件",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1789998211645,
+  "updatedAt": 1789998228383
+}

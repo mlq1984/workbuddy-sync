@@ -1,0 +1,9 @@
+{
+  "subject": "在调参写入路径挂 hook",
+  "description": "future7_verify.run_verification 里 tune 后 + future3d_engine.reconcile_and_tune 里 state 落盘后 + 每次 verify 开始时 detect_manual_changes（捕获手动编辑），失败隔离不阻断主流程。",
+  "activeForm": "挂版本快照 hook",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1792844273652,
+  "updatedAt": 1792845505802
+}

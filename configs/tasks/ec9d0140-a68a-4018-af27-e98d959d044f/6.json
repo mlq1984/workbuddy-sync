@@ -1,0 +1,9 @@
+{
+  "subject": "审查 nas_io/同步/巡检链路",
+  "description": "nas_io.py、sync_server.py、cloudflare worker、task_monitor.py（含已知假期误报与日志乱码）",
+  "activeForm": "审查同步与巡检链路",
+  "status": "pending",
+  "id": "6",
+  "createdAt": 1791351339275,
+  "updatedAt": 1791351339275
+}

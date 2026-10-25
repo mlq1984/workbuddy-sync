@@ -1,0 +1,9 @@
+{
+  "subject": "端到端测试与落盘",
+  "description": "用 200 只样本跑通（验证选出\"未来可期\"组、state/predictions 生成、watch.js 含该分类），再全量落盘到 NAS；更新工作日志。",
+  "activeForm": "端到端测试与落盘",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1788238380910,
+  "updatedAt": 1788239386277
+}

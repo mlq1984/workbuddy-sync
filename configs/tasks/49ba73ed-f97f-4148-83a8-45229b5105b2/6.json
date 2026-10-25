@@ -1,0 +1,9 @@
+{
+  "subject": "接入每日流程与自动化",
+  "description": "将 future7_verify 接入 run_daily.sh（云端）并更新本地引导脚本 run_future7.py（先verify后select），新建每日16:00验证自动化。确保每日自动验证+迭代。",
+  "activeForm": "接入每日流程与自动化",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1789998211679,
+  "updatedAt": 1789999645030
+}

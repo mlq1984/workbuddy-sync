@@ -1,0 +1,9 @@
+{
+  "subject": "验证云端与前端数据契约及本地运行",
+  "description": "对比 scan_a.py 写入的 watch.json/watch.js 字段与前端渲染所需字段（code/name/market/totalScore/advice/price/changePct/lastClose/chg3d 等）是否一致。本地起静态服务器，用 Node 模拟 fetchWatchFromGist 各分支，确认能成功解析出 list 并渲染。列出问题清单（含严重度）与修复建议/代码修改。",
+  "activeForm": "验证数据契约与本地运行",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1787052356382,
+  "updatedAt": 1787054048510
+}

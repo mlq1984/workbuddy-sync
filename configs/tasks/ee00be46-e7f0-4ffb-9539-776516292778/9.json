@@ -1,0 +1,9 @@
+{
+  "subject": "深度审查 scan_future.py 剩余逻辑",
+  "description": "仔细检查 scan_future.py 中的所有计算逻辑，包括 MA5/MA10/MA20 的计算、状态分类条件、量能放大判断等。",
+  "activeForm": "审查 scan_future.py 剩余逻辑",
+  "status": "completed",
+  "id": "9",
+  "createdAt": 1789349212667,
+  "updatedAt": 1789349256923
+}

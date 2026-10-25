@@ -1,0 +1,14 @@
+{
+  "subject": "部署前端并整体验证",
+  "description": "更新 SW 缓存版本，部署 mobile-stock 到 CloudStudio，验证前端能正确从 Gist 读取 watch.json 并展示分类。写 memory 日志。",
+  "activeForm": "部署前端并验证",
+  "status": "in_progress",
+  "id": "22",
+  "createdAt": 1786967530971,
+  "updatedAt": 1787049249983,
+  "metadata": {
+    "cancelled": true,
+    "cancelReason": "cancelled",
+    "cancelledAt": 1787049249979
+  }
+}

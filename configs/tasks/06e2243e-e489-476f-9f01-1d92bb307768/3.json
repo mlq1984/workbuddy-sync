@@ -1,0 +1,9 @@
+{
+  "subject": "接入 LLM API（支持上下文）",
+  "description": "通过 Python 后端代理调用 LLM（千问/豆包等），把\"今日指数+自选股+值得关注\"作为上下文注入 system prompt",
+  "activeForm": "接入 LLM API",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1785807828901,
+  "updatedAt": 1785810529830
+}

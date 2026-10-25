@@ -1,0 +1,9 @@
+{
+  "subject": "本地测试扫描脚本与 Gist 写入",
+  "description": "先小批量(前30只)跑 scan_a.py，验证：拉列表/拉K线/评分/分类/Gist写入(PATCH watch.json)均正确；确认 Gist 里 watch.json 能被正确读取。",
+  "activeForm": "本地测试扫描脚本",
+  "status": "completed",
+  "id": "19",
+  "createdAt": 1786967522882,
+  "updatedAt": 1786968103998
+}

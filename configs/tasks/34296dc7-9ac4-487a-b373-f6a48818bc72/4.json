@@ -1,0 +1,9 @@
+{
+  "subject": "步骤3：每日任务巡检 (run_task_monitor.py --summary)",
+  "description": "运行 python C:/Users/king/.workbuddy/run_task_monitor.py --summary。汇报各项任务状态与是否触发告警推送。",
+  "activeForm": "运行任务巡检",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1791963093472,
+  "updatedAt": 1791964125325
+}

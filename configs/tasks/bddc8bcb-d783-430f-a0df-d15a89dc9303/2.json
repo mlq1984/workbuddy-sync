@@ -1,0 +1,9 @@
+{
+  "subject": "分析历史推荐表现，定位上涨率偏低的原因",
+  "description": "读取历史推荐记录、watch.json、Gist favs.json、回测/命中统计，统计被推荐股票实际上涨/下跌比例，定位表现偏弱的原因（选股偏差、信号失效、推送时机、参数过拟合等）。",
+  "activeForm": "分析历史推荐表现",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1792828986834,
+  "updatedAt": 1792829826932
+}

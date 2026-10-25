@@ -1,0 +1,9 @@
+{
+  "subject": "部署 v88 并验证",
+  "description": "bump sw.js CACHE_NAME 到 stock-v88，CloudStudio 原地部署；语法与同步逻辑校验；提示手机端硬刷新。",
+  "activeForm": "部署并验证 v88",
+  "status": "completed",
+  "id": "47",
+  "createdAt": 1787109272254,
+  "updatedAt": 1787109445031
+}

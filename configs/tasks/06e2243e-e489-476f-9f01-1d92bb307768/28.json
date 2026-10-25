@@ -1,0 +1,9 @@
+{
+  "subject": "调整前端 index.html CFG 权重与阈值",
+  "description": "index.html CFG: 权重 FS 0.35→0.30、NS 0.20→0.15、TS 0.10→0.20（FUND 0.35 不变，总和1.0）；ADVICE_STRONG 8→7；CAT_STRONG_MIN 8→7。",
+  "activeForm": "调整前端 CFG 权重与阈值",
+  "status": "completed",
+  "id": "28",
+  "createdAt": 1787060878399,
+  "updatedAt": 1787060953766
+}

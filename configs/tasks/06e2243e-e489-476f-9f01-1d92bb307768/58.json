@@ -1,0 +1,9 @@
+{
+  "subject": "实现 fetchFundFlow 真实资金流(#2)",
+  "description": "将 fetchFundFlow 的 return null 改为调用东财 push2 stock/get(f62主力净流入/f184主力净比)，用 jsonp 同源机制，返回 {mainNetFlow(亿), mainNetRatio(%)},失败时优雅回退 null。",
+  "activeForm": "实现真实资金流数据",
+  "status": "completed",
+  "id": "58",
+  "createdAt": 1787889660410,
+  "updatedAt": 1787889752906
+}

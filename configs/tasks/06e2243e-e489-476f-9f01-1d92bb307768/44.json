@@ -1,0 +1,9 @@
+{
+  "subject": "前端加同步代理配置与设置入口",
+  "description": "index.html 增加 getSyncProxy()/setSyncProxy()（地址存 localStorage.syncProxy），自选板块「🔄同步」旁加「⚙️代理」按钮。",
+  "activeForm": "添加同步代理配置与设置入口",
+  "status": "completed",
+  "id": "44",
+  "createdAt": 1787109272210,
+  "updatedAt": 1787109317325
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "生成完整的审查报告与修复方案",
+  "description": "整合所有发现的bug并为每个bug提供修复方案。",
+  "activeForm": "生成完整修复报告",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1789314644991,
+  "updatedAt": 1789314830167
+}

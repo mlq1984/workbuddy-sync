@@ -1,0 +1,9 @@
+{
+  "subject": "汇总审计报告",
+  "description": "按严重程度汇总所有问题：摘要/文件位置/根本原因/修复建议/验证方式，输出给用户。",
+  "activeForm": "汇总审计报告",
+  "status": "pending",
+  "id": "4",
+  "createdAt": 1789521631739,
+  "updatedAt": 1789521631739
+}

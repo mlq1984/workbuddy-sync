@@ -1,0 +1,9 @@
+{
+  "subject": "自选板块新增加入日期与当时价格列",
+  "description": "toggleFav 加入自选时记录 addedAt 与 addedPrice；renderFavSection 新增\"加入\"列展示加入日期和当时价格；pullFavs 同步时保留这些元数据；dfav 按钮传入当前价。",
+  "activeForm": "新增加入日期与价格列",
+  "status": "completed",
+  "id": "42",
+  "createdAt": 1787104080509,
+  "updatedAt": 1787104735851
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "设计 AI 助手对话方案",
+  "description": "确定 AI 助手的能力边界：能回答哪些问题、怎么调 LLM、容错降级方案",
+  "activeForm": "设计 AI 助手方案",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1785807828867,
+  "updatedAt": 1785808013040
+}

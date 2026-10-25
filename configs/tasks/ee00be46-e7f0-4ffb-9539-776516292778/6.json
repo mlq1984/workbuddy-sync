@@ -1,0 +1,9 @@
+{
+  "subject": "审查 Dockerfile、run_daily.sh、run_future.bat",
+  "description": "审查 Dockerfile、run_daily.sh、run_future.bat 等配置和shell脚本。",
+  "activeForm": "审查配置和shell脚本",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1789314644976,
+  "updatedAt": 1789314830156
+}

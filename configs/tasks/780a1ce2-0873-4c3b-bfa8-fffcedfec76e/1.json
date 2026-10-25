@@ -1,0 +1,9 @@
+{
+  "subject": "编写未来3天看涨规则引擎",
+  "description": "创建 future3d_engine.py：可插拔规则加载（future3d_rules.json，PA_Agent 可替换）、基于过去1周走势计算1周特征、按规则加权评分选出\"未来3天看涨\"股票；含每日自动调参（对账历史预测→调权重+阈值，持久化 future3d_state.json / future3d_predictions.json）。stdlib-only。",
+  "activeForm": "编写未来3天看涨规则引擎",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1788238380857,
+  "updatedAt": 1788238491594
+}

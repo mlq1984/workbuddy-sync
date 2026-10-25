@@ -1,0 +1,9 @@
+{
+  "subject": "B3/B8 修复 future3d_engine.py",
+  "description": "B3 删除 save_rules 回写规则源文件(698)，仅持久化到 future3d_state.json；B8 reconcile 日历日门控由<3放宽到>=4或接交易日历。",
+  "activeForm": "修复 future3d_engine.py 问题",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1789523078664,
+  "updatedAt": 1789524187185
+}

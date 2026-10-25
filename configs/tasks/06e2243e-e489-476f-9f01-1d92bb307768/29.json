@@ -1,0 +1,9 @@
+{
+  "subject": "修复 WATCH_CATEGORIES 阈值脱节并加兜底过滤",
+  "description": "WATCH_CATEGORIES: 强烈推荐 min=CAT_STRONG_MIN max=11；推荐买入 min=CAT_BUY_MIN max=CAT_STRONG_MIN；观望等待 min=CAT_WAIT_MIN max=CAT_BUY_MIN（修复 min:0 脱节）。renderWatchlist 加兜底：总分<CAT_WAIT_MIN 不展示；推荐买入/观望等待(chg3d!=null时)需近3日上行。",
+  "activeForm": "修复分类阈值与兜底过滤",
+  "status": "completed",
+  "id": "29",
+  "createdAt": 1787060878415,
+  "updatedAt": 1787060953788
+}

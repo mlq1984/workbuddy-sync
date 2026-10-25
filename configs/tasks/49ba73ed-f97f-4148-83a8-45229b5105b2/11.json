@@ -1,0 +1,9 @@
+{
+  "subject": "实现 task_monitor.py 巡检引擎",
+  "description": "独立可运行引擎：交易日历计算+上一交易日回溯、各任务artifact健康检查（missing/failed/timeout/stale/warn/ok）、状态去重（按任务+目标日）、飞书卡片/文件兜底通知、巡检报告JSON+HTML、状态持久化。",
+  "activeForm": "实现巡检引擎",
+  "status": "completed",
+  "id": "11",
+  "createdAt": 1790080064902,
+  "updatedAt": 1790080177908
+}

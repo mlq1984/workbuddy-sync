@@ -1,0 +1,86 @@
+[
+  {
+    "from": "system",
+    "text": "[Framework Auto-Notification]\nTeammate \"software-engineer\" completed successfully.\nTask: 工程师分析 mobile-stock 代码\nDuration: 47s",
+    "summary": "software-engineer completed: 工程师分析 mobile-stock 代码",
+    "timestamp": "2026-08-18T11:26:48.165Z",
+    "read": true
+  },
+  {
+    "from": "software-engineer",
+    "text": "Teammate \"software-engineer\" has been reactivated to process new message(s) from team-lead.",
+    "summary": "software-engineer reactivated — processing new messages",
+    "timestamp": "2026-08-18T11:27:36.779Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "software-engineer",
+    "text": "【mobile-stock 代码审查 + 修复报告（工程师 Kou）】\n\n## 一、关键代码现状（均实际读码确认）\n\n1. **fetchWatchFromGist（index.html:467）**：三数据源——①同源 `./watch.js`（JSONP，首选）②gist raw 直链 ③GitHub API。消费 `./watch.js` 用的是 `txt.match(/=\\s*(\\{[\\s\\S]*\\})\\s*;?\\s*$/)` 取出对象体再 `JSON.parse(m[1])`，**不是**裸 `JSON.parse(txt)`。\n2. **loadWatchlist（index.html:915）**：`const data=await fetchWatchFromGist(); if(data&&data.list&&data.list.length){ renderWatchlist(data.list); ... }` —— 渲染分支依赖 `data.list`（扁平数组）。\n3. **数据契约**：scan_a.py:620-627 写 `watch_payload` 时**同时含 `groups` 和 `list`**（`\"list\": scored`），与前端要的 `data.list` 一致。\n4. **CSP**：`connect-src 'self' ... gist.githubusercontent.com`，同源 `./watch.js` 走 `self`，gist 走放行域名，OK。\n5. **SW**：sw.js 已配 `skipWaiting`+`clients.claim`；注册段监听 `controllerchange` 自动刷新。\n\n## 二、高危点逐一结论\n- (a) JSONP 被 `JSON.parse` 失败？**不存在**。代码已用正则剥离前缀，实测解析成功。**假想 bug 未复现**。\n- (b) 三源异常静默吞掉？**确实静默**（已加诊断，见修复 P2）。\n- (c) 渲染分支真被调用？**确认正确**，`renderWatchlist(data.list)` 入参形态与字段齐全。\n- (d) controllerchange 能否触发？原代码**首次访问会多余刷新**（controller null→SW 变化即触发），已修。SW 更新场景能正常触发。\n- (e) 是否消费 window.__WATCH__？**不消费全局变量**，fetch+正则解析文本，可行，无需 script 注入。\n\n## 三、发现的问题清单（文件:行号 / 严重度 / 根因 / 修复）\n\n**P1 — sw.js:126-143 `runDailyScan()` 三处真 bug，导致「SW 触发的每日自动扫描」完全失效**\n- 行128 `new getCNTime()` → 应为 `getCNTime()`\n- 行135、140 `time: timeStr` → `timeStr` 未定义，应为 `time`\n- 行137 `notifyLocked(action)` → 函数名不存在（实际是 `notifyClients`），直接 ReferenceError，Promise reject\n- 行93 periodicsync 校验 `e.tag==='daily-stock'`，但注册 tag 是 `'daily-scan'`（行84）→ 永远不触发\n→ 已改正上述 4 处，SW 自动扫描/广播恢复正常。\n\n**P1 — scan_a.py 未生成本地 `./watch.js`（文档称\"据称同步生成\"，实际只写 Gist）**\n- 同源 `./watch.js` 是国内最可靠数据源（gist 常被墙）；它若缺失/过期→用户回退浏览器全市场扫描→「一直在加载」。\n- 修复：scan_a.py 评分成功后同步写出本地 `./watch.js`（`window.__WATCH__=<payload>;`），保证同源快照与 Gist 同步刷新（已加 `WATCH_MIN` 自我保护，空结果不覆盖）。\n\n**P2 — fetchWatchFromGist 静默吞异常 + 正则解析脆弱（index.html:467-527）**\n- 修复：每源失败 `console.warn`；并加 `groups→list` 展平兜底 + 纯 JSON 兜底，防止历史「数据全空」重演（仍保留降级到 `doScanAndRender`）。\n\n**P2 — SW 首次访问多余刷新（index.html:1906-1916）**\n- 修复：仅当已有旧 controller（即版本更新）时才监听 `controllerchange` 自动刷新。\n\n## 四、本地运行验证结果\n\n- 语法：`node --check` 对 index.html 主脚本、sw.js 均 exit 0；`py_compile` 对 scan_a.py 通过。\n- Node 模拟 fetchWatchFromGist 源1 + renderWatchlist 分类：**watch.js 解析出 list=871**，推荐买入 434 / 观望等待 437（强烈推荐 0，因云端动量打分目前无≥8；字段 code/name/market/totalScore/price/changePct/chg3d/advice 全齐）。\n- 进程内 HTTP：node 起服务并 fetch 真实文件，`/watch.js` 200、`/index.html` 200，解析出 list=871 → **VERIFY_OK**。\n- 注：`python -m http.server` 跨进程监听被沙箱网络策略拦截（ECONNREFUSED），属环境限制，已用进程内 HTTP 等价验证，不影响代码正确性。\n\n**结论：当前 v74 + 当前数据，happy path 能正常渲染 871 条，「所有数据没了 / 一直在加载」未复现。真正修复的是 SW 自动扫描失效、同源 watch.js 不刷新、解析脆弱性三处隐患。**\n\n## 五、本地起服务命令（验证用）\n```\ncd Claw/mobile-stock && python -m http.server 8099\n# 浏览器开 http://localhost:8099/ （或 /index.html）\n```\n前端仅加了诊断与兜底、未改渲染输出，无需 bump SW 缓存版本（仍为 stock-v74）。",
+    "summary": "审查完成：happy path 可跑通，已修复 SW 扫描与 watch.js 生成等隐患",
+    "timestamp": "2026-08-18T11:40:47.974Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "system",
+    "text": "[Framework Auto-Notification]\nTeammate \"software-engineer\" completed successfully.\nTask: software-engineer\nDuration: 13m 19s",
+    "summary": "software-engineer completed: software-engineer",
+    "timestamp": "2026-08-18T11:41:00.743Z",
+    "read": true
+  },
+  {
+    "from": "software-engineer",
+    "text": "Teammate \"software-engineer\" has been reactivated to process new message(s) from team-lead.",
+    "summary": "software-engineer reactivated — processing new messages",
+    "timestamp": "2026-08-18T11:41:54.036Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "software-engineer",
+    "text": "已补做两处，均验证通过（node --check：index.html 主脚本 exit 0、sw.js exit 0），仓库临时文件已清理。\n\n## 1. 移除前端明文 token（index.html）\n- 删除原 :461 `const GIST_TOK='ghp_...';` 整行定义。\n- 原 :464 改为 `const GIST_H={Accept:'application/vnd.github.v3+json'};`（匿名读，不再带 Authorization）。\n- 已 grep 确认全文再无 `GIST_TOK` 引用；`GIST_H` 现有两处使用：:552 pushFavs、:565 pullFavs。\n\n## 2. SW 版本 bump（sw.js:1）\n- `const CACHE_NAME = 'stock-v74';` → `'stock-v75';`\n- 这样手机端 SW 更新后会清旧缓存、重新预缓存新版 index.html，本次新增的诊断/兜底代码才能生效（原 v74 时缓存优先会一直命中旧 index.html，你说得对，我之前判断有误）。\n\n## ⚠️ 一个副作用需你拍板\n去掉 token 后，**pushFavs（:552 的 PATCH 写 Gist）会因匿名被 GitHub 拒（401）→ 自选股\"推送/跨端同步\"会失败**；pullFavs（:565 GET 公开 Gist）匿名可正常拉取。即：拉同步正常、推同步失效。\n取舍建议（任选）：\n- 若仍需\"推\"同步：把写 Gist 的操作移到带 token 的后端/云函数代理，前端只调代理，token 不落前端源码；\n- 若暂可接受：仅保留拉取（单向同步），前端 pushFavs 可改为失败即静默提示，不影响看榜主流程。\n请告知走哪条，或保持现状由你后续处理。\n\n两处改动已落盘，等你重新部署即可。",
+    "summary": "已移除明文 token 并 bump SW 到 v75，附 pushFavs 副作用提醒",
+    "timestamp": "2026-08-18T11:43:55.330Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "system",
+    "text": "[Framework Auto-Notification]\nTeammate \"software-engineer\" completed successfully.\nTask: software-engineer\nDuration: 2m 8s",
+    "summary": "software-engineer completed: software-engineer",
+    "timestamp": "2026-08-18T11:44:06.665Z",
+    "read": true
+  },
+  {
+    "from": "software-qa-engineer",
+    "text": "# mobile-stock PWA v75 回归验证报告（QA 严过关）\n\n结论先行：**代码正确、能运行、手机端看榜主流程已恢复**。55 项检查全通过（38 项自动化断言 + 17 项线上/静态校验）。发现 1 个中危遗留缺陷（pushFavs 静默假成功），但不阻塞看榜主流程。\n\n## 一、测试项清单\n\n### T1 数据主流程（自动化 27 项，全 PASS）\n脚本：`test_watch_pipeline.js`（新建，解析逻辑与 index.html:466-489 逐行等价搬运）\n命令：`node test_watch_pipeline.js` → exit 0，`27 passed, 0 failed`\n\n| 项 | 验证方法 | 实际结果 | 判定 |\n|---|---|---|---|\n| T1.1-1.3 | 读本地 ./watch.js，正则 `/=\\s*(\\{[\\s\\S]*\\})\\s*;?\\s*$/` 提取后 JSON.parse | 272163 字节，JSONP 头 `window.__WATCH__=`，解析成功 | PASS |\n| T1.4-1.6 | list 类型与长度 | `list.length = 871`，与声明 `total=871` 完全一致 | PASS |\n| T1.F×8 | 8 个必需字段在**全部 871 条**元素中存在 | code/name/market/totalScore/advice/price/changePct/chg3d 均 0 缺失 | PASS |\n| T1.8-1.10 | 渲染主字段健壮性 | price 缺失 0 条；groups 各桶之和==871；date=2026-08-18 | PASS |\n| T1.11 | 纯 JSON 格式兼容（watch.json 走第二分支） | 可解析出 list | PASS |\n| T1.12-1.14 | 异常输入 | 截断 JSONP／空串均返回 null 不抛异常；groups 全空正确返回 null 触发降级 | PASS |\n| T1.15-1.18 | **groups→list 展平兜底专项**（合成数据覆盖该分支） | 展平长度、顺序正确；groups 含 null/字符串/数字脏值时被 `.filter(Array.isArray)` 安全过滤 | PASS |\n\n样本[0]：`{\"code\":\"002772\",\"name\":\"众兴菌业\",\"market\":\"sz\",\"totalScore\":6.9,\"advice\":\"推荐买入\",\"price\":11.57,\"changePct\":7.43,\"lastClose\":11.57,\"chg3d\":9.46}`\ngroups 分布：`强烈推荐:0, 推荐买入:434, 观望等待:437`\n\n**一处需要更正你的前提**：你说的\"groups→list 展平兜底\"在当前数据下**不会被触发**——实测原始 watch.js 顶层**自带** `list` 数组（在字节偏移 122455 处，871 条），走的是主路径。我一开始也因为只 `head -c 300` 看文件头而误判为\"只有 groups\"，写错了断言（T1.7 首轮 FAIL）。核查后确认是**我的测试假设错误，不是源码 bug**，已修正断言并补 T1.15-1.18 用合成数据专门覆盖兜底分支——兜底逻辑本身正确可用，属于有效的防御性冗余。\n\n### T2 线上部署校验（7 项，全 PASS）\n```\n$ curl -s -o sw_live.js -w \"HTTP:%{http_code}\" .../sw.js\nHTTP:200   →  const CACHE_NAME = 'stock-v75'        ✅ 确认 v75\n$ curl .../watch.js\nHTTP:200 bytes:272163 type:application/javascript; charset=utf-8\n  → window.__WATCH__={... 解析出 list.length=871, 字段完整:true   ✅\n$ grep ghp_ index_live.html  → 无匹配；GIST_TOK 出现次数: 0        ✅ 明文 token 已彻底移除\n$ grep \"connect-src.*gist.githubusercontent.com\"                   ✅ CSP 已放行\n```\n**v75 非旧缓存验证**（sha256 线上 vs 本地，三个文件全部逐字节一致）：\n`sw.js ✅ / index.html ✅ / watch.js ✅` —— 证明线上就是 v75 对应内容，不是旧缓存残留。\n\n### T3 语法/类型检查（2 项，全 PASS）\n`node --check sw.js` → OK；`python -m py_compile scan_a.py` → OK。\n额外：`grep notifyLocked|timeStr sw.js` → **无残留**，未定义变量已彻底清除。\nperiodicsync tag 一致性：register 用 `'daily-scan'`(L84) == 监听 `e.tag==='daily-scan'`(L93) ✅ 匹配。\n\n### T4 回归关注点（自动化 11 项 + 2 项实网调用，全 PASS）\n脚本：`test_favs_sync.js`（mock fetch 注入 401，复刻 pushFavs/pullFavs 合并决策）\n```\n$ curl -H \"Accept: application/vnd.github.v3+json\" https://api.github.com/gists/412c848...\nHTTP:200  → PASS 匿名可读 favs, 数量=1   ✅ pullFavs 拉同步正常\n$ curl -X PATCH ... （匿名）\nHTTP:401                                  ✅ pushFavs 推同步失效，符合预期副作用\n```\n**确认这是预期副作用而非新引入的崩溃**：T4.3a 验证 401 不会抛异常、不会 unhandled error、不会导致页面崩溃。\n\n### T5/T6 补充验证（4 项，全 PASS）\n- `scan_a.py` L648-650 确实同步生成本地 watch.js，写出格式 `\"window.__WATCH__=\" + json.dumps(...) + \";\"`，与前端解析正则**完全吻合**；且该 try 块与 Gist 写入是**兄弟关系**，Gist 写失败也不影响本地快照生成 ✅\n- 渲染消费链路（index.html:947-953）：`fetchWatchFromGist() → data.list → renderWatchlist(data.list)`，云端不可达才降级本地扫描 ✅ **看榜主流程闭环完整**\n- watch.js **未**进 SW ASSETS 预缓存 → 不会被固化成隔日旧数据 ✅\n\n## 二、整体通过率\n**55 / 55 = 100%**（38 项自动化断言 + 17 项线上与静态校验）\n测试轮次：Round 1 修正 1 处自身断言错误后全绿，未进入 Round 2。\n\n## 三、遗留问题\n\n**#1 [中危] pushFavs 静默假成功 —— 源码 bug（非本轮新引入，但被本轮移除 token 放大）**\n- 位置：`index.html:547-560`\n- 根因：`fetch()` 对 4xx/5xx **不会 reject**，仅置 `r.ok=false`。代码 `await fetch(...)` 后未校验 `r.ok`，直接走成功分支。\n- 可复现证据（`node test_favs_sync.js`）：\n  ```\n  [PASS] T4.3b [缺陷] 401 下前端仍显示\"已推送\"成功态\n         实际状态提示: \"📤 已推送 1只\" (ok=true)\n  [PASS] T4.3c [缺陷] 401 下仍写入 favLastPushAt 时间戳\n  ```\n- 影响范围（两层）：\n  1. 误导用户——推送实际 401 失败，UI 显示\"📤 已推送 / 已同步\"绿色成功态；\n  2. **连带污染跨端拉取**：假成功写入 `favLastPushAt=now`，使 `pullFavs` 的 `remoteUpdated > lastPushAt` 恒为 false，**永久走 union 合并分支、永不走 replace**。实测 T4.4d：他端删除的自选无法同步，本地仍保留（远端删至 1 只，本地合并后仍 2 只）。\n- 不影响：本地自选**无数据丢失**（union 保留本地 + 补齐远端新增，T4.4b/T4.4c 已验证）；不影响看榜主流程。\n- 建议修复（1 行，已在 T4.5 对照组验证有效）：\n  ```js\n  const r = await fetch(GIST_URL,{method:'PATCH',headers:GIST_H,body:...});\n  if(!r.ok) throw new Error('HTTP '+r.status+'（匿名不可写，需配置后端代理）');\n  ```\n  对照组结果：`T4.5a 修复版在 401 下正确报失败 PASS`、`T4.5b 修复版不污染 favLastPushAt PASS`。\n\n**#2 [低危] 离线无法看榜** —— watch.js 未预缓存，SW 断网时榜单会降级到浏览器端本地全市场扫描（慢）。属设计取舍（避免数据固化），非 bug，按需决定。\n\n**#3 [低危/提示] 首刷需一次刷新** —— index.html 只 `register('sw.js')`，无 `updatefound` 提示或自动 reload。v75 靠 `skipWaiting()+clients.claim()` 立即接管并清旧缓存，但当前已渲染页面仍是旧 HTML，手机端需**手动刷新一次**才见新版。属标准 PWA 行为，建议后续加更新提示条。\n\n**#4 [提示] 数据分布** —— `强烈推荐` 分组 0 条；`chg3d` 有 2/871 为 null（前端需容忍 null，price 无缺失故渲染安全）。数据面现象，非代码缺陷。\n\n## 四、结论\n1. **代码是否正确**：是。你列的 5 项修复①~⑤全部验证到位——未定义变量已清除、periodicsync tag 已对齐、scan_a.py 同步产出 JSONP watch.js、异常告警与展平兜底就位、明文 token 归零、CACHE_NAME 已 bump 至 stock-v75。\n2. **能否运行**：能。sw.js / scan_a.py 语法零错误；线上三文件均 HTTP 200 且与本地逐字节一致。\n3. **手机端看榜主流程是否恢复**：**已恢复**。数据源1（同源 ./watch.js）线上 200 可达、871 条可解析、8 个渲染字段零缺失，`fetchWatchFromGist → data.list → renderWatchlist` 链路完整，不会再卡在\"分析中…\"。v75 清旧缓存后手机端刷新一次即可拿到新 index.html。\n4. **唯一需跟进**：遗留 #1（pushFavs 假成功）——推同步失效本身是你确认的预期副作用，但\"失败却报成功 + 连带阻断跨端删除同步\"是真实缺陷，建议下轮补上 `r.ok` 校验。是否派给工程师由你定；我已按 2 轮上限收口，未自行开启 Round 3。\n\n## 交付物\n- `C:/Users/king/WorkBuddy/Claw/mobile-stock/test_watch_pipeline.js`（27 断言，数据契约 + 兜底分支 + 异常输入回归）\n- `C:/Users/king/WorkBuddy/Claw/mobile-stock/test_favs_sync.js`（11 断言，同步逻辑 + 缺陷复现 + 修复对照组）\n两个套件均可 `node <file>` 直跑，exit 0 = 通过，可直接纳入后续每轮回归。",
+    "summary": "v75 回归验证完成：55项全通过，1个中危遗留",
+    "timestamp": "2026-08-18T11:53:29.339Z",
+    "color": "yellow",
+    "read": true
+  },
+  {
+    "from": "system",
+    "text": "[Framework Auto-Notification]\nTeammate \"software-qa-engineer\" completed successfully.\nTask: QA 回归验证 mobile-stock v75\nDuration: 7m 13s",
+    "summary": "software-qa-engineer completed: QA 回归验证 mobile-stock v75",
+    "timestamp": "2026-08-18T11:54:05.620Z",
+    "read": true
+  },
+  {
+    "from": "software-engineer",
+    "text": "{\"type\":\"shutdown_response\",\"request_id\":\"shutdown-software-engineer-1787054079124-32962503\",\"approve\":true,\"reason\":\"Task already completed, auto-approved shutdown\",\"from\":\"software-engineer\",\"timestamp\":\"2026-08-18T11:54:40.824Z\"}",
+    "summary": "Shutdown accepted by software-engineer",
+    "timestamp": "2026-08-18T11:54:40.824Z",
+    "color": "green",
+    "read": true
+  },
+  {
+    "from": "software-qa-engineer",
+    "text": "{\"type\":\"shutdown_response\",\"request_id\":\"shutdown-software-qa-engineer-1787054091021-b81fd09f\",\"approve\":true,\"reason\":\"Task already completed, auto-approved shutdown\",\"from\":\"software-qa-engineer\",\"timestamp\":\"2026-08-18T11:54:51.669Z\"}",
+    "summary": "Shutdown accepted by software-qa-engineer",
+    "timestamp": "2026-08-18T11:54:51.669Z",
+    "color": "yellow",
+    "read": true
+  }
+]

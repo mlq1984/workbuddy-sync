@@ -1,0 +1,9 @@
+{
+  "subject": "摸清现有页面结构与JS依赖的class名",
+  "description": "完整读取 index.html 的 CSS(32KB)、静态HTML骨架、JS模板生成的class清单，以及future7报告与验证报告的结构，建立\"哪些class名不可动\"的清单。",
+  "activeForm": "分析现有页面结构",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1792850351233,
+  "updatedAt": 1792853192396
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "CFG 增加券商条件单参数",
+  "description": "CFG 新增 BREAKOUT_LOOKBACK(突破回看窗口)、TRAILING_EXIT_PCT(回落止盈阈值)、PULLBACK_TOL(回踩容差)；去掉文字区对未定义 HOLD_DAYS 的依赖。保留 PLAN_* 用于支撑/止损/目标计算。",
+  "activeForm": "增加券商条件单 CFG 参数",
+  "status": "completed",
+  "id": "35",
+  "createdAt": 1787102222249,
+  "updatedAt": 1787102381642
+}

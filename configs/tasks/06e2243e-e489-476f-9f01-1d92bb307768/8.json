@@ -1,0 +1,9 @@
+{
+  "subject": "Deploy mobile version to CloudStudio",
+  "description": "Deploy the updated mobile-stock directory (with card-style watchlist) to CloudStudio sandbox",
+  "activeForm": "Deploying mobile to CloudStudio",
+  "status": "completed",
+  "id": "8",
+  "createdAt": 1785831414871,
+  "updatedAt": 1785832377320
+}

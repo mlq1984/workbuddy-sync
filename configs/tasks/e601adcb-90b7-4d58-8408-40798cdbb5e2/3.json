@@ -1,0 +1,9 @@
+{
+  "subject": "确认前置条件（Python 3.11+ / MT5）",
+  "description": "检查 Python 版本是否 3.11+，确认 MT5 已安装",
+  "activeForm": "确认前置条件",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1783914694713,
+  "updatedAt": 1783915183290
+}

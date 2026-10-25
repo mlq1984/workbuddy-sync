@@ -1,0 +1,9 @@
+{
+  "subject": "B5 删除 sw.js 死代码",
+  "description": "sw.js inScanWindow() 定义后从未调用，删除该函数。",
+  "activeForm": "清理 sw.js 死代码",
+  "status": "completed",
+  "id": "8",
+  "createdAt": 1789523078677,
+  "updatedAt": 1789524187202
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "修复 task_monitor 对 scan_a 的 K 线刷新误报",
+  "description": "2026-10-08 巡检报 scan_a failed「全量K线未刷新」，但 kline_data 今日实际更新 4954 个文件。修正 task_monitor.py 的判定逻辑。",
+  "activeForm": "修复巡检误报逻辑",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1791460655218,
+  "updatedAt": 1791463014315
+}

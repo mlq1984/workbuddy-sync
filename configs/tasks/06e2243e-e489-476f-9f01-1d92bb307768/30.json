@@ -1,0 +1,9 @@
+{
+  "subject": "语法检查 + bump SW v77 + 部署验证",
+  "description": "对 index.html 内联脚本语法检查；SW CACHE_NAME v76→v77；重新部署 CloudStudio；用真实浏览器验证值得关注三档渲染正常。",
+  "activeForm": "语法检查并部署验证",
+  "status": "completed",
+  "id": "30",
+  "createdAt": 1787060878427,
+  "updatedAt": 1787061378886
+}

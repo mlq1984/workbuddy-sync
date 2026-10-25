@@ -1,0 +1,9 @@
+{
+  "subject": "用腾讯API重写HTML数据层，彻底解决数据获取失败",
+  "description": "核心变更：\n1. 行情接口：push2his → 腾讯 qt.gtimg.cn（CORS ✅）\n2. K线接口：push2his → 腾讯 web.ifzq.gtimg.cn（CORS ✅）\n3. 财务接口：保持 datacenter JSONP\n4. 资金流：用行情数据计算替代\n5. 搜索：本地映射为主，腾讯 suggest 增强\n6. 添加 file:// 协议检测和引导\n7. 所有数据解析加空值防御",
+  "activeForm": "用腾讯API重写股票报告HTML",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1784605981059,
+  "updatedAt": 1784606277508
+}

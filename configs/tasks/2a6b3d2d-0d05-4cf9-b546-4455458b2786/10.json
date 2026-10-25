@@ -1,0 +1,9 @@
+{
+  "subject": "验证全部修复并归档日志",
+  "description": "语法编译各文件、对关键修复做隔离验证、更新今日工作日志。",
+  "activeForm": "验证并归档",
+  "status": "completed",
+  "id": "10",
+  "createdAt": 1789523078697,
+  "updatedAt": 1789525378541
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "确认项目目录结构完整性",
+  "description": "检查 pa_agent\\main.py, pa_agent\\gui\\main_window.py, prompt_engineering 是否存在",
+  "activeForm": "确认目录结构",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1783914694749,
+  "updatedAt": 1783915421624
+}

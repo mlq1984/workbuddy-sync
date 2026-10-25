@@ -1,0 +1,9 @@
+{
+  "subject": "手动执行每日热点新闻任务",
+  "description": "手动触发新闻任务，生成今日热点资讯并推送到这里",
+  "activeForm": "正在生成每日热点新闻...",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1784952612605,
+  "updatedAt": 1784952633839
+}

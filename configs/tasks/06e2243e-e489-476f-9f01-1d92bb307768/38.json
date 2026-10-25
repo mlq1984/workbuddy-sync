@@ -1,0 +1,9 @@
+{
+  "subject": "文字区与 K 线图改为条件单文案",
+  "description": "文字区计划块改为券商条件单式表述（买入条件/止损条件/止盈条件/仓位）；drawKline 增加突破位虚线并调整标注；K线图标题加入条件单图例。",
+  "activeForm": "改写文字区与图例",
+  "status": "completed",
+  "id": "38",
+  "createdAt": 1787102222297,
+  "updatedAt": 1787102381671
+}

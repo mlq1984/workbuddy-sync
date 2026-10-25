@@ -1,0 +1,9 @@
+{
+  "subject": "真实浏览器验证 + bump SW + 部署",
+  "description": "用 agent-browser 在本地服务器真实打开页面、点开股票，验证详情页能渲染不卡死；bump SW 版本号；重新部署 CloudStudio 并验证线上。",
+  "activeForm": "部署更新到 CloudStudio",
+  "status": "completed",
+  "id": "26",
+  "createdAt": 1787058341904,
+  "updatedAt": 1787059257678
+}

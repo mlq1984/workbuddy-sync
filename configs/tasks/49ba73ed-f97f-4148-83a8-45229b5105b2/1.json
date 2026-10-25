@@ -1,0 +1,9 @@
+{
+  "subject": "预览运行并校验脚本",
+  "description": "用 --preview 模式今日跑一次，确认选股、报告蓝色字体、7日精度统计逻辑正常，不污染收藏与定时任务。",
+  "activeForm": "预览运行并校验脚本",
+  "status": "pending",
+  "id": "1",
+  "createdAt": 1789910896526,
+  "updatedAt": 1789910896526
+}

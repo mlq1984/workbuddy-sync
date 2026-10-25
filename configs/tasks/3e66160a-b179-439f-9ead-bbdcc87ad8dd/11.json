@@ -1,0 +1,9 @@
+{
+  "subject": "实现推荐买入前端逻辑（规则校验+加入+列表管理+持久化）",
+  "description": "在 js/app.js 增加：isRecommendable 规则校验；个股诊断后渲染\"加入推荐买入\"按钮；localStorage 读写（pa_recommend_list）；renderRecommend 列表渲染（查看/删除/清空）；switchTab 支持 recommend；批量选股行增加加入按钮。",
+  "activeForm": "实现推荐买入前端逻辑",
+  "status": "completed",
+  "id": "11",
+  "createdAt": 1787487581640,
+  "updatedAt": 1787487927372
+}

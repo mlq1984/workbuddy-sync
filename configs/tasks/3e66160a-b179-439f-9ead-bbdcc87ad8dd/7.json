@@ -1,0 +1,9 @@
+{
+  "subject": "后端：板块接口与全A扫描引擎",
+  "description": "server.js 增加：require engine.js 复用 PA 引擎；getSectors() 解析新浪 newSinaHy.php 行业板块(含领涨股)；getUniverse() 翻页拉取 hs_a 全A列表(过滤北交所、缓存data/universe.json)；scanScore + runScan 后台并发扫描(控制并发、进度状态)；新增路由 /api/sectors、/api/universe、/api/scan/start、/api/scan/progress。",
+  "activeForm": "实现后端板块与扫描接口",
+  "status": "pending",
+  "id": "7",
+  "createdAt": 1787484809416,
+  "updatedAt": 1787484809416
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "初始化代码审查任务",
+  "description": "全面审查工作区中的Python代码，定位其中的逻辑错误、运行时异常、边界条件不当等问题。",
+  "activeForm": "正在创建代码审查与修复的任务列表",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1789314551476,
+  "updatedAt": 1789314618209
+}

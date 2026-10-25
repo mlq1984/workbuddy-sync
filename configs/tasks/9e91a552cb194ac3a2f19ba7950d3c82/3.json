@@ -1,0 +1,9 @@
+{
+  "subject": "打开Lucky管理后台查看配置",
+  "description": "使用浏览器打开Lucky管理后台，查看当前配置（反向代理规则、DDNS等），截图并报告给用户。",
+  "activeForm": "正在打开Lucky管理后台...",
+  "status": "in_progress",
+  "id": "3",
+  "createdAt": 1785117526215,
+  "updatedAt": 1785117535417
+}

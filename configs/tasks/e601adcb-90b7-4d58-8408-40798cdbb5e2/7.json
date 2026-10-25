@@ -1,0 +1,9 @@
+{
+  "subject": "生成运行智能体.bat",
+  "description": "在 PROJECT_ROOT 下生成 GBK 编码的 运行智能体.bat 文件",
+  "activeForm": "生成 bat 文件",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1783914694762,
+  "updatedAt": 1783915454717
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "实现 UI 与 K 线图渲染",
+  "description": "index.html + style.css + app.js + chart.js(原生canvas自绘K线，红涨绿跌)。布局类似远程 App：代码输入→K线图+诊断面板(周期/方向/形态)+买卖建议卡(入场/止损/止盈/RR)+风控面板(四禁令检查)+评分卡+仓位建议。含批量选股页。",
+  "activeForm": "实现 UI 与 K 线图渲染",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1787468237379,
+  "updatedAt": 1787469098940
+}

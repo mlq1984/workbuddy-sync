@@ -1,0 +1,9 @@
+{
+  "subject": "更新每日自动化任务为卡片版",
+  "description": "修改 automation-1784895635247 的 prompt，让每日运势生成时同步产出精美卡片图片并推送",
+  "activeForm": "正在更新自动化任务",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1785715411491,
+  "updatedAt": 1785715590687
+}

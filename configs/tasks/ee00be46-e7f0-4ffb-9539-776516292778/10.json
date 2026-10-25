@@ -1,0 +1,9 @@
+{
+  "subject": "深度审查 scan_a.py 一致性",
+  "description": "检查 scan_a.py 中的所有函数实现与前端 index.html 是否保持一致，特别是评分函数 fin_score, news_score, fund_score, tech_score。",
+  "activeForm": "审查 scan_a.py 一致性",
+  "status": "completed",
+  "id": "10",
+  "createdAt": 1789349219087,
+  "updatedAt": 1789349267459
+}

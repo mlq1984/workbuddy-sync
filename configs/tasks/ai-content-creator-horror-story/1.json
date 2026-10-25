@@ -1,0 +1,9 @@
+{
+  "subject": "为《睡前那些讲究》生成 5 张关键帧图片",
+  "description": "读取 horror-story-script.md 的关键帧清单，用 ImageGen 生成 5 张 16:9 关键帧（写实电影感、都市公寓夜景、冷青色调、恐怖无血腥），保存到 C:/Users/king/WorkBuddy/2026-10-14-13-31-54/keyframes/ 下 5 个指定文件名，完成后 SendMessage 回传 team-lead（路径+prompt+氛围说明）。",
+  "activeForm": "正在生成恐怖短剧关键帧图片",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1791961862347,
+  "updatedAt": 1791962330463
+}

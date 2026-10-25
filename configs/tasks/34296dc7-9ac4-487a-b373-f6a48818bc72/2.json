@@ -1,0 +1,9 @@
+{
+  "subject": "步骤1：全量扫描与评分 (scan_a.py)",
+  "description": "运行 python scan_a.py（经引导脚本规避 bash shim 问题）。校验 kline_data 今日更新文件数接近全量（约 4900+）；Gist watch.json 时间戳为当日。",
+  "activeForm": "运行全量扫描",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1791963093430,
+  "updatedAt": 1791963668441
+}

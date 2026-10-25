@@ -1,0 +1,9 @@
+{
+  "subject": "连接 Miora 云服务获取图像生成凭证",
+  "description": "调用 connect_cloud_service 获取 clientTempToken，用于后续 miora_text_to_image 生成画面",
+  "activeForm": "连接 Miora 云服务",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1792052781939,
+  "updatedAt": 1792052908877
+}

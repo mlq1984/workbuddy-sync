@@ -1,0 +1,9 @@
+{
+  "subject": "实现规则版本管理模块 rule_versioning.py",
+  "description": "新建 tools/rule_versioning.py：快照存储、变更注册表、diff/show/restore CLI。跟踪 4 个规则文件：future3d_rules.json、future7_state.json、future3d_state.json、tools/future7_verify_config.json。",
+  "activeForm": "实现规则版本管理模块",
+  "status": "pending",
+  "id": "4",
+  "createdAt": 1792844273614,
+  "updatedAt": 1792844273614
+}

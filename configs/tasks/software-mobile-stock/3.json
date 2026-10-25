@@ -1,0 +1,9 @@
+{
+  "subject": "分析 Service Worker 缓存与更新机制",
+  "description": "审查 sw.js 的缓存策略、install/activate、skipWaiting/clients.claim、controllerchange 触发逻辑。验证：SW 更新后 PWA 常驻页面能否真正 reload 到新代码；./watch.js 是否被缓存导致拿到旧快照；ASSETS 预缓存路径是否正确（站点根 vs /stock/）。",
+  "activeForm": "分析 SW 缓存与更新机制",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1787052356408,
+  "updatedAt": 1787054065523
+}

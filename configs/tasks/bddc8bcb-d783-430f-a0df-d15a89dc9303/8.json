@@ -1,0 +1,14 @@
+{
+  "subject": "制定统一设计系统（design tokens）",
+  "description": "定义一套设计token：配色(红涨绿跌/靛紫主色/浅色)、字体、间距、圆角、卡片、暗色支持。保持移动端优先PWA。",
+  "activeForm": "设计统一设计系统",
+  "status": "completed",
+  "id": "8",
+  "createdAt": 1792850351295,
+  "updatedAt": 1792858385192,
+  "metadata": {
+    "cancelled": true,
+    "cancelReason": "cancelled",
+    "cancelledAt": 1792857999211
+  }
+}

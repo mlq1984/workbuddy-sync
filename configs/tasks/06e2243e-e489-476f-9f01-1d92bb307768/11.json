@@ -1,0 +1,9 @@
+{
+  "subject": "Fix #21 Event delegation for card clicks",
+  "description": "Implement event delegation for stock card click handlers - move from per-card onclick to single delegated handler on container",
+  "activeForm": "Fixing audit item #21 - event delegation",
+  "status": "completed",
+  "id": "11",
+  "createdAt": 1785831414928,
+  "updatedAt": 1785832081163
+}

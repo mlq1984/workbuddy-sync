@@ -1,0 +1,9 @@
+{
+  "subject": "推送运势卡片并记录",
+  "description": "通过 present_files 推送卡片图片，更新自动化 memory 和每日工作日志",
+  "activeForm": "正在推送运势卡片",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1785715411502,
+  "updatedAt": 1785715629699
+}

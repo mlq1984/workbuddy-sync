@@ -1,0 +1,9 @@
+{
+  "subject": "修复 nas_io SSH 写入容错（重连重试 + 大文件 stdin）",
+  "description": "nas_io.ssh_write_text 在 SSH 连接被远端重置（WinError 10054）时静默失败。增加：1) 异常后强制重连并重试一次；2) 大内容（base64>60KB）改走 stdin 传输，避免 shell 命令行长度限制。保证 future3d_predictions.json 等能可靠写入。",
+  "activeForm": "修复 nas_io SSH 写入容错",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1790856779333,
+  "updatedAt": 1790857014819
+}

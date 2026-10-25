@@ -1,0 +1,9 @@
+{
+  "subject": "修复 report.html 新闻面过时文字(#1)",
+  "description": "L1709 的\"新闻面数据未接入...按中性值6分\"改为真实说明：近10日价格动量代理舆情(4-8分)，非真实新闻源。",
+  "activeForm": "修复新闻面过时文字",
+  "status": "completed",
+  "id": "57",
+  "createdAt": 1787889653573,
+  "updatedAt": 1787889698543
+}

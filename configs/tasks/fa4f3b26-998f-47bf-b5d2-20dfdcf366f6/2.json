@@ -1,0 +1,9 @@
+{
+  "subject": "部署 future3d_engine.py v2 到 NAS",
+  "description": "将 Al Brooks 改进版引擎部署到 NAS，替换 v1 版本",
+  "activeForm": "部署 v2 引擎到 NAS",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1788853447820,
+  "updatedAt": 1788854204341
+}

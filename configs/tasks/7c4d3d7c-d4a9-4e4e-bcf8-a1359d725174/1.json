@@ -1,0 +1,9 @@
+{
+  "subject": "设计并渲染今日运势卡片 PNG",
+  "description": "用 HTML/CSS 设计精美的运势卡片（竖版手机友好），包含今日（8月3日）全部运势内容，通过无头浏览器截图输出 PNG",
+  "activeForm": "正在设计渲染运势卡片",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1785715411465,
+  "updatedAt": 1785715575020
+}

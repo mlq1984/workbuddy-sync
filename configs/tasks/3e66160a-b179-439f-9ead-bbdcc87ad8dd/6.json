@@ -1,0 +1,9 @@
+{
+  "subject": "本地运行验证并写 README",
+  "description": "启动 node server.js 验证接口与页面渲染，修复问题；编写 README 说明运行方式(在该文件夹 node server.js 后访问 localhost)。",
+  "activeForm": "本地运行验证并写 README",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1787468237391,
+  "updatedAt": 1787469098951
+}

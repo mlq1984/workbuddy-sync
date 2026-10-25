@@ -1,0 +1,9 @@
+{
+  "subject": "升级 CACHE_NAME 版本解决乱码",
+  "description": "将 CACHE_NAME 从 stock-v30 升级到 stock-v31，强制刷新所有客户端缓存",
+  "activeForm": "升级缓存版本解决乱码",
+  "status": "completed",
+  "id": "14",
+  "createdAt": 1786431503906,
+  "updatedAt": 1786431585700
+}

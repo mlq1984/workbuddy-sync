@@ -1,0 +1,9 @@
+{
+  "subject": "新增 computePlan 技术位计划函数",
+  "description": "新增基于真实K线的 computePlan：近期高低点(阻力/支撑) + ATR(20) + MA20/MA60趋势判定，算出 支撑位买入/止损/目标1(阻力)/目标2(2R)/盈亏比/趋势标签，替代固定百分比。",
+  "activeForm": "新增 computePlan 技术位计划",
+  "status": "completed",
+  "id": "32",
+  "createdAt": 1787064148709,
+  "updatedAt": 1787064195479
+}

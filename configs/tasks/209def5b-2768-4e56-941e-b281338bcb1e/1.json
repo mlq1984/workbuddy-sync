@@ -1,0 +1,9 @@
+{
+  "subject": "安装 pyautogui 依赖",
+  "description": "在 Python 虚拟环境中安装 pyautogui 和 pygetwindow",
+  "activeForm": "安装ing pyautogui 依赖",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1784081890677,
+  "updatedAt": 1784082054351
+}

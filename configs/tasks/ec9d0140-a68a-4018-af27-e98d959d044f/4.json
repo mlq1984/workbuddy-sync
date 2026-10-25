@@ -1,0 +1,9 @@
+{
+  "subject": "审查 scan_a.py（全量扫描命脉）",
+  "description": "运行时错误、异常处理、边界、数据流、评分逻辑审查",
+  "activeForm": "审查 scan_a.py 主扫描",
+  "status": "pending",
+  "id": "4",
+  "createdAt": 1791351339208,
+  "updatedAt": 1791351339208
+}

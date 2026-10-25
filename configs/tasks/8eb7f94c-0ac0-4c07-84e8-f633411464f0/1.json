@@ -1,0 +1,9 @@
+{
+  "subject": "编写每日自动签到脚本",
+  "description": "编写 checkin.py：WBIPC 握手 + 查状态 + 幂等签到 + 执行摘要日志",
+  "activeForm": "编写每日自动签到脚本",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1791193707556,
+  "updatedAt": 1791194109366
+}

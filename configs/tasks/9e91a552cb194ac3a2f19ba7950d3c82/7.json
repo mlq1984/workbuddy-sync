@@ -1,0 +1,9 @@
+{
+  "subject": "重建stockintegrated.html - 合并个股分析项目所有功能",
+  "description": "将report.html中的三维评分、Canvas K线图、自选股、财务数据、投资建议等全部合并到stockintegrated.html，数据源全部切换为腾讯API+东方财富datacenter",
+  "activeForm": "合并重建综合报告页面",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1785388109391,
+  "updatedAt": 1785388682176
+}

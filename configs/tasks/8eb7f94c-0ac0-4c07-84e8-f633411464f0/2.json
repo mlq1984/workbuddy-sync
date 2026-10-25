@@ -1,0 +1,9 @@
+{
+  "subject": "实跑验证一次真实签到",
+  "description": "运行脚本验证签到领取逻辑（今天尚未签到，正好实测）",
+  "activeForm": "实跑验证一次真实签到",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1791193707591,
+  "updatedAt": 1791194213069
+}

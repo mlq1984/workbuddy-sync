@@ -1,0 +1,9 @@
+{
+  "subject": "重构 future7_daily 复用验证模块",
+  "description": "修改 tools/future7_daily.py：移除自带的 reconcile_7d 重复逻辑，改为调用 future7_verify.reconcile() 作为唯一对账/调参入口，避免 rule_stats 双计。保留选股与报告逻辑。",
+  "activeForm": "重构 future7_daily 复用验证模块",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1789998211670,
+  "updatedAt": 1789998993247
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "按类别分批安装市场技能",
+  "description": "将市场技能按功能域分类，排除重复后分批安装到 ~/.workbuddy/skills/",
+  "activeForm": "按类别分批安装技能",
+  "status": "pending",
+  "id": "2",
+  "createdAt": 1790986623189,
+  "updatedAt": 1790986623189
+}

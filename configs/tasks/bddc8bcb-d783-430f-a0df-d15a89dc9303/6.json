@@ -1,0 +1,9 @@
+{
+  "subject": "端到端验证：初始快照 + diff + 恢复",
+  "description": "跑一次 detect 建立初始版本，然后手动改一处权重触发 snapshot，跑 list/diff 验证，最后 restore 到初始版本验证回滚。",
+  "activeForm": "端到端验证版本管理",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1792844273678,
+  "updatedAt": 1792847421326
+}

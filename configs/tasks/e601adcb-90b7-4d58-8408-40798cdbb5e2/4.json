@@ -1,0 +1,9 @@
+{
+  "subject": "升级 pip",
+  "description": "使用清华源升级 pip 到最新版本，验证版本号",
+  "activeForm": "升级 pip",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1783914694724,
+  "updatedAt": 1783915216292
+}

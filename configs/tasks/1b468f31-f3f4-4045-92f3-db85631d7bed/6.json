@@ -1,0 +1,9 @@
+{
+  "subject": "将 HTML 改为双击直接运行的 file:// 兼容模式",
+  "description": "将所有 fetch() 调用改为 script 标签注入（JSONP），因为 file:// 协议下浏览器阻止 fetch()。腾讯行情 API 天然返回 JS 变量可直接用，K线和分时需找 JSONP 替代方案或改用 script 标签技巧。",
+  "activeForm": "改造 HTML 为 file:// 兼容模式",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1784620563101,
+  "updatedAt": 1784620961521
+}

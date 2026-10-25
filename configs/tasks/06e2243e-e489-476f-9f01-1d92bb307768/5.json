@@ -1,0 +1,9 @@
+{
+  "subject": "桌面版同步 + Service Worker 缓存版本升级",
+  "description": "把改动同步到桌面版 stockintegrated.html，缓存版本升至 stock-v18",
+  "activeForm": "同步桌面版 + 升级缓存版本",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1785807828923,
+  "updatedAt": 1785810494811
+}

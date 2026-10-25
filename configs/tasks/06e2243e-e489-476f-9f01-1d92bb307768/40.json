@@ -1,0 +1,9 @@
+{
+  "subject": "修复自选板块日期显示错误",
+  "description": "renderFavSection 中 shortDate 期望 YYYY-MM-DD(10位)，但 klineAPI 返回 YYYYMMDD(8位)，导致日期全部显示 —。修正为正确解析 YYYYMMDD 格式。",
+  "activeForm": "修复自选板块日期显示错误",
+  "status": "completed",
+  "id": "40",
+  "createdAt": 1787104080478,
+  "updatedAt": 1787104735825
+}

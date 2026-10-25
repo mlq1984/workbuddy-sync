@@ -1,0 +1,9 @@
+{
+  "subject": "创建每日定时自动化",
+  "description": "用 automation_update 创建 recurring 任务：工作日(MO-FR) 18:00，validFrom=2026-09-21，运行 future7_daily.py 并产出执行摘要。",
+  "activeForm": "创建每日定时自动化",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1789910896562,
+  "updatedAt": 1789912218641
+}

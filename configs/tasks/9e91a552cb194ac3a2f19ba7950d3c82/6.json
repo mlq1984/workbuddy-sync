@@ -1,0 +1,9 @@
+{
+  "subject": "更新stock_server.py - 添加腾讯API+东方财富datacenter代理",
+  "description": "在stock_server.py中添加腾讯行情API、腾讯K线API、东方财富datacenter财务数据代理，替换现有新浪API",
+  "activeForm": "更新股票代理服务器",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1785388109378,
+  "updatedAt": 1785388144471
+}

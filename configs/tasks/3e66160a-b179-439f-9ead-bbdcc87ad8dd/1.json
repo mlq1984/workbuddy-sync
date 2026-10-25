@@ -1,0 +1,9 @@
+{
+  "subject": "搭建 pa_agent_app 项目骨架",
+  "description": "在 C:\\Users\\king\\WorkBuddy\\股票交易规则\\pa_agent_app\\ 下创建文件夹结构，编写 Node 轻量代理+静态服务器 server.js（用内置 http/https + fetch，无需 npm install），解决东方财富/新浪 API 的 CORS 问题。",
+  "activeForm": "搭建 pa_agent_app 项目骨架",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1787468237314,
+  "updatedAt": 1787468506256
+}

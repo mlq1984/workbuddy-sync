@@ -1,0 +1,9 @@
+{
+  "subject": "审计 web 前端（index/report/sw）",
+  "description": "审查 web/index.html、report.html、sw.js 的启动链、运行时异常、缓存策略与安全(CSP/XSS)。",
+  "activeForm": "审计 web 前端 index/report/sw",
+  "status": "pending",
+  "id": "3",
+  "createdAt": 1789521631725,
+  "updatedAt": 1789521631725
+}

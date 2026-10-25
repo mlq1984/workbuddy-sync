@@ -1,0 +1,9 @@
+{
+  "subject": "编写巡检配置 task_monitor_config.json",
+  "description": "定义被监控任务清单（扫描/精选/验证/Gist同步/心跳）、交易日历（跳过周末+节假日）、通知器（飞书webhook+文件兜底）、去重与每日摘要开关。",
+  "activeForm": "编写巡检配置文件",
+  "status": "completed",
+  "id": "9",
+  "createdAt": 1790080064866,
+  "updatedAt": 1790080177893
+}

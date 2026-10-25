@@ -1,0 +1,9 @@
+{
+  "subject": "Fix #27 Electron preload security",
+  "description": "Add proper preload script for Electron to restrict Node.js context in renderer, then restructure HTML loading",
+  "activeForm": "Fixing audit item #27 - Electron preload",
+  "status": "completed",
+  "id": "10",
+  "createdAt": 1785831414913,
+  "updatedAt": 1785832081175
+}

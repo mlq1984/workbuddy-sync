@@ -1,0 +1,9 @@
+{
+  "subject": "修复 loadStock 详情页 K线卡死",
+  "description": "移除 loadStock 中对 fetchKlineFromGist（访问被墙 gist、无超时）的 await 阻塞，改用 klineAPI 直取腾讯 JSONP，并给所有接口加总超时保护，避免详情页永久停在\"加载分析数据...\"。",
+  "activeForm": "修复 loadStock 详情页卡死",
+  "status": "completed",
+  "id": "23",
+  "createdAt": 1787058341227,
+  "updatedAt": 1787059140227
+}

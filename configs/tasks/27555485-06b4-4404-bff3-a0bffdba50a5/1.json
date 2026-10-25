@@ -1,0 +1,9 @@
+{
+  "subject": "修复搜索栏搜索功能",
+  "description": "1. 搜索API从fetch改为scriptFetch(JSONP)绕过CORS 2. 添加键盘上下键导航 3. 修复市场标签 4. 同步更新report.html",
+  "activeForm": "修复搜索栏搜索功能",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1785769106292,
+  "updatedAt": 1785769154242
+}

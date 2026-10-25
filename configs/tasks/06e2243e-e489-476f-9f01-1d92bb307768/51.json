@@ -1,0 +1,9 @@
+{
+  "subject": "验证统一后评分逻辑并跑全量扫描",
+  "description": "py_compile 校验语法；python scan_a.py 20 小样本验证分数合理；若通过则跑全量扫描 regenerate watch.js。",
+  "activeForm": "验证评分逻辑并跑全量扫描",
+  "status": "completed",
+  "id": "51",
+  "createdAt": 1787392363491,
+  "updatedAt": 1787392940333
+}

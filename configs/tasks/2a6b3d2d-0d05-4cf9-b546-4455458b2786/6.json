@@ -1,0 +1,9 @@
+{
+  "subject": "B2/B4/B6/B9 修复 scan_a.py",
+  "description": "B2 删除重复的 save_klines_yearly 调用(907)；B4 calc_52w 改为最近252日；B6 GIST_TOK 改 curl --config 免明文泄露；B9 watchCount 对未来可期组去重。",
+  "activeForm": "修复 scan_a.py 多项问题",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1789523078647,
+  "updatedAt": 1789524187162
+}

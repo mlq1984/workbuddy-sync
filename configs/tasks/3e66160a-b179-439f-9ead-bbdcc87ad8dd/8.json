@@ -1,0 +1,9 @@
+{
+  "subject": "验证与记忆",
+  "description": "重启 server，验证 /api/sectors 返回板块、/api/scan/start+progress 全流程扫描出候选、页面渲染正常；写入今日工作记忆。",
+  "activeForm": "验证功能并写记忆",
+  "status": "pending",
+  "id": "8",
+  "createdAt": 1787484809430,
+  "updatedAt": 1787484809430
+}

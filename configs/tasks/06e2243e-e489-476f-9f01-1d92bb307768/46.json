@@ -1,0 +1,9 @@
+{
+  "subject": "编写 Cloudflare Worker 同步代理代码",
+  "description": "提供 worker-sync.js（读 GH_TOKEN 环境变量，GET 读/POST 写 Gist favs.json，CORS 放行），附 wrangler.toml 与部署说明。",
+  "activeForm": "编写 Worker 同步代理代码",
+  "status": "completed",
+  "id": "46",
+  "createdAt": 1787109272241,
+  "updatedAt": 1787109339292
+}

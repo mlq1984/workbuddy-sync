@@ -1,0 +1,9 @@
+{
+  "subject": "修复 sw.js 两个 bug（timeStr→time, notifyLocked→notifyClients）",
+  "description": "修复第133行 timeStr 未定义和第135行 notifyLocked 未定义的问题",
+  "activeForm": "修复 sw.js 中的 bug",
+  "status": "completed",
+  "id": "13",
+  "createdAt": 1786431503878,
+  "updatedAt": 1786431585680
+}

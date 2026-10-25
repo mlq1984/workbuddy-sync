@@ -1,0 +1,9 @@
+{
+  "subject": "改写文字区买入点/目标价/止损",
+  "description": "loadStock 中替换固定%的计划块，改用 computePlan 的支撑位/阻力位/止损/盈亏比与趋势标签；更新计划区文本与 K 线图标题（加入\"计划位\"说明）。",
+  "activeForm": "改写文字区买卖计划",
+  "status": "completed",
+  "id": "33",
+  "createdAt": 1787064154851,
+  "updatedAt": 1787064226818
+}

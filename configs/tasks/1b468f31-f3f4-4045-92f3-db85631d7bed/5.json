@@ -1,0 +1,9 @@
+{
+  "subject": "Add intraday trend chart",
+  "description": "Add minute-level intraday chart using Tencent minute-kline API. Show today's price movement with Canvas-based chart.",
+  "activeForm": "Adding intraday chart feature",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1784619625702,
+  "updatedAt": 1784619822310
+}

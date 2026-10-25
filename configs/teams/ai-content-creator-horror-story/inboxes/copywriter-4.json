@@ -1,0 +1,18 @@
+[
+  {
+    "from": "team-lead",
+    "text": "主理人已直接完成完整分镜脚本，你无需继续工作。任务终止，可关闭。",
+    "summary": "任务终止，脚本已由主理人直接完成",
+    "timestamp": "2026-10-14T06:56:51.011Z",
+    "id": "9dc4c842-2660-447b-ae49-c1785977b667",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"request_id\":\"shutdown-copywriter-4-1791961022114-f24d404e\",\"reason\":\"主理人已直接完成完整分镜脚本，你无需继续工作。任务终止，确认关闭。\",\"from\":\"team-lead\",\"timestamp\":\"2026-10-14T06:57:02.114Z\"}",
+    "summary": "Shutdown request for copywriter-4",
+    "timestamp": "2026-10-14T06:57:02.114Z",
+    "id": "553df6fb-d83f-4526-a051-77d6104a0a6f",
+    "read": true
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "subject": "验证并部署 v81",
+  "description": "Node 验证 calcSignals/computePlan 新逻辑价位合理；语法检查；真实浏览器验证详情页渲染；bump SW v80→v81；部署 CloudStudio。",
+  "activeForm": "验证并部署 v81",
+  "status": "completed",
+  "id": "39",
+  "createdAt": 1787102222309,
+  "updatedAt": 1787102845491
+}

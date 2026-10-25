@@ -1,0 +1,9 @@
+{
+  "subject": "实现 AI 助手 UI（替换搜索栏）",
+  "description": "把搜索框改为 AI 对话输入框：聊天历史区 + 输入 + 快捷问题 + 流式输出",
+  "activeForm": "实现 AI 助手 UI",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1785807828891,
+  "updatedAt": 1785809683704
+}

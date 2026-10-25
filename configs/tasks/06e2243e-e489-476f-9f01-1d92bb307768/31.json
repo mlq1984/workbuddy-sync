@@ -1,0 +1,9 @@
+{
+  "subject": "重写 calcSignals 买卖信号",
+  "description": "去掉买入要求 dif<0、卖出要求 dif>0 的零轴方向限制，让均线+MACD 双确认在上升/下降市都能对称触发，修复单边市只喊单边的问题。",
+  "activeForm": "重写 calcSignals 买卖信号",
+  "status": "completed",
+  "id": "31",
+  "createdAt": 1787064139854,
+  "updatedAt": 1787064175413
+}

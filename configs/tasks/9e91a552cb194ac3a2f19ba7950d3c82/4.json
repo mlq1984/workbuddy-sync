@@ -1,0 +1,9 @@
+{
+  "subject": "分析个股分析项目的功能和API",
+  "description": "读取report.html和stock-report.html，提取功能点、API调用方式、数据源结构",
+  "activeForm": "分析个股分析项目功能",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1785388033288,
+  "updatedAt": 1785388060353
+}

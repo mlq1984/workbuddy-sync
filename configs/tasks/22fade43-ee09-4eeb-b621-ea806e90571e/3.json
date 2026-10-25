@@ -1,0 +1,9 @@
+{
+  "subject": "输出 JPG 并交付",
+  "description": "成品转 JPG 保存到工作区根目录，present_files 展示，简述模型/尺寸/提示词",
+  "activeForm": "正在交付成品",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1791360770213,
+  "updatedAt": 1791361994303
+}

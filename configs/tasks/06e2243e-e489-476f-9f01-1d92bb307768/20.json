@@ -1,0 +1,9 @@
+{
+  "subject": "前端改为读取 Gist 扫描结果",
+  "description": "修改 mobile-stock/index.html 的 loadWatchlist：优先从 GitHub Gist 的 watch.json 读取云端扫描结果并渲染；若无/过期(超过1天)则降级到本地 scanStocks 兜底。保留现有扫描UI和手动刷新按钮(刷新时强制重新拉Gist)。",
+  "activeForm": "前端改为从 Gist 读取扫描结果",
+  "status": "completed",
+  "id": "20",
+  "createdAt": 1786967530948,
+  "updatedAt": 1786968330732
+}

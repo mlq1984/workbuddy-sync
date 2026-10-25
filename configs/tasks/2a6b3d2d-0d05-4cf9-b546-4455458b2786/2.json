@@ -1,0 +1,9 @@
+{
+  "subject": "审计 scan_future.py / future3d_engine.py 预测模块",
+  "description": "通读 scan_future.py 与 future3d_engine.py，排查预测引擎逻辑、JSON解析、异常处理与边界。",
+  "activeForm": "审计预测模块 scan_future.py / future3d_engine.py",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1789521631711,
+  "updatedAt": 1789522356188
+}

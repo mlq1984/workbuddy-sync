@@ -1,0 +1,9 @@
+{
+  "subject": "删除 stock_server.py AI 代码",
+  "description": "删除 /api/ai/chat、fallback_reply、send_sse_fallback、build_system_prompt 等 AI 相关代码",
+  "activeForm": "删除 stock_server.py AI 接口",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1785819228147,
+  "updatedAt": 1785819382202
+}

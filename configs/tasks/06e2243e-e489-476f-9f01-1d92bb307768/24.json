@@ -1,0 +1,9 @@
+{
+  "subject": "重构 klineAPI 仅用腾讯 JSONP",
+  "description": "klineAPI 当前优先新浪 PC fetch，但新浪域名不在 CSP connect-src 白名单，真实浏览器会被 CSP 拦截且浪费3秒重试。改为只用腾讯 web.ifzq.gtimg.cn JSONP（script-src 白名单、国内可达），加12s兜底超时。",
+  "activeForm": "重构 klineAPI 仅用腾讯",
+  "status": "completed",
+  "id": "24",
+  "createdAt": 1787058341867,
+  "updatedAt": 1787059140264
+}

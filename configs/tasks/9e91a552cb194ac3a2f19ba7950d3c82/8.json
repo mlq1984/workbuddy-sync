@@ -1,0 +1,9 @@
+{
+  "subject": "将股票分析系统打包为Windows桌面App",
+  "description": "用Electron把stock_server.py+stockintegrated.html打包成一个可安装的Windows exe应用，双击即可使用",
+  "activeForm": "创建Electron桌面应用",
+  "status": "completed",
+  "id": "8",
+  "createdAt": 1785399811739,
+  "updatedAt": 1785403365607
+}

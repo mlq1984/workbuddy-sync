@@ -1,0 +1,9 @@
+{
+  "subject": "修复 scan_a.py SSH 批量落盘 PermissionError",
+  "description": "NAS \\\\king-NAS\\stock\\stock 上 scan_a.py 的 SSH 批量落盘子任务报 PermissionError [Errno 13]，rc=1，0/499 块成功。定位原因并修复。",
+  "activeForm": "修复 scan_a.py 落盘权限错误",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1791460655187,
+  "updatedAt": 1791463014268
+}

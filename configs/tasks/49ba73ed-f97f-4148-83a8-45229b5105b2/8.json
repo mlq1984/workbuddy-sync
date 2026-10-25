@@ -1,0 +1,9 @@
+{
+  "subject": "运行验证并交付报告",
+  "description": "实跑 future7_verify 生成历史验证记录、命中率趋势、调参报告，检查 future7_state.json/future7_verify_log.json/predictions 一致性，输出HTML报告并present。",
+  "activeForm": "运行验证并交付报告",
+  "status": "completed",
+  "id": "8",
+  "createdAt": 1789998211695,
+  "updatedAt": 1789999833514
+}

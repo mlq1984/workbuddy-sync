@@ -1,0 +1,9 @@
+{
+  "subject": "B1 修复 report.html 深度评分口径",
+  "description": "对齐 report.html 四个评分函数(financial/news/fund/tech)与总分权重到 scan_a.py/index.html 权威基准 0.30/0.15/0.35/0.20，技术面补回 OBV，统一增长项与新闻项算法。",
+  "activeForm": "修复 report.html 深度评分口径",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1789523078626,
+  "updatedAt": 1789525378522
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "部署并验证优化后的自选推荐规则",
+  "description": "bump sw.js CACHE_NAME 到 stock-v89，CloudStudio 重新部署以应用规则优化，并做逻辑校验。",
+  "activeForm": "部署并验证优化后的自选推荐规则",
+  "status": "completed",
+  "id": "49",
+  "createdAt": 1787234231867,
+  "updatedAt": 1787236055033
+}

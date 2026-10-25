@@ -1,0 +1,9 @@
+{
+  "subject": "前端 push/pull 改走代理并优化合并",
+  "description": "pushFavs：有代理则 POST 代理，否则回退直连 Gist。pullFavs：有代理则 GET 代理，否则直连；合并逻辑改为以远端为全量真源+补元数据（删除也能同步）。",
+  "activeForm": "改造 push/pull 同步逻辑",
+  "status": "completed",
+  "id": "45",
+  "createdAt": 1787109272234,
+  "updatedAt": 1787109317388
+}

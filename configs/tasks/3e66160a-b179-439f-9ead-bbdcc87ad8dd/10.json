@@ -1,0 +1,9 @@
+{
+  "subject": "扩展 index.html 增加推荐买入 tab 与面板",
+  "description": "顶部tab、底部tabbar增加\"推荐买入\"；singlePane结果区增加\"加入推荐买入\"操作卡片；main内增加recommendPane列表面板（含规则说明、计数、清空按钮、列表容器）。",
+  "activeForm": "扩展 index.html 增加推荐买入 tab 与面板",
+  "status": "completed",
+  "id": "10",
+  "createdAt": 1787487581623,
+  "updatedAt": 1787487927344
+}

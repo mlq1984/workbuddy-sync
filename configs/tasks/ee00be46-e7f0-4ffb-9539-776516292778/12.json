@@ -1,0 +1,9 @@
+{
+  "subject": "深度审查 web/index.html 与云端一致性",
+  "description": "检查 web/index.html 中的所有函数实现与云端 scan_a.py 是否完全一致。",
+  "activeForm": "审查 web/index.html 一致性",
+  "status": "completed",
+  "id": "12",
+  "createdAt": 1789349232916,
+  "updatedAt": 1789349276008
+}

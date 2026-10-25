@@ -1,0 +1,9 @@
+{
+  "subject": "调整云端 scan_a.py 阈值与上行规则",
+  "description": "scan_a.py: CAT_STRONG_MIN 8→7（激活强烈推荐档）；筛选规则改为\"推荐买入(6~7)与观望等待(4~6)均需近3日上行，强烈推荐(>=7)精英档不强制\"；同步更新文档注释(12-16行)。",
+  "activeForm": "调整云端 scan_a.py 规则",
+  "status": "completed",
+  "id": "27",
+  "createdAt": 1787060869264,
+  "updatedAt": 1787060929017
+}

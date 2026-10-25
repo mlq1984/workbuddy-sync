@@ -1,0 +1,9 @@
+{
+  "subject": "删除 fetchKlineFromGist 并加固其他请求",
+  "description": "删除 fetchKlineFromGist 函数（依赖被墙 gist）；给 quoteAPI 加 AbortController 超时；pullFavs 加超时且 init 中改为非阻塞调用，避免 await 拖住 loadWatchlist。",
+  "activeForm": "删除废弃函数并加固请求",
+  "status": "completed",
+  "id": "25",
+  "createdAt": 1787058341889,
+  "updatedAt": 1787059140242
+}

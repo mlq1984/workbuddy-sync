@@ -1,0 +1,9 @@
+{
+  "subject": "重标 52周 为 区间(#3)",
+  "description": "report.html 中所有\"52周\"可见标签与注释改为\"区间\"(当前K线约120日)：L866/867/868评分项、L1766/1767/1768 stat box、L1843、及 L684/L861/L886/L898 注释。",
+  "activeForm": "重标 52周 为区间",
+  "status": "completed",
+  "id": "59",
+  "createdAt": 1787889667847,
+  "updatedAt": 1787889837430
+}

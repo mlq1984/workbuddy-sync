@@ -1,0 +1,9 @@
+{
+  "subject": "定位项目根目录 PROJECT_ROOT",
+  "description": "搜索存在 pa_agent\\main.py 和 pyproject.toml 的目录，确定为 PROJECT_ROOT",
+  "activeForm": "定位项目根目录",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1783914694689,
+  "updatedAt": 1783914898067
+}

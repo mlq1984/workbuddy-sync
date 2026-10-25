@@ -1,0 +1,18 @@
+[
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"request_id\":\"shutdown-copywriter-1791956877736-00103e92\",\"reason\":\"恐怖短篇已交付用户，任务完成，感谢！\",\"from\":\"team-lead\",\"timestamp\":\"2026-10-14T05:47:57.736Z\"}",
+    "summary": "Shutdown request for copywriter",
+    "timestamp": "2026-10-14T05:47:57.736Z",
+    "id": "999d4158-64fd-42d4-972e-d661d162866f",
+    "read": true
+  },
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"request_id\":\"shutdown-copywriter-1791957503655-08428263\",\"reason\":\"定稿已确认并交付用户，本次任务全部完成，感谢！如无其他事项可关闭。\",\"from\":\"team-lead\",\"timestamp\":\"2026-10-14T05:58:23.655Z\"}",
+    "summary": "Shutdown request for copywriter",
+    "timestamp": "2026-10-14T05:58:23.655Z",
+    "id": "295c0d71-1fa4-40ee-9880-62e6376e4cbf",
+    "read": true
+  }
+]

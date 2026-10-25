@@ -1,0 +1,9 @@
+{
+  "subject": "Create Electron project structure",
+  "description": "Set up package.json, main.js, copy stock-report.html into Electron project folder",
+  "activeForm": "Setting up Electron project",
+  "status": "pending",
+  "id": "7",
+  "createdAt": 1784622399910,
+  "updatedAt": 1784622399910
+}

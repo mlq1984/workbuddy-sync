@@ -1,0 +1,9 @@
+{
+  "subject": "统一云端扫描评分为前端四维公式",
+  "description": "修改 scan_a.py：权重改为 0.30/0.15/0.35/0.20，fin_score 加入 f10(毛利率/ROE/负债率/净利增速)、tech_score 对齐前端超买防护、get_stock_score 改为四维加权、新增 fetch_f10（与前端 f10JSONP 同源接口）、main 拉取 f10 并传入。",
+  "activeForm": "统一云端扫描评分为前端四维公式",
+  "status": "completed",
+  "id": "50",
+  "createdAt": 1787392363474,
+  "updatedAt": 1787392594434
+}

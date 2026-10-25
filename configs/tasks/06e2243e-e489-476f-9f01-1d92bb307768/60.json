@@ -1,0 +1,9 @@
+{
+  "subject": "统一为单文件 + server.py(#4/#5)",
+  "description": "删除 stock-report.html(与 report.html 仅差1行注释)，server.py HTML_FILE 改为 report.html，确立 report.html 为唯一源。",
+  "activeForm": "统一文件并改 server.py",
+  "status": "completed",
+  "id": "60",
+  "createdAt": 1787889674630,
+  "updatedAt": 1787889886190
+}

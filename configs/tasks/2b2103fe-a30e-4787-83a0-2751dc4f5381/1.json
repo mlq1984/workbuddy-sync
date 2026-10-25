@@ -1,0 +1,9 @@
+{
+  "subject": "识别已安装技能与市场技能的功能重叠",
+  "description": "对比已安装的44个技能与市场中260+个技能，按功能分类找出重复项",
+  "activeForm": "分析技能功能重叠",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1790986492410,
+  "updatedAt": 1790986868754
+}

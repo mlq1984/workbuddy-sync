@@ -1,0 +1,9 @@
+{
+  "subject": "重做报告页并同步更新生成脚本",
+  "description": "重做future7_today.html/验证/回测报告的视觉，并同步更新future7_daily.py与future7_verify.py的render函数，保证下次运行也是新样式。",
+  "activeForm": "重做future7报告与验证报告",
+  "status": "completed",
+  "id": "10",
+  "createdAt": 1792850351354,
+  "updatedAt": 1792858385227
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "步骤2：未来可期·每日精选 7 日验证 (run_future7.py)",
+  "description": "运行 python C:/Users/king/.workbuddy/run_future7.py。汇报今日入选股票名称+代码、规则分、预期涨幅、近1/2/4周涨幅、依据、7日命中率、是否已写入收藏、报告路径。",
+  "activeForm": "运行未来可期精选",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1791963093453,
+  "updatedAt": 1791963940588
+}

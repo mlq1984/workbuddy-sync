@@ -1,0 +1,9 @@
+{
+  "subject": "Fix #28 Build pipeline setup",
+  "description": "Create a proper build pipeline: separate CSS/JS, implement build script to bundle, sync desktop/mobile from shared source",
+  "activeForm": "Fixing audit item #28 - build pipeline",
+  "status": "completed",
+  "id": "12",
+  "createdAt": 1785831414940,
+  "updatedAt": 1785832081185
+}

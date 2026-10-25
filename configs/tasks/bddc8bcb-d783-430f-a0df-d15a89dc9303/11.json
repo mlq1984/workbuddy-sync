@@ -1,0 +1,9 @@
+{
+  "subject": "预览验证并交付",
+  "description": "本地起服务预览，截图/校验渲染正常，无JS报错，present_files展示。",
+  "activeForm": "验证与交付",
+  "status": "completed",
+  "id": "11",
+  "createdAt": 1792850351384,
+  "updatedAt": 1792858385235
+}

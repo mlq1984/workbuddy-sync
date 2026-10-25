@@ -1,0 +1,9 @@
+{
+  "subject": "Build desktop version",
+  "description": "Build desktop Electron app with updated code (stockintegrated.html + stock_server.py)",
+  "activeForm": "Fixing audit items, building desktop",
+  "status": "completed",
+  "id": "9",
+  "createdAt": 1785831414898,
+  "updatedAt": 1785832377336
+}

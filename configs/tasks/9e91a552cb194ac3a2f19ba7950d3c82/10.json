@@ -1,0 +1,9 @@
+{
+  "subject": "全部合并个股分析功能到手机版",
+  "description": "把report.html的4维度评分体系+技术指标明细+均线详情表+新闻面+支撑压力位全部合并到mobile-stock/index.html",
+  "activeForm": "将个股分析所有功能合并到手机版",
+  "status": "in_progress",
+  "id": "10",
+  "createdAt": 1785459543318,
+  "updatedAt": 1785459560925
+}

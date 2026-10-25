@@ -1,0 +1,9 @@
+{
+  "subject": "编写每日精选7日验证脚本",
+  "description": "创建 tools/future7_daily.py：复用 future3d_engine 的11条「未来可期」规则，叠加7日上行regime闸门，每日选出Top1 A股；7日口径对账验证精度；加入Gist favs.json（读NAS .env 的GIST_TOK）；生成蓝色字体每日报告。支持 --preview 不写收藏。",
+  "activeForm": "编写每日精选7日验证脚本",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1789910896547,
+  "updatedAt": 1789912134731
+}

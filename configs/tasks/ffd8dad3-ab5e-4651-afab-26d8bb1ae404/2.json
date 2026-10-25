@@ -1,0 +1,9 @@
+{
+  "subject": "修复 scan_a.py 的 watch.js 输出目录与写入方式",
+  "description": "watch.js 应写到 web/ 目录（前端 index.html 读 ./watch.js），当前默认写项目根；且写入逻辑用本地 tempfile + NAS 端 mv，在 Windows 上必然失败且静默。改为：默认 out_dir 优先 web/（存在时），用 nas_io.safe_write_text 走 SSH 写内容，并检查结果、失败时明确报错并降级本地写。",
+  "activeForm": "修复 watch.js 输出目录与写入方式",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1790856779383,
+  "updatedAt": 1790857014841
+}

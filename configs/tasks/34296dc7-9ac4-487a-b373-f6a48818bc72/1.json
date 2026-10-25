@@ -1,0 +1,9 @@
+{
+  "subject": "环境准备：检查 .env / python / curl",
+  "description": "确认 .env 存在且含有效 GIST_TOK；确认有 python 与 curl。若缺失，输出错误并中止。",
+  "activeForm": "检查执行环境",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1791963093378,
+  "updatedAt": 1791963212378
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "部署并验证 v82",
+  "description": "bump sw.js CACHE_NAME 到 stock-v82（修改 index.html 必须刷新缓存）；做逻辑/语法校验，并部署到 CloudStudio。",
+  "activeForm": "部署并验证 v82",
+  "status": "completed",
+  "id": "43",
+  "createdAt": 1787104080518,
+  "updatedAt": 1787104735861
+}

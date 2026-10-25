@@ -1,0 +1,9 @@
+{
+  "subject": "核查可疑文件的代码引用",
+  "description": "对可疑文件（_consist.*、_fc_*、_index_inline.js、_report_inline.js、verify_*.py、check_*.py、probe.py、kline_stat.py、run_* 等）grep 全仓确认是否被 import/引用，避免误删在用文件。",
+  "activeForm": "核查可疑文件的代码引用",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1789694014415,
+  "updatedAt": 1789694842667
+}

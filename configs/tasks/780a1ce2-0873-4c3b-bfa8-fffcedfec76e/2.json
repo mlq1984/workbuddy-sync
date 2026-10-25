@@ -1,0 +1,14 @@
+{
+  "subject": "接入每日全市场扫描",
+  "description": "在 scan_a.py 中导入引擎：扫描时先对账调参、再用规则选\"未来可期\"、记录今日预测供3天后对账；groups 增加\"未来可期\"，watchCount 计入；写本地 watch.js + Gist。",
+  "activeForm": "接入每日全市场扫描",
+  "status": "in_progress",
+  "id": "2",
+  "createdAt": 1788238380882,
+  "updatedAt": 1788248537453,
+  "metadata": {
+    "cancelled": true,
+    "cancelReason": "cancelled",
+    "cancelledAt": 1788248537439
+  }
+}

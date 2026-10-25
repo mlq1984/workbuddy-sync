@@ -1,0 +1,9 @@
+{
+  "subject": "合并 future7-tag + 自动同步到 NAS 版本",
+  "description": "NAS 上 index.html 有 147KB（线上版），缺 future7-tag。需要把本地 local 版的 future7-tag 相关代码（CSS + 渲染）合并进去，再加 setInterval 自动拉取。",
+  "activeForm": "合并代码并部署",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1791593927860,
+  "updatedAt": 1791594456161
+}

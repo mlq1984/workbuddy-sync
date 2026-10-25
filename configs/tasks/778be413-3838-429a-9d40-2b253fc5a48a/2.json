@@ -1,0 +1,9 @@
+{
+  "subject": "Design and generate horoscope card",
+  "description": "Design HTML+CSS vertical horoscope card (750×1334) using today's lucky colors, then use Edge headless to screenshot as PNG",
+  "activeForm": "Designing and generating horoscope card",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1787097054900,
+  "updatedAt": 1787097144972
+}

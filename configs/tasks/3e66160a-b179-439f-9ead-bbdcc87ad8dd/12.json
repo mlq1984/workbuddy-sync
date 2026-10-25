@@ -1,0 +1,9 @@
+{
+  "subject": "补充推荐买入样式并做语法校验/重启验证",
+  "description": "在 css/style.css 增加 recommend 相关样式（复用现有类）；node --check 校验 app.js 语法；重启 server.js 并验证页面可加载、推荐买入 tab 可用。",
+  "activeForm": "补充样式并验证",
+  "status": "completed",
+  "id": "12",
+  "createdAt": 1787487581655,
+  "updatedAt": 1787487927382
+}

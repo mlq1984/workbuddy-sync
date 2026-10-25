@@ -1,0 +1,9 @@
+{
+  "subject": "computePlan 增加突破位与回落止盈",
+  "description": "computePlan 在支撑/阻力/ATR止损/目标基础上，增加 breakout(突破买入位=近LOOK日高) 与 trailingPct(回落止盈阈值) 字段，供文字区与 drawKline 使用。",
+  "activeForm": "computePlan 增加突破位",
+  "status": "completed",
+  "id": "37",
+  "createdAt": 1787102222289,
+  "updatedAt": 1787102381662
+}

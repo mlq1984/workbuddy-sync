@@ -1,0 +1,9 @@
+{
+  "subject": "执行未来可期引擎改进",
+  "description": "基于Al Brooks《逐棒分析》的5个核心概念改进 future3d_engine.py：1) 信号K线过滤 2) breakout双重确认 3) 凝滞区检测 4) vol_confirm加影线过滤 5) 回撤深度判断",
+  "activeForm": "改进 future3d_engine.py 规则引擎",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1788849030448,
+  "updatedAt": 1788854386969
+}

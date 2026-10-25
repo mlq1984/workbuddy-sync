@@ -1,0 +1,9 @@
+{
+  "subject": "前端：板块页与全A扫描页",
+  "description": "index.html 增加「值得关注板块」「全A扫描」两个 tab 与对应 pane；app.js 增加 loadSectors/renderSectors、startScan/pollScan/renderScanCandidates，扩展 switchTab 支持4页；style.css 增加板块卡片网格与扫描进度条样式。点击板块领涨股/扫描结果可跳个股诊断。",
+  "activeForm": "实现前端板块与扫描页",
+  "status": "pending",
+  "id": "9",
+  "createdAt": 1787484809440,
+  "updatedAt": 1787484809440
+}

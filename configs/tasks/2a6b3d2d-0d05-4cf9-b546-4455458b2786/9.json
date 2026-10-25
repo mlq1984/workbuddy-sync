@@ -1,0 +1,9 @@
+{
+  "subject": "B7 修复 index.html 异常消息未转义",
+  "description": "index.html:1341 与 :2430 的 e.message 直接拼入 innerHTML，改用 esc()/textContent 防御注入。",
+  "activeForm": "修复 index.html 注入隐患",
+  "status": "completed",
+  "id": "9",
+  "createdAt": 1789523078686,
+  "updatedAt": 1789524187193
+}

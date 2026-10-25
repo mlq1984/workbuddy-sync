@@ -1,0 +1,9 @@
+{
+  "subject": "配置通知通道并接入流程",
+  "description": "在 .env 追加 FEISHU_WEBHOOK=（用户填值）、FAV_SYNC_WORKER_URL=（可选）；run_daily.sh 加入巡检调用；创建 WorkBuddy 自动化 16:30 主巡检 + 09:00 补检（周一至周五）。",
+  "activeForm": "配置通知通道并接入流程",
+  "status": "completed",
+  "id": "10",
+  "createdAt": 1790080064891,
+  "updatedAt": 1790081313739
+}

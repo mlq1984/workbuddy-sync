@@ -1,0 +1,9 @@
+{
+  "subject": "自选板块点击进入详情 + ✕移至末列",
+  "description": "让股票列整格可点击调用 pickStock 进入详情页；将移除✕从股票列内移到表格最后一列。",
+  "activeForm": "实现点击进入详情与✕末列",
+  "status": "completed",
+  "id": "41",
+  "createdAt": 1787104080501,
+  "updatedAt": 1787104735842
+}

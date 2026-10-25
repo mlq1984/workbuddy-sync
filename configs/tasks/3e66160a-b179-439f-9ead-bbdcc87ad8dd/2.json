@@ -1,0 +1,9 @@
+{
+  "subject": "实现数据层（K线/快照/基本面代理）",
+  "description": "server.js 代理实现：新浪日K线(新浪)获取 OHLCV+MA；东方财富 stock/get 获取实时价/成交额/换手/PE；东方财富 F10 获取 ROE/毛利率/负债率。前端 data.js 调用同源 /api/*。",
+  "activeForm": "实现数据层代理接口",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1787468237336,
+  "updatedAt": 1787468506276
+}

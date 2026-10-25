@@ -1,0 +1,9 @@
+{
+  "subject": "合成视频：拼接画面 + 转场 + 钢琴曲BGM + 中文配音 + 字幕",
+  "description": "使用 miora_text_to_video 或 miora_frame_to_video 将 8 张画面合成为竖屏 MP4，添加转场、钢琴曲背景音乐、中文配音和全程字幕",
+  "activeForm": "合成视频",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1792052807085,
+  "updatedAt": 1792058212032
+}

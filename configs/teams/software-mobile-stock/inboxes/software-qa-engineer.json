@@ -1,0 +1,9 @@
+[
+  {
+    "from": "team-lead",
+    "text": "{\"type\":\"shutdown_request\",\"request_id\":\"shutdown-software-qa-engineer-1787054091021-b81fd09f\",\"reason\":\"Team lead requested shutdown\",\"from\":\"team-lead\",\"timestamp\":\"2026-08-18T11:54:51.021Z\"}",
+    "summary": "Shutdown request for software-qa-engineer",
+    "timestamp": "2026-08-18T11:54:51.021Z",
+    "read": true
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "subject": "验收 — 运行程序确认无错误",
+  "description": "执行最终验收清单：依赖完整性、Import OK、python run.py 窗口弹出、bat 双击正常",
+  "activeForm": "执行验收测试",
+  "status": "completed",
+  "id": "8",
+  "createdAt": 1783914694773,
+  "updatedAt": 1783915604043
+}

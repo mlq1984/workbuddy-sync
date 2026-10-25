@@ -1,0 +1,9 @@
+{
+  "subject": "Python 后端新增 /api/ai/chat 接口",
+  "description": "stock_server.py 新增聊天代理接口，支持流式 SSE 输出，转发到前端",
+  "activeForm": "添加 AI 聊天后端接口",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1785807828914,
+  "updatedAt": 1785808600009
+}

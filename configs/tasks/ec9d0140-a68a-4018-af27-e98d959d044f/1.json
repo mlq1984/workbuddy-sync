@@ -1,0 +1,9 @@
+{
+  "subject": "运行 scan_a.py 全量扫描并校验",
+  "description": "执行全市场扫描+评分+kline落盘+kline_data/今日更新数≈4900+校验，Gist watch.json时间戳当日校验",
+  "activeForm": "运行全量扫描 scan_a.py",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1791271923862,
+  "updatedAt": 1791272365807
+}

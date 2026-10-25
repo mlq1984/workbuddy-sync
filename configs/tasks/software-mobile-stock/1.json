@@ -1,0 +1,9 @@
+{
+  "subject": "分析前端数据获取链路与 CSP",
+  "description": "审查 index.html 的 fetchWatchFromGist / loadWatchlist / doScanAndRender / renderWatchlist / renderWatchlistTabs / SW注册段 / CSP meta。重点验证：三个数据源（./watch.js、gist.githubusercontent、GitHub API）的短路与异常处理；watch.js 是 JSONP(window.__WATCH__) 格式而 fetch 后 JSON.parse 是否会失败；CSP connect-src 是否真正放行所需域名。",
+  "activeForm": "分析前端数据获取链路与 CSP",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1787052356335,
+  "updatedAt": 1787054039115
+}

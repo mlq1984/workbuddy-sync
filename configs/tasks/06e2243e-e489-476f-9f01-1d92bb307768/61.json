@@ -1,0 +1,9 @@
+{
+  "subject": "重建 asar 让 Electron 加载 report.html",
+  "description": "提取当前 app.asar，放入修复后的 report.html，main.js 改加载 report.html，删除 stock-report.html，重新打包替换 resources/app.asar，保留备份。",
+  "activeForm": "重建 asar 打包",
+  "status": "completed",
+  "id": "61",
+  "createdAt": 1787889680064,
+  "updatedAt": 1787890156678
+}

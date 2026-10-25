@@ -1,0 +1,9 @@
+{
+  "subject": "将股票分析系统改为手机可用（PWA+云部署）",
+  "description": "1. 改前端为无后端依赖（API直连浏览器）; 2. 添加PWA支持; 3. 部署到公网",
+  "activeForm": "改造为手机可用的股票分析系统",
+  "status": "completed",
+  "id": "9",
+  "createdAt": 1785403552665,
+  "updatedAt": 1785403798480
+}

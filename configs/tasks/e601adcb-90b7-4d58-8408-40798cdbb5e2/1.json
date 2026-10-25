@@ -1,0 +1,9 @@
+{
+  "subject": "检测操作系统",
+  "description": "运行 [System.Environment]::OSVersion.Platform 确认输出为 Win32NT，否则停止并提示使用 Mac 版文档",
+  "activeForm": "检测操作系统",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1783914694658,
+  "updatedAt": 1783914722144
+}

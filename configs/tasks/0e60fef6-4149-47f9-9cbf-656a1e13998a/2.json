@@ -1,0 +1,9 @@
+{
+  "subject": "生成 8 个分镜画面（竖屏 9:16 JPG）",
+  "description": "使用 miora_text_to_image 逐镜生成双子座动画短片的 8 个画面，保持 Q 版扁平画风统一，黄蓝主色调",
+  "activeForm": "生成分镜画面",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1792052792346,
+  "updatedAt": 1792056289473
+}

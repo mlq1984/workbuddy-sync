@@ -1,0 +1,9 @@
+{
+  "subject": "验证修复：手动写入并确认产物更新",
+  "description": "修完后手动触发一次写入验证：nas_io 能成功写 NAS（重连重试生效）；用当前数据重生成 web/watch.js 使前端数据恢复最新（09-30 数据）。确认 web/watch.js mtime 更新、内容含 555 只。",
+  "activeForm": "验证修复并确认产物更新",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1790856779435,
+  "updatedAt": 1790857014863
+}

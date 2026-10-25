@@ -1,0 +1,9 @@
+{
+  "subject": "安装项目依赖",
+  "description": "pip install -e . 安装 pyproject.toml 中所有依赖，逐个验证核心包可导入",
+  "activeForm": "安装项目依赖",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1783914694735,
+  "updatedAt": 1783915402348
+}

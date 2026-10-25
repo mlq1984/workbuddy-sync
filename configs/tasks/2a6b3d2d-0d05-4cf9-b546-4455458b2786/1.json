@@ -1,0 +1,9 @@
+{
+  "subject": "审计 scan_a.py 核心扫描脚本",
+  "description": "通读 scan_a.py，排查逻辑错误、运行时异常、边界处理、性能/安全问题，按严重程度列出。",
+  "activeForm": "审计 scan_a.py 核心扫描脚本",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1789521621257,
+  "updatedAt": 1789522356167
+}

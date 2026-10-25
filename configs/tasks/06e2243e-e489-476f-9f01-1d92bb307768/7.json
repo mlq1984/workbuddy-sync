@@ -1,0 +1,9 @@
+{
+  "subject": "删除前端 AI 助手代码",
+  "description": "删除 mobile-stock/index.html 中的 AI 抽屉 HTML、CSS、JS；同步到桌面版",
+  "activeForm": "删除前端 AI 助手 UI",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1785819393377,
+  "updatedAt": 1785821264211
+}

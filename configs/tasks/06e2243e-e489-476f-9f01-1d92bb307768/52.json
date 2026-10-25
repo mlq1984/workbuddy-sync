@@ -1,0 +1,9 @@
+{
+  "subject": "部署并核对线上值得关注评分已统一",
+  "description": "部署更新后的 watch.js/scan_a.py；curl 核对线上 watch.js 分数与前端口径一致；更新项目规则与交接文档。",
+  "activeForm": "部署并核对线上评分已统一",
+  "status": "completed",
+  "id": "52",
+  "createdAt": 1787392363501,
+  "updatedAt": 1787392940349
+}

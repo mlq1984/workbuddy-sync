@@ -1,0 +1,9 @@
+{
+  "subject": "Add stock favorites feature",
+  "description": "Implement localStorage-based favorites: star toggle button in header, favorites panel showing saved stocks, click to switch.",
+  "activeForm": "Adding stock favorites feature",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1784619622533,
+  "updatedAt": 1784619819080
+}

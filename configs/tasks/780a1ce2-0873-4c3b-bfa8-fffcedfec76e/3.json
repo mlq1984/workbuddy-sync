@@ -1,0 +1,9 @@
+{
+  "subject": "前端新增\"未来可期\"分类Tab",
+  "description": "web/index.html：WATCH_CATEGORIES 增加\"未来可期\"（🚀）；loadWatchlist 把后端 groups['未来可期'] 注入渲染；renderWatchlist 不误删该分类；加分色 CSS。",
+  "activeForm": "前端新增未来可期分类Tab",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1788238380898,
+  "updatedAt": 1788238695167
+}

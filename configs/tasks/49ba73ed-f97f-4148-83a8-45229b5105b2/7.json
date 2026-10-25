@@ -1,0 +1,9 @@
+{
+  "subject": "实现 future7_verify.py 验证引擎",
+  "description": "编写 tools/future7_verify.py：独立可运行的验证引擎。功能：①读取系统推荐(future7_predictions.json) ②对≥7交易日的推荐用本地K线计算实际7日收益并判定命中 ③维护历史验证记录+累计/滚动命中率趋势 ④按规则触发命中率迭代调参(可配置) ⑤生成带SVG趋势图的HTML报告 ⑥写入future7_state.json(权重/rule_stats)与future7_verify_log.json。导出reconcile()供future7_daily复用。",
+  "activeForm": "实现 future7_verify.py 验证引擎",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1789998211686,
+  "updatedAt": 1789998993236
+}

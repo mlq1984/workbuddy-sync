@@ -1,0 +1,9 @@
+{
+  "subject": "创建每日收盘后自动化任务",
+  "description": "用 automation_update 创建每日 16:10 触发的 automation，prompt 指示运行 scan_a.py 完成全 A 股扫描并写 Gist。确保工作日+周末? 默认每日运行(可选工作日)。",
+  "activeForm": "创建每日收盘后扫描的 automation",
+  "status": "completed",
+  "id": "21",
+  "createdAt": 1786967530960,
+  "updatedAt": 1786968368069
+}

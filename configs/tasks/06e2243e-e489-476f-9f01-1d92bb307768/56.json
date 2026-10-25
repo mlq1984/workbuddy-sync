@@ -1,0 +1,9 @@
+{
+  "subject": "云端 scan_a.py 加 OBV 规则并跑扫描",
+  "description": "scan_a.py：新增 calc_obv/obv_score；tech_score 接收 volumes 并叠加 OBV；get_stock_score 传入 kl.volumes。py_compile 校验后重跑全量扫描写回 Gist。",
+  "activeForm": "云端加 OBV 规则并跑扫描",
+  "status": "completed",
+  "id": "56",
+  "createdAt": 1787624680344,
+  "updatedAt": 1787625315140
+}

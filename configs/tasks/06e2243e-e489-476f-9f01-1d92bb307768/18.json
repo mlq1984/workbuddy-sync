@@ -1,0 +1,9 @@
+{
+  "subject": "编写 Python 全量扫描脚本并写 Gist",
+  "description": "编写 scan_a.py：拉全 A 股列表(东方财富 clist, ~5896只) -> 排除ST/退/次新/北交所 -> 并发拉每只K线(腾讯)+行情 -> 评分+分类 -> 输出 {updatedAt, groups:{强烈推荐/推荐买入/观望等待}, list} JSON -> PATCH 到 GitHub Gist 的 watch.json 文件。复用已有 GIST_ID 和 token。带并发控制、重试、容错。",
+  "activeForm": "编写云端全量扫描 Python 脚本",
+  "status": "completed",
+  "id": "18",
+  "createdAt": 1786967522871,
+  "updatedAt": 1786968096996
+}

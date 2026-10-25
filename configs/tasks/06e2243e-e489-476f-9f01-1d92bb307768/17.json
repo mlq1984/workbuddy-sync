@@ -1,0 +1,9 @@
+{
+  "subject": "复刻前端评分/分类逻辑到 Python",
+  "description": "阅读 mobile-stock/index.html 的 getStockScore、calcMA、MACD、RSI、量能、52周位置、分类阈值(CFG)，整理成可复刻的算法说明，供 Python 脚本使用。",
+  "activeForm": "复刻前端评分逻辑到 Python",
+  "status": "completed",
+  "id": "17",
+  "createdAt": 1786967515023,
+  "updatedAt": 1786968096980
+}

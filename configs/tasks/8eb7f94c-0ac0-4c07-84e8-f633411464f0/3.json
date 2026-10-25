@@ -1,0 +1,14 @@
+{
+  "subject": "创建每日定时自动化任务",
+  "description": "用 automation 创建每天固定时间跑签到的 recurring 任务",
+  "activeForm": "创建每日定时自动化任务",
+  "status": "in_progress",
+  "id": "3",
+  "createdAt": 1791193707624,
+  "updatedAt": 1791196560691,
+  "metadata": {
+    "cancelled": true,
+    "cancelReason": "cancelled",
+    "cancelledAt": 1791196560687
+  }
+}

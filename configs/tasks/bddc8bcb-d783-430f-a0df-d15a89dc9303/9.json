@@ -1,0 +1,9 @@
+{
+  "subject": "重做主PWA看板视觉（保JS）",
+  "description": "重写index.html的<style>块为新设计系统，保持所有class名与DOM结构不变，JS逻辑零改动。验证渲染不破。",
+  "activeForm": "重做index.html视觉",
+  "status": "completed",
+  "id": "9",
+  "createdAt": 1792850351327,
+  "updatedAt": 1792858385213
+}

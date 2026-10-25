@@ -1,0 +1,9 @@
+{
+  "subject": "实现 PA Agent 规则引擎",
+  "description": "engine.js：方向判定(EMA20斜率+HH/HL+AIL/AIS)、八态频谱(回撤%通道分类+尖峰分级+区间Barbwire)、买卖信号(顺势High1/High2/Low1/Low2/SPS、突破处理、逆势wait)、风控(四禁令+RR≥1.0+结构止损=信号棒极点外1跳+TP1/TP2)、诊断输出(gate_result/cycle_position/detected_patterns)。参数取自规则库。",
+  "activeForm": "实现 PA Agent 规则引擎",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1787468237353,
+  "updatedAt": 1787468574996
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "前端加 OBV 计算函数与评分规则",
+  "description": "index.html：新增 calcOBV/obvScore（与云端一致）；techScore 增加 volumes 参数并叠加 OBV 评分（资金流入+1.5/偏强+0.5/顶背离-1/底背离+1）；两处调用点传入 kl.volumes。",
+  "activeForm": "加 OBV 计算函数与评分规则（前端）",
+  "status": "completed",
+  "id": "53",
+  "createdAt": 1787624680301,
+  "updatedAt": 1787624965112
+}

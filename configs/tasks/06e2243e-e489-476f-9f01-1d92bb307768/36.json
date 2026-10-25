@@ -1,0 +1,9 @@
+{
+  "subject": "calcSignals 改为条件触发式买卖点",
+  "description": "买入=突破前高(收盘价创新高+站上MA20) 或 回踩支撑企稳(触及MA20收阳)；卖出=跌破前低支撑 或 自高点回落超阈值。去掉纯金叉死叉主条件，改为价位条件，贴合券商条件单。保留MACD动量辅助过滤。去重间隔>=5。",
+  "activeForm": "重写 calcSignals 买卖信号",
+  "status": "completed",
+  "id": "36",
+  "createdAt": 1787102222271,
+  "updatedAt": 1787102274131
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "修复 grossMargin null 崩溃并升级 F10 数据源",
+  "description": "1. calcFinancialScore/calcFundScore 加空值防御（f10=null/flow=null 不再崩溃）\n2. fetchF10 改用 MainTargetAjax JSON API 替代 F10 页面正则\n3. 财务数据缺失时优雅降级，报告仍能渲染\n4. 测试验证",
+  "activeForm": "修复数据获取崩溃问题",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1784601985939,
+  "updatedAt": 1784603056322
+}

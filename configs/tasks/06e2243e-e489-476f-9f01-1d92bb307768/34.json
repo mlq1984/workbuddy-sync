@@ -1,0 +1,9 @@
+{
+  "subject": "drawKline 画计划位水平线 + 更新 CFG",
+  "description": "drawKline 内基于 computePlan 结果画买入/止损/目标1/目标2 四条虚线水平线并标注价格；CFG 移除固定%项改加 PLAN_LOOKBACK/PLAN_ATR_STOP/PLAN_R_MULT。",
+  "activeForm": "drawKline 画计划位水平线",
+  "status": "completed",
+  "id": "34",
+  "createdAt": 1787064160862,
+  "updatedAt": 1787064554999
+}

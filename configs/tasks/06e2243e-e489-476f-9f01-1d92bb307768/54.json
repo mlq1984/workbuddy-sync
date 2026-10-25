@@ -1,0 +1,9 @@
+{
+  "subject": "前端 K 线图加 OBV 副图",
+  "description": "drawKline 改为三栏布局（价格/成交量/OBV），OBV 画青色主线+灰色 MA20 量能均线，加 OBV 标签、分隔线、tooltip 显示 OBV；K线卡片标题加 OBV 图例。",
+  "activeForm": "K 线图加 OBV 副图（前端）",
+  "status": "completed",
+  "id": "54",
+  "createdAt": 1787624680324,
+  "updatedAt": 1787624965149
+}

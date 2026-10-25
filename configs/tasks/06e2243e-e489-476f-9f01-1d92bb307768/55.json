@@ -1,0 +1,9 @@
+{
+  "subject": "部署并核对 OBV 上线",
+  "description": "bump SW 到 v96 部署；curl 核对线上 sw.js 版本、OBV 副图代码、统一后 watch.js；更新项目规则文档。",
+  "activeForm": "部署并核对 OBV 上线",
+  "status": "completed",
+  "id": "55",
+  "createdAt": 1787624680334,
+  "updatedAt": 1787625699330
+}

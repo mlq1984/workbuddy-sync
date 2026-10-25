@@ -1,0 +1,9 @@
+{
+  "subject": "实跑巡检并交付报告",
+  "description": "运行 task_monitor.py 验证各检查逻辑、生成报告与告警（如有异常则验证去重与推送），present 报告文件。",
+  "activeForm": "实跑巡检并交付报告",
+  "status": "completed",
+  "id": "12",
+  "createdAt": 1790080064914,
+  "updatedAt": 1790081313725
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "实现推荐股票功能（8大板块各5只）",
+  "description": "Add 8 sectors × 5 stocks = 40 recommended stocks with horizontal-scrolling card UI",
+  "activeForm": "Designing recommended stocks data structure and UI",
+  "status": "completed",
+  "id": "16",
+  "createdAt": 1784633002560,
+  "updatedAt": 1784633321020
+}

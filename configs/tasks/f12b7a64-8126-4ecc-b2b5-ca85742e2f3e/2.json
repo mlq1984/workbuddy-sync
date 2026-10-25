@@ -1,0 +1,9 @@
+{
+  "subject": "盘点仓库文件并分类",
+  "description": "只读盘点 \\\\king-NAS\\stock\\stock 仓库顶层文件，识别冗余/临时/废弃候选（缓存、旧日志、临时脚本、内联JS、过期文档等），记录大小与修改时间。",
+  "activeForm": "盘点仓库文件并分类",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1789694004760,
+  "updatedAt": 1789694842656
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "QA 回归验证",
+  "description": "已完成 v75 回归验证：55/55 项通过（38 自动化断言 + 17 线上/静态校验）。确认 CACHE_NAME=stock-v75、线上 /watch.js 200 且 871 条可解析、8 个渲染字段零缺失、明文 token 归零、CSP 已放行 gist、sw.js/scan_a.py 语法零错误、线上三文件与本地 sha256 逐字节一致。看榜主流程已恢复。遗留 1 个中危缺陷：pushFavs 未校验 r.ok 导致 401 静默假成功，并连带使 pullFavs 永不走 replace 分支、跨端删除无法同步。交付回归套件 test_watch_pipeline.js 与 test_favs_sync.js。",
+  "activeForm": "执行 QA 回归验证",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1787052356421,
+  "updatedAt": 1787054021667
+}

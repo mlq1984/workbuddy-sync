@@ -1,0 +1,9 @@
+{
+  "subject": "分析现有stockintegrated.html的结构",
+  "description": "读取stockintegrated.html，了解现有页面结构、功能点、数据源等",
+  "activeForm": "分析现有股票综合报告结构",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1785388064300,
+  "updatedAt": 1785388099139
+}
