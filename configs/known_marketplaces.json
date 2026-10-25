@@ -4,12 +4,12 @@
     "type": "zip",
     "source": {
       "source": "zip",
-      "path": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-41dc19ef-08b3-4d2f-bb77-7d4078920e4a.zip",
-      "url": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-41dc19ef-08b3-4d2f-bb77-7d4078920e4a.zip"
+      "path": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-8c7a0dbb-22f3-4d5a-9360-5ce88e16c819.zip",
+      "url": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-8c7a0dbb-22f3-4d5a-9360-5ce88e16c819.zip"
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\cb_teams_marketplace",
-    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-41dc19ef-08b3-4d2f-bb77-7d4078920e4a.zip",
-    "lastUpdated": "2026-10-14T03:47:15.647Z",
+    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-8c7a0dbb-22f3-4d5a-9360-5ce88e16c819.zip",
+    "lastUpdated": "2026-10-16T07:30:50.584Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -110,7 +110,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-connector-plugins-official",
     "description": "CodeBuddy 官方连接器配置索引",
-    "lastUpdated": "2026-10-14T07:15:03.014Z",
+    "lastUpdated": "2026-10-19T09:00:52.093Z",
     "autoUpdate": false
   },
   "workbuddy-builtin": {
@@ -139,5 +139,29 @@
     "lastUpdated": "2026-10-14T03:46:20.887Z",
     "autoUpdate": true,
     "isBuiltIn": true
+  },
+  "workbuddy-browser-use": {
+    "manifestName": "workbuddy-browser-use",
+    "type": "directory",
+    "source": {
+      "source": "directory",
+      "path": "C:\\Users\\king\\.workbuddy\\native-runtimes\\browser-use"
+    },
+    "installLocation": "C:\\Users\\king\\.workbuddy\\native-runtimes\\browser-use",
+    "description": "Marketplace from C:\\Users\\king\\.workbuddy\\native-runtimes\\browser-use",
+    "lastUpdated": "2026-10-18T12:37:33.872Z",
+    "autoUpdate": false
+  },
+  "workbuddy-computer-use": {
+    "manifestName": "workbuddy-computer-use",
+    "type": "directory",
+    "source": {
+      "source": "directory",
+      "path": "C:\\Users\\king\\.workbuddy\\native-runtimes\\computer-use"
+    },
+    "installLocation": "C:\\Users\\king\\.workbuddy\\native-runtimes\\computer-use",
+    "description": "Marketplace from C:\\Users\\king\\.workbuddy\\native-runtimes\\computer-use",
+    "lastUpdated": "2026-10-24T14:49:19.828Z",
+    "autoUpdate": false
   }
 }
