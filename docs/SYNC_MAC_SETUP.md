@@ -1,7 +1,7 @@
 # Mac 端接入 Guide（Mac 上的 WorkBuddy 照着做即可）
 
 远程仓库：`git@github.com:mlq1984/workbuddy-sync.git`（私有）
-Windows 端已完成首次推送（150 技能 + 5 文档 + 4 配置结构）。
+Windows 端已完成首次推送（168 技能 + 6 文档 + 216 配置文件）。
 
 ## 1. SSH 密钥
 如果 Mac 上已有能访问 GitHub 的密钥，跳到第 2 步。否则：
@@ -34,10 +34,16 @@ git clone git@github.com:mlq1984/workbuddy-sync.git ~/.workbuddy/.sync_repo
 cd ~/.workbuddy/.sync_repo
 cp -R skills/ ~/.workbuddy/skills/
 cp docs/*.md ~/.workbuddy/
+cp configs/settings.json ~/.workbuddy/settings.json
+cp -R configs/tasks/ ~/.workbuddy/tasks/
+cp -R configs/teams/ ~/.workbuddy/teams/
 ```
 
-> 注意：configs/ 目录里是脱敏后的结构（token 已剔除），**不要**直接覆盖本地 mcp.json/plugins，
-> 需要参考结构自己在 Mac 上重新授权一次连接器。
+> 注意：
+> - `configs/` 目录里是脱敏后的结构（token 已剔除），**不要**直接覆盖本地 mcp.json/plugins，
+>   需要参考结构自己在 Mac 上重新授权一次连接器。
+> - `configs/tasks/`、`configs/teams/` 是纯任务与团队配置，无敏感数据，可直接覆盖。
+> - `configs/settings.json` 是模型设置/技能覆盖/已启用插件，可直接覆盖。
 
 ## 3. 定时同步（可选，和 Windows 端对称）
 
@@ -53,8 +59,12 @@ crontab -e
 ```
 
 ## 日常机制速览
-- **范围**：skills/ 全部目录、~/.workbuddy/*.md（跳过 BOOTSTRAP）、4 个配置 JSON（脱敏）
+- **范围**：skills/ 全部目录、~/.workbuddy/*.md（跳过 BOOTSTRAP）、
+  settings.json（模型设置/技能覆盖）、tasks/（任务空间）、teams/（团队配置）、
+  4 个连接器/插件配置 JSON（脱敏）
 - **触发**：每天 09:00 两端定时器；或对 WorkBuddy 说"同步一下"手动触发
 - **冲突**：LWW 最新修改优先（git pull -X theirs + 文件 mtime 比较），git log 可回滚
 - **反馈**：每次运行输出摘要（扫描多少个/更新几个/推送成败），日志在 ~/.workbuddy/sync.log
-- **限制**：不传播删除与重命名（防误删）；configs 只同步结构不回写本地
+- **限制**：不传播删除与重命名（防误删）；连接器配置只同步结构不回写本地
+- **脱敏**：所有 JSON 文件在写入仓库前自动剔除 token/secret/password/api_key 字段，
+  并正则脱敏 `ghp_` 前缀的 GitHub Personal Access Token
