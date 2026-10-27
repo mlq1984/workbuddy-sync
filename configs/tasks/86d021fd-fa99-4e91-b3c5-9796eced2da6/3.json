@@ -1,0 +1,9 @@
+{
+  "subject": "生成Word正式版方案并交付",
+  "description": "使用 workbuddy-office-routing → workbuddy-docx 流程，将《跨境电商入门实践方案》生成为正式 Word 文档，便于编辑与分享，最后统一 present_files 交付。",
+  "activeForm": "正在生成Word版方案",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1792991095257,
+  "updatedAt": 1792991826310
+}

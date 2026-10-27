@@ -1,0 +1,9 @@
+{
+  "subject": "补跑 10-26 收盘后全流程",
+  "description": "手动触发 scan_a.py 全量扫描（已完成，进行中）→ run_future7.py 未来可期精选 → run_task_monitor.py 巡检",
+  "activeForm": "补跑收盘后全流程",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1793020924102,
+  "updatedAt": 1793022438317
+}

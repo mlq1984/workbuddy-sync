@@ -1,0 +1,9 @@
+{
+  "subject": "排查 10-26 15:30 定时未触发原因",
+  "description": "自动化 8e16cdfa 状态 ACTIVE 但 10-26 未触发；检查 validFrom/validUntil 窗口、调度器状态",
+  "activeForm": "排查定时未触发原因",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1793020924207,
+  "updatedAt": 1793022438347
+}

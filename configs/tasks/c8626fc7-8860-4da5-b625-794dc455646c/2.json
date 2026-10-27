@@ -1,0 +1,9 @@
+{
+  "subject": "获取商品图片素材",
+  "description": "从1688商品页提取主图/详情图URL，或下载到本地",
+  "activeForm": "提取商品图片",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1793024026368,
+  "updatedAt": 1793025140959
+}

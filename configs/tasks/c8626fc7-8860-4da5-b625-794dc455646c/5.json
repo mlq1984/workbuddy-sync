@@ -1,0 +1,9 @@
+{
+  "subject": "提交审核并验证",
+  "description": "点击提交审核，回到商品管理页验证上架结果",
+  "activeForm": "提交并验证",
+  "status": "pending",
+  "id": "5",
+  "createdAt": 1793024026459,
+  "updatedAt": 1793024026459
+}
