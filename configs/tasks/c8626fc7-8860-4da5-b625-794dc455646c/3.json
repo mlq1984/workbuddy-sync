@@ -5,5 +5,10 @@
   "status": "in_progress",
   "id": "3",
   "createdAt": 1793024026400,
-  "updatedAt": 1793025140970
+  "updatedAt": 1793156472344,
+  "metadata": {
+    "cancelled": true,
+    "cancelReason": "cancelled",
+    "cancelledAt": 1793156472341
+  }
 }
