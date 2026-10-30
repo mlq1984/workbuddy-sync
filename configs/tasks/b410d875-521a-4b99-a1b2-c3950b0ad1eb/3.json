@@ -1,0 +1,9 @@
+{
+  "subject": "更新\"每日收盘后全流程\"自动化为单命令模式",
+  "description": "automation_update mode=update，id=8e16cdfa-a203-4a43-b564-f3e87d0982eb。新提示词：唯一命令 = python run_daily_pipeline.py（Bash timeout=600000，禁止拆分、禁止后台、被自动转后台必须 TaskOutput 等待），命令返回后按步骤汇报；保留命中率<30%提示与\"不改原文件\"约束。排期不变（工作日15:30）。",
+  "activeForm": "更新自动化提示词",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1793321279843,
+  "updatedAt": 1793321413579
+}

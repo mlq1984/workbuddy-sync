@@ -8,8 +8,8 @@
       "url": "https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-8c7a0dbb-22f3-4d5a-9360-5ce88e16c819.zip"
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\cb_teams_marketplace",
-    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/cb_teams_marketplace-8c7a0dbb-22f3-4d5a-9360-5ce88e16c819.zip",
-    "lastUpdated": "2026-10-16T07:30:50.584Z",
+    "description": "CodeBuddy Teams Marketplace - 团队协作与文档处理插件集合",
+    "lastUpdated": "2026-10-30T00:32:15.326Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -22,8 +22,8 @@
       "url": "https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official-4b9366ac-f7e5-4cef-b60a-99a5229ce2b2.zip"
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\codebuddy-plugins-official",
-    "description": "Marketplace from https://download.codebuddy.cn/plugin-marketplace/codebuddy-plugins-official-4b9366ac-f7e5-4cef-b60a-99a5229ce2b2.zip",
-    "lastUpdated": "2026-10-14T03:48:50.874Z",
+    "description": "CodeBuddy 官方插件市场",
+    "lastUpdated": "2026-10-30T00:32:27.247Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -37,7 +37,7 @@
     "isBuiltIn": false,
     "autoUpdate": true,
     "description": "experts marketplace (auto-generated)",
-    "lastUpdated": "2026-10-06T07:31:25.677Z",
+    "lastUpdated": "2026-10-30T00:32:31.680Z",
     "manifest": {
       "name": "experts",
       "description": "experts marketplace (auto-generated)",
@@ -136,7 +136,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-wecom-unified",
     "description": "Marketplace from https://static.workbuddy.cn/wecom-skills/wecom-unified.zip",
-    "lastUpdated": "2026-10-14T03:46:20.887Z",
+    "lastUpdated": "2026-10-30T01:06:01.097Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },

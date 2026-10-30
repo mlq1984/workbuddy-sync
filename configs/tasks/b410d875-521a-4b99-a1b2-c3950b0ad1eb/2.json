@@ -1,0 +1,9 @@
+{
+  "subject": "验证引导脚本可用性（语法+预检，不跑真实步骤）",
+  "description": "py_compile 语法检查；运行 --check 模式验证：.env 解析、GIST_TOK 非空、三个子脚本路径存在、nas_io/paramiko 可导入（3.13.12 python 下）。不执行真实步骤（避免在盘前产生错误日期的 future7 选股）。",
+  "activeForm": "验证引导脚本可用性",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1793321279810,
+  "updatedAt": 1793321390240
+}
