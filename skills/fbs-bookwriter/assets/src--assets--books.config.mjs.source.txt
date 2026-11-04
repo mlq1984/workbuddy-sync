@@ -1,0 +1,1 @@
+export const BOOKS=[{id:"B1",title:"书名",subtitle:"副标题（可空）",author:"作者名",outputName:"B1-输出文件名",color:"#2C5F7C",lightBg:"#F4F7FA",accentBg:"#E3EDF4",accentGold:"#D4A843",coverImage:"",srcDir:"./src",files:["00-样章占位.md"],series:"standalone",copyrightExtra:"一句话定位",density:"standard",visualPreset:"",illustrationStyle:"",mermaidTheme:"base",chartDensity:"auto",enableMermaidCDN:true}];

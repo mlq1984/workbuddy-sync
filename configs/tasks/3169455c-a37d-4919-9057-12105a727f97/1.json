@@ -1,0 +1,9 @@
+{
+  "subject": "验证 LAN 直连 sync 服务并确认进程形态",
+  "description": "从本机 curl http://192.168.50.10:8765 确认桌面端可局域网直连；SSH 查看 NAS 上 sync_server.py 运行进程（cwd、命令、python 路径），为改造后重启做准备。",
+  "activeForm": "验证 LAN 直连与进程形态",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1793682638629,
+  "updatedAt": 1793682705229
+}

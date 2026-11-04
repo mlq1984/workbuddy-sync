@@ -1,0 +1,2 @@
+#!/usr/bin/env node
+import{fileURLToPath}from"url";import{runChannelPack}from"./lib/channel-pack.mjs";export function runOpenClawPack(){return runChannelPack({version:"3.0.0",packageName:"fbs-bookwriter-v300-openclaw",packageRootName:"fbs_bookwriter",channelLabel:"OpenClaw",skillMdOverride:"openclaw/fbs_bookwriter/SKILL.md"})}if(import.meta.url===`file://${process.argv[1]}`||process.argv[1]===fileURLToPath(import.meta.url)){runOpenClawPack()}

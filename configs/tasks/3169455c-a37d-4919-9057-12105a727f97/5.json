@@ -1,0 +1,9 @@
+{
+  "subject": "端到端验证",
+  "description": "GET /sync 返回 34 条；用当前内容原样 POST 验证幂等；本地单测合并逻辑（新增合并/删除传播/系统条目保留）；模拟桌面端 pull 响应形状兼容；最后三端（Gist/NAS/公网）数据核对。",
+  "activeForm": "端到端验证",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1793682638791,
+  "updatedAt": 1793683954128
+}

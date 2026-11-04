@@ -1,0 +1,1 @@
+{"schema":"wb.role-dependencies/v1","scope":"explicit-skill-role-definitions","members":[{"id":"fbs-team-lead","definitionPath":"references/fbs-team-lead.md"},{"id":"fbs-writer","definitionPath":"references/fbs-writer.md"}]}

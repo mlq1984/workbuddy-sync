@@ -1,0 +1,9 @@
+{
+  "subject": "future7_daily.py 读取改 NAS 优先",
+  "description": "read_favs() 从「Gist 优先」改为「NAS web/favs.json 优先，Gist 仅兜底」，避免每日双写时把手机/桌面新增冲掉。先查 run_future7.py/run_daily_pipeline.py 确认自动化实际执行的是哪份脚本（NAS 还是本地副本）。经 SSH 部署到 NAS tools/。",
+  "activeForm": "调整 pipeline 读取优先级",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1793682638753,
+  "updatedAt": 1793683453009
+}

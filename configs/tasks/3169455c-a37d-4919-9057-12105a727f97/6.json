@@ -1,0 +1,9 @@
+{
+  "subject": "更新 memory 日志",
+  "description": "把架构变更（NAS 为唯一 Hub、Gist 退为备份）、改动文件清单、删除传播的已知局限写入 NAS .workbuddy/memory/2026-11-03.md。",
+  "activeForm": "更新 memory 日志",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1793682638848,
+  "updatedAt": 1793684095431
+}

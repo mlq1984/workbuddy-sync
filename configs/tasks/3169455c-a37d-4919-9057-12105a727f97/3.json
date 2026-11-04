@@ -1,0 +1,9 @@
+{
+  "subject": "桌面端 report.html 切换到 NAS 同步",
+  "description": "push/pull 从 Gist API 切换到 NAS sync 服务（http://192.168.50.10:8765 首选 + 公网 https://stock.mlq5919.win:4443/sync 兜底），适配 payload 格式（直接 {favs,updatedAt}，不再是 Gist 的 files 包装），移除硬编码 GIST_TOK，保留原有合并逻辑（远端新则替换、否则并集）。",
+  "activeForm": "改造桌面端 report.html",
+  "status": "completed",
+  "id": "3",
+  "createdAt": 1793682638722,
+  "updatedAt": 1793683193590
+}

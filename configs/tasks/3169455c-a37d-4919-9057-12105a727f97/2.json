@@ -1,0 +1,9 @@
+{
+  "subject": "改造 sync_server.py 为合并写入并部署重启",
+  "description": "POST 不再整表覆盖：以服务端当前列表为底，与传入列表按 code 合并；传入中没有而服务端有的非系统条目视为删除并剔除；未来可期系统条目始终保留。经 SSH 部署到 /volume2/stock/stock/web/sync_server.py 并重启进程，验证 /sync 仍返回 34 条。",
+  "activeForm": "改造 sync_server.py",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1793682638686,
+  "updatedAt": 1793682998332
+}

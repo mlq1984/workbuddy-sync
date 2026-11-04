@@ -1,0 +1,1 @@
+{"schema":"fbs.bookwriter.flat-source-map/v2","version":"2026.10.311","files":454,"manifest":"../assets/runtime-manifest.json","lookup":"node scripts/bookwriter.mjs locate <源码逻辑路径>","note":"同一资料只存一份。manifest记录asset SHA、恢复后的运行SHA及可读字节替换；不含嵌套档案、编码载荷或远程源码。"}
