@@ -1,0 +1,9 @@
+{
+  "subject": "诊断收藏数据丢失现状",
+  "description": "检查 NAS web/favs.json 当前内容、备份文件、sync_server 进程与日志、本地开发副本一致性，确认数据是否真的为空/被截断以及丢失时间点",
+  "activeForm": "诊断收藏数据丢失现状",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1793838664179,
+  "updatedAt": 1793838932852
+}

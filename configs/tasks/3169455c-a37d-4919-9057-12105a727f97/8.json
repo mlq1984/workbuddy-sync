@@ -1,0 +1,9 @@
+{
+  "subject": "审查服务端与两端客户端代码正确性",
+  "description": "逐行审查 sync_server.py v5、手机端 index.html v28、桌面端 report.html、future7_daily.py / scan_a.py / task_monitor.py 中所有对 favs.json 的读写路径，找出会写入空列表、误清空、吞异常或把缓存当权威的 bug",
+  "activeForm": "审查服务端与两端客户端代码正确性",
+  "status": "completed",
+  "id": "8",
+  "createdAt": 1793838666725,
+  "updatedAt": 1793838934985
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "等待用户确认是否恢复 5 只收藏",
+  "description": "08:26 的 5 次删除发生在 v5（无备份、日志不记 code），无法精确知道删了哪 5 只。已生成可选基线 C:/Users/king/WorkBuddy/restore_baseline_26_OPTIONAL.json（21 只 + 4 只历史推荐猜测补齐 + 688578 艾力斯），未写入 NAS。擅自恢复会重现「删了又回来」，须等用户明确确认后再执行。",
+  "activeForm": "等待用户确认是否恢复 5 只收藏",
+  "status": "pending",
+  "id": "11",
+  "createdAt": 1793840107967,
+  "updatedAt": 1793840107967
+}
