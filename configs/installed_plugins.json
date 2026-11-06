@@ -539,10 +539,10 @@
     "wecom@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\0.0.0-wb.0c980a268b1c6406",
-        "version": "0.0.0+wb.0c980a268b1c6406",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\1.0.0-wb.9a01b35f5b7d047d",
+        "version": "1.0.0+wb.9a01b35f5b7d047d",
         "installedAt": "2026-10-03T07:20:44.921Z",
-        "lastUpdated": "2026-10-14T03:46:22.812Z"
+        "lastUpdated": "2026-11-05T07:16:27.118Z"
       }
     ],
     "ardot@workbuddy-builtin": [
