@@ -13,7 +13,7 @@ import argparse, base64, mimetypes, re, subprocess, sys
 from pathlib import Path
 
 RENDER_MJS = Path.home() / ".workbuddy/skills/poster-maker/scripts/render.mjs"
-NODE = r"C:\Users\king\.workbuddy\binaries\node\versions\22.22.2-3\node.exe"
+NODE = r"C:\Users\king\.workbuddy\binaries\node\versions\22.22.2-6\node.exe"
 
 def inline_bg(html_text: str, bg_path: Path) -> str:
     # 先把 __BG_IMAGE__ 占位符换成真实底图路径，再对页面内_所有_本地 img（含标题 PNG 等
