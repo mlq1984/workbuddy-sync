@@ -1,0 +1,9 @@
+{
+  "subject": "修复自动调参塌缩与三层数值脱节",
+  "description": "修 future7_verify.py::_tune_weights 的 acc 口径错误与权重单调压缩；修 future3d_engine.py::reconcile_and_tune 阈值 95 硬顶与同类压缩；让规则数值有单一权威源，三处生效位置自动同步，闸门双源统一。",
+  "activeForm": "修复自动调参塌缩与三层数值脱节",
+  "status": "completed",
+  "id": "13",
+  "createdAt": 1794096343304,
+  "updatedAt": 1794097568965
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "回归验证并输出变更报告",
+  "description": "py_compile 全部改动 Python 文件；模拟多轮调参确认权重不再塌到 0.2；确认三处数值一致、规则文件成为唯一权威；跑一次 preview 模式确认选股链路可用；输出新旧数值对照表与验证结论。",
+  "activeForm": "回归验证并输出变更报告",
+  "status": "completed",
+  "id": "15",
+  "createdAt": 1794096350517,
+  "updatedAt": 1794097854540
+}

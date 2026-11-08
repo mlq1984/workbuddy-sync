@@ -1,0 +1,9 @@
+{
+  "subject": "备份并部署到 NAS",
+  "description": "SSH 备份所有待改文件到带时间戳的备份目录，用 nas_io.safe_write_text 写入（UNC 路径），逐文件回读校验。",
+  "activeForm": "备份并部署到 NAS",
+  "status": "completed",
+  "id": "14",
+  "createdAt": 1794096346425,
+  "updatedAt": 1794097765010
+}

@@ -1,0 +1,9 @@
+{
+  "subject": "计算新权重并评估影响",
+  "description": "以 2026-10-05 walk-forward 回测的 rule_trigger_delta_pp 为主、3日 77 万次触发实盘统计为辅，重算 11 条基线权重；对低样本规则(ma_align/congestion)保守处理，expected_gain 按「高分陷阱」结论降权。用历史 fired 列表离线重算 score，评估新旧权重下 >=95 阈值入选数量的变化。",
+  "activeForm": "计算新权重并评估影响",
+  "status": "completed",
+  "id": "12",
+  "createdAt": 1794096338028,
+  "updatedAt": 1794097196875
+}
