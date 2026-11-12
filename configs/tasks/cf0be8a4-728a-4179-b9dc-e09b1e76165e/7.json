@@ -1,0 +1,9 @@
+{
+  "subject": "清理遗留 Edge CDP 与临时文件",
+  "description": "停掉 Edge CDP supervisor 后台任务 dOgK9E，杀 edge-cdp-profile 专用 Edge 实例，删临时 _duck_start.png",
+  "activeForm": "清理遗留进程",
+  "status": "completed",
+  "id": "7",
+  "createdAt": 1794378731901,
+  "updatedAt": 1794379793999
+}

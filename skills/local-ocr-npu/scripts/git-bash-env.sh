@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Copyright (C) 2026 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
 
 # Shared Git Bash bootstrap for local Python skills. This file is sourced by a
 # skill's run.sh and deliberately invokes native Windows executables directly.
@@ -138,49 +141,6 @@ _uv_install_with_winget() {
     _uv_find_winget_copy
 }
 
-_uv_install_with_astral_script() {
-    # UV_INSTALL_DIR puts uv straight into the shared location; without it the
-    # installer picks its own directory. UV_NO_MODIFY_PATH stops it from editing
-    # the user's PATH environment variable behind their back.
-    local install_dir="$1" install_dir_win candidate
-    command -v powershell.exe >/dev/null 2>&1 || return 1
-    install_dir_win="$(cygpath -w "$install_dir")" || return 1
-    printf '%s\n' 'Installing uv with the official astral.sh installer...' >&2
-    # PSModulePath is inherited from whatever launched this shell. When that is
-    # PowerShell 7, Windows PowerShell 5.1 is pointed at PS7's module directory
-    # and the installer dies on `Get-ExecutionPolicy` with "the module could not
-    # be loaded". Clearing it makes 5.1 fall back to its own defaults.
-    UV_INSTALL_DIR="$install_dir_win" UV_NO_MODIFY_PATH=1 PSModulePath= \
-        powershell.exe -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" >&2 || true
-    candidate="$install_dir/uv.exe"
-    [[ -f "$candidate" ]] && { printf '%s\n' "$candidate"; return 0; }
-    return 1
-}
-
-_uv_install_from_archive() {
-    # Last resort: the pinned release archive published by Astral itself. The
-    # caller owns (and removes) the scratch directory passed in.
-    local work_dir="$1" archive archive_win hit
-    local url='https://releases.astral.sh/github/uv/releases/download/0.12.14/uv-x86_64-pc-windows-msvc.zip'
-
-    mkdir -p "$work_dir" || return 1
-    archive="$work_dir/uv.zip"
-    printf '%s\n' 'Downloading the uv release archive...' >&2
-    if command -v curl.exe >/dev/null 2>&1; then
-        archive_win="$(cygpath -w "$archive")" || return 1
-        curl.exe -fL --ssl-no-revoke -o "$archive_win" "$url" >&2 || true
-    fi
-    if [[ ! -s "$archive" ]] && command -v curl >/dev/null 2>&1; then
-        curl -fL -o "$archive" "$url" >&2 || true
-    fi
-    [[ -s "$archive" ]] || return 1
-
-    unzip -oq "$archive" -d "$work_dir" >/dev/null 2>&1
-    hit="$(find "$work_dir" -name 'uv.exe' -print -quit 2>/dev/null)"
-    [[ -n "$hit" ]] || return 1
-    printf '%s\n' "$hit"
-}
-
 _bootstrap_uv() {
     local shared_uv_dir="$1" uv_exe="$2" mirror_index="$3"
     local archive_dir found uv_temp status
@@ -188,8 +148,6 @@ _bootstrap_uv() {
     archive_dir="$shared_uv_dir/.uv-archive.$$"
     found="$(_uv_install_with_pip "$mirror_index" || true)"
     [[ -n "$found" ]] || found="$(_uv_install_with_winget || true)"
-    [[ -n "$found" ]] || found="$(_uv_install_with_astral_script "$shared_uv_dir" || true)"
-    [[ -n "$found" ]] || found="$(_uv_install_from_archive "$archive_dir" || true)"
 
     status=1
     if [[ -f "$uv_exe" ]]; then
@@ -296,14 +254,16 @@ prepare_python_runtime() {
         mkdir -p "$wheels_dir" || return 1
         local wheel_url wheel_url_path wheel_name wheel wheel_win wheel_temp wheel_temp_win package_name normalized_package_name
         local wheel_hash wheel_sha_file installed_wheel_hash installed_version wheels_dir_win
-        while IFS= read -r wheel_url || [[ -n "$wheel_url" ]]; do
-            wheel_url="${wheel_url//$'\r'/}"
-            wheel_url="$(printf '%s' "$wheel_url" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')"
-            [[ -z "$wheel_url" || "$wheel_url" == \#* ]] && continue
-            [[ "$wheel_url" == http://* || "$wheel_url" == https://* ]] || {
-                skill_fail "Invalid wheel URL: $wheel_url"
+        while IFS= read -r wheel_entry || [[ -n "$wheel_entry" ]]; do
+            wheel_entry="${wheel_entry//$'\r'/}"
+            wheel_entry="$(printf '%s' "$wheel_entry" | sed -E 's/^[[:space:]]+|[[:space:]]+$//g')"
+            [[ -z "$wheel_entry" || "$wheel_entry" == \#* ]] && continue
+            if [[ ! "$wheel_entry" =~ ^(https?://[^[:space:]]+)[[:space:]]+sha256:([[:xdigit:]]{64})$ ]]; then
+                skill_fail "Invalid wheel entry (expected URL followed by sha256:<64 hex digits>): $wheel_entry"
                 return 1
-            }
+            fi
+            wheel_url="${BASH_REMATCH[1]}"
+            expected_wheel_hash="$(printf '%s' "${BASH_REMATCH[2]}" | tr '[:lower:]' '[:upper:]')"
 
             wheel_url_path="${wheel_url%%\?*}"
             wheel_name="${wheel_url_path##*/}"
@@ -342,11 +302,16 @@ prepare_python_runtime() {
                 mv -f "$wheel_temp" "$wheel" || return 1
             fi
 
+            actual_wheel_hash="$(sha256sum "$wheel" | awk '{print toupper($1)}')" || return 1
+            if [[ "$actual_wheel_hash" != "$expected_wheel_hash" ]]; then
+                rm -f "$wheel"
+                skill_fail "SHA-256 mismatch for $wheel_name."
+                return 1
+            fi
+
             package_name="${wheel_name%%-*}"
             normalized_package_name="$(printf '%s' "$package_name" | tr '[:upper:]_' '[:lower:]-')"
-            wheel_hash="$("$venv_python" -c \
-                'import hashlib,pathlib,sys;print(hashlib.sha256(pathlib.Path(sys.argv[1]).read_bytes()).hexdigest().upper())' \
-                "$(cygpath -w "$wheel")")" || return 1
+            wheel_hash="$actual_wheel_hash"
             wheel_sha_file="$venv_dir/managed-wheel-$normalized_package_name.sha"
             installed_wheel_hash=''
             [[ -f "$wheel_sha_file" ]] && installed_wheel_hash="$(tr -d '[:space:]' < "$wheel_sha_file")"

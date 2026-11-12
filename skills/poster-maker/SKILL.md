@@ -6,7 +6,7 @@ description: 生成海报/做海报/公众号封面/小红书配图/朋友圈配
 description_zh: 生成社媒视觉物料:海报、公众号封面、小红书/朋友圈配图、OG 分享卡、头图、横幅。大字排版 + 品牌渐变,像素精确、离线毫秒级出图,内置封面/OG/方图等现成模板与尺寸规范。
 description_en: Generate social-ready posters, article covers, OG/share cards and banners with big-type layouts and brand gradients. Pixel-exact, offline, milliseconds per render, with ready-made templates and platform size specs.
 category: image
-version: 1.2.0
+version: 1.2.1
 author: AutoClaw
 ---
 
@@ -74,7 +74,7 @@ author: AutoClaw
 - **品牌一致性**:有品牌色/Logo 就放角标位,颜色用品牌色的渐变家族
 - **渲染后目检样式**:某元素样式没生效(字号/间距突然不对),先查是否把工具类写进了 `class`——工具类必须写 `tw`,`class` 里的会静默失效不报错(脚本会 Warning 提示)
 - **多列对齐必须目检**:价目表/表格/图文左右栏这类多列版式,渲染后逐列检查起点是否对齐——flex 子项默认可收缩,定宽列要加 `shrink-0`(tw 内)或内联 `style="width:..px;flex-shrink:0"`,否则总宽超出容器时列被静默压窄,这是列错位的最高发原因
-- 字体:`style="font-family:msyh,NotoSansCJK-Regular,wqy-zenhei"`,离线环境 Emoji 保持纯文本
+- **字体匹配场景气质,版权匹配用途**:促销用粗黑体、国风/节日用宋楷、高端用细字重大字距(逐场景推荐见场景手册);默认字体栈 `style="font-family:msyh,NotoSansCJK-Regular,wqy-zenhei"`;换字体用 `--font 字体文件.ttf` 并同步改 font-family(注册族名=文件名去扩展名);对外商用物料优先思源黑体/阿里巴巴普惠体等免费可商用字体,系统字体商用有版权风险——机制与版权清单见 `@references/syntax-guide.md` 第 4 节;离线环境 Emoji 保持纯文本
 
 ## 批量与变体
 
@@ -91,6 +91,7 @@ node "<技能目录>/scripts/render-series.mjs" --template "<技能目录>/templ
 
 - `series.json` 写法见同目录示例 `social-post-series.json`:`shared` 放全系列相同字段(品牌/篇章胶囊/页脚,**配色也走数据**——`BG_TOP/BG_MID/BG_BOT` 背景渐变与 `ACCENT/ACCENT_SOFT` 强调色),`pages[]` 放每页的标题与内容;`{{PAGE}}/{{TOTAL}}` 页码自动按 `01 / 04` 风格填充
 - **"同一根模板"约束的是一个系列之内**:同系列必须复用同一根模板与同一组配色 token,只换标题区/内容区——系列内风格漂移比单页丑更伤账号;**不同系列、不同品牌之间则必须换骨架换配色**(换配色直接改数据即可,换明暗底色类型就改模板骨架),别让每个账号都长一个样
+- `--font 字体文件.ttf`(可多个)与 `--no-fonts` 会透传给每一页的 `render.mjs`——整套系列换字体在这里统一入口,别逐页单渲;传 `--font` 后自动探测关闭,font-family 栈要同步以新字体名开头
 - 每页会同时落一份填好的 `.html`;单页不满意可直接改它,再用 `render.mjs` 单独重渲这一页
 
 ## 环境要求

@@ -1,0 +1,11 @@
+# T14 标注图解/科普解剖图 / Annotated Diagram & Scientific Dissection
+- **识别信号**：用户说"解剖图/标注图/科普图解/结构图/图鉴/尺度缩放图"。（EN: annotated diagram, dissection, scientific illustration, scale diagram）
+- **比例**：`4:5` 或 `1:1`（标本感竖构图）。
+- **版面骨架**：单一对象居中悬浮（**博物馆标本式**）→ **一半保持原状、一半剖开至核心**（内外同时展示）→ 纯深色背景（黑丝绒，衬托主体）→ **三行式标注**：每处标注 = ①结构名称 ②成分/数据说明 ③一句人话（这个结构在做什么）——共 3~6 处 → 主标题（左上角，暖白大写）+ 斜体副题（一句本质概括 ≤15 字）。尺度缩放图分支：6–8 尺度框，每框短标签 + 单位 + 倍率 + 不同尺度细节（避免全同/通用放大镜式）。
+- **配色**：科学冷色系（蓝/青/灰）+ 强调色标注；解剖用真实组织色（不卡通化）；深色背景衬标本感。
+- **文字规则**：标注文字**紧贴结构边缘 + 细引导线（pointer lines），绝不悬空飘浮**；手写感衬线字体；标注文字量 = 3 行 × 3~6 处；结构名逐字精确（拉丁/中文混排易错，逐字声明）；强制渲染约束。**中文标注 buff（用 capable 模型时）**：「笔画清晰、无粘连、无错别字、字号≥24」；**Flux 通道(cf/free)不要写中文标注**（改留白后期叠字），中文图解优先推智谱/商汤/aurora。
+- **风格气质**：博物学插画 × 古典光影 × 科学摄影（"如博物馆珍贵藏品""一切鲜活，没有临床感"）；**写实非示意**。
+- **避坑**：标注悬空不贴边（必乱）；结构名乱码（中英混排逐字声明）；临床感太重（写"鲜活、真实物理质感"）；背景不够深（深色才衬标本感）；长段正文；模块过多；标注混乱；尺度框雷同。
+- **排除句式**："写实标本图，非示意图/非卡通/非简化图解，无临床感"。
+- **任务句范式**：中文「生成一张完成的标注解剖图：对象…，一半原状一半剖开，标注…」/ EN "Create ONE finished annotated dissection diagram of ..., half intact half cross-sectioned, labeled with ..."
+- **EN Quick Reference** — Triggers: annotated diagram/dissection/scientific illustration · Layout: specimen centered on dark velvet, half intact + half cross-section, 3-line labels (name/data/plain-sense) ×3–6, title top-left; scale diagram 6–8 frames · Color: cool scientific + accent, real tissue color, dark bg · Text: labels hug edges + thin pointer lines, handwritten serif, exact · Style: naturalist × Caravaggio light, no clinical feel · Pitfalls: floating labels, mixed-language typos, clinical look, light bg, dense text, messy labels, identical scale frames · Exclusions: realistic specimen, not schematic/cartoon/simplified.

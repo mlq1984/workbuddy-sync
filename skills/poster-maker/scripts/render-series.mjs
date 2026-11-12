@@ -7,6 +7,7 @@
 // Usage:
 //   node render-series.mjs --template ../templates/social-post-series.html \
 //     --data series.json --outdir out/ [--width 1080] [--height 1440] [--format png]
+//     [--font /path/Font.ttf ...] [--no-fonts]  (font flags forwarded to render.mjs)
 // data JSON: { "width": 1080, "height": 1440, "shared": { "BRAND": "..." }, "pages": [ { "TITLE": "..." }, ... ] }
 import * as fs from 'fs';
 import * as path from 'path';
@@ -41,6 +42,11 @@ const height = Number(opt('height')) || data.height || 1440;
 const formatOpt = opt('format');
 const format = (formatOpt || 'png').toLowerCase();
 
+// Font flags are forwarded verbatim to every render.mjs run: --font <file>
+// (repeatable; replaces render.mjs's auto-detection) and --no-fonts.
+const fontFwd = args.flatMap((a, i) => (a === '--font' && args[i + 1] !== undefined ? ['--font', args[i + 1]] : []));
+if (args.includes('--no-fonts')) fontFwd.push('--no-fonts');
+
 fs.mkdirSync(outDir, { recursive: true });
 const pad = n => String(n).padStart(Math.max(2, String(pages.length).length), '0');
 for (const [i, page] of pages.entries()) {
@@ -54,7 +60,8 @@ for (const [i, page] of pages.entries()) {
   const r = spawnSync(process.execPath, [
     RENDER, '--html', `${base}.html`, '-o', `${base}.${format}`,
     '--width', String(width), '--height', String(height),
-    ...(formatOpt ? ['--format', format] : [])
+    ...(formatOpt ? ['--format', format] : []),
+    ...fontFwd
   ], { stdio: 'inherit' });
   if (r.status !== 0) { console.error(`Error: page ${i + 1} failed; stopping.`); process.exit(1); }
 }

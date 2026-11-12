@@ -1,0 +1,9 @@
+{
+  "subject": "用真实 K 线做 walk-forward 回测评估规则预测力",
+  "description": "基于 NAS kline_data 全市场日线，按「T 日只用 T 日及之前数据」的前向验证口径，统计现行规则在不同阈值/闸门下的未来3日、7日上涨命中率，与全市场基准对比，并逐规则计算边际贡献，找出负贡献项与高分陷阱。",
+  "activeForm": "跑 walk-forward 回测评估规则预测力",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1794374016478,
+  "updatedAt": 1794374571886
+}

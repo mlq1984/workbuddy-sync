@@ -1,0 +1,4 @@
+# 运行时生成 / 本地状态（不纳入技能本体）
+__pycache__/
+*.pyc
+credentials.json

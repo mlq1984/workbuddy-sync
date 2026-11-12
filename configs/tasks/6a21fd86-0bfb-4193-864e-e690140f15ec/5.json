@@ -1,0 +1,9 @@
+{
+  "subject": "备份 NAS 生产文件并核对当前实现",
+  "description": "备份 future7_daily.py、future7_verify.py、future3d_engine.py 及相关配置/state 到带时间戳的目录，确认线上实际代码与报告结论一致。",
+  "activeForm": "备份生产文件并核对实现",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1794375309446,
+  "updatedAt": 1794375575154
+}

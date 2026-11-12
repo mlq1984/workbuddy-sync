@@ -1,0 +1,19 @@
+# T9 编辑/改图（i2i，配 image 参数使用）/ Image Editing
+- **识别信号**：用户给了图 + 说"改成/换背景/去掉/加上/扩图/风格迁移/换个姿势/放大/修脸"。（EN: edit, replace background, remove object, outpaint, style transfer, pose change, upscale, restore face）
+- **比例**：沿用原图（不传 ratio，除非用户要改幅面）。
+- **任务谱（每任务一句要领）**：
+  - **换背景**：新背景写具体（场景+时间+光线），与主体光线方向匹配；
+  - **去物**：写"移除 X 并自然填补背景"；
+  - **加物**：写清位置+大小+与场景融合；
+  - **扩图**：写"向外扩展，保持透视与光线一致"；
+  - **风格迁移**：写"保持构图与主体不变，整体风格改为 X"；
+  - **姿态/服装**：写"保持面部特征与身份一致"；
+  - **放大/修脸**：写"提升清晰度/修复面部，保持原构图与材质"。
+- **三段式规则**：①**保留什么**（显式列出不可动项：面部/服装/构图/商品形态…）②**改什么**（**一次只改一处**，单一明确）③**融合约束**（光线/色调/透视一致，新背景色温明度与主体匹配；放大不引入色偏）。
+- **流程要点（去通道化）**：换背景＝去背→放新背景→匹配光色→加接触阴影；放大流水线＝修脸→去噪→校色→放大；mask 精度＝白改/黑留/灰羽化（硬边假）；多 pass 迭代、检查边缘、匹配颗粒。
+- **多参考图**：需要"主体保真"时用 `image` 数组传多张（≤5，第 1 张为主编辑图）——图1=要保真的主体原图、图2=背景/风格/材质参考，提示词写明"图1 为主体、图2 仅作背景参考"；超出通道上限自动截断（主图永远保留）。
+- **文字规则**：以"保留 + 改动 + 融合约束"三段组织指令；无图上文字需求则不提。
+- **避坑**：多处同改失控（多处改动 = 分次提交，每次一条）；人物一致性不写必变脸；扩图不写透视必歪；光影不匹配；硬边假；修脸过度塑料。
+- **排除句式**："只输出编辑后的一张图，不要前后对比拼图/标注框"。
+- **任务句范式**：中文「编辑这张图：保留…，把…改为…，保持…一致」/ EN "Edit this image: keep ..., change ... to ..., keep ... consistent"
+- **EN Quick Reference** — Tasks: bg swap / remove / outpaint / style transfer / pose change / upscale / restore · Rule: keep-list + single change + blend constraints (light/tone/perspective), mask feathering · Pipeline: bg swap = cutout→place→match light→shadow; upscale = face→denoise→grade→upscale · Pitfalls: multi-edit drift, face drift, perspective break, light mismatch, hard edge, plastic restore · Exclusions: edited image only, no before-after comparison collage/annotation boxes.

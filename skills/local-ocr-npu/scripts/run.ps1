@@ -1,3 +1,6 @@
+# Copyright (C) 2026 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
 param(
     [Parameter(Position=0)]
     [string]$InputPath,
@@ -39,16 +42,16 @@ if ($env:OCR_USE_SYSTEM_PROXY -eq '1') {
 }
 
 # ===========================================================================
-#  Configuration — the skill package ships no executables. Every native
+#  Configuration -- the skill package ships no executables. Every native
 #  runtime file (ppocr.exe, openvino.dll, pdf2png.exe, pdfium.dll) is
-#  downloaded on first run into %USERPROFILE%\.openvino\bin\, next to the
+#  downloaded on first run into %USERPROFILE%\.openvino\bin\ocr-npu\, next to the
 #  models. Only bin\platform.ps1 lives inside the package.
 #  Override via environment variables or edit defaults below.
 # ===========================================================================
 $SkillRoot          = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $OpenVinoRoot       = Join-Path $env:USERPROFILE '.openvino'
 $ModelsRoot         = Join-Path $OpenVinoRoot 'models'
-$RuntimeBinDir      = Join-Path $OpenVinoRoot 'bin'
+$RuntimeBinDir      = Join-Path $OpenVinoRoot 'bin\ocr-npu'
 $DefaultDevice      = if ($env:OCR_DEVICE)       { $env:OCR_DEVICE }       else { 'npu' }
 $DefaultPpOcrExe    = if ($env:PPOCR_EXE)        { $env:PPOCR_EXE }        else { Join-Path $RuntimeBinDir 'ppocr.exe' }
 $DefaultDetModelDir = if ($env:DET_MODEL_DIR)     { $env:DET_MODEL_DIR }    else { Join-Path $ModelsRoot 'PP-OCRv5_server_det_ov' }
@@ -58,9 +61,8 @@ $RecModelName       = if ($env:REC_MODEL_NAME)    { $env:REC_MODEL_NAME }   else
 $RecBatchSize       = if ($env:REC_BATCH_SIZE)    { $env:REC_BATCH_SIZE }   else { '1' }
 $RecScoreThresh     = if ($env:REC_SCORE_THRESH)  { $env:REC_SCORE_THRESH } else { '0.0' }
 
-# ModelScope is primary; HuggingFace is the fallback
+# ModelScope download source
 $MsRepoUrl   = if ($env:MS_REPO_URL)       { $env:MS_REPO_URL }       else { 'https://modelscope.cn/models/FionaGu1019/PaddleOCR-OpenVINO/resolve/master' }
-$HfRepoUrl   = if ($env:HF_REPO_URL)       { $env:HF_REPO_URL }       else { 'https://huggingface.co/Fiona1019/PaddleOCR-OpenVINO/resolve/main' }
 $BinAssetName = 'ppocr-windows-x64.zip'
 # The PDF renderer (pdf2png.exe + pdfium.dll) lives in the shared skill-asset
 # bucket, not in the OCR model repo.
@@ -69,9 +71,10 @@ $PdfiumAssetName = 'pdfium.zip'
 # ===========================================================================
 
 $EffectiveDevice = if ($Device) { $Device } else { $DefaultDevice }
-$PpOcrExe        = $DefaultPpOcrExe
-$DetModelDir     = $DefaultDetModelDir
-$RecModelDir     = $DefaultRecModelDir
+$EffectiveDevice = $EffectiveDevice.ToLowerInvariant()
+$PpOcrExe        = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($DefaultPpOcrExe)
+$DetModelDir     = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($DefaultDetModelDir)
+$RecModelDir     = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($DefaultRecModelDir)
 
 # --- Logging ---
 $LogDir = Join-Path $env:USERPROFILE '.openvino\log'
@@ -124,6 +127,10 @@ if (-not $InputPath) {
     Write-Host 'Usage: scripts\run.ps1 "<image_file_or_pdf_or_directory>" [-Device cpu|npu|gpu]'
     exit 1
 }
+if ($EffectiveDevice -notin @('cpu', 'npu', 'gpu')) {
+    Write-Host "  [ERROR] Unsupported device: $EffectiveDevice"
+    exit 1
+}
 
 Write-Log "run.ps1 started: InputPath='$InputPath' Device='$EffectiveDevice'"
 Write-Host "========================================"
@@ -149,7 +156,7 @@ if (Test-Path $PlatformScript) {
 }
 
 # --- Validate input path ---
-if (-not (Test-Path $InputPath)) {
+if (-not (Test-Path -LiteralPath $InputPath)) {
     Write-Host "  [ERROR] Input path does not exist: $InputPath"
     exit 1
 }
@@ -164,29 +171,63 @@ Write-Host "  [OK] Device: $($EffectiveDevice.ToUpper())  |  Input: $InputPath"
 $BinDir       = Split-Path $PpOcrExe -Parent
 $downloadLog  = Join-Path $LogDir 'ocr-npu-download.log'
 
-$needBin = -not (Test-Path (Join-Path $BinDir 'openvino.dll'))
+function Get-ModelFiles {
+    param([string]$ModelName)
+    $files = @('inference.xml', 'inference.bin', 'inference.yml')
+    if ($ModelName -match '_det_') { $files += 'inference_960.xml' }
+    if ($ModelName -match '_rec_') {
+        $files += @('inference_320.xml', 'inference_480.xml', 'inference_640.xml', 'inference_800.xml', 'inference_1280.xml')
+    }
+    return $files
+}
+
+function Test-ModelComplete {
+    param([string]$ModelDir, [string]$ModelName = (Split-Path $ModelDir -Leaf))
+    foreach ($fileName in (Get-ModelFiles $ModelName)) {
+        if (-not (Test-Path -LiteralPath (Join-Path $ModelDir $fileName) -PathType Leaf)) { return $false }
+    }
+    return $true
+}
+
+function Get-MissingRuntimeFiles {
+    $required = @($PpOcrExe, (Join-Path $BinDir 'openvino.dll'), (Join-Path $BinDir 'pdf2png.exe'), (Join-Path $BinDir 'pdfium.dll'))
+    $required += @(Get-ModelFiles "${DetModelName}_ov" | ForEach-Object { Join-Path $DetModelDir $_ })
+    $required += @(Get-ModelFiles "${RecModelName}_ov" | ForEach-Object { Join-Path $RecModelDir $_ })
+    return @($required | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) })
+}
+
+Write-Log "Resolved: BinDir=$BinDir DetModelDir=$DetModelDir RecModelDir=$RecModelDir"
+# List exactly what is about to be downloaded, so an unexpected re-download can
+# be traced to the one path that was not found.
+foreach ($missing in (Get-MissingRuntimeFiles)) {
+    Write-Host "  Missing before download: $missing"
+    Write-Log "Missing before download: $missing"
+}
+
+$needBin = -not ((Test-Path -LiteralPath (Join-Path $BinDir 'openvino.dll') -PathType Leaf) -and (Test-Path -LiteralPath $PpOcrExe -PathType Leaf))
 $needPdf = -not ((Test-Path (Join-Path $BinDir 'pdf2png.exe')) -and (Test-Path (Join-Path $BinDir 'pdfium.dll')))
-$needDet = -not (Test-Path $DetModelDir)
-$needRec = -not (Test-Path $RecModelDir)
+$needDet = -not (Test-ModelComplete $DetModelDir "${DetModelName}_ov")
+$needRec = -not (Test-ModelComplete $RecModelDir "${RecModelName}_ov")
 
 if ($needBin -or $needPdf -or $needDet -or $needRec) {
     $dlScript = Join-Path $PSScriptRoot 'download.ps1'
     Write-Host ""
-    Write-Host "  [DL] 首次安装: 正在下载运行时和模型 (~200 MB), 请稍候..."
-    Write-Host "       进度日志: $downloadLog"
+    Write-Host "  [DL] First-time setup: downloading runtime and models, please wait..."
+    Write-Host "       Progress log: $downloadLog"
     Write-Log "Synchronous download starting via download.ps1."
 
     & $dlScript -BinDir $BinDir `
                 -LogFile $downloadLog `
-                -HfRepoUrl $HfRepoUrl `
                 -MsRepoUrl $MsRepoUrl `
                 -BinAssetName $BinAssetName `
                 -SkillAssetsUrl $SkillAssetsUrl `
                 -PdfiumAssetName $PdfiumAssetName `
                 -DetModelDir $DetModelDir `
-                -RecModelDir $RecModelDir
+                -RecModelDir $RecModelDir `
+                -DetModelName $DetModelName `
+                -RecModelName $RecModelName
 
-    Write-Host "  [DL] 下载完成, 继续运行..."
+    Write-Host "  [DL] Download complete, continuing..."
     Write-Log "Synchronous download finished; continuing."
 }
 
@@ -198,7 +239,7 @@ Write-Host "[2/4] Checking OCR runtime..."
 
 if (-not (Test-Path $PpOcrExe)) {
     Write-Host "  [ERROR] ppocr.exe not found: $PpOcrExe"
-    Write-Host "          运行时下载失败, 请检查网络后重新运行。日志: $downloadLog"
+    Write-Host "          Runtime download failed. Check your network and run again. Log: $downloadLog"
     exit 1
 }
 Write-Host "  [OK] ppocr.exe ready ($([math]::Round((Get-Item $PpOcrExe).Length/1KB,0)) KB)"
@@ -213,44 +254,28 @@ function Download-ModelDir {
     Write-Log "Auto-download model: $ModelName -> $DestDir"
     New-Item -ItemType Directory -Path $DestDir -Force | Out-Null
 
-    $apiUrl = "https://huggingface.co/api/models/Fiona1019/PaddleOCR-OpenVINO"
-    try {
-        $modelInfo = Invoke-RestMethod -Uri $apiUrl -TimeoutSec 30
-        $siblings = $modelInfo.siblings | Where-Object { $_.rfilename -like "$ModelName/*" }
-    } catch {
-        Write-Log "HF API failed: $_  Using static file list."
-        $siblings = $null
-    }
-
-    if (-not $siblings) {
-        $knownFiles = @('inference.xml', 'inference.bin', 'inference.yml')
-        if ($ModelName -match '_det_') { $knownFiles += 'inference_960.xml' }
-        if ($ModelName -match '_rec_') {
-            $knownFiles += @('inference_320.xml','inference_480.xml','inference_640.xml',
-                             'inference_800.xml','inference_1280.xml')
-        }
-        $siblings = $knownFiles | ForEach-Object { [pscustomobject]@{ rfilename = "$ModelName/$_" } }
-    }
+    $knownFiles = Get-ModelFiles $ModelName
 
     $downloaded = 0; $failed = 0
-    foreach ($s in $siblings) {
-        $fileName = Split-Path $s.rfilename -Leaf
+    foreach ($fileName in $knownFiles) {
         $destFile  = Join-Path $DestDir $fileName
+        if (Test-Path -LiteralPath $destFile -PathType Leaf) { continue }
+        $partialFile = "$destFile.partial"
         $ok = $false
-        foreach ($url in @("$HfRepoUrl/$($s.rfilename)", "$MsRepoUrl/$($s.rfilename)")) {
-            try {
-                $ProgressPreference = 'SilentlyContinue'
-                Invoke-WebRequest -Uri $url -OutFile $destFile -TimeoutSec 300 -UseBasicParsing
-                $ProgressPreference = 'Continue'
-                Write-Log "  OK: $fileName"
-                $ok = $true; break
-            } catch { Write-Log "  FAIL: $fileName from $url : $_" }
-        }
-        if ($ok -and (Test-AssetSha256 $destFile $fileName)) {
+        $url = "$MsRepoUrl/$ModelName/$fileName"
+        try {
+            $ProgressPreference = 'SilentlyContinue'
+            Invoke-WebRequest -Uri $url -OutFile $partialFile -TimeoutSec 300 -UseBasicParsing
+            $ProgressPreference = 'Continue'
+            Write-Log "  OK: $fileName"
+            $ok = $true
+        } catch { Write-Log "  FAIL: $fileName from $url : $_" }
+        if ($ok -and (Test-AssetSha256 $partialFile "$ModelName/$fileName")) {
+            Move-Item -LiteralPath $partialFile -Destination $destFile -Force
             $downloaded++
         } elseif ($ok) {
             $failed++
-            Remove-Item -LiteralPath $destFile -Force -ErrorAction SilentlyContinue
+            try { Remove-Item -LiteralPath $partialFile -Force -ErrorAction Stop } catch { }
         } else {
             $failed++
             Write-Host "  [WARN] Failed to download: $fileName"
@@ -258,23 +283,22 @@ function Download-ModelDir {
     }
 
     if ($failed -gt 0) {
-        Write-Host "  [WARN] Model $ModelName incomplete ($failed file(s) failed)"
-        Write-Host "         Manual download: https://huggingface.co/Fiona1019/PaddleOCR-OpenVINO"
+        throw "Model $ModelName incomplete ($failed file(s) failed); retry after checking the download log."
     } else {
         Write-Host "  [OK] Model downloaded: $ModelName ($downloaded files)"
     }
     Write-Log "Model download done: $ModelName  ok=$downloaded  fail=$failed"
 }
 
-$needDownloadDet = -not (Test-Path $DetModelDir)
-$needDownloadRec = -not (Test-Path $RecModelDir)
+$needDownloadDet = -not (Test-ModelComplete $DetModelDir "${DetModelName}_ov")
+$needDownloadRec = -not (Test-ModelComplete $RecModelDir "${RecModelName}_ov")
 
 if ($needDownloadDet -or $needDownloadRec) {
     Write-Host ""
-    Write-Host "[3/4] Downloading OCR models (first-time install, ~176 MB)..."
+    Write-Host "[3/4] Downloading OCR models (first-time install)..."
     New-Item -ItemType Directory -Path $ModelsRoot -Force | Out-Null
-    if ($needDownloadDet) { Download-ModelDir -ModelName (Split-Path $DetModelDir -Leaf) -DestDir $DetModelDir }
-    if ($needDownloadRec) { Download-ModelDir -ModelName (Split-Path $RecModelDir -Leaf) -DestDir $RecModelDir }
+    if ($needDownloadDet) { Download-ModelDir -ModelName "${DetModelName}_ov" -DestDir $DetModelDir }
+    if ($needDownloadRec) { Download-ModelDir -ModelName "${RecModelName}_ov" -DestDir $RecModelDir }
 } else {
     Write-Host ""
     Write-Host "[3/4] Checking OCR models..."
@@ -282,11 +306,11 @@ if ($needDownloadDet -or $needDownloadRec) {
     Write-Host "  [OK] Rec model: $(Split-Path $RecModelDir -Leaf)"
 }
 
-if (-not (Test-Path $DetModelDir)) {
+if (-not (Test-ModelComplete $DetModelDir "${DetModelName}_ov")) {
     Write-Host "  [ERROR] Det model not found: $DetModelDir"
     exit 1
 }
-if (-not (Test-Path $RecModelDir)) {
+if (-not (Test-ModelComplete $RecModelDir "${RecModelName}_ov")) {
     Write-Host "  [ERROR] Rec model not found: $RecModelDir"
     exit 1
 }
@@ -295,143 +319,167 @@ if (-not (Test-Path $RecModelDir)) {
 $PpOcrDir = Split-Path $PpOcrExe -Parent
 $env:PATH = "$PpOcrDir;$env:PATH"
 
-# --- Prepare output dir ---
-$SavePath = Join-Path $env:TEMP 'ocr_npu_skill_output'
-if (Test-Path $SavePath) { Remove-Item $SavePath -Recurse -Force }
-New-Item -ItemType Directory -Path $SavePath | Out-Null
-Write-Log "Output dir: $SavePath"
-
-# --- Render PDF pages to temporary PNG files ---
-$PdfPagesDir = $null
-$PdfPageCount = 0
-if ($IsPdfInput) {
-    # Same directory the runtime was downloaded into, so a PPOCR_EXE override
-    # keeps the PDF tool and the OCR runtime together.
-    $PdfToolDir = $BinDir
-    $PdfConverter = Join-Path $PdfToolDir 'pdf2png.exe'
-    if (-not (Test-Path -LiteralPath $PdfConverter) -or -not (Test-Path -LiteralPath (Join-Path $PdfToolDir 'pdfium.dll'))) {
-        Write-Host '  [ERROR] PDF 转换工具未就绪 (下载失败或未完成)。'
-        Write-Host "          请检查网络后重新运行, 会自动重试下载。日志: $downloadLog"
-        if (Test-Path $SavePath) { Remove-Item $SavePath -Recurse -Force }
-        exit 1
+$WorkDir = Join-Path (Join-Path $OpenVinoRoot 'temp') ('ocr_npu_' + [guid]::NewGuid().ToString('N'))
+try {
+    $StagedInputDir = Join-Path $WorkDir 'input'
+    New-Item -ItemType Directory -Path $StagedInputDir -Force | Out-Null
+    $InputNames = @{}
+    $InputFiles = if ($OriginalInputItem.PSIsContainer) {
+        @(Get-ChildItem -LiteralPath $OriginalInputItem.FullName -File)
+    } else {
+        @($OriginalInputItem)
     }
-
-    $PdfPagesDir = Join-Path ([IO.Path]::GetTempPath()) ("ocr_npu_pdf_{0}" -f [guid]::NewGuid().ToString('N'))
-    Write-Host "  [PDF] Rendering $($OriginalInputItem.Name) to PNG pages (200 DPI)..."
-    Write-Log "Rendering PDF '$InputPath' to '$PdfPagesDir' with bundled PDFium."
-    & $PdfConverter --input $InputPath --output $PdfPagesDir --dpi 200
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host '  [ERROR] PDF conversion failed.'
-        if (Test-Path $PdfPagesDir) { Remove-Item $PdfPagesDir -Recurse -Force }
-        if (Test-Path $SavePath) { Remove-Item $SavePath -Recurse -Force }
-        exit $LASTEXITCODE
+    $InputIndex = 0
+    foreach ($InputFile in $InputFiles) {
+        $InputIndex++
+        $StagedName = 'input_{0:D6}' -f $InputIndex
+        $StagedFile = Join-Path $StagedInputDir ($StagedName + $InputFile.Extension)
+        Copy-Item -LiteralPath $InputFile.FullName -Destination $StagedFile
+        $InputNames[$StagedName] = $InputFile.BaseName
     }
+    $InputPath = if ($OriginalInputItem.PSIsContainer) { $StagedInputDir } else { $StagedFile }
 
-    $PdfPageCount = @(Get-ChildItem -LiteralPath $PdfPagesDir -Filter '*.png' -File).Count
-    if ($PdfPageCount -eq 0) {
-        Write-Host '  [ERROR] PDF conversion produced no PNG pages.'
-        Remove-Item $PdfPagesDir -Recurse -Force -ErrorAction SilentlyContinue
-        Remove-Item $SavePath -Recurse -Force -ErrorAction SilentlyContinue
-        exit 1
-    }
-    $InputPath = $PdfPagesDir
-    Write-Host "  [PDF] Ready: $PdfPageCount page(s)"
-}
-
-# ===========================================================================
-#  STEP 4 -- Run OCR
-# ===========================================================================
-Write-Host ""
-Write-Host "[4/4] Running OCR..."
-$inputName = Split-Path $InputPath -Leaf
-if ((Get-Item $InputPath).PSIsContainer) { $inputName = "$inputName (directory)" }
-if ($IsPdfInput) { $inputName = "$($OriginalInputItem.Name) ($PdfPageCount pages)" }
-Write-Host "  Input: $inputName  |  Device: $($EffectiveDevice.ToUpper())  |  Model: $DetModelName + $RecModelName"
-if ($EffectiveDevice -eq 'npu') {
-    Write-Host "  Note: first NPU run compiles model (~27s); subsequent runs ~0.3s"
-}
-Write-Log "Running ppocr.exe: device=$EffectiveDevice input=$InputPath"
-$t0 = Get-Date
-
-Push-Location $PpOcrDir
-# Convert absolute paths to relative (avoids long-path crash in ppocr.exe)
-$RelDetModelDir = Resolve-Path -Relative $DetModelDir
-$RelRecModelDir = Resolve-Path -Relative $RecModelDir
-$RelInputPath   = Resolve-Path -Relative $InputPath
-$RelSavePath    = Resolve-Path -Relative $SavePath
-& $PpOcrExe ocr `
-    "--input=$RelInputPath" `
-    "--text_detection_model_name=$DetModelName" `
-    "--text_detection_model_dir=$RelDetModelDir" `
-    "--text_recognition_model_name=$RecModelName" `
-    "--text_recognition_model_dir=$RelRecModelDir" `
-    "--device=$EffectiveDevice" `
-    "--text_recognition_batch_size=$RecBatchSize" `
-    "--text_rec_score_thresh=$RecScoreThresh" `
-    "--save_path=$RelSavePath"
-$ExitCode = $LASTEXITCODE
-Pop-Location
-Write-Log "ppocr.exe exited: code=$ExitCode"
-
-# Auto-retry on CPU if NPU failed
-if ($ExitCode -ne 0 -and $EffectiveDevice -eq 'npu') {
-    Write-Host "  [WARN] NPU inference failed (exit $ExitCode) -- retrying on CPU..."
-    Write-Log "NPU failed; retrying on CPU."
-    $EffectiveDevice = 'cpu'
-    if (Test-Path $SavePath) { Remove-Item $SavePath -Recurse -Force }
+    # --- Prepare output dir ---
+    $SavePath = Join-Path $WorkDir 'output'
     New-Item -ItemType Directory -Path $SavePath | Out-Null
-    Push-Location $PpOcrDir
-    $RelDetModelDir = Resolve-Path -Relative $DetModelDir
-    $RelRecModelDir = Resolve-Path -Relative $RecModelDir
-    $RelInputPath   = Resolve-Path -Relative $InputPath
-    $RelSavePath    = Resolve-Path -Relative $SavePath
-    & $PpOcrExe ocr `
-        "--input=$RelInputPath" `
-        "--text_detection_model_name=$DetModelName" `
-        "--text_detection_model_dir=$RelDetModelDir" `
-        "--text_recognition_model_name=$RecModelName" `
-        "--text_recognition_model_dir=$RelRecModelDir" `
-        "--device=cpu" `
-        "--text_recognition_batch_size=$RecBatchSize" `
-        "--text_rec_score_thresh=$RecScoreThresh" `
-        "--save_path=$RelSavePath"
-    $ExitCode = $LASTEXITCODE
-    Pop-Location
-    Write-Log "CPU retry exited: code=$ExitCode"
-}
+    Write-Log "Output dir: $SavePath"
 
-$elapsed = [math]::Round(((Get-Date) - $t0).TotalSeconds, 2)
+    # --- Render PDF pages to temporary PNG files ---
+    $PdfPagesDir = $null
+    $PdfPageCount = 0
+    if ($IsPdfInput) {
+        # Same directory the runtime was downloaded into, so a PPOCR_EXE override
+        # keeps the PDF tool and the OCR runtime together.
+        $PdfToolDir = $BinDir
+        $PdfConverter = Join-Path $PdfToolDir 'pdf2png.exe'
+        if (-not (Test-Path -LiteralPath $PdfConverter) -or -not (Test-Path -LiteralPath (Join-Path $PdfToolDir 'pdfium.dll'))) {
+            Write-Host '  [ERROR] PDF conversion tools are not ready (download failed or incomplete).'
+            Write-Host "          Check your network and run again to retry the download automatically. Log: $downloadLog"
+            exit 1
+        }
 
-if ($ExitCode -ne 0) {
+        $PdfPagesDir = Join-Path $WorkDir 'pages'
+        Write-Host "  [PDF] Rendering $($OriginalInputItem.Name) to PNG pages (200 DPI)..."
+        Write-Log "Rendering PDF '$InputPath' to '$PdfPagesDir' with bundled PDFium."
+        & $PdfConverter --input $InputPath --output $PdfPagesDir --dpi 200
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host '  [ERROR] PDF conversion failed.'
+            exit $LASTEXITCODE
+        }
+
+        $PdfPageCount = @(Get-ChildItem -LiteralPath $PdfPagesDir -Filter '*.png' -File).Count
+        if ($PdfPageCount -eq 0) {
+            Write-Host '  [ERROR] PDF conversion produced no PNG pages.'
+            exit 1
+        }
+        $InputPath = $PdfPagesDir
+        Write-Host "  [PDF] Ready: $PdfPageCount page(s)"
+    }
+
+    # ===========================================================================
+    #  STEP 4 -- Run OCR
+    # ===========================================================================
     Write-Host ""
-    Write-Host "[ERROR] OCR failed (exit code $ExitCode) | ${elapsed}s | $($EffectiveDevice.ToUpper())"
-    Write-Host "  Log: $LogFile"
-    if (Test-Path $SavePath) { Remove-Item $SavePath -Recurse -Force }
-    if ($PdfPagesDir -and (Test-Path $PdfPagesDir)) { Remove-Item $PdfPagesDir -Recurse -Force }
-    exit $ExitCode
-}
+    Write-Host "[4/4] Running OCR..."
+    $inputName = $OriginalInputItem.Name
+    if ($OriginalInputItem.PSIsContainer) { $inputName = "$inputName (directory)" }
+    if ($IsPdfInput) { $inputName = "$($OriginalInputItem.Name) ($PdfPageCount pages)" }
+    Write-Host "  Input: $inputName  |  Device: $($EffectiveDevice.ToUpper())  |  Model: $DetModelName + $RecModelName"
+    if ($EffectiveDevice -eq 'npu') {
+        Write-Host "  Note: first NPU run compiles models; timing varies by hardware and input."
+    }
+    Write-Log "Running ppocr.exe: device=$EffectiveDevice input=$InputPath"
+    $t0 = Get-Date
 
-# --- Print results ---
-$TxtFiles = Get-ChildItem $SavePath -Filter '*.txt' -ErrorAction SilentlyContinue
-$lineCount = 0
-Write-Host ""
-Write-Host "------------------------------------------------------------------------"
-if ($TxtFiles.Count -eq 0) {
-    Write-Host '[no text found]'
-} else {
-    foreach ($f in $TxtFiles) {
-        if ($TxtFiles.Count -gt 1) { Write-Host "-- $($f.BaseName) --" }
-        $lines = Get-Content $f.FullName -Encoding UTF8
-        $lines | ForEach-Object { Write-Host $_; $lineCount++ }
+    Push-Location $PpOcrDir
+    try {
+        # Convert absolute paths to relative (avoids long-path crash in ppocr.exe)
+        $RelDetModelDir = Resolve-Path -Relative $DetModelDir
+        $RelRecModelDir = Resolve-Path -Relative $RecModelDir
+        $RelInputPath   = Resolve-Path -Relative $InputPath
+        $RelSavePath    = Resolve-Path -Relative $SavePath
+        & $PpOcrExe ocr `
+            "--input=$RelInputPath" `
+            "--text_detection_model_name=$DetModelName" `
+            "--text_detection_model_dir=$RelDetModelDir" `
+            "--text_recognition_model_name=$RecModelName" `
+            "--text_recognition_model_dir=$RelRecModelDir" `
+            "--device=$EffectiveDevice" `
+            "--text_recognition_batch_size=$RecBatchSize" `
+            "--text_rec_score_thresh=$RecScoreThresh" `
+            "--save_path=$RelSavePath"
+        $ExitCode = $LASTEXITCODE
+    } finally { Pop-Location }
+    Write-Log "ppocr.exe exited: code=$ExitCode"
+
+    # Auto-retry on CPU if NPU failed
+    if ($ExitCode -ne 0 -and $EffectiveDevice -eq 'npu') {
+        Write-Host "  [WARN] NPU inference failed (exit $ExitCode) -- retrying on CPU..."
+        Write-Log "NPU failed; retrying on CPU."
+        $EffectiveDevice = 'cpu'
+        # A fresh directory rather than deleting the NPU one: no partial NPU
+        # result can leak into the CPU result, and no deletion can fail here.
+        $SavePath = Join-Path $WorkDir 'output-cpu'
+        New-Item -ItemType Directory -Path $SavePath | Out-Null
+        Push-Location $PpOcrDir
+        try {
+            $RelDetModelDir = Resolve-Path -Relative $DetModelDir
+            $RelRecModelDir = Resolve-Path -Relative $RecModelDir
+            $RelInputPath   = Resolve-Path -Relative $InputPath
+            $RelSavePath    = Resolve-Path -Relative $SavePath
+            & $PpOcrExe ocr `
+                "--input=$RelInputPath" `
+                "--text_detection_model_name=$DetModelName" `
+                "--text_detection_model_dir=$RelDetModelDir" `
+                "--text_recognition_model_name=$RecModelName" `
+                "--text_recognition_model_dir=$RelRecModelDir" `
+                "--device=cpu" `
+                "--text_recognition_batch_size=$RecBatchSize" `
+                "--text_rec_score_thresh=$RecScoreThresh" `
+                "--save_path=$RelSavePath"
+            $ExitCode = $LASTEXITCODE
+        } finally { Pop-Location }
+        Write-Log "CPU retry exited: code=$ExitCode"
+    }
+
+    $elapsed = [math]::Round(((Get-Date) - $t0).TotalSeconds, 2)
+
+    if ($ExitCode -ne 0) {
+        Write-Host ""
+        Write-Host "[ERROR] OCR failed (exit code $ExitCode) | ${elapsed}s | $($EffectiveDevice.ToUpper())"
+        Write-Host "  Log: $LogFile"
+        exit $ExitCode
+    }
+
+    # --- Print results ---
+    $TxtFiles = @(Get-ChildItem -LiteralPath $SavePath -Filter '*.txt' -File -ErrorAction Stop | Sort-Object Name)
+    $lineCount = 0
+    Write-Host ""
+    Write-Host "------------------------------------------------------------------------"
+    if ($TxtFiles.Count -eq 0) {
+        Write-Output '[no text found]'
+    } else {
+        foreach ($f in $TxtFiles) {
+            $ResultName = if (-not $IsPdfInput -and $InputNames.ContainsKey($f.BaseName)) { $InputNames[$f.BaseName] } else { $f.BaseName }
+            if ($TxtFiles.Count -gt 1) { Write-Output "-- $ResultName --" }
+            $lines = Get-Content -LiteralPath $f.FullName -Encoding UTF8
+            $lines | ForEach-Object { Write-Output $_; $lineCount++ }
+        }
+    }
+    Write-Host "------------------------------------------------------------------------"
+    Write-Host ""
+    Write-Host "[OK] OCR complete | $($TxtFiles.Count) image(s) | $lineCount line(s) | ${elapsed}s | $($EffectiveDevice.ToUpper())"
+    Write-Host "  Log: $LogFile"
+
+    Write-Log "Done. elapsed=${elapsed}s lines=$lineCount"
+    exit 0
+} finally {
+    # The only cleanup point: everything this run creates lives under $WorkDir.
+    # It must never fail the run -- by now the results are already in the
+    # pipeline, and agent hosts may proxy Remove-Item with a fail-closed
+    # "safe delete" that throws. A leftover temp dir is only logged.
+    if (Test-Path -LiteralPath $WorkDir) {
+        try { Remove-Item -LiteralPath $WorkDir -Recurse -Force -ErrorAction Stop }
+        catch { Write-Log "WARN: temp cleanup failed, left $WorkDir : $($_.Exception.Message)" }
     }
 }
-Write-Host "------------------------------------------------------------------------"
-Write-Host ""
-Write-Host "[OK] OCR complete | $($TxtFiles.Count) image(s) | $lineCount line(s) | ${elapsed}s | $($EffectiveDevice.ToUpper())"
-Write-Host "  Log: $LogFile"
-
-# --- Cleanup ---
-if (Test-Path $SavePath) { Remove-Item $SavePath -Recurse -Force }
-if ($PdfPagesDir -and (Test-Path $PdfPagesDir)) { Remove-Item $PdfPagesDir -Recurse -Force }
-Write-Log "Done. elapsed=${elapsed}s lines=$lineCount"
-exit 0

@@ -1,0 +1,12 @@
+# T5 电商主图/成套图 / E-commerce Hero & Product Set
+- **识别信号**：用户说"电商/主图/商品图/详情/一套商品图"。（EN: e-commerce, product shot, listing images）
+- **比例**：`1:1`（平台标准，默认假设）；白底 listing 用纯背景。
+- **版面骨架**：单图——商品居中占 60~70% → 背景干净（纯色/柔渐变/虚化场景）→ 卖点角标 1~2 处，区分「主商品 / 卖点标签 / 辅助道具」。**成套三件**——①hero 主图（纯背景+光影塑形）②场景图（商品在使用情境中）③细节图（材质/做工微距）——**分三条 spec 提交**；成套以一张主参考图锁定外观，再出标准角度（正面/45°/侧/背/细节/比例参照）。
+- **配色（表面×光线匹配）**：luxury→大理石/丝绒/磨砂玻璃；tech→哑黑/拉丝铝；organic→原木/亚麻/石；food→陶瓷/锈木/石板；商品本色主导，背景中性或同色系，避免颜色出血、logo 变形。
+- **平台优化**：白底 listing（#FFFFFF，填充 85%，最小接触阴影）；社媒广告留文字安全区、更生活化；网站 hero 16:9 一侧主体一侧留白；IG 1:1 居中或三分。
+- **文字规则**：卖点 ≤8 字/条、≤2 条；强制渲染约束。
+- **避坑**：背景抢商品；材质失真（写明质感：磨砂/釉面/织物）；文字压主体；成套图挤一图；无关道具削弱识别；包装文字失控；反射错误；多角外观漂移。
+- **排除句式**：每条 spec 只出一张对应图（"hero 主图一张"）；"无水印/无平台 logo"。
+- **任务句范式**：中文「生成一张完成的商品主图：…」/ EN "Create ONE finished e-commerce hero product shot: ..."
+- **EN Quick Reference** — Triggers: product shot/ecommerce/listing · Layout: product 60–70% center, clean bg, 1–2 badges; set: hero + scene + detail as 3 specs; lock appearance across angles · Color: surface×light pairing, product-dominant neutral bg · Text: ≤8 chars, ≤2 badges · Pitfalls: busy bg, material distortion, text over product, irrelevant props, packaging text loss, reflection error, angle drift · Exclusions: one image per spec, no watermark/platform logo.
+- **进阶写法**：复杂产品可按"**形状 → 表面 → 场景 → 灯光**"四阶段逐层描述，配可交换变量（[材质]/[环境]/[道具]）实现系列变体——一版模板出整组商品图。

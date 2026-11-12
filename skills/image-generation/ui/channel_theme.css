@@ -1,0 +1,121 @@
+/* ============================================================
+   通道页 · 管理台同风格主题（服务端注入，仅覆盖样式，不改布局）
+   适用：channels/<id>/index.html（gpt 密钥录入 / agnes 账号登录 等）
+   风格基准 = ui/console.html：暗色玻璃卡片 + 亮/暗玻璃按钮 + 暗色 scrim 背景
+   ============================================================ */
+
+/* ---- 变量层：两页共用变量翻转为暗色系 ---- */
+:root {
+  --text: #f5f7fa;
+  --muted: #aab2bd;
+  --ph: #8b93a0;
+  --fill: rgba(0,0,0,.25);
+  --line: rgba(255,255,255,.2);
+  --card: rgba(0,0,0,.5);
+  --bg: #0f1626;
+  --link: #7fb0ff;
+}
+
+/* ---- 通用控件：继承字体 + 暗色输入 ---- */
+button, input { font-family: inherit; }
+input { color: #f5f7fa; }
+input::placeholder { color: var(--ph); }
+
+/* ---- 背景：CSS 兜底深色渐变（不加 !important——壁纸由页面 JS 内联写入后自然覆盖；
+        暗色 scrim 由垫片脚本统一改写，保证与管理台一致） ---- */
+body {
+  background: radial-gradient(1200px 700px at 50% -10%, #1e2a44, #0f1626);
+  background-size: cover; background-position: center; background-attachment: fixed;
+  color: var(--text) !important;
+}
+
+/* ---- 卡片：暗色玻璃（对应 console 卡片质感） ---- */
+.card {
+  background: rgba(0,0,0,.5) !important;
+  border: 1px solid rgba(255,255,255,.2) !important;
+  backdrop-filter: blur(7px) saturate(120%);
+  box-shadow: 0 16px 44px rgba(0,0,0,.45) !important;
+  color: var(--text);
+}
+
+/* ---- 输入框：暗玻璃 ---- */
+.field input,
+.input-box input {
+  background: rgba(0,0,0,.25) !important;
+  color: #f5f7fa !important;
+  border-color: rgba(255,255,255,.18) !important;
+}
+.field input:focus,
+.input-box input:focus {
+  background: rgba(0,0,0,.35) !important;
+  border-color: rgba(255,255,255,.4) !important;
+  box-shadow: none !important;
+}
+
+/* ---- 眼睛/发送图标 ---- */
+.eye, .send { color: rgba(255,255,255,.55) !important; }
+.eye:hover, .send:hover:not(:disabled) { color: #fff !important; }
+.send:disabled { color: rgba(255,255,255,.3) !important; }
+
+/* ---- 主按钮：亮玻璃（对应 console 的"验证"） ---- */
+button.primary,
+.primary {
+  background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.10)) !important;
+  border: 1px solid rgba(255,255,255,.38);
+  color: #fff !important;
+  font-weight: 600;
+}
+button.primary:hover:not(:disabled),
+.primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,.16)) !important;
+  border-color: rgba(255,255,255,.5);
+  opacity: 1 !important;
+}
+button.primary:active:not(:disabled) {
+  background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.07)) !important;
+}
+
+/* ---- 次按钮：暗玻璃（对应 console 的"获取"） ---- */
+.btn-ghost {
+  background: rgba(0,0,0,.28) !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
+  color: #eef1f5 !important;
+}
+.btn-ghost:hover {
+  background: rgba(0,0,0,.45) !important;
+  border-color: rgba(255,255,255,.32) !important;
+}
+
+/* ============ gpt 页（Aurora绮梦绘 · 获取指引）专属微调 ============ */
+h1 {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: currentColor !important;
+  color: #f5f7fa;
+}
+.sub { color: rgba(245,247,250,.85) !important; }
+.link { color: #f0a990 !important; border-bottom-color: #f0a990 !important; }
+.link:hover { color: #f6c2ae !important; border-bottom-color: #f6c2ae !important; }
+/* 弹窗提示文字：深色系在暗底上提亮 */
+.hl { color: #fbbf24 !important; }
+.wx-plat { color: #60a5fa !important; }
+.wx { color: #4ade80 !important; }
+.free { color: #f472b6 !important; }
+.need { color: #f87171 !important; }
+
+/* ============ agnes 页（Agnes ai · 账号登录）专属微调 ============ */
+.links a { color: #7fb0ff !important; }
+.ok-mask {
+  background: rgba(8,14,26,.92) !important;
+  color: #f5f7fa !important;
+}
+
+/* ---- 通知 Toast：暗玻璃 ---- */
+.toast {
+  background: rgba(0,0,0,.6) !important;
+  border-color: rgba(255,255,255,.2) !important;
+  color: #f5f7fa;
+}
+.toast.ok { border-color: rgba(110,231,168,.5) !important; color: #6ee7a8 !important; }
+.toast.err { border-color: rgba(255,128,128,.5) !important; color: #ff8080 !important; }

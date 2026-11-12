@@ -1,0 +1,9 @@
+{
+  "subject": "ImageGen 生成圣诞海报底图",
+  "description": "用 ImageGen 生成圣诞主题无文字底图（深祖母绿+金+暖光、雪花松枝礼物光斑），vertical 9:16，no text no watermark，顶部留题字空间",
+  "activeForm": "写圣诞海报底图",
+  "status": "completed",
+  "id": "2",
+  "createdAt": 1794378731766,
+  "updatedAt": 1794379112470
+}

@@ -1,0 +1,11 @@
+# T6 头像/壁纸 / Avatar & Wallpaper
+- **识别信号**：用户说"头像/壁纸/锁屏/背景"。（EN: avatar, wallpaper, lock screen）
+- **比例**：头像 `1:1`；手机壁纸 `9:16`；PC 壁纸 `16:9`。
+- **版面骨架**：主体居中或三分位（头像以胸像/半身为主）→ 氛围背景（虚化/纯色/光斑）→ 壁纸重要内容避开时钟位（上 1/3）与四边。头像**面部居中裁切安全区**（头顶留呼吸、下巴不切）；壁纸中心区通用安全（9:16/16:9/1:1 中心区皆可用）。
+- **配色**：肤色自然、背景克制单色或渐变；3D 玩具/公仔保留身份细节（脸与服装锚点），包装文字少量准确。
+- **风格谱**：写实 / 卡通 / 像素 / 水彩 / 赛博——按用户气质词选；光线：环形光/窗光/逆光轮廓。
+- **文字规则**：默认无字；要字则小角标。
+- **避坑**：主体裁切（写"完整主体居中"）；细节堆边缘；头像风格与用途不符（职场 vs 游戏）；塑料磨皮（商业美妆除外，加可信小瑕疵增强纪实）；畸变四肢；文字乱入；通用玩具无身份。
+- **排除句式**："单张成品，不要四宫格多方案"（头像易被出 4 格，显式排除）。
+- **任务句范式**：中文「生成一张完成的头像：…」/ EN "Create ONE finished avatar portrait: ..."
+- **EN Quick Reference** — Triggers: avatar/wallpaper/lock screen · Layout: centered bust/half-body, ambient bg, clock-safe zone, face crop-safe area · Color: natural skin, restrained bg, identity-kept 3D toy · Styles: realistic/chibi/pixel/watercolor/cyber · Pitfalls: cropping, edge clutter, style-purpose mismatch, plastic skin, deformed limbs, stray text, generic toy · Exclusions: single piece, no 4-grid variants.

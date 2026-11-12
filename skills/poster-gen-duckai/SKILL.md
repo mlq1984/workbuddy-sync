@@ -6,9 +6,16 @@ version: 1.0.0
 allowed-tools: Bash
 ---
 
-# 图片/海报生成标准流程（Edge → duck.ai）
+# 图片/海报生成备选流程（Edge → duck.ai）
 
-孟姐指定的默认生图流程（2026-10-07 确认）：以后凡是要生成一张图或海报，走本流程。依赖 `edge-cdp-control` 技能（环境与踩坑细节看那边）。
+> **状态变更（2026-11-11）**：本流程已降级为**备选流程**。默认请使用 `poster-gen-imagegen` 技能（WorkBuddy 内置 ImageGen，无需浏览器操作，速度更快、更稳定）。当且仅当 ImageGen 连续失败或需要特定 duck.ai 模型效果时使用本流程。
+
+## 关键踩坑与修补要点（2026-11-11 实测记录）
+
+1. **Edge 路径**：使用无版本号固定路径 `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe`（旧路径带版本号 `154.0.4258.53` 会因 Edge 升级报 `FileNotFoundError`）。
+2. **WebSocket 403 Forbidden**：Edge 155 严格校验 WebSocket 请求头的 Origin。用 Python `websocket-client` 连接 `ws://127.0.0.1:9222/...` 时**必须添加 `suppress_origin=True`** 绕过 403 检查。
+3. **HTTP 405 Method Not Allowed**：CDP 新建标签页 `http://127.0.0.1:9222/json/new?<url>` 在新版 Edge 中必须使用 **`PUT`** 请求方法，使用默认 `GET` 会报 405。
+4. **`browser-use` CLI 不存在**：环境中安装的 `browser_use_sdk 3.4.2` 是 Browser Use 云服务 REST SDK，不含本地 CDP 控制 CLI。需直接使用 Python `websocket-client` 自写 CDP 操作类（参考工作区 `cdp.py` 实现）。
 
 ## 交付要求（固定）
 
@@ -25,7 +32,7 @@ allowed-tools: Bash
 env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY curl -s --noproxy "*" --max-time 3 http://127.0.0.1:9222/json/version | head -3
 ```
 
-无响应 → 用 Bash 工具（run_in_background=true, dangerouslyDisableSandbox=true）运行 supervisor（`C:\Users\king\WorkBuddy\2026-10-07-14-23-13\edge_cdp_supervisor.py`，若换工作区则复制到新工作区），等 stdout 出现 `CDP port 9222 READY`。**必须是有头模式**（supervisor 默认），headless 会被 duck.ai 静默拦截。
+无响应 → 用 Bash 工具（run_in_background=true, dangerouslyDisableSandbox=true）运行 supervisor（新工作区可复制 `C:\Users\king\WorkBuddy\2026-11-11-13-52-11\edge_cdp_supervisor.py`，其中 Edge 路径已修复为无版本号写法），等 stdout 出现 `CDP port 9222 READY`。**必须是有头模式**（supervisor 默认），headless 会被 duck.ai 静默拦截。
 
 ### 2. 打开/切到 duck.ai 并清历史消息
 

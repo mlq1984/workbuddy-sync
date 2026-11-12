@@ -27,7 +27,9 @@
     "workbuddy-docx@workbuddy-builtin": true,
     "wecom-a2a-auth@workbuddy-builtin": true,
     "browser-use@workbuddy-browser-use": true,
-    "wecom-unified@workbuddy-wecom-unified": false
+    "wecom-unified@workbuddy-wecom-unified": false,
+    "tencent-docs@workbuddy-connector-plugins-official": false,
+    "tmeet@workbuddy-connector-plugins-official": false
   },
   "claw": {
     "channels": {

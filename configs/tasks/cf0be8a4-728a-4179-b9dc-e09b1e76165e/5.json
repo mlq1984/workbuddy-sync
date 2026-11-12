@@ -1,0 +1,9 @@
+{
+  "subject": "新建 poster-gen-imagegen 技能",
+  "description": "新建 poster-gen-imagegen/SKILL.md（默认 ImageGen 流程）；更新 poster-gen-duckai/SKILL.md（降级+踩坑：Edge 去版本号、suppress_origin、browser-use CLI 缺失、PUT /json/new）",
+  "activeForm": "更新技能文件",
+  "status": "completed",
+  "id": "5",
+  "createdAt": 1794378731848,
+  "updatedAt": 1794379605500
+}

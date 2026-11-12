@@ -1,32 +1,47 @@
-# runtime-checksums.txt — SHA-256 pins for the assets local-ocr-npu downloads.
+# runtime-checksums.txt -- trusted SHA-256 pins for local-ocr-npu downloads.
 #
-# Format (identical to `sha256sum` output):
-#     <64-hex-digest>␣␣<asset-name>
+# Publisher-provided SHA-256 values retrieved over verified HTTPS, 2026-10-08.
+# Trust anchor: the configured publishers and ModelScope repository metadata;
+# these are not independently signed release attestations.
+# OCR source: https://modelscope.cn/models/FionaGu1019/PaddleOCR-OpenVINO
+#   bin/ppocr-windows-x64.zip: 263e301525a7016572957a730953b3b4801e9647
+#   PP-OCRv5 model files: d21a61a4e81b3a842423fa02f93632bb23edf8e0
+# PDF source: https://modelscope.cn/datasets/aiplayground/Local-AIPC-Skills
+#   pdfium.zip: 3d1097e5b8e4fa7e0f741f3ee745786d4786b518
+# All 14 primary-source files were downloaded and matched these hashes.
+# Downloads use ModelScope only. These pins select the ModelScope files.
 #
-# Assets are matched by file name only, so the entries below cover both the
-# runtime archives and the model files.
+# Format: <64-hex-digest>  <asset-key>
+# Archive keys use the original archive filename. Model keys use
+# <model-directory>/<filename>, with forward slashes. Bare model filenames
+# are not supported: detection and recognition files have different contents.
 #
-# How to pin:
-#   1. Run the skill once on a machine you trust, so every asset lands in
-#      %USERPROFILE%\.openvino\ (bin\ for executables, models\ for models).
-#   2. Run scripts\pin-runtime-checksums.ps1 — it hashes the cached assets and
-#      rewrites this file.
-#   3. Ship the updated file inside the skill package.
+# Release-maintainer workflow:
+#   1. Obtain original ppocr-windows-x64.zip and pdfium.zip from an authenticated
+#      release. Normal skill downloads remove archives after extraction.
+#      Repacking extracted binaries does NOT reproduce the original hashes.
+#   2. Run scripts\pin-runtime-checksums.ps1 -ArchiveDir <original-archive-dir>
+#      with -RuntimeRoot <cache-root> if models are not under ~/.openvino.
+#      This generates runtime-checksums.candidate.txt, NOT this live manifest.
+#   3. Independently verify all 14 entries against a trusted publisher/release,
+#      then promote the reviewed candidate to this file and ship it.
+#      Hashing the same unverified download alone is not authentication.
 #
-# Behaviour when an asset has no entry here: the download still proceeds, but a
-# "no SHA-256 recorded" warning is printed to stderr, so the gap is never
-# silent. When an entry exists and the digest does not match, the download is
-# deleted and the run aborts.
+# Checks apply to new downloads, not to already-installed files. An existing
+# pin mismatch rejects the download and stops the invocation. Missing pins
+# remain warnings, not successful verification. Never hide these warnings.
 #
-# Assets that are downloaded (kept as a checklist, not as live entries):
-#   ppocr-windows-x64.zip     OCR runtime (ppocr.exe + openvino.dll, ...)
-#   pdfium.zip                PDF renderer (pdf2png.exe + pdfium.dll)
-#   inference.xml             det/rec model topology
-#   inference.bin             det/rec model weights
-#   inference.yml             model metadata
-#   inference_960.xml         det model with alternative input size
-#   inference_320.xml         rec model with alternative input size
-#   inference_480.xml         rec model with alternative input size
-#   inference_640.xml         rec model with alternative input size
-#   inference_800.xml         rec model with alternative input size
-#   inference_1280.xml        rec model with alternative input size
+be106504576c70ce43e59ee6f789e64763ec5ab73eefcf5511c2ffbb5c50a77c  ppocr-windows-x64.zip
+8e1210ced9721d210a3a89d72eed9429f43573f64ed2d19de3a1da46a9f997fe  pdfium.zip
+a02822ff0ff6a15d85411aa930544fd810c2f43646b9250fc8e7143d32e003c2  PP-OCRv5_server_det_ov/inference.xml
+ddc02c03945519a6d371058f4806e4e076c4cf3e3c3a6faf3668b13bb9a8334e  PP-OCRv5_server_det_ov/inference.bin
+28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685  PP-OCRv5_server_det_ov/inference.yml
+a9fa6ff25d57386750da96c4a79dbdac2103772eb543aab76952c45d6da4f6cf  PP-OCRv5_server_det_ov/inference_960.xml
+e828d1871bf8575709c466377f9166d2810034670d31c063948516b4d28e86be  PP-OCRv5_server_rec_ov/inference.xml
+913b191cab88b98e148f52c6d165c7ef2a2f9c701e20ca9aa6b4070c37be7d77  PP-OCRv5_server_rec_ov/inference.bin
+2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d  PP-OCRv5_server_rec_ov/inference.yml
+f3d970dece1cfb5ec436e626483dcc6045800e990a7a22a59af2f1412818fa3e  PP-OCRv5_server_rec_ov/inference_320.xml
+1b44b717922126cecbf76624580c60ed2573cbbb682b94fd78c8bafc49a35c0d  PP-OCRv5_server_rec_ov/inference_480.xml
+da6489ba56714828a43bddc5bc04c0964555ada552b45420cb04a630168cc4c5  PP-OCRv5_server_rec_ov/inference_640.xml
+c0405a512c0741b14e79409d8000e035f4227698123837c03272861b50b94739  PP-OCRv5_server_rec_ov/inference_800.xml
+fecd1453a7e39763e381b4aab41a9e23a4b50b6cc1c8041e27d336c7b5c7e55a  PP-OCRv5_server_rec_ov/inference_1280.xml

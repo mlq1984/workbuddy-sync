@@ -1,0 +1,9 @@
+{
+  "subject": "确认 ImageGen 工具参数",
+  "description": "ToolSearch 加载 ImageGen 的 schema，确认参数（prompt/尺寸/比例/输出路径等），为写技能和实测做准备",
+  "activeForm": "调研 ImageGen 工具参数",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1794378731702,
+  "updatedAt": 1794378887857
+}

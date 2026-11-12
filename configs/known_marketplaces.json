@@ -110,7 +110,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-connector-plugins-official",
     "description": "CodeBuddy 官方连接器配置索引",
-    "lastUpdated": "2026-11-05T07:16:29.611Z",
+    "lastUpdated": "2026-11-12T05:10:47.142Z",
     "autoUpdate": false
   },
   "workbuddy-builtin": {
@@ -136,7 +136,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-wecom-unified",
     "description": "Marketplace from https://static.workbuddy.cn/wecom-skills/wecom-unified.zip",
-    "lastUpdated": "2026-11-11T00:56:58.778Z",
+    "lastUpdated": "2026-11-12T05:10:07.585Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },

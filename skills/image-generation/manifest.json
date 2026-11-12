@@ -1,0 +1,35 @@
+{
+  "name": "image-generation",
+  "display_name": "Ai公益生图Pro",
+  "display_name_en": "AI Free Image Pro",
+  "version": "1.21.0",
+  "description": "免费公益生图服务！新手友好型，支持配置“使用gpt_image（Open GPT）、nano_banana（Gemini）生图协议”的任意中转站进行生图，默认内置Agnes ai、日日新、智谱、Pollinations等多条完全免费生图通道以及Aurora绮梦绘（每日免费额度，支持gpt_image、nano_banana系列）等公益赞助通道，不想使用内置通道生图？通道中心还可以一键快速注册对应通道自己专属账号使用。用户无需编写复杂提示词，agent会自动提取语义并进行提示词的智能优化，包括场景设计、参数补全等（内置14大生图场景骨架、1000+参考模板，如电商海报、漫画分镜、标注图解等），不管文生图、图生图（编辑图）还是2K~4K等不同质量、尺寸的图片生成，都能轻松拿捏。",
+  "entry": "python 启动.py（中心服务：工作台双屏 [通道中心 / + 作品中心 /#works]）；python 启动.py --status [id ...]（通道可用性 JSON，退出码 0/2/3）；python 启动.py --jobs / --job <id>（结果中心任务 JSON）",
+  "filesystem_write": [
+    "~/.aipro/credentials.json",
+    "~/.aipro/custom_channels.json",
+    "~/.aipro/switches.json",
+    "~/.aipro/center.json",
+    "~/.aipro/storage.json",
+    "~/.aipro/jobs/",
+    "<产物根>（缺省 桌面\\Ai公益生图Pro，平铺直存；工作台设置可运行时关联并自动迁移，config.ini [result] dir 静态指定）"
+  ],
+  "filesystem_read": [
+    "channels/",
+    "ui/"
+  ],
+  "modules": {
+    "notify": {
+      "role": "通知中心：事件目录 + 路由策略门面（bus/sse 之上），task.* 事件双路分发（详见 references/architecture.md）"
+    },
+    "core": {
+      "role": "运行四运行中心 + 提示中心：server(HTTP+SSE 接线) / registry+store+switches+credcenter+builtin+custom_channels(通道中心：含自定义中转通道注册表与 open/gemini 双协议适配器) / params+executor(生成中心: spec 校验·能力过滤·方言翻译·n 阶梯派发) / jobs+works(结果中心) / prompt_opt(提示中心·确定性守门) / common+httpx+media(公共机制)；详见 references/architecture.md"
+    },
+    "channels": {
+      "role": "内置生图通道（一等公民，契约零改动）：每通道 app.py(统一调用层) + api.md（取 Key 方式见各 api.md；用户自建通道见 references/custom_channels.md：本地页/外跳/管理台直接粘贴）；可选声明 CAPS(能力集) 与 translate(spec→kwargs 方言翻译)"
+    },
+    "ui": {
+      "role": "console.html(工作台：通道中心+作品中心双屏横滑，右缘把手切换) + img.html(兼容跳转) + channel_theme.css"
+    }
+  }
+}

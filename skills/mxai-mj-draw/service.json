@@ -1,0 +1,41 @@
+{
+  "slug": "mxai-mj-draw",
+  "title": "MJ 绘画",
+  "provider": "mxai",
+  "kind": "mj",
+  "description": "使用 MidJourney 生成图片，并对四宫格执行放大、变体和重绘。",
+  "endpoint": "/mcp/api/mj/draw",
+  "required": [
+    "prompt"
+  ],
+  "fields": [
+    "prompt",
+    "model",
+    "aspect_ratio",
+    "speed",
+    "quality",
+    "stylize",
+    "chaos",
+    "iw",
+    "sref",
+    "cref",
+    "oref",
+    "input_images",
+    "public"
+  ],
+  "example": {
+    "prompt": "月光下的森林，电影质感"
+  },
+  "route": "/mj",
+  "order": 6,
+  "version": "1.0.1",
+  "providers": {
+    "mxai": "https://mcp.mxai.cn",
+    "nano": "https://mcp.nanoai.cn"
+  },
+  "apiKeyEnv": "MX_AI_API_KEY",
+  "website": "https://www.mxai.cn/home/",
+  "keyURL": "https://www.mxai.cn/home/#/mcp?source=skill&skill=mxai-mj-draw",
+  "purchaseURL": "https://www.mxai.cn/home/#/member?source=skill&skill=mxai-mj-draw",
+  "landingURL": "https://www.mxai.cn/home/#/mj?source=skill&skill=mxai-mj-draw"
+}

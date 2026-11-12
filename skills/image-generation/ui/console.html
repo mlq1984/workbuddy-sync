@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ai公益生图Pro</title>
+    <link rel="icon" type="image/png" href="ui/logo.png" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  body {
+    color: #f5f7fa;
+    background: linear-gradient(135deg, #1e2a44 0%, #0f1626 100%) no-repeat fixed;
+    background-size: cover;
+  }
+  /* ---- 双页横滑轨道（手机桌面式切屏） ---- */
+  .track { display: flex; width: 200vw; height: 100vh;
+    transition: transform .55s cubic-bezier(.25, .8, .3, 1); }
+  .track.works { transform: translateX(-100vw); }
+  .page { width: 100vw; height: 100vh; flex: none; overflow-y: auto; overflow-x: hidden; }
+  /* ---- 右/左缘切换把手（竖排胶囊，贴边） ---- */
+  .edge { position: fixed; top: 50%; transform: translateY(-50%); z-index: 40;
+    writing-mode: vertical-rl; letter-spacing: 3px; font-size: 13px; color: #eef1f5;
+    padding: 16px 10px; cursor: pointer; user-select: none;
+    background: rgba(0,0,0,.42); border: 1px solid rgba(255,255,255,.22);
+    backdrop-filter: blur(7px); transition: .25s; }
+  .edge:hover { background: rgba(0,0,0,.62); border-color: rgba(255,255,255,.48); }
+  .edge.right { right: 0; border-radius: 14px 0 0 14px; border-right: none; }
+  .edge.left { left: 0; border-radius: 0 14px 14px 0; border-left: none; }
+  body.works .edge.right { display: none; }
+  body:not(.works) .edge.left { display: none; }
+  /* 作品中心左缘操作列：切屏把手 + 管理按钮，统一样式与等间距 */
+  .edgecol { position: fixed; left: 0; top: 50%; transform: translateY(-50%); z-index: 40;
+    display: flex; flex-direction: column; gap: 8px; }
+  .edgecol .edge { position: static; transform: none; }
+  /* 通道中心右缘操作列：切屏把手 + 新增自定义通道 */
+  .edgecol-r { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 40;
+    display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  .edgecol-r .edge { position: static; transform: none; }
+  /* 新增通道弹窗表单（对齐 agnes 登录页语言：label 上置 + 灰底无边框大输入框 + focus 描边） */
+  .afield { margin-bottom: 18px; position: relative; }   /* 间距预留红字空间：出错不挤动布局 */
+  .afield label { display: block; font-size: 13px; font-weight: 500; color: #dfe5ee; margin-bottom: 7px; }
+  .afield label .opt { color: #8a93a6; font-weight: 400; }
+  .afield input, .afield select {
+    width: 100%; box-sizing: border-box; padding: 11px 14px; font-size: 14px;
+    border: 1px solid transparent; border-radius: 10px; outline: none;
+    background: rgba(255,255,255,.07); color: #fff;
+    transition: background .2s, border-color .2s, box-shadow .2s;
+  }
+  .afield select { appearance: none; -webkit-appearance: none;
+    padding-right: 38px;                                          /* 自绘箭头留位，不贴右边界 */ }
+  .selwrap { position: relative; }
+  .selwrap::after {                                               /* CSS 三角箭头：位置可控、零兼容风险 */
+    content: ""; position: absolute; right: 16px; top: 50%;
+    transform: translateY(-50%); pointer-events: none;
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 6px solid #aab2c2; }
+  .afield input:focus, .afield select:focus {
+    background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.35);
+    box-shadow: 0 0 0 3px rgba(255,255,255,.08);
+  }
+  .afield input::placeholder { color: #7d8697; }
+  .afield select option { background: #16213a; color: #fff; }
+  /* 自定义通道弹窗：提亮的浮起面板（比页面亮一档 + 顶部高光 + 深阴影），输入区下沉形成层级 */
+  #addChan { background: rgba(2,6,14,.45); backdrop-filter: blur(4px); }
+  #addChan .modal-box {
+    background: linear-gradient(180deg, rgba(40,50,68,.92), rgba(24,32,46,.94));
+    backdrop-filter: blur(22px) saturate(130%);
+    border: 1px solid rgba(255,255,255,.10); border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07); }
+  #addChan .modal-tt { font-size: 16px; }
+  #addChan .afield label { color: #c7cfdc; }
+  #addChan .afield input, #addChan .afield select {
+    background: rgba(0,0,0,.32); border: 1px solid rgba(255,255,255,.07);
+    color-scheme: dark; }
+  #addChan .afield input:focus, #addChan .afield select:focus {
+    border-color: rgba(255,255,255,.30); box-shadow: 0 0 0 3px rgba(255,255,255,.07); }
+  .aerr { display: none; color: #f56c6c; font-size: 11px; line-height: 1;
+    position: absolute; left: 0; top: calc(100% + 3px);   /* 悬浮在对应输入框正下方：不占流、不撑弹窗 */
+    white-space: nowrap; }
+  .afield label .req { color: #f56c6c; margin-left: 3px; }
+  /* 自定义卡片右上角操作图标（访问官网 / 编辑信息） */
+  .ticon { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,.22); border-radius: 7px; background: rgba(0,0,0,.25);
+    color: #dfe5ee; cursor: pointer; padding: 0; }
+  .ticon:hover { background: rgba(255,255,255,.15); color: #fff; }
+  /* ---- 通道中心：标题区固定，卡片容器内滚动（垂直/水平平均分散，细滑滚动条） ---- */
+  .wrap {
+    height: 100vh; width: 100%;
+    display: flex; flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  .flex-space { flex: 1 1 0; min-height: 14px; }   /* 弹性占位：卡片少时上下均分→整体垂直居中；不足时自动归零 */
+  .rail {
+    display: grid;
+    grid-template-rows: repeat(2, auto);            /* 固定两行 */
+    grid-auto-flow: column;                         /* 列优先填充：多卡向右扩展（双行横滑） */
+    grid-auto-columns: max(360px, calc((100% - 44px) / 3));   /* 默认 3 列填满容器；窄屏不低于 360px */
+    gap: 22px;
+    flex: 0 1 auto; min-height: 0;                  /* 内容固有高度，可收缩：溢出时容器内滚动 */
+    width: min(100% - 128px, 1560px); margin: 0 auto;   /* 容器收窄居中：两侧留白，不贴屏幕边界 */
+    padding: 6px 8px 16px;
+    overflow-x: auto; overflow-y: hidden;           /* 横向滑动看更多列 */
+    justify-content: safe center; align-content: center;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.26) transparent;
+  }
+  .rail::-webkit-scrollbar { height: 6px; }
+  .rail::-webkit-scrollbar-thumb { background: rgba(255,255,255,.24); border-radius: 999px; }
+  .rail::-webkit-scrollbar-track { background: transparent; }
+  .fade-line {
+    height: 1px; width: min(100% - 128px, 1560px); border: 0; margin: 16px auto 14px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.26) 18%, rgba(255,255,255,.26) 82%, transparent);
+  }
+  .card {
+    position: relative; width: 100%;
+    background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.2);
+    border-radius: 16px; padding: 20px 20px 16px;
+    backdrop-filter: blur(7px) saturate(120%);
+    box-shadow: 0 16px 44px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+  }
+  .row1 { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 600; padding-right: 90px; }
+  .row1 .idx { opacity: .55; font-weight: 500; }
+  .topbar {
+    position: absolute; top: 16px; right: 16px; display: flex; align-items: center; gap: 8px;
+  }
+  .badge {
+    font-size: 13px; padding: 4px 11px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.2); background: rgba(0,0,0,.25); white-space: nowrap;
+  }
+  .switch { position: relative; width: 36px; height: 20px; display: inline-block; flex: none; }
+  .switch input { display: none; }
+  .slider {
+    position: absolute; inset: 0; background: rgba(255,255,255,.22);
+    border-radius: 999px; transition: .2s; cursor: pointer;
+  }
+  .slider:before {
+    content: ""; position: absolute; width: 14px; height: 14px; left: 3px; top: 3px;
+    background: #fff; border-radius: 50%; transition: .2s;
+  }
+  .switch input:checked + .slider { background: #34c98e; }
+  .switch input:checked + .slider:before { transform: translateX(16px); }
+  .badge.unverified { color: #c8ccd4; }
+  .badge.checking { color: #ffd66b; }
+  .badge.valid { color: #6ee7a8; border-color: rgba(110,231,168,.5); }
+  .badge.invalid { color: #ff8080; border-color: rgba(255,128,128,.5); }
+  .badge.builtin { color: #7cc4ff; border-color: rgba(124,196,255,.45); }
+  .badge.nokey { color: #a8b0bc; }
+  .row2 { display: flex; gap: 10px; margin-top: 16px; align-items: stretch; }
+  .keywrap { position: relative; flex: 1; min-width: 0; }
+  .keywrap input {
+    width: 100%; height: 42px; padding: 0 34px 0 13px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18);
+    background: rgba(0,0,0,.25); color: #fff; font-size: 14px; line-height: 1; outline: none;
+    font-family: inherit;
+  }
+  .keywrap input:focus { border-color: rgba(255,255,255,.4); }
+  .eye {
+    position: absolute; right: 7px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; padding: 2px; display: flex;
+    color: rgba(255,255,255,.55);
+  }
+  .eye:hover { color: #fff; }
+  .btn {
+    height: 42px; min-width: 56px; padding: 0 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18);
+    cursor: pointer; background: rgba(0,0,0,.28); color: #eef1f5; font-size: 14px; line-height: 1;
+    font-family: inherit; white-space: nowrap;
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none;
+  }
+  .btn:hover, .btn:active {
+    background: linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,.16));
+    border-color: rgba(255,255,255,.5);
+    color: #fff;
+    font-weight: 600;
+  }
+  .btn.primary {
+    background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.10));
+    border-color: rgba(255,255,255,.38); color: #fff; font-weight: 600;
+  }
+  /* 图标专用：与高度等宽的圆形按钮；图标用 Windows 系统图标字体（确定可渲染） */
+  .btn.icon { width: 42px; min-width: 42px; padding: 0; border-radius: 50%; color: #eef1f5; }
+  .gico { font-family: "Segoe Fluent Icons", "Segoe MDL2 Assets"; font-size: 15px;
+    line-height: 1; display: block; }
+  .btn.primary:hover { background: linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,.16)); border-color: rgba(255,255,255,.5); }
+  .row3 {
+    margin-top: 13px; font-size: 14px; line-height: 1.6; opacity: .82; cursor: pointer; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap; max-width: 100%;
+  }
+  .pop {
+    position: fixed; z-index: 50; max-width: 380px; background: rgba(0,0,0,.82); color: #fff;
+    padding: 14px 16px; border-radius: 10px; font-size: 14px; line-height: 1.7; display: none;
+    box-shadow: 0 8px 30px rgba(0,0,0,.5); word-break: break-word;
+  }
+  .empty { opacity: .75; margin-top: 30px; text-align: center; font-size: 15px; }
+  .hero { text-align: center; padding: 0 24px; }
+  .avatar {
+    width: 112px; height: 112px; margin: 0 auto 18px; border-radius: 50%;
+    border: 3px solid rgba(160,200,255,.7); padding: 5px;
+    background: rgba(255,255,255,.12);
+    box-shadow:
+      0 0 0 7px rgba(124,196,255,.12),
+      0 0 38px rgba(124,196,255,.5),
+      0 0 90px rgba(255,142,227,.22);
+  }
+  .avatar img {
+    width: 100%; height: 100%; border-radius: 50%;
+    object-fit: cover; display: block;
+  }
+  .hero .brand {
+    margin: 0 auto; width: fit-content;   /* 渐变贴合文字宽度：短标题也呈现完整色带 */
+    font-size: 44px; font-weight: 800; letter-spacing: 2px;
+    background: linear-gradient(90deg, #6ef0ff, #9aa8ff 32%, #d18bff 64%, #ff8ee3);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 0 16px rgba(150,190,255,.5)) drop-shadow(0 2px 22px rgba(255,142,227,.28));
+  }
+  .hero .sub { margin-top: 13px; font-size: 16px; color: #fff; letter-spacing: .5px; }
+  /* ---- 作品中心（与通道中心同构：公共头部 + 搜索 + 分割线固定，下方作品区滚动） ---- */
+  .page-works { display: flex; flex-direction: column; overflow: hidden; }
+  .works-head { text-align: center; padding: 34px 24px 0; flex: none; }
+  .works-head .hero { padding: 0; }
+  .works-head .brand { font-size: 36px; }
+  .works-head .searchrow { margin: 20px auto 18px; }
+  .searchrow { display: flex; gap: 10px; width: min(620px, 86%); margin: 0 auto 22px; }
+  .searchwrap { flex: 1; position: relative; }
+  .searchwrap input { width: 100%; padding-right: 36px; }
+  .qclear { position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; padding: 4px; display: none;
+    color: rgba(255,255,255,.55); }
+  .qclear:hover { color: #fff; }
+  .searchrow input {
+    height: 46px; padding: 0 22px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.22); background: rgba(0,0,0,.42); color: #fff;
+    font-size: 15px; outline: none; font-family: inherit; backdrop-filter: blur(7px);
+  }
+  .searchrow input:focus { border-color: rgba(255,255,255,.46); }
+  .searchrow .btn { height: 46px; border-radius: 999px; padding: 0 24px; }
+  .page-works .fade-line { margin: 0 auto 18px; flex: none; }
+  .wall-scroll { flex: 1 1 0; overflow-y: auto; overflow-x: hidden;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.26) transparent; }
+  .wall-scroll::-webkit-scrollbar { width: 6px; }
+  .wall-scroll::-webkit-scrollbar-track { background: transparent; }
+  .wall-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,.26);
+    border-radius: 999px; }
+  .wall-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.46); }
+  .wall { display: flex; gap: 18px; align-items: flex-start; max-width: 1600px;
+    margin: 0 auto; padding: 0 30px 46px; }
+  .wcol { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+  .shot { cursor: pointer;
+    background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.2); border-radius: 14px;
+    padding: 10px; backdrop-filter: blur(7px); box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    transition: border-color .2s; }
+  .shot:hover { border-color: rgba(255,255,255,.45); }
+  .imgwrap { position: relative; border-radius: 9px; overflow: hidden; }
+  .imgwrap img { width: 100%; display: block; }
+  .shot .prompt { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+    padding: 26px 10px 8px; font-size: 12.5px; line-height: 1.5; color: #fff;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.82));
+    word-break: break-word; white-space: pre-wrap; max-height: 55%; overflow-y: auto; }
+  .shot.flash { outline: 2px solid rgba(124,196,255,.85); }
+  .shot-top { display: flex; justify-content: space-between; align-items: center;
+    gap: 6px; margin-bottom: 8px; }
+  .shot-top .ts { font-size: 11px; opacity: .6; font-variant-numeric: tabular-nums; }
+  .ops { display: flex; gap: 4px; opacity: .78; }
+  .ic { background: none; border: none; cursor: pointer; padding: 3px; display: flex;
+    color: rgba(255,255,255,.65); border-radius: 7px; }
+  .ic:hover { color: #fff; background: rgba(255,255,255,.14); }
+  .ic.del:hover { color: #ff8080; }
+  .lightbox { position: fixed; inset: 0; z-index: 60; display: none;
+    background: rgba(4,8,16,.9); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; flex-direction: column; gap: 14px; }
+  .lightbox img { max-width: 92vw; max-height: 78vh; border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.6); transition: transform .25s; cursor: grab; }
+  .lightbox img.dragging { transition: none; cursor: grabbing; }
+  .lb-bar { position: absolute; top: 14px; right: 14px; display: flex; gap: 8px; z-index: 61; }
+  .lb-bar .ic { background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.25);
+    padding: 9px; border-radius: 10px; color: #fff; backdrop-filter: blur(6px); }
+  .lb-bar .ic:hover { background: rgba(255,255,255,.2); }
+  .lb-bar .ic:disabled, .lb-bar .ic:disabled:hover { opacity: .35; cursor: default;
+    background: rgba(0,0,0,.5); color: #fff; }
+  .modal { position: fixed; inset: 0; z-index: 70; display: none;
+    background: rgba(4,8,16,.66); backdrop-filter: blur(3px);
+    align-items: center; justify-content: center; }
+  .modal-box { background: rgba(17,26,44,.94); border: 1px solid rgba(255,255,255,.22);
+    border-radius: 14px; padding: 16px 20px; min-width: 280px; max-width: min(460px, 86vw);
+    box-shadow: 0 14px 40px rgba(0,0,0,.5); }
+  .modal-head { display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; margin-bottom: 9px; }
+  .modal-tt { font-size: 15px; font-weight: 600; }
+  .modal-head .ic { opacity: .6; }
+  .modal-head .ic:hover { opacity: 1; }
+  .modal-sub { font-size: 13px; opacity: .78; margin-bottom: 14px; line-height: 1.55;
+    white-space: normal; }
+  .cfm-fixed { width: 340px; }
+  .modal-btns { display: flex; justify-content: flex-end; gap: 10px; }
+  .btn.sm { height: 30px; min-width: 54px; padding: 0 12px; border-radius: 7px; font-size: 12px; }
+  .modal-line { width: 100%; margin: 0 0 12px; }
+  .stgrow { display: flex; gap: 6px; }
+  .stgrow input { flex: 1; min-width: 0; height: 32px; padding: 0 10px;
+    border-radius: 8px; border: 1px solid rgba(255,255,255,.18); background: rgba(0,0,0,.25);
+    color: #fff; font-size: 12px; outline: none; font-family: Consolas, monospace; }
+  .stgrow input:focus { border-color: rgba(255,255,255,.4); }
+  .stgrow .btn { height: 32px; padding: 0 10px; font-size: 12px; flex: none; }
+  .btn.danger { background: rgba(255,96,96,.16);
+    border-color: rgba(255,128,128,.42); color: #ffb3b3; font-weight: 600; }
+  .btn.danger:hover { background: rgba(255,96,96,.3); border-color: rgba(255,128,128,.7); color: #ffcccc; }
+  #toast { position: fixed; left: 50%; bottom: 34px; transform: translateX(-50%); z-index: 80;
+    background: rgba(0,0,0,.78); border: 1px solid rgba(255,255,255,.25); color: #fff;
+    font-size: 13px; padding: 8px 18px; border-radius: 999px; display: none; }
+</style>
+</head>
+<body>
+<div class="track" id="track">
+
+  <!-- 第一屏：通道中心 -->
+  <div class="page">
+    <div class="wrap">
+      <div class="flex-space"></div>
+      <header class="hero" id="heroCh"></header>
+      <hr class="fade-line">
+      <div class="rail" id="grid"></div>
+      <div class="flex-space"></div>
+      <div class="empty" id="empty" style="display:none">未发现任何通道。请将通道放入 <code>channels/&lt;id&gt;/</code> 并实现 app.py。</div>
+    </div>
+  </div>
+
+  <!-- 第二屏：作品中心（头部固定，作品区滚动） -->
+  <div class="page page-works" id="worksPage">
+    <div class="works-head">
+      <header class="hero" id="heroWk"></header>
+      <div class="searchrow">
+        <div class="searchwrap">
+          <input id="q" placeholder="搜索作品：提示词 / 通道 / 日期…" autocomplete="off">
+          <button class="qclear" id="qclear" title="清空"><span class="gico" style="font-size:12px">&#xE894;</span></button>
+        </div>
+        <button id="qbtn" class="btn">搜索</button>
+      </div>
+    </div>
+    <hr class="fade-line">
+    <div class="wall-scroll">
+      <div class="wall" id="wall"></div>
+      <div class="empty" id="worksEmpty" style="display:none">暂无作品</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="edgecol-r">
+  <button class="edge right" id="goWorks" title="切换到作品中心">作品中心 ›</button>
+  <button class="edge right" id="addChanBtn" title="添加自定义通道">＋ 添加通道</button>
+</div>
+<div class="edgecol">
+  <button class="edge left" id="goHome" title="返回通道中心">‹ 通道中心</button>
+  <button id="openDirBtn" class="edge left" title="打开作品文件夹">文件夹</button>
+  <button id="cfgBtn" class="edge left" title="设置">设置</button>
+</div>
+<div class="pop" id="pop"></div>
+<div class="lightbox" id="lb">
+  <div class="lb-bar">
+    <button class="ic" id="lbPrev" title="上一张">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="ic" id="lbNext" title="下一张">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <button class="ic" id="lbRot" title="旋转">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+    </button>
+    <button class="ic" id="lbX" title="关闭">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <img id="lbImg" alt="">
+</div>
+<div class="modal" id="cfm">
+  <div class="modal-box cfm-fixed">
+    <div class="modal-head">
+      <div class="modal-tt">删除</div>
+      <button class="ic" id="cfmX" title="关闭">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <hr class="fade-line modal-line">
+    <div class="modal-sub" id="cfmText">您确定要删除这张图片吗？</div>
+    <hr class="fade-line modal-line">
+    <div class="modal-btns">
+      <button class="btn sm danger" id="cfmYes">确定</button>
+    </div>
+  </div>
+</div>
+<div class="modal" id="stg">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-tt">设置</div>
+      <button class="ic" id="stgX" title="关闭">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <hr class="fade-line modal-line">
+    <div class="stgrow">
+      <input id="stgDir" placeholder="产物文件夹路径" autocomplete="off" spellcheck="false">
+      <button class="btn" id="stgPick">修改</button>
+      <button class="btn" id="stgOk">确定</button>
+    </div>
+  </div>
+</div>
+<div class="modal" id="addChan">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-tt" id="addTt">自定义通道</div>
+      <button class="ic" id="addX" title="关闭">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <hr class="fade-line modal-line">
+    <div class="afield"><label>1. 通道名称<span class="opt">（选填，缺省「自定义通道」）</span></label><input id="afName" placeholder="如：某中转站" autocomplete="off"></div>
+    <div class="afield"><label>2. 协议<span class="req">*</span></label>
+      <div class="selwrap">
+        <select id="afProto">
+          <option value="open">OpenAI 兼容协议（/v1/images/generations）</option>
+          <option value="gemini">Gemini 兼容协议（generateContent）</option>
+        </select>
+      </div>
+    </div>
+    <div class="afield"><label>3. 请求地址<span class="req">*</span></label><input id="afUrl" placeholder="如 https://api.xx.com/v1" autocomplete="off" spellcheck="false"><div class="aerr" id="errUrl"></div></div>
+    <div class="afield"><label>4. 模型名<span class="opt">（选填，留空用内置官网模型；多个用逗号分隔）</span></label><input id="afModel" placeholder="如 gpt-image-2.5-flare,gemini-nano-banana-2.1（补充到内置模型之后）" autocomplete="off" spellcheck="false"></div>
+    <div class="afield"><label>5. Key<span class="req">*</span></label><input id="afKey" type="password" placeholder="仅落本地凭证仓库，Agent 不可见" autocomplete="off"><div class="aerr" id="errKey"></div></div>
+    <div class="afield"><label>6. 官网 / 获取 Key 页面<span class="opt">（选填，卡片「获取」跳转）</span></label><input id="afSite" placeholder="https://..." autocomplete="off" spellcheck="false"></div>
+    <div class="modal-btns">
+      <button class="btn sm primary" id="addOk">创建并验证</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+/* 前后端完全分离：本文件只做四件事——
+   1) 渲染：通道卡片 + 作品中心（数据全部来自后端 JSON）
+   2) 动作：点击 → fetch 后端 API
+   3) 订阅：SSE /api/events（client=img：本页可看结果，任务提交时不重复弹窗）
+   4) 切屏：右/左缘把手 + 方向键 + #jobs-<id>/#works 锚点（手机桌面式横滑）
+   不含任何业务判断。 */
+const GRID = document.getElementById("grid");
+const EMPTY = document.getElementById("empty");
+const POP = document.getElementById("pop");
+
+const esc = (s) => String(s == null ? "" : s)
+  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const EYE_ON = '<svg class="i-on" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+const EYE_OFF = '<svg class="i-off" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+
+/* ---- 切屏 ---- */
+const track = document.getElementById("track");
+function goWorks() { track.classList.add("works"); document.body.classList.add("works"); }
+function goHome() { track.classList.remove("works"); document.body.classList.remove("works"); }
+document.getElementById("goWorks").onclick = goWorks;
+document.getElementById("goHome").onclick = goHome;
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") goWorks();
+  if (e.key === "ArrowLeft") goHome();
+});
+
+/* ---- Ctrl+滚轮：整体等比缩放（根级 zoom，不重排；0.5~2 钳制，localStorage 持久化） ---- */
+let uiScale = Math.min(2, Math.max(0.5, parseFloat(localStorage.getItem("uiScale")) || 1));
+function applyScale() {
+  document.documentElement.style.zoom = uiScale;
+  localStorage.setItem("uiScale", String(uiScale));
+}
+applyScale();
+window.addEventListener("wheel", (e) => {
+  if (!e.ctrlKey) return;
+  e.preventDefault();                 // 拦截浏览器原生"缩放+重排"，改等比 zoom
+  uiScale = Math.min(2, Math.max(0.5, uiScale - Math.sign(e.deltaY) * 0.1));
+  applyScale();
+}, { passive: false });
+window.addEventListener("keydown", (e) => {
+  if (e.ctrlKey && e.key === "0") {   // Ctrl+0 重置 100%
+    uiScale = 1; applyScale();
+  }
+});
+
+/* ---- 滚轮 → 横向滑动：垂直滚轮在卡片容器上直接驱动横向滚动条 ---- */
+const RAIL = document.getElementById("grid");
+RAIL.addEventListener("wheel", (e) => {
+  if (e.ctrlKey || !e.deltaY) return; // Ctrl+滚轮 → 整体缩放（交给 window 监听），不抢
+  e.preventDefault();                 // 页面本身无垂直滚动（布局固定），滚轮全量转横向
+  RAIL.scrollLeft += e.deltaY;
+}, { passive: false });
+
+/* ---- 渲染：通道卡片 ---- */
+function render(channels) {
+  // 重建前保留各卡片未提交的输入（SSE 断线重连重发 snapshot 不再丢字）
+  const prev = {};
+  GRID.querySelectorAll(".card").forEach((c) => {
+    const i = c.querySelector(".keywrap input");
+    if (i && i.value) prev[c.dataset.id] = i.value;
+  });
+  GRID.innerHTML = "";
+  if (!channels.length) { EMPTY.style.display = "block"; return; }
+  EMPTY.style.display = "none";
+  channels.forEach((c, i) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.dataset.id = c.id;
+    const st = c.status || {};
+    // 卡片形态：link = 不放内嵌 Key 输入/验证（验证由管理台统一负责），直接给"获取"入口
+    let actions = c.card === "link"
+      ? `<button class="btn primary" data-act="get" style="flex:1">获取 Key</button>`
+      : `<div class="keywrap">
+          <input type="password" placeholder="${esc(c.placeholder || "请粘贴或获取key~")}" value="${esc(c.key)}" autocomplete="off" />
+          <button class="eye" data-act="eye" title="显示/隐藏 Key">${EYE_ON}${EYE_OFF}</button>
+        </div>
+        <button class="btn" data-act="clear" title="清除我的Key，回退内置验证">清空</button>
+        <button class="btn" data-act="verify">验证</button>` +
+        (c.custom ? `<button class="btn" data-act="del" title="删除该自定义通道（已出图作品保留）">删除</button>`
+                  : `<button class="btn" data-act="get">获取</button>`);
+    const GLOBE = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>';
+    const PENCIL = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>';
+    const ticons = c.custom ? `<span style="display:flex;gap:6px;align-items:center">
+        <button class="ticon" data-act="visit" title="访问官网">${GLOBE}</button>
+        <button class="ticon" data-act="edit" title="编辑通道信息">${PENCIL}</button></span>` : "";
+    card.innerHTML = `
+      <div class="topbar">
+        <span class="badge ${st.state || "unverified"}">${esc(st.message || "未验")}</span>
+        <span style="display:flex;gap:8px;align-items:center">${ticons}
+        <label class="switch" title="启用/停用（停用后 Agent 无法调用此通道）">
+          <input type="checkbox" data-act="toggle" ${c.enabled === false ? "" : "checked"}>
+          <span class="slider"></span>
+        </label></span>
+      </div>
+      <div class="row1"><span class="idx">${i + 1}.</span><span class="tt">${esc(c.title)}</span></div>
+      <div class="row2">${actions}</div>
+      <div class="row3" title="点击查看完整说明">${esc(c.description || "")}</div>
+    `;
+    const input = card.querySelector(".keywrap input");
+    const saved = prev[c.id];
+    if (saved && input && !input.value) input.value = saved;   // 恢复未提交输入
+    const eye = card.querySelector(".eye");
+    if (eye) eye.onclick = () => {
+      const show = input.type === "password";
+      input.type = show ? "text" : "password";
+      eye.querySelector(".i-on").style.display = show ? "none" : "";
+      eye.querySelector(".i-off").style.display = show ? "" : "none";
+    };
+    const cb = card.querySelector('[data-act="clear"]');
+    if (cb) cb.onclick = () => {
+      if (input) { input.value = ""; input.blur(); } // 立即清空输入框（不依赖 SSE 回填）
+      verify(c.id, "");                              // 清除用户Key并重验内置
+    };
+    const tg = card.querySelector('[data-act="toggle"]');
+    if (tg) tg.onchange = async () => {
+      await fetch("/api/channel/" + c.id + "/enabled", {
+        method: "POST", headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ enabled: tg.checked })
+      });                                            // 落盘+SSE 广播（多管理台同步）
+    };
+    const vb = card.querySelector('[data-act="verify"]');
+    if (vb) vb.onclick = () => verify(c.id, input.value.trim());
+    const gb = card.querySelector('[data-act="get"]');
+    if (gb) gb.onclick = () => window.open(c.acquire_url || ("/channel/" + c.id), "_blank");
+    const vb2 = card.querySelector('[data-act="visit"]');
+    if (vb2) vb2.onclick = () => {
+      if (c.acquire_url) window.open(c.acquire_url, "_blank");
+      else toast("该通道未设置官网");
+    };
+    const eb = card.querySelector('[data-act="edit"]');
+    if (eb) eb.onclick = () => openEdit(c);
+    const db = card.querySelector('[data-act="del"]');
+    if (db) db.onclick = () => askConfirm(
+      "确定删除自定义通道「" + c.title + "」吗？（已出图作品保留）", async () => {
+        try {
+          await fetch("/api/channels/custom/delete", {
+            method: "POST", headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ id: c.id })
+          });
+          toast("已删除");
+        } catch (e) { toast("删除失败"); }
+        reloadChannels();
+      });
+    card.querySelector(".row3").onclick = (e) => showPop(e, c.description || "（无说明）");
+    GRID.appendChild(card);
+  });
+}
+
+function updateBadge(id, status) {
+  const card = GRID.querySelector(`.card[data-id="${id}"]`);
+  if (!card) return;
+  const badge = card.querySelector(".badge");
+  badge.className = "badge " + (status.state || "unverified");
+  badge.textContent = status.message || "未验";
+}
+
+function fillKey(id, key) {
+  const card = GRID.querySelector(`.card[data-id="${id}"]`);
+  if (!card) return;
+  const input = card.querySelector(".keywrap input");
+  if (!input) return;                              // link 形态卡片无输入框
+  if (document.activeElement === input) return;   // 用户正在输入，不打扰
+  const v = key || "";
+  if (input.value !== v) input.value = v;         // 落盘/变化后自动回填（保持掩码）
+}
+
+/* ---- 动作 ---- */
+async function verify(id, key) {
+  const card = GRID.querySelector(`.card[data-id="${id}"]`);
+  if (!card || card.dataset.checking) return;      // 防抖：验证中忽略重复触发
+  card.dataset.checking = "1";
+  const badge = card.querySelector(".badge");
+  badge.className = "badge checking";
+  badge.textContent = "验证中…";
+  try {
+    // 统一入口：有 key 则落盘，然后后端验证并广播；响应也带回结果（双保险）
+    const r = await fetch("/api/channel/" + id + "/credential", {
+      method: "POST", headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ key: key || "" })   // 空串=清除用户Key回退内置；有值=落盘验证
+    });
+    const j = await r.json();
+    const noKey = j.message === "无凭证";          // 无内置无用户Key → 需key 语义
+    updateBadge(id, { state: j.valid ? "valid" : (noKey ? "nokey" : "invalid"),
+                      message: noKey ? "需key" : j.message });
+  } catch (e) {
+    updateBadge(id, { state: "invalid", message: "请求失败" });
+  } finally {
+    delete card.dataset.checking;
+  }
+}
+
+let popFor = null;
+function hidePop() { POP.style.display = "none"; popFor = null; }
+function showPop(e, text) {
+  if (popFor === e.target) { hidePop(); return; }   // 再点同一行 → 收起
+  POP.textContent = text;
+  POP.style.display = "block";
+  const r = e.target.getBoundingClientRect();
+  let top = r.bottom + 8, left = r.left;
+  if (top + 140 > window.innerHeight) top = r.top - 150;
+  if (left + 380 > window.innerWidth) left = window.innerWidth - 392;
+  POP.style.top = Math.max(8, top) + "px";
+  POP.style.left = Math.max(8, left) + "px";
+  popFor = e.target;
+}
+document.addEventListener("click", (e) => { if (!POP.contains(e.target) && !e.target.classList.contains("row3")) hidePop(); });
+
+/* ---- 作品中心：数据源 = /api/works（目录扫描 ⊕ img.json）→ 瀑布流 ---- */
+const WALL = document.getElementById("wall");
+const WEMPTY = document.getElementById("worksEmpty");
+const Q = document.getElementById("q");
+let SHOTS = [];   // {file, web, channel, time, prompt, params, job}（time 已是展示格式）
+
+const ICON_COPY = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+const ICON_X = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+
+function paramsLine(p) {          // 生图参数：比例·档位·张数·模型（空则不显示）
+  const t = [p.ratio, p.tier, p.scale ? "放大×" + p.scale : "",
+             p.n > 1 ? "×" + p.n : "", p.model].filter(Boolean);
+  return t.length ? " · " + t.join(" · ") : "";
+}
+
+function shotHTML(s) {
+  return `
+    <div class="shot" data-web="${esc(s.web)}" data-job="${esc(s.job)}">
+      <div class="shot-top">
+        <span class="ts">${esc(s.time)}</span>
+        <span class="ops">
+          <button class="ic" data-op="copy" title="复制到剪贴板">${ICON_COPY}</button>
+          <button class="ic del" data-op="del" title="删除">${ICON_X}</button>
+        </span>
+      </div>
+      <div class="imgwrap">
+        <img loading="lazy" src="${esc(s.web)}" alt=""
+             onerror="this.closest('.shot').style.display='none'">
+        <div class="prompt">${esc(s.channel)}${paramsLine(s.params || {})}：${esc(s.prompt)}</div>
+      </div>
+    </div>`;
+}
+
+function colCount() {
+  // 自适应列数：按可视宽度每 250px 一列，1~4 列封顶
+  const w = document.getElementById("worksPage").clientWidth - 60;
+  return Math.max(1, Math.min(4, Math.floor(w / 250)));
+}
+
+function renderWall() {
+  const kw = (Q.value || "").trim().toLowerCase();
+  const list = !kw ? SHOTS : SHOTS.filter((s) =>
+    (s.prompt + " " + s.channel + " " + s.time + " " + s.web).toLowerCase().includes(kw));
+  const n = colCount();
+  const cols = Array.from({ length: n }, () => []);
+  list.forEach((s, i) => cols[i % n].push(s));   // 轮转分发 = 严格从左到右、从上到下
+  WALL.innerHTML = cols.map((col) =>
+    '<div class="wcol">' + col.map(shotHTML).join("") + "</div>").join("");
+  WEMPTY.style.display = list.length ? "none" : "block";
+  setSub("heroWk", dateStr() + " · 共" + SHOTS.length + "图片");
+}
+
+let rsTimer = null;
+window.addEventListener("resize", () => {        // 屏幕变化 → 重排
+  clearTimeout(rsTimer);
+  rsTimer = setTimeout(renderWall, 150);
+});
+
+let refreshTimer = null;
+function refreshWorks() {
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(async () => {
+    try {
+      const r = await fetch("/api/works").then((x) => x.json());
+      SHOTS = (r && r.works) || [];
+      renderWall();
+    } catch (e) {}
+  }, 250);
+}
+
+/* 搜索：仅点击按钮或回车触发（不自动搜索）；× 仅清空与复位展示 */
+const QCLEAR = document.getElementById("qclear");
+Q.addEventListener("input", () => {
+  QCLEAR.style.display = Q.value ? "flex" : "none";   // 只控制显隐，不触发搜索
+});
+QCLEAR.addEventListener("click", () => {
+  Q.value = "";
+  QCLEAR.style.display = "none";
+  renderWall();                                        // 清空 = 复位到全部作品
+});
+document.getElementById("qbtn").addEventListener("click", renderWall);
+Q.addEventListener("keydown", (e) => { if (e.key === "Enter") renderWall(); });
+
+/* 设置弹窗：存储目录查看/打开/修改关联（业务全在后端，前端仅触发与展示） */
+const STG = document.getElementById("stg");
+const STGDIR = document.getElementById("stgDir");
+document.getElementById("cfgBtn").onclick = async () => {
+  STG.style.display = "flex";
+  try {
+    const r = await fetch("/api/storage").then((x) => x.json());
+    STGDIR.value = r.dir || "";
+  } catch (e) { toast("读取失败"); }
+};
+document.getElementById("stgX").onclick = () => { STG.style.display = "none"; };
+/* 文件夹图标：直接打开当前关联的产物根（资源管理器新窗置前） */
+document.getElementById("openDirBtn").onclick = async () => {
+  try {
+    const r = await fetch("/api/storage/open", { method: "POST" }).then((x) => x.json());
+    if (!r.ok) toast(r.msg || "打开失败");
+  } catch (e) { toast("打开失败"); }
+};
+/* 修改：仅弹原生选择器回填输入框，不实际变更 */
+const stgPickBtn = document.getElementById("stgPick");
+stgPickBtn.onclick = async () => {
+  if (stgPickBtn.dataset.busy) return;
+  stgPickBtn.dataset.busy = "1";
+  try {
+    const r = await fetch("/api/storage/pick", { method: "POST" }).then((x) => x.json());
+    if (r.ok && r.dir) STGDIR.value = r.dir;
+    else toast(r.msg || "已取消");
+  } catch (e) { toast("选择失败"); }
+  stgPickBtn.dataset.busy = "";
+};
+/* 确定：此时才真正保存关联并执行迁移 */
+document.getElementById("stgOk").onclick = async () => {
+  try {
+    const r = await fetch("/api/storage/associate", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ dir: STGDIR.value })
+    }).then((x) => x.json());
+    if (r.ok) {
+      toast("已关联：" + r.dir + "（迁移 " + r.moved + " · 复制 " + r.copied + "）");
+      STGDIR.value = r.dir;
+      refreshWorks();
+    } else {
+      toast(r.msg || "未变更");
+    }
+  } catch (e) { toast("操作失败"); }
+};
+
+/* ---- 新增/编辑自定义中转通道（弹窗 → 注册或保存 → 真鉴权 → 刷新通道列表） ---- */
+const ADDM = document.getElementById("addChan");
+let editId = null;                                // 非空 = 编辑模式（回填，Key 留空不修改）
+function setErr(id, msg) {                        // 红字提示统一入口（对缺失元素健壮）
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = msg; el.style.display = msg ? "block" : "none";
+}
+function clearErrs() { ["errUrl", "errKey"].forEach((id) => setErr(id, "")); }
+async function reloadChannels() {                // 全量拉取通道清单（注册/删除/编辑后）
+  const r = await fetch("/api/channels").then((x) => x.json());
+  applyChannels(Array.isArray(r) ? r : []);
+}
+function resetAddForm() {
+  ["afName", "afProto", "afUrl", "afModel", "afKey", "afSite"].forEach(
+    (id) => { document.getElementById(id).value = ""; });
+  clearErrs();
+}
+document.getElementById("addChanBtn").onclick = () => {
+  editId = null; resetAddForm();
+  document.getElementById("addTt").textContent = "自定义通道";
+  document.getElementById("addOk").textContent = "创建并验证";
+  document.getElementById("afKey").placeholder = "仅落本地凭证仓库，Agent 不可见";
+  ADDM.style.display = "flex";
+};
+function openEdit(c) {
+  editId = c.id;
+  const r = c.rec || {};
+  document.getElementById("afName").value = r.name || "";
+  document.getElementById("afProto").value = r.protocol || "open";
+  document.getElementById("afUrl").value = r.base_url || "";
+  document.getElementById("afModel").value = r.model || "";
+  document.getElementById("afKey").value = c.key || "";   // 回填当前 Key（store 真值，与卡片同源）
+  document.getElementById("afKey").placeholder = "修改则覆盖；清空保存=清除凭证";
+  document.getElementById("afSite").value = r.official_url || "";
+  document.getElementById("addTt").textContent = "自定义通道";
+  document.getElementById("addOk").textContent = "保存修改";
+  clearErrs();
+  ADDM.style.display = "flex";
+}
+const closeAdd = () => { ADDM.style.display = "none"; editId = null; };
+document.getElementById("addX").onclick = closeAdd;
+document.getElementById("addOk").onclick = async () => {
+  const g = (id) => document.getElementById(id).value.trim();
+  const btn = document.getElementById("addOk");
+  if (btn.disabled) return;
+  // 必填校验（协议/地址/模型/Key；名称与官网选填）——红字提示对齐 agnes 登录页语言
+  const errs = { errUrl: "" };
+  if (!g("afUrl")) errs.errUrl = "请输入请求地址！";
+  if (!/^https?:\/\//.test(g("afUrl") || "")) errs.errUrl = errs.errUrl || "地址需以 http(s):// 开头";
+  if (!editId && !g("afKey")) errs.errKey = "请输入 Key！";   // 新增必填；编辑清空=清除凭证（与卡片「清空」同语义）
+  let bad = false;
+  for (const [id, msg] of Object.entries(errs)) {
+    setErr(id, msg);
+    bad = bad || !!msg;
+  }
+  if (bad) return;
+  btn.disabled = true;
+  try {
+    const base = { name: g("afName"), protocol: g("afProto"),
+                   base_url: g("afUrl"), model: g("afModel"),
+                   official_url: g("afSite"), key: g("afKey") };   // 增/改统一提交 key → 后端经 commit 落地
+    if (editId) base.id = editId;
+    const r = await fetch(editId ? "/api/channels/custom/edit" : "/api/channels/custom", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(base)
+    }).then((x) => x.json());
+    if (!r.ok) { toast(r.msg || "操作失败"); return; }
+    closeAdd();
+    toast(editId ? "已保存（" + r.message + "）"
+                 : (r.valid ? "已创建并验证有效：" + r.id : "已创建（" + r.message + "）"));
+    await reloadChannels();
+  } catch (e) { toast("操作失败"); }
+  finally { btn.disabled = false; }
+};
+
+/* ---- 卡片动作：复制 / 删除（确认弹窗）/ 单击图片预览 ---- */
+let toastTimer = null;
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.style.display = "block";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.style.display = "none"; }, 1600);
+}
+
+async function copyShot(s) {
+  try {
+    const blob = await fetch(s.web).then((r) => r.blob());
+    let png = blob;
+    if (blob.type !== "image/png") {          // 剪贴板图片仅广泛支持 PNG，非 PNG 先转码
+      const bmp = await createImageBitmap(blob);
+      const cv = document.createElement("canvas");
+      cv.width = bmp.width; cv.height = bmp.height;
+      cv.getContext("2d").drawImage(bmp, 0, 0);
+      png = await new Promise((res) => cv.toBlob(res, "image/png"));
+    }
+    await navigator.clipboard.write([new ClipboardItem({ "image/png": png })]);
+    toast("已复制到剪贴板");
+  } catch (e) {
+    toast("复制失败");
+  }
+}
+
+const CFM = document.getElementById("cfm");
+let cfmCb = null;
+function askConfirm(text, cb) {                  // 通用确认弹窗（文案 + 回调）
+  document.getElementById("cfmText").textContent = text;
+  cfmCb = cb; CFM.style.display = "flex";
+}
+function closeCfm() { CFM.style.display = "none"; cfmCb = null; }
+document.getElementById("cfmX").onclick = closeCfm;
+document.getElementById("cfmYes").onclick = async () => {
+  const cb = cfmCb; closeCfm();
+  if (cb) await cb();
+};
+
+/* ---- 灯箱（作品序列查看器）：状态内聚 = 列表+索引+变换；原生支持上一张/下一张 ---- */
+const LB = (() => {
+  const el = document.getElementById("lb");
+  const img = document.getElementById("lbImg");
+  const bPrev = document.getElementById("lbPrev");
+  const bNext = document.getElementById("lbNext");
+  const bRot = document.getElementById("lbRot");
+  const bX = document.getElementById("lbX");
+
+  // 唯一状态源：浏览序列 + 当前位置 + 视图变换
+  const st = { list: [], idx: -1, rot: 0, zoom: 1, tx: 0, ty: 0 };
+
+  const apply = () => {
+    img.style.transform =
+      "translate(" + st.tx + "px, " + st.ty + "px) rotate(" + st.rot + "deg) scale(" + st.zoom + ")";
+  };
+  const resetView = () => {                     // 换图即归零：新图从头看
+    st.rot = 0; st.zoom = 1; st.tx = 0; st.ty = 0;
+    apply();
+  };
+  const paint = () => {
+    const s = st.list[st.idx];
+    if (!s) return;
+    resetView();
+    img.src = s.web;
+    const single = st.list.length < 2;          // 单图时导航按钮弱化
+    bPrev.disabled = single;
+    bNext.disabled = single;
+  };
+
+  const open = (list, i) => {
+    if (!list || i < 0 || i >= list.length) return;
+    st.list = list; st.idx = i;
+    paint();
+    el.style.display = "flex";
+  };
+  const close = () => { el.style.display = "none"; };
+  const step = (d) => {                         // 序列内循环浏览（首尾相接）
+    if (st.list.length < 2) return;
+    st.idx = (st.idx + d + st.list.length) % st.list.length;
+    paint();
+  };
+
+  bPrev.onclick = () => step(-1);
+  bNext.onclick = () => step(1);
+  bRot.onclick = () => { st.rot = (st.rot + 90) % 360; apply(); };
+  bX.onclick = close;
+
+  /* Ctrl+滚轮缩放（0.2x~8x）；preventDefault 拦截浏览器整页缩放 */
+  img.addEventListener("wheel", (e) => {
+    if (!e.ctrlKey) return;
+    e.preventDefault();
+    e.stopPropagation();              // 灯箱内缩放图片，不冒泡到整页缩放
+    st.zoom = Math.min(8, Math.max(0.2, st.zoom * (e.deltaY < 0 ? 1.12 : 1 / 1.12)));
+    apply();
+  }, { passive: false });
+
+  /* 左键拖拽（拖拽中关闭过渡动画，松手恢复） */
+  img.addEventListener("mousedown", (e) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    const sx = e.clientX, sy = e.clientY, ox = st.tx, oy = st.ty;
+    img.classList.add("dragging");
+    const mv = (ev) => { st.tx = ox + (ev.clientX - sx); st.ty = oy + (ev.clientY - sy); apply(); };
+    const up = () => {
+      img.classList.remove("dragging");
+      window.removeEventListener("mousemove", mv);
+      window.removeEventListener("mouseup", up);
+    };
+    window.addEventListener("mousemove", mv);
+    window.addEventListener("mouseup", up);
+  });
+
+  return { open: open, close: close };
+})();
+
+/* 作品墙点击：图标（复制/删除）优先，图片或提示词进入灯箱（带序列索引） */
+WALL.addEventListener("click", (e) => {
+  const shot = e.target.closest(".shot");
+  if (!shot) return;
+  const i = SHOTS.findIndex((x) => x.web === shot.dataset.web);
+  if (i < 0) return;
+  const op = e.target.closest(".ic");
+  if (op) {                                   // 图标按钮：复制 / 删除
+    if (op.dataset.op === "copy") copyShot(SHOTS[i]);
+    else askConfirm("您确定要删除这张图片吗？", async () => {
+      try {
+        await fetch("/api/works/delete", {
+          method: "POST", headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ file: SHOTS[i].file })
+        });
+        toast("已删除");
+      } catch (e) { toast("删除失败"); }
+      refreshWorks();
+    });
+    return;
+  }
+  if (e.target.tagName !== "IMG" && !e.target.classList.contains("prompt")) return;
+  LB.open(SHOTS, i);
+});
+
+/* 锚点路由：#jobs-<id> → 滑到作品页并高亮；#works → 滑到作品页；#channels → 回通道中心 */
+function handleHash() {
+  const h = location.hash || "";
+  if (h.indexOf("#jobs-") === 0) {
+    goWorks(); refreshWorks();
+    setTimeout(() => {
+      const el = WALL.querySelector(`[data-job="${h.slice(6).replace(/"/g, "")}"]`);
+      if (el) { el.scrollIntoView({ block: "center" }); el.classList.add("flash");
+        setTimeout(() => el.classList.remove("flash"), 2600); }
+    }, 900);
+  } else if (h === "#works") { goWorks(); }
+  else if (h === "#channels") { goHome(); }
+}
+window.addEventListener("hashchange", handleHash);
+
+/* ---- 头部立即渲染（必须先于 SSE snapshot：防 boot 背景图返回后覆盖计数） ---- */
+document.getElementById("heroCh").innerHTML =
+  heroHTML("Ai公益生图Pro", dateStr() + " · 共0通道.0启用.0有效", true);
+document.getElementById("heroWk").innerHTML =
+  heroHTML("作品中心", dateStr() + " · 共0图片", false);
+
+/* ---- 订阅：SSE 实时状态 + 任务事件（client=img：本页即结果页，提交时不重复弹窗） ---- */
+let CHS = [];   // 最近一次通道清单（enabled 事件实时改写并重算副标题）
+function chSubText() {
+  const en = CHS.filter((c) => c.enabled !== false).length;
+  const va = CHS.filter((c) => (c.status || {}).state === "valid").length;
+  return dateStr() + " · 共" + CHS.length + "通道." + en + "启用." + va + "有效";
+}
+function applyChannels(channels) {
+  CHS = channels || [];
+  setSub("heroCh", chSubText());
+  render(CHS);
+}
+
+try {
+  const es = new EventSource("/api/events?client=img");
+  es.onmessage = (e) => {
+    try {
+      const d = JSON.parse(e.data);
+      if (d.type === "snapshot") {
+        applyChannels(d.channels);
+        if (typeof d.worksCount === "number" && d.worksCount !== SHOTS.length) refreshWorks();   // 重连自愈：作品数变化即补偿拉取
+      }
+      if (d.type === "status") {
+        const c = CHS.find((x) => x.id === d.id);
+        if (c) { c.status = d.status; if ("key" in d) c.key = d.key; }   // 实时改写清单（与 enabled 同模式）→ 编辑弹窗永远读到最新 Key
+        updateBadge(d.id, d.status);
+        if ("key" in d) fillKey(d.id, d.key);
+      }
+      if (d.type === "enabled") {
+        const c = CHS.find((x) => x.id === d.id);
+        if (c) c.enabled = !!d.enabled;              // 实时改写清单 → 副标题计数联动
+        setSub("heroCh", chSubText());
+        const card = GRID.querySelector(`.card[data-id="${d.id}"]`);
+        if (card) {
+          const t = card.querySelector('[data-act="toggle"]');
+          if (t) t.checked = !!d.enabled;
+        }
+      }
+      if (d.type === "task") refreshWorks();   // 任务进度 → 作品中心刷新（防抖）
+      if (d.type === "navigate" && d.target) { // 服务端导航指令：已有页面原地切换，不新增页面
+        try { window.focus(); } catch (err) {}   // 尽力置前（浏览器防劫持策略下部分场景有效）
+        if (location.hash === d.target) handleHash();
+        else location.hash = d.target;
+      }
+    } catch (err) {}
+  };
+  es.onopen = () => refreshWorks();          // 重连成功立即补偿拉取（断线期间错过的任务不再丢）
+  es.onerror = () => { /* EventSource 自动重连 */ };
+} catch (e) {
+  // 兜底：不支持 SSE 时退化为一次性快照
+  fetch("/api/channels").then(r => r.json()).then(applyChannels);
+}
+
+/* ---- 公共头部（单一来源，两屏共用；标题/副标题/头像均为参数） ---- */
+function dateStr() {
+  const d = new Date();
+  const week = "日一二三四五六"[d.getDay()];
+  const pad = (n) => String(n).padStart(2, "0");
+  return d.getFullYear() + "/" + pad(d.getMonth() + 1) + "/" + pad(d.getDate()) + " 星期" + week;
+}
+function heroHTML(title, sub, withAvatar) {
+  return (withAvatar ? '<div class="avatar"><img src="ui/logo.png" alt="Ai公益生图Pro"></div>' : "") +
+    '<h1 class="brand">' + esc(title) + '</h1><div class="sub">' + esc(sub) + "</div>";
+}
+function setSub(pageId, txt) {
+  const h = document.getElementById(pageId);
+  if (h) h.querySelector(".sub").textContent = txt;
+}
+
+async function boot() {
+  try {
+    const bg = await fetch("/api/bg").then(r => r.json());
+    if (bg && bg.ok && bg.url) {
+      // 壁纸上叠暗色 scrim：保住背景可见性，同时给卡片让出对比度（两屏共用同一背景）
+      document.body.style.backgroundImage =
+        `linear-gradient(180deg, rgba(8,14,26,.48), rgba(8,14,26,.62)), url(${bg.url})`;
+    }
+  } catch (e) {}
+  handleHash();
+  refreshWorks();
+}
+boot();
+</script>
+</body>
+</html>

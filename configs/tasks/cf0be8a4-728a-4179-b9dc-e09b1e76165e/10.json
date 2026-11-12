@@ -1,0 +1,9 @@
+{
+  "subject": "渲染并转 JPG",
+  "description": "用 poster-maker render.mjs 离线渲染 3 张 PNG，Pillow 转 JPG 存工作区根目录",
+  "activeForm": "渲染并转 JPG",
+  "status": "completed",
+  "id": "10",
+  "createdAt": 1794380347133,
+  "updatedAt": 1794380763703
+}

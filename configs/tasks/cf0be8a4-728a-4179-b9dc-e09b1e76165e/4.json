@@ -1,0 +1,9 @@
+{
+  "subject": "合成圣诞海报并转 JPG",
+  "description": "compose_poster.py 合成 1080×1920，转 JPG，存工作区根目录 圣诞手机海报.jpg，present_files 展示",
+  "activeForm": "合成圣诞海报",
+  "status": "completed",
+  "id": "4",
+  "createdAt": 1794378731820,
+  "updatedAt": 1794379423341
+}

@@ -1,25 +1,31 @@
-﻿# Background download script for local-ocr-npu skill
+﻿# Copyright (C) 2026 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+# Background download script for local-ocr-npu skill
 # Called synchronously by run.ps1. Do NOT call directly.
 #
 # Download sources:
 #   OCR runtime : ModelScope CDN only
 #   PDF tool    : ModelScope CDN only
-#   Models      : ModelScope CDN --> HuggingFace fallback
+#   Models      : ModelScope CDN only
 #
-# Everything lands in $BinDir (%USERPROFILE%\.openvino\bin) -- the skill
+# Everything lands in $BinDir (%USERPROFILE%\.openvino\bin\ocr-npu) -- the skill
 # package itself ships no executables.
 
 param(
     [string]$BinDir,
     [string]$LogFile,
-    [string]$HfRepoUrl,
     [string]$MsRepoUrl,
     [string]$BinAssetName,
     [string]$SkillAssetsUrl,
     [string]$PdfiumAssetName,
     [string]$DetModelDir,
-    [string]$RecModelDir
+    [string]$RecModelDir,
+    [string]$DetModelName = 'PP-OCRv5_server_det',
+    [string]$RecModelName = 'PP-OCRv5_server_rec'
 )
+
+$ErrorActionPreference = 'Stop'
 
 $Log = $LogFile
 $LogParent = Split-Path $Log -Parent
@@ -28,6 +34,14 @@ if ($LogParent -and -not (Test-Path $LogParent)) {
 }
 
 function L($msg) { Add-Content $Log "[$(Get-Date -Format 'HH:mm:ss')] $msg" }
+
+# Leftover downloads are harmless, so a failed delete is only logged. A plain
+# -ErrorAction SilentlyContinue is not enough: agent hosts may proxy
+# Remove-Item with a fail-closed "safe delete" function that throws.
+function Remove-QuietlyFile([string]$Path) {
+    try { Remove-Item -LiteralPath $Path -Force -ErrorAction Stop }
+    catch { L "WARN: could not delete $Path : $($_.Exception.Message)" }
+}
 
 # --- TLS ---
 # TLS 1.2 with certificate validation ON. See README.md "安全与合规说明".
@@ -165,9 +179,11 @@ try {
 
     # -------------------------------------------------------------------------
     # 1. Download ppocr.exe + DLLs
-    #    Try ModelScope CDN first (fast in CN), then GitHub
+    #    Download from ModelScope CDN
     # -------------------------------------------------------------------------
     $ovinoDll  = Join-Path $BinDir 'openvino.dll'
+    $ocrExe = Join-Path $BinDir 'ppocr.exe'
+    $needRuntime = -not ((Test-Path -LiteralPath $ovinoDll -PathType Leaf) -and (Test-Path -LiteralPath $ocrExe -PathType Leaf))
     $pdf2png   = Join-Path $BinDir 'pdf2png.exe'
     $pdfiumDll = Join-Path $BinDir 'pdfium.dll'
     $needPdfTool = -not ((Test-Path $pdf2png) -and (Test-Path $pdfiumDll))
@@ -175,14 +191,21 @@ try {
     # Count everything that still has to be fetched so the percentage is
     # meaningful from the very first line.
     $script:ProgressTotal = 0
-    if (-not (Test-Path $ovinoDll)) { $script:ProgressTotal += 1 }
+    if ($needRuntime) { $script:ProgressTotal += 1 }
     if ($needPdfTool) { $script:ProgressTotal += 1 }
-    if (-not (Test-Path $DetModelDir)) { $script:ProgressTotal += (Get-ModelFiles (Split-Path $DetModelDir -Leaf)).Count }
-    if (-not (Test-Path $RecModelDir)) { $script:ProgressTotal += (Get-ModelFiles (Split-Path $RecModelDir -Leaf)).Count }
+    $modelConfigs = @(
+        @{ Name = "${DetModelName}_ov"; Directory = $DetModelDir },
+        @{ Name = "${RecModelName}_ov"; Directory = $RecModelDir }
+    )
+    foreach ($modelConfig in $modelConfigs) {
+        foreach ($fileName in (Get-ModelFiles $modelConfig.Name)) {
+            if (-not (Test-Path -LiteralPath (Join-Path $modelConfig.Directory $fileName) -PathType Leaf)) { $script:ProgressTotal += 1 }
+        }
+    }
     $script:ProgressDone = 0
     Report-Progress '准备下载'
 
-    if (-not (Test-Path $ovinoDll)) {
+    if ($needRuntime) {
         L 'Downloading ppocr.exe + DLLs...'
         New-Item -ItemType Directory -Path $BinDir -Force | Out-Null
         $zip = Join-Path $env:TEMP 'ppocr-skill-dl.zip'
@@ -191,13 +214,13 @@ try {
         L "  Downloading from ModelScope: $msBinUrl"
         $ok = Download-File -Urls @($msBinUrl) -OutFile $zip
         if ($ok -and -not (Test-AssetSha256 $zip $BinAssetName)) {
-            Remove-Item $zip -Force -ErrorAction SilentlyContinue
-            $ok = $false
+            Remove-QuietlyFile $zip
+            throw "SHA-256 mismatch for $BinAssetName; download rejected."
         }
 
         if ($ok) {
             Expand-Archive -Path $zip -DestinationPath $BinDir -Force
-            Remove-Item $zip -Force -ErrorAction SilentlyContinue
+            Remove-QuietlyFile $zip
             L 'ppocr.exe + DLLs: OK'
             $script:ProgressDone += 1
             Report-Progress 'OpenVINO 运行时'
@@ -223,13 +246,13 @@ try {
         L "  Downloading from ModelScope: $pdfUrl"
         $ok = Download-File -Urls @($pdfUrl) -OutFile $pdfZip
         if ($ok -and -not (Test-AssetSha256 $pdfZip $PdfiumAssetName)) {
-            Remove-Item $pdfZip -Force -ErrorAction SilentlyContinue
-            $ok = $false
+            Remove-QuietlyFile $pdfZip
+            throw "SHA-256 mismatch for $PdfiumAssetName; download rejected."
         }
 
         if ($ok) {
             Expand-Archive -Path $pdfZip -DestinationPath $BinDir -Force
-            Remove-Item $pdfZip -Force -ErrorAction SilentlyContinue
+            Remove-QuietlyFile $pdfZip
             L 'pdf2png.exe + pdfium.dll: OK'
             $script:ProgressDone += 1
             Report-Progress 'PDF 转换工具'
@@ -244,36 +267,38 @@ try {
     }
 
     # -------------------------------------------------------------------------
-    # 3. Download models (parallel, ModelScope first)
+    # 3. Download models (parallel, ModelScope only)
     # -------------------------------------------------------------------------
     function Download-Model {
         param([string]$ModelName, [string]$DestDir)
         L "Downloading model: $ModelName"
         New-Item -ItemType Directory -Path $DestDir -Force | Out-Null
 
-        $files = Get-ModelFiles $ModelName
+        $files = @(Get-ModelFiles $ModelName | Where-Object {
+            -not (Test-Path -LiteralPath (Join-Path $DestDir $_) -PathType Leaf)
+        })
+        if ($files.Count -eq 0) { return }
 
         # Parallel download using jobs (one job per file)
         $jobs =         foreach ($fn in $files) {
             $destFile = Join-Path $DestDir $fn
-            $urls = @("$MsRepoUrl/$ModelName/$fn", "$HfRepoUrl/$ModelName/$fn")
+            $url = "$MsRepoUrl/$ModelName/$fn"
             Start-Job -ScriptBlock {
-                param($u, $o)
-                foreach ($url in $u) {
-                    try {
-                        $ProgressPreference = 'SilentlyContinue'
-                        Invoke-WebRequest -Uri $url -OutFile $o -TimeoutSec 300 -UseBasicParsing
-                        return "OK: $(Split-Path $o -Leaf)"
-                    } catch { }
-                }
-                return "FAIL: $(Split-Path $o -Leaf)"
-            } -ArgumentList $urls, $destFile
+                param($Url, $Destination, $FileName)
+                try {
+                    $ProgressPreference = 'SilentlyContinue'
+                    Invoke-WebRequest -Uri $Url -OutFile $Destination -TimeoutSec 300 -UseBasicParsing -ErrorAction Stop
+                    return "OK: $FileName"
+                } catch { }
+                return "FAIL: $FileName"
+            } -ArgumentList $url, "$destFile.partial", $fn
         }
 
         # Wait for all jobs and collect results
         # Poll instead of Wait-Job so progress is reported as each file lands,
         # not in one burst after every job has finished.
         $pending = [System.Collections.ArrayList]@($jobs)
+        $failed = 0
         while ($pending.Count -gt 0) {
             $finished = @($pending | Where-Object { $_.State -ne 'Running' })
             foreach ($job in $finished) {
@@ -284,27 +309,38 @@ try {
                 if ($result -like 'OK: *') {
                     $completedName = $result.Substring(4).Trim()
                     $completedFile = Join-Path $DestDir $completedName
-                    if (-not (Test-AssetSha256 $completedFile $completedName)) {
-                        Remove-Item -LiteralPath $completedFile -Force -ErrorAction SilentlyContinue
+                    $partialFile = "$completedFile.partial"
+                    if (-not (Test-AssetSha256 $partialFile "$ModelName/$completedName")) {
+                        Remove-QuietlyFile $partialFile
                         L "  rejected $completedName (SHA-256 mismatch)"
+                        $failed++
+                    } else {
+                        Move-Item -LiteralPath $partialFile -Destination $completedFile -Force
                     }
+                } else {
+                    $failed++
                 }
                 $script:ProgressDone += 1
                 Report-Progress $ModelName
             }
             if ($pending.Count -gt 0) { Start-Sleep -Milliseconds 500 }
         }
+        if ($failed -gt 0) {
+            throw "Model $ModelName incomplete ($failed file(s) failed); download rejected."
+        }
     }
 
-    if (-not (Test-Path $DetModelDir)) { Download-Model (Split-Path $DetModelDir -Leaf) $DetModelDir }
-    if (-not (Test-Path $RecModelDir)) { Download-Model (Split-Path $RecModelDir -Leaf) $RecModelDir }
+    foreach ($modelConfig in $modelConfigs) {
+        Download-Model $modelConfig.Name $modelConfig.Directory
+    }
 
     # -Force so the completed 100% line is always shown, even if the last
     # per-file update happened inside the current throttle window.
     Report-Progress '下载完成' -Force
 
-    L 'ALL DONE -- skill ready. Re-run to start OCR.'
+    L 'Download stage complete; returning to run.ps1. Assets without recorded hashes remain unverified.'
 
 } catch {
     L "ERROR: $_"
+    throw
 }

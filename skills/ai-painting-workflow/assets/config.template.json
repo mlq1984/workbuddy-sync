@@ -1,0 +1,12 @@
+{
+  "default_size": "1024x1024",
+  "default_quality": "high",
+  "default_style": "",
+  "output_dir": "ai绘画输出",
+  "recent_prompts": [],
+  "scenario_defaults": {
+    "教程配图": { "size": "1536x1024" },
+    "白板总结图": { "size": "1536x1024" },
+    "社媒配图": { "size": "1024x1024" }
+  }
+}

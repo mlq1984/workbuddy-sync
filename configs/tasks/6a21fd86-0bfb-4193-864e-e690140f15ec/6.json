@@ -1,0 +1,9 @@
+{
+  "subject": "修复 P0 统计口径 bug（重复记账 / 污染样本）",
+  "description": "修掉非交易日重复写入预测、同一标的重复对账、3日口径 ok_count=0 污染 last_precision 的问题，保证命中率统计与自动调参基于独立有效样本。",
+  "activeForm": "修复 P0 统计口径 bug",
+  "status": "completed",
+  "id": "6",
+  "createdAt": 1794375312732,
+  "updatedAt": 1794376488074
+}
