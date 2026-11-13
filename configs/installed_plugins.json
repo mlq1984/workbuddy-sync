@@ -647,10 +647,10 @@
     "wecom-unified@workbuddy-wecom-unified": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-wecom-unified\\wecom-unified\\1.1.9",
-        "version": "1.1.9",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-wecom-unified\\wecom-unified\\1.1.10",
+        "version": "1.1.10",
         "installedAt": "2026-10-14T03:47:00.323Z",
-        "lastUpdated": "2026-10-30T12:26:06.567Z"
+        "lastUpdated": "2026-11-12T12:59:56.098Z"
       }
     ],
     "ai-content-creator-team@experts": [

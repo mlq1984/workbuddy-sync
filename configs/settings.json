@@ -1647,7 +1647,9 @@
     "xurl": "user-invocable-only",
     "yourself-skill": "user-invocable-only",
     "example_me": "user-invocable-only",
-    "zoom-out": "user-invocable-only"
+    "zoom-out": "user-invocable-only",
+    "cn-ecommerce-search": "user-invocable-only",
+    "poster-gen-imagegen": "user-invocable-only"
   },
   "autoLaunchDesired": true,
   "officeFileAssociationsRepairMarker": "v9:win32:5.9.3:C:\\Users\\king\\AppData\\Local\\Programs\\WorkBuddy\\WorkBuddy.exe:WorkBuddy:user:1793093492000:aac,csv,doc,docm,docx,dot,dotm,dotx,html,jpeg,jpg,m4a,md,mp3,pdf,png,pot,potm,potx,ppt,pptm,pptx,txt,wav,webp,wps,wpt,xls,xlsm,xlsx,xlt,xltm,xltx",
