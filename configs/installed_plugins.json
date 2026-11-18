@@ -299,7 +299,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\weixinpay\\1.6.110",
         "version": "1.6.110",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-11-15T16:10:17.712Z"
+        "lastUpdated": "2026-11-17T11:10:24.970Z"
       }
     ],
     "tencent-docs-plugin@workbuddy-builtin": [
@@ -308,7 +308,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docs-plugin\\5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "version": "5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-11-15T16:10:17.732Z"
+        "lastUpdated": "2026-11-17T11:10:24.981Z"
       }
     ],
     "data@cb_teams_marketplace": [
@@ -539,10 +539,10 @@
     "wecom@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\1.0.0-wb.9a01b35f5b7d047d",
-        "version": "1.0.0+wb.9a01b35f5b7d047d",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\1.0.1-wb.c38d0f34b7c22e5b",
+        "version": "1.0.1+wb.c38d0f34b7c22e5b",
         "installedAt": "2026-10-03T07:20:44.921Z",
-        "lastUpdated": "2026-11-05T07:16:27.118Z"
+        "lastUpdated": "2026-11-17T07:20:20.308Z"
       }
     ],
     "ardot@workbuddy-builtin": [
@@ -551,7 +551,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\ardot\\5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "version": "5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "installedAt": "2026-10-10T07:12:15.155Z",
-        "lastUpdated": "2026-11-15T16:10:17.744Z"
+        "lastUpdated": "2026-11-17T11:10:25.001Z"
       }
     ],
     "skill-workbuddy-finance-skill@workbuddy-builtin": [
@@ -569,7 +569,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\subscription-gate\\5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "version": "5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "installedAt": "2026-10-10T07:12:28.315Z",
-        "lastUpdated": "2026-11-15T16:10:17.759Z"
+        "lastUpdated": "2026-11-17T11:10:24.991Z"
       }
     ],
     "finance-data@cb_teams_marketplace": [
@@ -614,7 +614,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-sheetagent\\5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "version": "5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "installedAt": "2026-10-14T03:45:28.815Z",
-        "lastUpdated": "2026-11-15T16:10:17.889Z"
+        "lastUpdated": "2026-11-17T11:10:25.126Z"
       }
     ],
     "workbuddy-pptx@workbuddy-builtin": [
@@ -623,7 +623,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-pptx\\5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "version": "5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "installedAt": "2026-10-14T03:45:31.317Z",
-        "lastUpdated": "2026-11-15T16:10:17.903Z"
+        "lastUpdated": "2026-11-17T11:10:25.140Z"
       }
     ],
     "workbuddy-docx@workbuddy-builtin": [
@@ -632,7 +632,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-docx\\5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "version": "5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "installedAt": "2026-10-14T03:45:51.654Z",
-        "lastUpdated": "2026-11-15T16:10:17.913Z"
+        "lastUpdated": "2026-11-17T11:10:25.160Z"
       }
     ],
     "wecom-a2a-auth@workbuddy-builtin": [
@@ -641,7 +641,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\wecom-a2a-auth\\5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "version": "5.9.3-wb.42398134.gd4692421.h480e8d1fee0f",
         "installedAt": "2026-10-14T03:45:55.449Z",
-        "lastUpdated": "2026-11-15T16:10:17.922Z"
+        "lastUpdated": "2026-11-17T11:10:25.151Z"
       }
     ],
     "wecom-unified@workbuddy-wecom-unified": [
@@ -668,7 +668,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-browser-use\\browser-use\\1.2.1",
         "version": "1.2.1",
         "installedAt": "2026-10-18T12:37:35.382Z",
-        "lastUpdated": "2026-11-15T16:10:17.932Z"
+        "lastUpdated": "2026-11-17T11:10:25.170Z"
       }
     ],
     "crossborder-launch-team@experts": [
