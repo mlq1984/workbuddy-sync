@@ -2,12 +2,13 @@
 // WorkBuddy two-level distribution entry. Every runtime source is a visible,
 // individually hashed file in assets/. No remote code or nested archive is used.
 import fs from 'node:fs';
+import { reviseSection, reviewSection } from './revise-section.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '2026.10.311';
+const VERSION = '2026.11.1905';
 const marketRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const digest = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 function inside(base, target) {
@@ -127,7 +128,17 @@ function execute(program, args, cwd) {
 function main() {
   const args = process.argv.slice(2);
   if (!args.length || args[0] === '--help') {
-    console.log('BookWriter ' + VERSION + '\nlocate <源码逻辑路径>\nprepare --workspace <项目>\ninstall --workspace <项目>\nrun scripts/<入口>.mjs --book-root <项目> [原脚本参数]\n--version');
+    console.log('BookWriter ' + VERSION + '\nreview-section --workspace <项目> --source <原稿> --heading <标题> --output <周会稿.md> [--continue-from <上一轮手册> --check-item <下次核对对象>]\nrevise-section --workspace <项目> --source <原稿> --heading <标题> --replacement <新正文文件> --output <新版.md>\nlocate <源码逻辑路径>\nprepare --workspace <项目>\ninstall --workspace <项目>\nrun scripts/<入口>.mjs --book-root <项目> [原脚本参数]\n--version');
+    return 0;
+  }
+  if (args[0] === 'review-section') {
+    const fields = Object.fromEntries(['source', 'heading', 'output', 'check-item', 'continue-from'].map(name => [name, option(args, '--' + name)]));
+    console.log(JSON.stringify(reviewSection(workspaceFrom(args), fields)));
+    return 0;
+  }
+  if (args[0] === 'revise-section') {
+    const fields = Object.fromEntries(['source', 'heading', 'replacement', 'output'].map(name => [name, option(args, '--' + name)]));
+    console.log(JSON.stringify(reviseSection(workspaceFrom(args), fields)));
     return 0;
   }
   if (args[0] === '--version') { console.log(VERSION); return 0; }

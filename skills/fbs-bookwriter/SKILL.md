@@ -1,9 +1,9 @@
 ---
 name: fbs-bookwriter
-description: 福帮手出品 | 高质量长文档手稿工具链：书籍、手册、白皮书、行业指南、长篇报道、深度专题；支持联网查证（宿主允许时启用，离线自动降级）、S/P/C/B 分层审校、中文排版与 MD/HTML 交付。触发词：福帮手、福帮手写书skill、福帮手写书、写书、出书、写长篇、写手册、写白皮书、写行业指南、协作写书、定大纲、写章节、封面、插图、排版构建、导出、去AI味、质量自检、图文书、写报道、写深度稿、写特稿、写专题、写调查报道、写长文、拆书改写、海外本地化改写、爆款结构改写、激活原料、原料盘点、整理素材
-description_zh: "福帮手出品 | 高质量长文档手稿工具链：书籍、手册、白皮书、行业指南、长篇报道、深度专题；支持联网查证（宿主允许时启用，离线自动降级）、S/P/C/B 分层审校、中文排版与 MD/HTML 交付。触发词：福帮手、福帮手写书skill、福帮手写书、写书、出书、写长篇、写手册、写白皮书、写行业指南、协作写书、定大纲、写章节、封面、插图、排版构建、导出、去AI味、质量自检、图文书、写报道、写深度稿、写特稿、写专题、写调查报道、写长文、拆书改写、海外本地化改写、爆款结构改写、激活原料、原料盘点、整理素材"
-description_en: "Dual-channel long-form writing workflow for books, manuals, whitepapers, guides and reports with layered QC, 7-lock anti-drift anchors, and offline fallback."
-version: 2026.10.311
+description: "把散稿编成书。按读者和用途排章节、试写样章，已有书稿可只改指定一节，保留原稿并交付可编辑长文。触发词：福帮手、福帮手写书skill、福帮手写书、写书、出书、写长篇、写手册、写白皮书、写行业指南、协作写书、定大纲、写章节、封面、插图、排版构建、导出、去AI味、质量自检、图文书、写报道、写深度稿、写特稿、写专题、写调查报道、写长文、拆书改写、海外本地化改写、爆款结构改写、激活原料、原料盘点、整理素材"
+description_zh: "把散稿编成书。按读者和用途排章节、试写样章，已有书稿可只改指定一节，保留原稿并交付可编辑长文。"
+description_en: "Shape scattered drafts into a book. Organize the chapters around the reader, try a sample chapter, or revise one specified section of an existing manuscript while preserving the original."
+version: "2026.11.1905"
 author: FBSir / unique@u3w.com
 allowed-tools:
   - bash
@@ -27,9 +27,11 @@ display_name: "fbs-bookwriter"
 display_name_en: "fbs-bookwriter"
 visibility: "public"
 icon: "https://codebuddy-platform-1258344699.cos.accelerate.myqcloud.com/public/45edac6b-2078-4678-89f3-6f9800cf5e5f/avatar/skill/au_fcd91f48-845.png"
+examples_zh: ["我有六篇给新店长的培训笔记，主题是开店、排班、交班。请先排一份手册目录，标出还缺哪两个案例。", "交班手册第一节是“钥匙当面交”，第二节是“周日少留了两把椅子”，第三节是“备用金逐项点清”。只把第二节改成周会复盘，另存新版。", "报道有三条采访材料。店主同意引用“周末队伍排到门外”，店员估算客人翻倍，邻店要求匿名。请写开头和提纲，标出可引的话与待核事实。"]
+examples_en: ["I have six notes for new store managers on opening, scheduling and handovers. Draft a handbook outline and identify two examples still needed.", "The manual has three sections. Section one says “Hand over the keys in person.” Section two says “We were two chairs short on Sunday.” Section three says “Count the cash float item by item.” Revise section two for the weekly review and save a new copy.", "Here are three interview notes. The owner cleared the quote “The weekend queue went out the door.” A clerk estimates traffic doubled. The neighboring shop asked to stay anonymous. Draft a feature opening and outline, marking quotes and facts to verify."]
 ---
 
-## WorkBuddy 本地脚本入口（2026.10.311）
+## WorkBuddy 本地脚本入口（2026.11.1905）
 
 普通对话和已选文件编辑可先完成，不以连接器、会员或脚本安装为前置。需要脚本时只使用 `node scripts/bookwriter.mjs`：
 
@@ -40,13 +42,24 @@ icon: "https://codebuddy-platform-1258344699.cos.accelerate.myqcloud.com/public/
 
 全部运行源码和方法资料为随包可读文件，无嵌套压缩包、编码隐藏或远程代码下载。同一资料只保存一份；清单以明示字节替换记录恢复运行副本中的相对链接，并逐文件核对SHA。[文件映射说明](references/source-map.json)。本段入口约定优先于继承方法中的旧路径/安装示例。
 
+用户已给三节原文，要把其中一节改成能在会上念的复盘时，先把原句逐字保存为当前任务根目录的 `source-manual.md`。每节标题与正文分开；用户给出的字词、标点按原文保留。用户在聊天中给出原文时，第一条可见答复就用中文交出可以在会上照读的正文：“会上先核对这一项。”之后逐字引用所给事实，接上“其他情况等有材料再补。”把这段直接交给读者。文件操作在后台完成，再按 `review-section` 返回的 `sectionText` 核对成稿。用户提供的是附件时，先读附件中选定的节，随后直接交可读正文。在两次交付中，全程用用户的语言，只说与其手册、决定或下一步有关的内容。过去发生的事只读选中节的原文。现场怎样发现、有没有登记、原因、责任和损失都需要材料。把下一次怎样核对写成未来的动作。聊天中可直接照读的段落与交付手册使用同一份正文。
+```sh
+node scripts/bookwriter.mjs review-section --workspace "<本次任务根目录>" --source source-manual.md --heading "第二节" --output meeting-review.md
+```
+用户续说“只加一句”时，在刚交付给用户的那一版末尾追加。沿用上一轮完整书稿中的每个原句，包括第一次改写加上的开头和结束语。若用户点名另一份稿，就选点名的版本。原始稿仅用来核对首尾。续改示例：
+```sh
+node scripts/bookwriter.mjs review-section --workspace "<本次任务根目录>" --source source-manual.md --continue-from meeting-review.md --heading "第二节" --check-item "座位" --output next-review.md
+```
+核 `basedOn` 是上一轮实际的完整手册。新版删去本轮新增的那一句和插入的分隔换行后应与上轮全文逐字一致，重复同一项沿用既有句子。原稿、首改、续改都交还。聊天中用中文显示名链接已存在于本任务根目录的相对路径，例如 `./meeting-review.md` 和 `./source-manual.md`。用户首条可见答复优先给出可照读正文，随后交还文件。
+其他局改已给定新正文时，用 `node scripts/bookwriter.mjs revise-section --workspace "<项目目录>" --source "<原稿>" --heading "<原稿中的唯一标题>" --replacement "<新正文文件>" --output "<另存文件>"`。选中节之外的字节、原稿和已有不同内容的同名文件均保全。局改可直接从这个入口完成。
+
 标准CLI的S4核验真实审校流程提供的回执与章节SHA，不生成模拟分数，不认证审校者身份。[CLI说明](references/CLI-README.md)与[待填写回执](templates/review-receipt.json)。脚本需要Node.js22+；缺运行时时按宿主能力完成普通对话和文稿工作，准确报告脚本未执行。
 
 
 
 # 福帮手出品 | 高质量长文档手稿工具链（FBS-BookWriter）
 
-> **版本**：2026.10.311
+> **版本**：2026.11.1905
 > **通道**：WorkBuddy / CodeBuddy 双通道
 
 ---
@@ -70,7 +83,7 @@ icon: "https://codebuddy-platform-1258344699.cos.accelerate.myqcloud.com/public/
 - **价值显式表达（全局特点）**：当你提到术语或文件名（如 `chapter-status.md`、`deliverables/`、`s0-exit-gate`）时，用一句话补充「这是做什么」+「对用户有什么价值」，避免只报名词不解释。
 - **认知资产口径（统一）**：对外价值表述统一为「可进化、可分发、可增值」；商业与能力分层统一为「场景包 + 乐包 + 离线/在线会员」，与 `fbs-runtime-hints.json` → `cognitiveAsset` 及首响 `firstResponseContext.cognitiveAssetSnapshot` 对齐，避免各处口径不一。
 - **首屏（只说「福帮手」时）**：先一句话状态 + **最多 3 个主选项**（写新书 / 接着写 / 质检或整理素材），勿首屏平铺长菜单；需求收齐后优先「一次性汇总确认再执行」— 见 `references/01-core/intake-and-routing.md`（WorkBuddy 实测复盘节）。
-- **宿主与对话展示（P0）**：向终端用户**只展示** `intake-router --json` 中 `firstResponseContext.userFacingOneLiner`（一行）+ 三个主选项；**禁止**把完整 intake JSON、本 SKILL 全文或 `references/**` 长文档堆进用户可见对话区（Agent 内部可读）。恢复后**不要**无目的地 `list_dir` 整个 `.fbs/`（百级文件只会制造噪音）；**例外**：可用 `list_dir` 仅列**书稿根**以确认是否存在 `.fbs/` 子目录（见下条）；仅在用户要看结构/排障时再按需深入列目录。
+- **宿主与对话展示（P0）**：仅在用户只激活技能、尚未给出具体任务时，向其展示 `intake-router --json` 中 `firstResponseContext.userFacingOneLiner`（一行）+ 三个主选项；**禁止**把完整 intake JSON、本 SKILL 全文或 `references/**` 长文档堆进用户可见对话区（Agent 内部可读）。恢复后**不要**无目的地 `list_dir` 整个 `.fbs/`（百级文件只会制造噪音）；**例外**：可用 `list_dir` 仅列**书稿根**以确认是否存在 `.fbs/` 子目录（见下条）；仅在用户要看结构/排障时再按需深入列目录。
 - **项目锚定先行（P0）**：执行 `intake-router` 时若返回 `projectAnchor.status=ambiguous`，表示检测到多个候选项目根目录；**在用户确认 bookRoot 前，禁止读取任意 `.fbs/*` 内容**。先让用户确认路径，再用该路径重跑 `intake-router`。
 - **渐进披露与场景包坐标（三波收口）**：`firstResponseContext.scenePackCoordinate` **仅提供** `scenePackId` 与 `references/scene-packs/<id>.md` 等**锚点相对路径**，不在首响向用户朗读全文；进入对应写作/质检阶段再 `read_file`。`session-resume-brief.md` 顶部含交接前缀与机读计量说明；产权与记忆仲裁见 [`references/01-core/information-ownership-and-arbitration.md`](references/references--01-core--information-ownership-and-arbitration.md)。
 - **宿主工具盲区（复盘 P0）**：部分宿主上 **`search_file` 不进入** dot-directory（`.fbs/`、`.workbuddy/` 等）。检查 `workbuddy-resume.json`、`esm-state.md`、`session-resume-brief.md` 等 **禁止**依赖 `search_file`；应 **`read_file` 直读已知路径**（`.fbs/…`），或 **`list_dir` 书稿根**确认 `.fbs/` 是否存在。**Found 0 不得**解读为「未初始化 FBS」。详见 [`references/01-core/skill-full-spec.md`](references/references--01-core--skill-full-spec.md) §2.4。
@@ -104,7 +117,7 @@ icon: "https://codebuddy-platform-1258344699.cos.accelerate.myqcloud.com/public/
 > | S4 → S5 | S4 质检 20 条逐条通过 + 字数完成度 ≥ 50% | 提示不达标项 |
 
 ```text
-1. 强制入口（首次 / bookRoot 变更 / 仅激活时都先执行）：
+1. 完整长篇项目的开场入口（单节另存按上方方法）：
    node scripts/bookwriter.mjs run scripts/intake-router.mjs --book-root <bookRoot> --intent auto --json --enforce-required
    → 默认快速开场；若用户已知需完整在线场景包，再加 `--full`。可按书名关键词检索历史书稿目录：`--search <关键词>`（依赖曾成功退出后登记在 ~/.workbuddy/fbs-book-projects.json 的索引）。
    → 该脚本会自动完成：宿主检测、恢复卡补写、session-resume-brief 补写、首响路由判断
@@ -139,7 +152,7 @@ icon: "https://codebuddy-platform-1258344699.cos.accelerate.myqcloud.com/public/
 | **Windows 宿主（JSON 被 CLIXML/混流破坏时）** | `node scripts/bookwriter.mjs run scripts/intake-router.mjs --book-root <bookRoot> --intent auto --json --json-out .fbs/intake-router.last.json --enforce-required` | 与上等价，**JSON 落盘**；读完 `.fbs/intake-router.last.json` 再解析（见 [`references/05-ops/windows-host-cli.md`](references/references--05-ops--windows-host-cli.md)） |
 | **拆书式改写**（旧书升级 / 海外落地 / 爆款重构） | `node scripts/bookwriter.mjs run scripts/intake-router.mjs --book-root <bookRoot> --intent rewrite --json --enforce-required` | 先锁定来源边界与改写模式，再按 S3 串行约束推进（每轮最多 2 文件） |
 | 排版导出预检 | `node scripts/bookwriter.mjs run scripts/layout-preflight.mjs --input <文件> --json` | 3.0 后处理 P0；对 md/html 或同名伴随稿检查标题页、空白页、页边距风险 |
-| 去 AI 味前后对照 | `node scripts/bookwriter.mjs run scripts/de-ai-diff.mjs --before <原稿> --after <改写稿> --json` | 3.0 后处理 P0；输出改写覆盖率与高频口吻词变化 |
+| 去 AI 味前后对照 | `node scripts/bookwriter.mjs run scripts/de-ai-diff.mjs --workspace "<项目目录>" --before <原稿> --after <改写稿> --json` | 比较两份已有文稿的改写覆盖率与措辞变化。限定章节另存使用上方 revise-section |
 | 本地事件补记 | `node scripts/bookwriter.mjs run scripts/event-writer.mjs --book-root <书稿根> --event <eventType> --benefit-source <api2|connector|local_cache|offline_default> --json` | API2 / 连接器不可用时，把后处理或权益事件写入 `.fbs/events/` |
 | 拆书改写计划模板 | `node scripts/bookwriter.mjs run scripts/rewrite-plan-bootstrap.mjs --book-root <bookRoot> --json` | 生成 `.fbs/rewrite-plan.md` 最小模板（保留项/替换项/新增项） |
 | 扩充 / 升级 / 修改 + 指定文件 | **先确认范围，再串行逐文件处理，每次最多 2 个文件** | 禁止 3+ 文件并行写入 |
