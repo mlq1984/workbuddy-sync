@@ -29,7 +29,8 @@
     "wecom-unified@workbuddy-wecom-unified": false,
     "tencent-docs@workbuddy-connector-plugins-official": false,
     "tmeet@workbuddy-connector-plugins-official": false,
-    "tencent-xmind@workbuddy-builtin": true
+    "tencent-xmind@workbuddy-builtin": true,
+    "computer-use@workbuddy-computer-use": true
   },
   "claw": {
     "channels": {

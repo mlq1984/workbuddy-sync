@@ -299,7 +299,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\weixinpay\\1.6.110",
         "version": "1.6.110",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-11-18T02:21:03.320Z"
+        "lastUpdated": "2026-11-21T05:27:19.854Z"
       }
     ],
     "tencent-docs-plugin@workbuddy-builtin": [
@@ -308,7 +308,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docs-plugin\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-11-18T02:21:03.331Z"
+        "lastUpdated": "2026-11-21T05:27:19.871Z"
       }
     ],
     "data@cb_teams_marketplace": [
@@ -533,7 +533,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\subscription-gate\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-10T07:12:28.315Z",
-        "lastUpdated": "2026-11-18T02:21:03.343Z"
+        "lastUpdated": "2026-11-21T05:27:19.886Z"
       }
     ],
     "finance-data@cb_teams_marketplace": [
@@ -578,7 +578,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-sheetagent\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-14T03:45:28.815Z",
-        "lastUpdated": "2026-11-18T02:21:03.357Z"
+        "lastUpdated": "2026-11-21T05:27:19.903Z"
       }
     ],
     "workbuddy-pptx@workbuddy-builtin": [
@@ -587,7 +587,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-pptx\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-14T03:45:31.317Z",
-        "lastUpdated": "2026-11-18T02:21:03.372Z"
+        "lastUpdated": "2026-11-21T05:27:19.916Z"
       }
     ],
     "workbuddy-docx@workbuddy-builtin": [
@@ -596,7 +596,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-docx\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-14T03:45:51.654Z",
-        "lastUpdated": "2026-11-18T02:21:03.391Z"
+        "lastUpdated": "2026-11-21T05:27:19.934Z"
       }
     ],
     "wecom-a2a-auth@workbuddy-builtin": [
@@ -605,7 +605,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\wecom-a2a-auth\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-14T03:45:55.449Z",
-        "lastUpdated": "2026-11-18T02:21:03.407Z"
+        "lastUpdated": "2026-11-21T05:27:19.946Z"
       }
     ],
     "wecom-unified@workbuddy-wecom-unified": [
@@ -632,7 +632,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-browser-use\\browser-use\\1.2.1",
         "version": "1.2.1",
         "installedAt": "2026-10-18T12:37:35.382Z",
-        "lastUpdated": "2026-11-18T02:21:03.418Z"
+        "lastUpdated": "2026-11-21T05:27:19.957Z"
       }
     ],
     "crossborder-launch-team@experts": [
@@ -704,7 +704,16 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-xmind\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-11-18T02:21:02.932Z",
-        "lastUpdated": "2026-11-18T02:21:03.429Z"
+        "lastUpdated": "2026-11-21T05:27:19.968Z"
+      }
+    ],
+    "computer-use@workbuddy-computer-use": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-computer-use\\computer-use\\1.1.310.9effaf24",
+        "version": "1.1.310.9effaf24",
+        "installedAt": "2026-11-21T05:27:17.031Z",
+        "lastUpdated": "2026-11-21T05:27:20.038Z"
       }
     ]
   }
