@@ -503,10 +503,12 @@
     "wecom@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\1.0.1-wb.c38d0f34b7c22e5b",
-        "version": "1.0.1+wb.c38d0f34b7c22e5b",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\1.0.2-wb.67bcf8023eae2260-4c7dd13f031257a062eb81a41e2659d8332c5a4dd1f92936e32ef5a75b5b7b75",
+        "archiveSha256": "4c7dd13f031257a062eb81a41e2659d8332c5a4dd1f92936e32ef5a75b5b7b75",
+        "version": "1.0.2+wb.67bcf8023eae2260-4c7dd13f031257a062eb81a41e2659d8332c5a4dd1f92936e32ef5a75b5b7b75",
+        "resolvedVersion": "1.0.2+wb.67bcf8023eae2260",
         "installedAt": "2026-10-03T07:20:44.921Z",
-        "lastUpdated": "2026-11-17T07:20:20.308Z"
+        "lastUpdated": "2026-11-23T08:30:32.691Z"
       }
     ],
     "ardot@workbuddy-builtin": [
