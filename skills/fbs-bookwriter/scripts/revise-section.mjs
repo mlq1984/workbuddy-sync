@@ -115,20 +115,28 @@ export function reviewSection(workspace, options) {
   const source = selectedFile(workspace, options.source);
   const output = selectedFile(workspace, options.output, true);
   const item = options['check-item'];
+  const sentence = options['add-sentence'];
+  const chosen = options.replacement ? selectedFile(workspace, options.replacement) : null;
+  if ([item, sentence, chosen].filter(Boolean).length > 1) throw new Error('本次请选择补入一句、核对对象或替换正文中的一项。');
+  if (sentence && (!sentence.trim() || /[\r\n\u0000]/.test(sentence))) throw new Error('请提供本题要补入的一句完整正文。');
   const prior = options['continue-from'] ? selectedFile(workspace, options['continue-from']) : source;
   if (output === source || output === prior) throw new Error('请给新版另选文件名，保留原稿及上一版。');
-  if (options['continue-from'] && !item) throw new Error('请填写要在上一版补入的核对对象。');
+  if (chosen && [source, prior, output].includes(chosen)) throw new Error('修订正文请使用单独的文件。');
+  if (options['continue-from'] && !item && !sentence && !chosen) throw new Error('请填写要在上一版补入的核对对象。');
   if (item && !/^[\p{L}\p{N}][\p{L}\p{N} \-]{0,35}$/u.test(item)) {
-    throw new Error('请只填写下次要核对的对象，例如“座位”。');
+    throw new Error('请只填写本次要核对的对象，完整补句可使用 --add-sentence。');
   }
   const original = readText(source);
   const before = prior === source ? original : readText(prior);
   const { current, end } = sectionBounds(before, options.heading);
   const oldBody = before.slice(current.body, end);
   if (!oldBody.trim()) throw new Error('这节还没有原文。请先给出实际材料。');
-  let revised;
-  if (item) {
-    const addition = '下次交班时，对照清单逐项清点' + item + '，双方当面确认数量。';
+  const chosenText = chosen ? readText(chosen) : null;
+  let revised = before;
+  if (chosenText !== null) {
+    revised = replaceBody(before, options.heading, chosenText);
+  } else if (item || sentence) {
+    const addition = sentence ? sentence.trim() : '待核：' + item + '。';
     const lines = oldBody.split(/\r\n|\n|\r/);
     if (lines.some(line => line.trim() === addition)) {
       revised = before;
@@ -138,12 +146,10 @@ export function reviewSection(workspace, options) {
       const insertAt = end - ending.length;
       revised = before.slice(0, insertAt) + newline + newline + addition + before.slice(insertAt);
     }
-  } else {
-    revised = replaceBody(before, options.heading, '会上先核对这一项。\n\n' + oldBody.trim() + '\n\n其他情况等有材料再补。');
   }
   const updated = sectionBounds(revised, options.heading);
   const sectionText = revised.slice(updated.current.body, updated.end).trim();
-  if (readText(source) !== original || (prior !== source && readText(prior) !== before)) {
+  if (readText(source) !== original || (prior !== source && readText(prior) !== before) || (chosen && readText(chosen) !== chosenText)) {
     throw new Error('原稿或上一版已变化，请重新核对选定的文件。');
   }
   publish(output, revised);

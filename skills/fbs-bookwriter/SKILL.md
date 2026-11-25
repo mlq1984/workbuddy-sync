@@ -3,7 +3,7 @@ name: fbs-bookwriter
 description: "把散稿编成书。按读者和用途排章节、试写样章，已有书稿可只改指定一节，保留原稿并交付可编辑长文。触发词：福帮手、福帮手写书skill、福帮手写书、写书、出书、写长篇、写手册、写白皮书、写行业指南、协作写书、定大纲、写章节、封面、插图、排版构建、导出、去AI味、质量自检、图文书、写报道、写深度稿、写特稿、写专题、写调查报道、写长文、拆书改写、海外本地化改写、爆款结构改写、激活原料、原料盘点、整理素材"
 description_zh: "把散稿编成书。按读者和用途排章节、试写样章，已有书稿可只改指定一节，保留原稿并交付可编辑长文。"
 description_en: "Shape scattered drafts into a book. Organize the chapters around the reader, try a sample chapter, or revise one specified section of an existing manuscript while preserving the original."
-version: "2026.11.1905"
+version: "2026.11.2401"
 author: FBSir / unique@u3w.com
 allowed-tools:
   - bash
@@ -27,11 +27,11 @@ display_name: "fbs-bookwriter"
 display_name_en: "fbs-bookwriter"
 visibility: "public"
 icon: "https://codebuddy-platform-1258344699.cos.accelerate.myqcloud.com/public/45edac6b-2078-4678-89f3-6f9800cf5e5f/avatar/skill/au_fcd91f48-845.png"
-examples_zh: ["我有六篇给新店长的培训笔记，主题是开店、排班、交班。请先排一份手册目录，标出还缺哪两个案例。", "交班手册第一节是“钥匙当面交”，第二节是“周日少留了两把椅子”，第三节是“备用金逐项点清”。只把第二节改成周会复盘，另存新版。", "报道有三条采访材料。店主同意引用“周末队伍排到门外”，店员估算客人翻倍，邻店要求匿名。请写开头和提纲，标出可引的话与待核事实。"]
-examples_en: ["I have six notes for new store managers on opening, scheduling and handovers. Draft a handbook outline and identify two examples still needed.", "The manual has three sections. Section one says “Hand over the keys in person.” Section two says “We were two chairs short on Sunday.” Section three says “Count the cash float item by item.” Revise section two for the weekly review and save a new copy.", "Here are three interview notes. The owner cleared the quote “The weekend queue went out the door.” A clerk estimates traffic doubled. The neighboring shop asked to stay anonymous. Draft a feature opening and outline, marking quotes and facts to verify."]
+examples_zh: ["按我这次提供的材料梳理书稿，先看读者、章节安排和还缺的材料。", "我想修改现有书稿的一节。请先看我指定的原文与用途，保留其他章节。", "我有采访材料，想写成一段可引用的开头。请根据我给的原话和使用许可起稿。"]
+examples_en: ["Help organize the material I provide for my readers. Identify a chapter order and remaining gaps.", "Revise the section I select for its intended reader and preserve all other sections.", "Use the interview material and citation permissions I provide to draft an opening."]
 ---
 
-## WorkBuddy 本地脚本入口（2026.11.1905）
+## WorkBuddy 本地脚本入口（2026.11.2401）
 
 普通对话和已选文件编辑可先完成，不以连接器、会员或脚本安装为前置。需要脚本时只使用 `node scripts/bookwriter.mjs`：
 
@@ -42,16 +42,15 @@ examples_en: ["I have six notes for new store managers on opening, scheduling an
 
 全部运行源码和方法资料为随包可读文件，无嵌套压缩包、编码隐藏或远程代码下载。同一资料只保存一份；清单以明示字节替换记录恢复运行副本中的相对链接，并逐文件核对SHA。[文件映射说明](references/source-map.json)。本段入口约定优先于继承方法中的旧路径/安装示例。
 
-用户已给三节原文，要把其中一节改成能在会上念的复盘时，先把原句逐字保存为当前任务根目录的 `source-manual.md`。每节标题与正文分开；用户给出的字词、标点按原文保留。用户在聊天中给出原文时，第一条可见答复就用中文交出可以在会上照读的正文：“会上先核对这一项。”之后逐字引用所给事实，接上“其他情况等有材料再补。”把这段直接交给读者。文件操作在后台完成，再按 `review-section` 返回的 `sectionText` 核对成稿。用户提供的是附件时，先读附件中选定的节，随后直接交可读正文。在两次交付中，全程用用户的语言，只说与其手册、决定或下一步有关的内容。过去发生的事只读选中节的原文。现场怎样发现、有没有登记、原因、责任和损失都需要材料。把下一次怎样核对写成未来的动作。聊天中可直接照读的段落与交付手册使用同一份正文。
+根据本题原文、目标读者和本次用途改写指定的一节。用户没有提交案例和数量时先请他选原稿；卡片示例只用来说明入口。第一条业务答复直接给本节正文，保留引文、作者手改及事实中的不确定项。取件时从该任务重新打开；在本题工作区另存原稿和新版。
+
+先保存本题原文。使用书稿随包的 review-section 或 revise-section，将按原材料编辑的正文写入本题独立的 UTF-8 文件，用 --replacement 交给脚本另存。要原样阅读时可用 review-section，省略替换参数会保留原文。
+
 ```sh
-node scripts/bookwriter.mjs review-section --workspace "<本次任务根目录>" --source source-manual.md --heading "第二节" --output meeting-review.md
+node scripts/bookwriter.mjs review-section --workspace "<本题根目录>" --source "<原稿>" --heading "<本节标题>" --replacement "<本题新正文>" --output "<新版本.md>"
 ```
-用户续说“只加一句”时，在刚交付给用户的那一版末尾追加。沿用上一轮完整书稿中的每个原句，包括第一次改写加上的开头和结束语。若用户点名另一份稿，就选点名的版本。原始稿仅用来核对首尾。续改示例：
-```sh
-node scripts/bookwriter.mjs review-section --workspace "<本次任务根目录>" --source source-manual.md --continue-from meeting-review.md --heading "第二节" --check-item "座位" --output next-review.md
-```
-核 `basedOn` 是上一轮实际的完整手册。新版删去本轮新增的那一句和插入的分隔换行后应与上轮全文逐字一致，重复同一项沿用既有句子。原稿、首改、续改都交还。聊天中用中文显示名链接已存在于本任务根目录的相对路径，例如 `./meeting-review.md` 和 `./source-manual.md`。用户首条可见答复优先给出可照读正文，随后交还文件。
-其他局改已给定新正文时，用 `node scripts/bookwriter.mjs revise-section --workspace "<项目目录>" --source "<原稿>" --heading "<原稿中的唯一标题>" --replacement "<新正文文件>" --output "<另存文件>"`。选中节之外的字节、原稿和已有不同内容的同名文件均保全。局改可直接从这个入口完成。
+
+只加一句时用 --continue-from 选上一版、--add-sentence 传入本次已经核对的完整补句。仅给出核对对象时 --check-item 将该对象记为待核。日期、引文出处、许可、设备和交班数量具有不同含义；原文给到哪项就处理哪项。重复同句只保存一次。按返回的 sectionText 把相同正文交给读者，当前任务内可实际打开的原稿与修订稿分别给出相对链接。
 
 标准CLI的S4核验真实审校流程提供的回执与章节SHA，不生成模拟分数，不认证审校者身份。[CLI说明](references/CLI-README.md)与[待填写回执](templates/review-receipt.json)。脚本需要Node.js22+；缺运行时时按宿主能力完成普通对话和文稿工作，准确报告脚本未执行。
 
@@ -59,7 +58,7 @@ node scripts/bookwriter.mjs review-section --workspace "<本次任务根目录>"
 
 # 福帮手出品 | 高质量长文档手稿工具链（FBS-BookWriter）
 
-> **版本**：2026.11.1905
+> **版本**：2026.11.2401
 > **通道**：WorkBuddy / CodeBuddy 双通道
 
 ---

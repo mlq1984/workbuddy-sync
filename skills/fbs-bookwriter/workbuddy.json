@@ -3,5 +3,5 @@
   "display_name_en": "fbs-bookwriter",
   "description_zh": "把散稿编成书。按读者和用途排章节、试写样章，已有书稿可只改指定一节，保留原稿并交付可编辑长文。",
   "description_en": "Shape scattered drafts into a book. Organize the chapters around the reader, try a sample chapter, or revise one specified section of an existing manuscript while preserving the original.",
-  "version": "2026.11.1905"
+  "version": "2026.11.2401"
 }

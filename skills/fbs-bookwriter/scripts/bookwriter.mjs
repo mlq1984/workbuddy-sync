@@ -8,7 +8,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
-const VERSION = '2026.11.1905';
+const VERSION = '2026.11.2401';
 const marketRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const digest = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 function inside(base, target) {
@@ -128,11 +128,11 @@ function execute(program, args, cwd) {
 function main() {
   const args = process.argv.slice(2);
   if (!args.length || args[0] === '--help') {
-    console.log('BookWriter ' + VERSION + '\nreview-section --workspace <项目> --source <原稿> --heading <标题> --output <周会稿.md> [--continue-from <上一轮手册> --check-item <下次核对对象>]\nrevise-section --workspace <项目> --source <原稿> --heading <标题> --replacement <新正文文件> --output <新版.md>\nlocate <源码逻辑路径>\nprepare --workspace <项目>\ninstall --workspace <项目>\nrun scripts/<入口>.mjs --book-root <项目> [原脚本参数]\n--version');
+    console.log('BookWriter ' + VERSION + '\nreview-section --workspace <项目> --source <原稿> --heading <标题> --output <周会稿.md> [--continue-from <上一轮手册> --add-sentence <本题补句> | --check-item <待核对象> | --replacement <本题新正文>]\nrevise-section --workspace <项目> --source <原稿> --heading <标题> --replacement <新正文文件> --output <新版.md>\nlocate <源码逻辑路径>\nprepare --workspace <项目>\ninstall --workspace <项目>\nrun scripts/<入口>.mjs --book-root <项目> [原脚本参数]\n--version');
     return 0;
   }
   if (args[0] === 'review-section') {
-    const fields = Object.fromEntries(['source', 'heading', 'output', 'check-item', 'continue-from'].map(name => [name, option(args, '--' + name)]));
+    const fields = Object.fromEntries(['source', 'heading', 'output', 'check-item', 'continue-from', 'add-sentence', 'replacement'].map(name => [name, option(args, '--' + name)]));
     console.log(JSON.stringify(reviewSection(workspaceFrom(args), fields)));
     return 0;
   }
