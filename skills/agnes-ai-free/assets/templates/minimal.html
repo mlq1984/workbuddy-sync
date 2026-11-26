@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>Minimal Poster Template</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; background:#FFFFFF; font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif; color:#1A1A1A; overflow:hidden; }
+.container { display:flex; flex-direction:column; height:100%; padding:100px; justify-content:center; align-items:center; text-align:center; }
+.bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0; }
+.content { position:relative; z-index:1; max-width:800px; }
+.title { font-size:64px; font-weight:700; line-height:1.2; margin-bottom:24px; letter-spacing:2px; }
+.sub { font-size:24px; font-weight:300; color:#666666; margin-bottom:40px; }
+.sps { display:flex; flex-direction:column; gap:16px; margin-bottom:40px; text-align:left; }
+.sp { font-size:20px; line-height:1.5; color:#333333; }
+.sp::before { content:"• "; color:#333333; font-weight:bold; }
+.cta { background:#1A1A1A; color:#FFFFFF; padding:18px 56px; border-radius:50px; font-size:22px; font-weight:500; display:inline-block; }
+</style></head><body>
+<img class="bg" src="{{BASE_IMAGE_URI}}" alt="poster">
+<div class="container">
+    <div class="content">
+        <h1 class="title">{{TITLE}}</h1>
+        <div class="sub">{{SUBTITLE}}</div>
+        <div class="sps">
+            {{SELLING_POINTS_HTML}}
+        </div>
+        <div class="cta">{{CTA_TEXT}}</div>
+    </div>
+</div>
+</body></html>

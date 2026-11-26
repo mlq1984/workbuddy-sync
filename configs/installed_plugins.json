@@ -299,7 +299,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\weixinpay\\1.6.110",
         "version": "1.6.110",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-11-21T05:27:19.854Z"
+        "lastUpdated": "2026-11-25T03:06:47.350Z"
       }
     ],
     "tencent-docs-plugin@workbuddy-builtin": [
@@ -308,7 +308,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-docs-plugin\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-08-10T08:09:24.550Z",
-        "lastUpdated": "2026-11-21T05:27:19.871Z"
+        "lastUpdated": "2026-11-25T03:06:47.362Z"
       }
     ],
     "data@cb_teams_marketplace": [
@@ -485,10 +485,12 @@
     "ima-mcp@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\ima-mcp\\0.0.0-wb.fac085d46643602c",
-        "version": "0.0.0+wb.fac085d46643602c",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\ima-mcp\\0.0.0-wb.fac085d46643602c-f693f5323a7f03ade1842e93e718cd19fc073696b46c0b99762a77a4d689e1e8",
+        "archiveSha256": "f693f5323a7f03ade1842e93e718cd19fc073696b46c0b99762a77a4d689e1e8",
+        "version": "0.0.0+wb.fac085d46643602c-f693f5323a7f03ade1842e93e718cd19fc073696b46c0b99762a77a4d689e1e8",
+        "resolvedVersion": "0.0.0+wb.fac085d46643602c",
         "installedAt": "2026-10-03T01:20:19.298Z",
-        "lastUpdated": "2026-11-18T02:20:07.220Z"
+        "lastUpdated": "2026-11-25T03:06:37.259Z"
       }
     ],
     "lexiang@workbuddy-connector-plugins-official": [
@@ -503,12 +505,12 @@
     "wecom@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\1.0.2-wb.67bcf8023eae2260-4c7dd13f031257a062eb81a41e2659d8332c5a4dd1f92936e32ef5a75b5b7b75",
-        "archiveSha256": "4c7dd13f031257a062eb81a41e2659d8332c5a4dd1f92936e32ef5a75b5b7b75",
-        "version": "1.0.2+wb.67bcf8023eae2260-4c7dd13f031257a062eb81a41e2659d8332c5a4dd1f92936e32ef5a75b5b7b75",
-        "resolvedVersion": "1.0.2+wb.67bcf8023eae2260",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\wecom\\1.0.3-wb.67bcf8023eae2260-d7937f22cebc624ffe05d779bbde1468c760ade61427f3134b2a041faaf3dd47",
+        "archiveSha256": "d7937f22cebc624ffe05d779bbde1468c760ade61427f3134b2a041faaf3dd47",
+        "version": "1.0.3+wb.67bcf8023eae2260-d7937f22cebc624ffe05d779bbde1468c760ade61427f3134b2a041faaf3dd47",
+        "resolvedVersion": "1.0.3+wb.67bcf8023eae2260",
         "installedAt": "2026-10-03T07:20:44.921Z",
-        "lastUpdated": "2026-11-23T08:30:32.691Z"
+        "lastUpdated": "2026-11-25T15:16:51.589Z"
       }
     ],
     "ardot@workbuddy-builtin": [
@@ -535,7 +537,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\subscription-gate\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-10T07:12:28.315Z",
-        "lastUpdated": "2026-11-21T05:27:19.886Z"
+        "lastUpdated": "2026-11-25T03:06:47.375Z"
       }
     ],
     "finance-data@cb_teams_marketplace": [
@@ -580,7 +582,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-sheetagent\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-14T03:45:28.815Z",
-        "lastUpdated": "2026-11-21T05:27:19.903Z"
+        "lastUpdated": "2026-11-25T03:06:47.387Z"
       }
     ],
     "workbuddy-pptx@workbuddy-builtin": [
@@ -589,7 +591,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-pptx\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-14T03:45:31.317Z",
-        "lastUpdated": "2026-11-21T05:27:19.916Z"
+        "lastUpdated": "2026-11-25T03:06:47.400Z"
       }
     ],
     "workbuddy-docx@workbuddy-builtin": [
@@ -598,7 +600,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\workbuddy-docx\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-14T03:45:51.654Z",
-        "lastUpdated": "2026-11-21T05:27:19.934Z"
+        "lastUpdated": "2026-11-25T03:06:47.547Z"
       }
     ],
     "wecom-a2a-auth@workbuddy-builtin": [
@@ -607,7 +609,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\wecom-a2a-auth\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-10-14T03:45:55.449Z",
-        "lastUpdated": "2026-11-21T05:27:19.946Z"
+        "lastUpdated": "2026-11-25T03:06:47.563Z"
       }
     ],
     "wecom-unified@workbuddy-wecom-unified": [
@@ -634,7 +636,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-browser-use\\browser-use\\1.2.1",
         "version": "1.2.1",
         "installedAt": "2026-10-18T12:37:35.382Z",
-        "lastUpdated": "2026-11-21T05:27:19.957Z"
+        "lastUpdated": "2026-11-25T03:06:47.574Z"
       }
     ],
     "crossborder-launch-team@experts": [
@@ -667,19 +669,23 @@
     "tencent-docs@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\tencent-docs\\0.0.0-wb.a3dbd5d84a976131",
-        "version": "0.0.0+wb.a3dbd5d84a976131",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\tencent-docs\\0.0.0-wb.a3dbd5d84a976131-799b8bd58ac088d8547730ea6cda2e0d67fc0649026bb7c858f6eca38d7cbf96",
+        "archiveSha256": "799b8bd58ac088d8547730ea6cda2e0d67fc0649026bb7c858f6eca38d7cbf96",
+        "version": "0.0.0+wb.a3dbd5d84a976131-799b8bd58ac088d8547730ea6cda2e0d67fc0649026bb7c858f6eca38d7cbf96",
+        "resolvedVersion": "0.0.0+wb.a3dbd5d84a976131",
         "installedAt": "2026-11-12T05:10:33.960Z",
-        "lastUpdated": "2026-11-18T02:20:08.522Z"
+        "lastUpdated": "2026-11-25T03:06:40.156Z"
       }
     ],
     "tmeet@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\tmeet\\0.0.0-wb.b9b76382aecbb51c",
-        "version": "0.0.0+wb.b9b76382aecbb51c",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\tmeet\\0.0.0-wb.b9b76382aecbb51c-60939b7382189a50b8a1062166f8071e6239850762c965d1aa056cfb6da5d439",
+        "archiveSha256": "60939b7382189a50b8a1062166f8071e6239850762c965d1aa056cfb6da5d439",
+        "version": "0.0.0+wb.b9b76382aecbb51c-60939b7382189a50b8a1062166f8071e6239850762c965d1aa056cfb6da5d439",
+        "resolvedVersion": "0.0.0+wb.b9b76382aecbb51c",
         "installedAt": "2026-11-12T05:10:35.453Z",
-        "lastUpdated": "2026-11-18T02:20:11.802Z"
+        "lastUpdated": "2026-11-25T03:06:44.005Z"
       }
     ],
     "welcomemode-claw@workbuddy-builtin": [
@@ -706,7 +712,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-builtin\\tencent-xmind\\5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "version": "5.11.3-wb.43806934.gecace0f7.ha395516167d4",
         "installedAt": "2026-11-18T02:21:02.932Z",
-        "lastUpdated": "2026-11-21T05:27:19.968Z"
+        "lastUpdated": "2026-11-25T03:06:47.587Z"
       }
     ],
     "computer-use@workbuddy-computer-use": [
@@ -715,7 +721,7 @@
         "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-computer-use\\computer-use\\1.1.310.9effaf24",
         "version": "1.1.310.9effaf24",
         "installedAt": "2026-11-21T05:27:17.031Z",
-        "lastUpdated": "2026-11-21T05:27:20.038Z"
+        "lastUpdated": "2026-11-25T03:06:47.695Z"
       }
     ]
   }

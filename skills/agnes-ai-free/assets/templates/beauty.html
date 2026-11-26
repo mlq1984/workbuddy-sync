@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>Beauty Poster Template</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; background:#FAFAF4; font-family:'Noto Serif SC','PingFang SC','Microsoft YaHei',serif; color:#1A1A1A; overflow:hidden; }
+.container { display:flex; flex-direction:column; height:100%; padding:80px 100px; position:relative; }
+.content-area { flex:1; z-index:1; max-width:45%; display:flex; flex-direction:column; justify-content:center; }
+/* 顶部小副标 */
+.top-badge { font-size:24px; color:#46523C; letter-spacing:4px; margin-bottom:16px; font-weight:300; }
+/* 主标题：粗大 */
+.main-title { font-size:72px; font-weight:700; line-height:1.15; margin-bottom:12px; letter-spacing:2px; }
+/* 细体副标 */
+.sub-title { font-size:28px; font-weight:300; color:#46523C; margin-bottom:24px; letter-spacing:1px; }
+/* 金色短线+英文 */
+.divider { display:flex; align-items:center; gap:16px; margin-bottom:40px; }
+.divider::before { content:""; flex:1; height:1px; background:linear-gradient(90deg,transparent,#B2935C,transparent); }
+.divider-en { font-family:'Playfair Display','Noto Serif SC',serif; font-size:20px; color:#B2935C; letter-spacing:4px; white-space:nowrap; }
+.divider::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,transparent,#B2935C,transparent); }
+/* 卖点区 */
+.selling-points { display:flex; flex-direction:column; gap:20px; margin-bottom:40px; }
+.selling-point { display:flex; gap:16px; align-items:flex-start; }
+.sp-icon { width:28px; height:28px; border:2px solid #B2935C; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; color:#B2935C; flex-shrink:0; margin-top:4px; }
+.sp-text { flex:1; }
+.sp-main { font-size:22px; font-weight:500; line-height:1.3; }
+.sp-sub { font-size:16px; font-weight:300; color:#46523C; margin-top:4px; line-height:1.4; }
+/* 引号 slogan */
+.slogan { font-size:24px; font-style:italic; color:#46523C; text-align:center; padding:20px 40px; border-left:3px solid #B2935C; margin-bottom:30px; line-height:1.5; }
+/* CTA 胶囊按钮 */
+.cta { display:inline-block; background:#2E6B5E; color:#FFFFFF; padding:18px 60px; border-radius:50px; font-size:22px; font-weight:500; text-align:center; margin:0 auto 30px; letter-spacing:2px; }
+/* 底部联系信息 */
+.contact { text-align:center; font-size:18px; color:#46523C; line-height:2; }
+/* 右侧图片区 - 绝对定位覆盖右半 */
+.img-wrapper { position:absolute; right:0; top:0; height:100%; width:55%; }
+.img-wrapper img { width:100%; height:100%; object-fit:cover; }
+</style></head><body>
+<div class="container">
+    <div class="img-wrapper"><img src="{{BASE_IMAGE_URI}}" alt="poster"></div>
+    <div class="content-area">
+        <div class="top-badge">{{SUBTITLE}}</div>
+        <h1 class="main-title">{{TITLE}}</h1>
+        <div class="sub-title">{{SLOGAN}}</div>
+        <div class="divider"><span class="divider-en">{{DIVIDER_EN}}</span></div>
+        <div class="selling-points">
+            {{SELLING_POINTS_HTML}}
+        </div>
+        <div class="slogan">"{{QUOTE_SLOGAN}}"</div>
+        <div class="cta">{{CTA_TEXT}}</div>
+        <div class="contact">{{CONTACT_INFO}}</div>
+    </div>
+</div>
+</body></html>

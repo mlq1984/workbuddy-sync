@@ -1,0 +1,9 @@
+{
+  "subject": "为中秋海报添加标题与排版",
+  "description": "为生成的图像添加“中秋快乐”标题及合适的辅助文字，并完成海报排版。",
+  "activeForm": "正在合成海报文字信息",
+  "status": "completed",
+  "id": "1",
+  "createdAt": 1795583607017,
+  "updatedAt": 1795583641039
+}

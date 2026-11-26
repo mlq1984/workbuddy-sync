@@ -9,7 +9,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\cb_teams_marketplace",
     "description": "CodeBuddy Teams Marketplace - 团队协作与文档处理插件集合",
-    "lastUpdated": "2026-11-25T01:03:12.007Z",
+    "lastUpdated": "2026-11-26T01:04:34.467Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -23,7 +23,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\codebuddy-plugins-official",
     "description": "CodeBuddy 官方插件市场",
-    "lastUpdated": "2026-11-25T01:03:12.368Z",
+    "lastUpdated": "2026-11-26T01:04:34.760Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -37,7 +37,7 @@
     "isBuiltIn": false,
     "autoUpdate": true,
     "description": "experts marketplace (auto-generated)",
-    "lastUpdated": "2026-11-25T01:03:12.454Z",
+    "lastUpdated": "2026-11-26T01:04:34.839Z",
     "manifest": {
       "name": "experts",
       "description": "experts marketplace (auto-generated)",
@@ -110,7 +110,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-connector-plugins-official",
     "description": "Marketplace from provider:workbuddy-connector-plugins-official",
-    "lastUpdated": "2026-11-23T08:30:29.919Z",
+    "lastUpdated": "2026-11-25T15:16:45.344Z",
     "autoUpdate": false
   },
   "workbuddy-builtin": {
@@ -136,7 +136,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-wecom-unified",
     "description": "Marketplace from https://static.workbuddy.cn/wecom-skills/wecom-unified.zip",
-    "lastUpdated": "2026-11-25T01:19:08.629Z",
+    "lastUpdated": "2026-11-26T00:56:01.133Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
