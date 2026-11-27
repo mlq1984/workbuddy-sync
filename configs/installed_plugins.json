@@ -496,10 +496,12 @@
     "lexiang@workbuddy-connector-plugins-official": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\lexiang\\0.0.0-wb.4688f41725fea6eb",
-        "version": "0.0.0+wb.4688f41725fea6eb",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-connector-plugins-official\\lexiang\\0.0.0-wb.6d235f63bc8791e2-e1fbd0323880370a24b0b9aef9ce79ab3b8d570544288d7b9b85dfeef45930e4",
+        "archiveSha256": "e1fbd0323880370a24b0b9aef9ce79ab3b8d570544288d7b9b85dfeef45930e4",
+        "version": "0.0.0+wb.6d235f63bc8791e2-e1fbd0323880370a24b0b9aef9ce79ab3b8d570544288d7b9b85dfeef45930e4",
+        "resolvedVersion": "0.0.0+wb.6d235f63bc8791e2",
         "installedAt": "2026-10-03T01:21:30.961Z",
-        "lastUpdated": "2026-10-19T09:00:47.465Z"
+        "lastUpdated": "2026-11-26T09:26:49.863Z"
       }
     ],
     "wecom@workbuddy-connector-plugins-official": [
