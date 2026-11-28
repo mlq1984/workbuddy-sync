@@ -720,10 +720,10 @@
     "computer-use@workbuddy-computer-use": [
       {
         "scope": "user",
-        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-computer-use\\computer-use\\1.1.310.9effaf24",
-        "version": "1.1.310.9effaf24",
+        "installPath": "C:\\Users\\king\\.workbuddy\\plugins\\cache\\workbuddy-computer-use\\computer-use\\1.1.416.865f7620",
+        "version": "1.1.416.865f7620",
         "installedAt": "2026-11-21T05:27:17.031Z",
-        "lastUpdated": "2026-11-25T03:06:47.695Z"
+        "lastUpdated": "2026-11-27T09:12:11.888Z"
       }
     ]
   }

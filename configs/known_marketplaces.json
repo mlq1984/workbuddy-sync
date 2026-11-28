@@ -136,7 +136,7 @@
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\plugins\\marketplaces\\workbuddy-wecom-unified",
     "description": "Marketplace from https://static.workbuddy.cn/wecom-skills/wecom-unified.zip",
-    "lastUpdated": "2026-11-27T01:06:02.213Z",
+    "lastUpdated": "2026-11-28T00:56:10.714Z",
     "autoUpdate": true,
     "isBuiltIn": true
   },
@@ -160,8 +160,8 @@
       "path": "C:\\Users\\king\\.workbuddy\\native-runtimes\\computer-use"
     },
     "installLocation": "C:\\Users\\king\\.workbuddy\\native-runtimes\\computer-use",
-    "description": "Marketplace from C:\\Users\\king\\.workbuddy\\native-runtimes\\computer-use",
-    "lastUpdated": "2026-10-24T14:49:19.828Z",
+    "description": "WorkBuddy Computer Use plugin",
+    "lastUpdated": "2026-11-27T09:12:10.485Z",
     "autoUpdate": false
   }
 }
